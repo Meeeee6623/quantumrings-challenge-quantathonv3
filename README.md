@@ -81,7 +81,7 @@ full credit on it.
 ## Dataset
 
 **~532 circuits** from four sources, each run at up to **3 simulator thresholds**
-(`16, 64, 512`) → **~1,300 labeled runs**.
+(`16, 64, 512`) → **~1,500 labeled runs**.
 
 | Source | Circuits | Focus |
 |---|---|---|
