@@ -1,0 +1,12 @@
+doi_10_5061_dryad_k6t1rj8__v20220613.zip
+/google-quantum/
+internal-README.md
+full-runtime-data.csv
+trim-runtime-data.py
+.DS_Store
+private/
+scramble-circuits.py
+/internal/
+__pycache__/
+*.pyc
+split-circuits.py
