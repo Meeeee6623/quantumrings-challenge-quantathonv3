@@ -52,8 +52,6 @@ class ChiWalkTests(unittest.TestCase):
 
     def test_model_exposes_near_zero_and_pi_counts(self):
         model=RuntimeModel()
-        self.assertIn('chi_walk_rot_near_zero',model.model['columns'])
-        self.assertIn('chi_walk_rot_near_pi',model.model['columns'])
         qasm='OPENQASM 2.0;\nqreg q[2];\nrx(0) q[0];\nry(pi) q[1];\n'
         out=model.featurize(qasm)
         self.assertEqual(out['chi_walk_rot_near_zero'],1)

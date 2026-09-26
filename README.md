@@ -54,11 +54,17 @@ starter.  It combines two independent source-QASM feature representations:
 - a guarded blend with training circuits sharing the same structural count
   signature, followed by a small near-basis rotation correction at threshold 512.
 
-The current predictor scores **0.92547** on fixed circuit-grouped,
-distribution-matched out-of-fold validation, versus **0.92218** for a freshly
-refitted union without the edge-case adjustments. Its structural stress score is
-**0.75030**. See [`research/EDGE_CASE_UPDATE.md`](research/EDGE_CASE_UPDATE.md)
-for the paired evidence and large-file parser tests;
+The fitted v6 model removes constant and duplicate inputs, then selects 120
+columns for the global regressor, 200 for each runtime specialist, and 80 for
+each timeout classifier. It uses 325 distinct columns across all components,
+down from 480 candidate columns.
+
+The current predictor scores **0.92578** on fixed circuit-grouped,
+distribution-matched out-of-fold validation. Its structural stress score is
+**0.75537**. See [`research/FEATURE_PRUNING_REPORT.md`](research/FEATURE_PRUNING_REPORT.md)
+for the feature audit and comparison,
+[`research/EDGE_CASE_UPDATE.md`](research/EDGE_CASE_UPDATE.md)
+for the v5 edge-case evidence and large-file parser tests;
 [`research/MERGED_COMPARISON.md`](research/MERGED_COMPARISON.md) records the
 original union-model comparison.
 

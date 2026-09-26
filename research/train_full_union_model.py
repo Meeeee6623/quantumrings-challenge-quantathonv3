@@ -1,9 +1,8 @@
-"""Train the primary dual-parser union model.
+"""Train the pruned dual-parser union model.
 
-The global component uses the 243-column bounded geometry/chi representation.
-Threshold specialists and timeout classifiers additionally see the independent
-237-column structural/DAG/angle representation.  The two namespaces are kept
-separate, even where concepts overlap, so the experiment is reproducible.
+The two parsers produce 480 candidate columns. Constant and exactly duplicate
+columns are removed, then each model selects a smaller set by importance.
+Validation learns those importance rankings inside each training fold.
 
 Run:
 
@@ -24,6 +23,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / 'quantathon-harness'),str(ROOT / 'research')]
 from chi_walk import BASIS_ROTATION_TOLERANCE, model_features  # noqa: E402
+from feature_pruning import importance_choice, redundant_columns  # noqa: E402
 from rotation_calibration import calibrate_near_basis_runtime  # noqa: E402
 from runtime_floors import apply_floor, eligible, large_work_floor  # noqa: E402
 from template_analogues import blend_with_analogues, signature  # noqa: E402
@@ -46,6 +46,9 @@ REPORT = ROOT / 'research' / 'full_union_model_validation.json'
 OOF = ROOT / 'research' / 'full_union_model_oof.csv'
 SPECIALIST_WEIGHT = 0.5
 TIMEOUT_CUTOFF = 0.35
+GLOBAL_LIMIT = 120
+SPECIALIST_LIMIT = 200
+CLASSIFIER_LIMIT = 80
 
 
 def reset_family_references(rows, features, selected):
@@ -129,20 +132,31 @@ def cross_predict(parallel_X, union_X, y, timeout, thresholds, names, rows,
     for fold in sorted(set(assigned)):
         train = assigned != fold
         test = assigned == fold
+        global_indices = importance_choice(global_regressor(17),parallel_X[train],
+                                           y[train],GLOBAL_LIMIT)
         global_model = global_regressor(17)
-        global_model.fit(parallel_X[train],y[train])
-        global_log[test] = global_model.predict(parallel_X[test])
+        global_model.fit(parallel_X[train][:,global_indices],y[train])
+        global_log[test] = global_model.predict(parallel_X[test][:,global_indices])
         for threshold in THRESHOLDS:
             train_t = train & (thresholds == threshold)
             test_t = test & (thresholds == threshold)
             if not test_t.any():
                 continue
+            specialist_indices = importance_choice(
+                threshold_regressor(17+fold),union_X[train_t],y[train_t],
+                SPECIALIST_LIMIT)
             specialist = threshold_regressor(17+fold)
-            specialist.fit(union_X[train_t],y[train_t])
-            specialist_log[test_t] = specialist.predict(union_X[test_t])
+            specialist.fit(union_X[train_t][:,specialist_indices],y[train_t])
+            specialist_log[test_t] = specialist.predict(
+                union_X[test_t][:,specialist_indices])
+            classifier_indices = importance_choice(
+                timeout_classifier(17+fold),union_X[train_t],
+                timeout[train_t].astype(int),CLASSIFIER_LIMIT)
             classifier = timeout_classifier(17+fold)
-            classifier.fit(union_X[train_t],timeout[train_t].astype(int))
-            timeout_probability[test_t] = positive_probability(classifier,union_X[test_t])
+            classifier.fit(union_X[train_t][:,classifier_indices],
+                           timeout[train_t].astype(int))
+            timeout_probability[test_t] = positive_probability(
+                classifier,union_X[test_t][:,classifier_indices])
     blended_log = ((1-SPECIALIST_WEIGHT)*global_log
                    + SPECIALIST_WEIGHT*specialist_log)
     seconds = np.power(10.0,np.clip(blended_log,-9,9))
@@ -166,24 +180,40 @@ def cross_predict(parallel_X, union_X, y, timeout, thresholds, names, rows,
 def fit_artifact(parallel_X, union_X, parallel_columns, union_columns,
                  y, timeout, thresholds, interval_log10_radius, references,
                  template_bank):
+    global_indices = importance_choice(global_regressor(17),parallel_X,y,GLOBAL_LIMIT)
+    global_columns = [parallel_columns[j] for j in global_indices]
     global_model = global_regressor(17)
-    global_model.fit(parallel_X,y)
+    global_model.fit(parallel_X[:,global_indices],y)
     specialists = {}
     classifiers = {}
+    specialist_columns = {}
+    classifier_columns = {}
     for threshold in THRESHOLDS:
         mask = thresholds == threshold
+        specialist_indices = importance_choice(
+            threshold_regressor(17),union_X[mask],y[mask],SPECIALIST_LIMIT)
+        specialist_columns[threshold] = [union_columns[j] for j in specialist_indices]
         specialist = threshold_regressor(17)
-        specialist.fit(union_X[mask],y[mask])
+        specialist.fit(union_X[mask][:,specialist_indices],y[mask])
         specialists[threshold] = specialist
+        classifier_indices = importance_choice(
+            timeout_classifier(17),union_X[mask],timeout[mask].astype(int),
+            CLASSIFIER_LIMIT)
+        classifier_columns[threshold] = [union_columns[j] for j in classifier_indices]
         classifier = timeout_classifier(17)
-        classifier.fit(union_X[mask],timeout[mask].astype(int))
+        classifier.fit(union_X[mask][:,classifier_indices],
+                       timeout[mask].astype(int))
         classifiers[threshold] = classifier
+    selected = set(global_columns)
+    selected.update(c for part in specialist_columns.values() for c in part)
+    selected.update(c for part in classifier_columns.values() for c in part)
+    selected_columns = [c for c in union_columns if c in selected]
     artifact = {
-        'artifact_version':'full_union_threshold_experts_v5',
-        'columns':union_columns,
-        'global_columns':parallel_columns,
-        'specialist_columns':union_columns,
-        'classifier_columns':union_columns,
+        'artifact_version':'pruned_union_threshold_experts_v6',
+        'columns':selected_columns,
+        'global_columns':global_columns,
+        'specialist_columns_by_threshold':specialist_columns,
+        'classifier_columns_by_threshold':classifier_columns,
         'estimator':global_model,
         'global_estimator':global_model,
         'threshold_specialists':specialists,
@@ -192,7 +222,7 @@ def fit_artifact(parallel_X, union_X, parallel_columns, union_columns,
         'timeout_probability_cutoff':TIMEOUT_CUTOFF,
         'reset_family_references':references,
         'template_analogue_bank':template_bank,
-        'view':'full_union_geometry_chi_structural_dag_angle_threshold_experts',
+        'view':'pruned_union_geometry_chi_structural_dag_angle_threshold_experts',
         'chi_walk_budget_s':3.0,
         'chi_walk_large_cutoff_bytes':40_000_000,
         'chi_walk_rotation_tolerance_rad':BASIS_ROTATION_TOLERANCE,
@@ -202,6 +232,13 @@ def fit_artifact(parallel_X, union_X, parallel_columns, union_columns,
         'interval_log10_radius':float(interval_log10_radius),
     }
     joblib.dump(artifact,ARTIFACT,compress=3)
+    return {
+        'selected_unique_columns':len(selected_columns),
+        'global_columns':len(global_columns),
+        'specialist_columns_by_threshold':{str(k):len(v) for k,v in specialist_columns.items()},
+        'classifier_columns_by_threshold':{str(k):len(v) for k,v in classifier_columns.items()},
+        'selected_columns':selected_columns,
+    }
 
 
 def main():
@@ -213,15 +250,27 @@ def main():
     extended_X, extended_columns = load_extended_matrix(rows,thresholds)
     union_X = np.column_stack((parallel_X,extended_X))
     union_columns = parallel_columns+extended_columns
+    retained,constant,duplicate = redundant_columns(union_X,union_columns)
+    parallel_retained = retained[retained < len(parallel_columns)]
+    parallel_X = parallel_X[:,parallel_retained]
+    parallel_columns = [parallel_columns[j] for j in parallel_retained]
+    union_X = union_X[:,retained]
+    union_columns = [union_columns[j] for j in retained]
     fold_by_name = load_fold_table()
     predictions = {}
     report = {
-        'artifact_version':'full_union_threshold_experts_v5',
+        'artifact_version':'pruned_union_threshold_experts_v6',
         'rows':len(rows),
         'circuits':len(set(names)),
         'parallel_features':len(parallel_columns),
-        'extended_features':len(extended_columns),
+        'extended_features':len(union_columns)-len(parallel_columns),
+        'extended_candidate_features':len(extended_columns),
         'union_features':len(union_columns),
+        'original_union_features':len(retained)+len(constant)+len(duplicate),
+        'constant_columns':constant,
+        'exact_duplicate_columns':duplicate,
+        'feature_limits':{'global':GLOBAL_LIMIT,'specialist':SPECIALIST_LIMIT,
+                          'classifier':CLASSIFIER_LIMIT},
         'specialist_weight':SPECIALIST_WEIGHT,
         'timeout_probability_cutoff':TIMEOUT_CUTOFF,
         'splits':{},
@@ -295,10 +344,11 @@ def main():
         'observed_oof_coverage':float(np.mean(
             np.abs(np.log10(np.maximum(1e-9,matched_seconds))-y) <= interval_radius)),
     }
-    fit_artifact(parallel_X,union_X,parallel_columns,union_columns,
-                 y,timeout,thresholds,interval_radius,
-                 reset_family_references(rows,features,np.ones(len(rows),dtype=bool)),
-                 build_template_bank(rows,features,np.ones(len(rows),dtype=bool)))
+    report['selected_schema'] = fit_artifact(
+        parallel_X,union_X,parallel_columns,union_columns,
+        y,timeout,thresholds,interval_radius,
+        reset_family_references(rows,features,np.ones(len(rows),dtype=bool)),
+        build_template_bank(rows,features,np.ones(len(rows),dtype=bool)))
     report['artifact'] = str(ARTIFACT.relative_to(ROOT))
     report['oof_predictions'] = str(OOF.relative_to(ROOT))
     REPORT.write_text(json.dumps(report,indent=2)+'\n')

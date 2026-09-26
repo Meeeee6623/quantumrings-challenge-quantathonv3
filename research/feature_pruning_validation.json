@@ -1,0 +1,305 @@
+{
+  "method": "Training-fold-only impurity-rank selection; fixed circuit-grouped folds",
+  "original_columns": 480,
+  "deduplicated_columns": 456,
+  "original_parallel_columns": 243,
+  "deduplicated_parallel_columns": 241,
+  "constant_columns": [
+    "unsupported_statements",
+    "log_unsupported_statements"
+  ],
+  "exact_duplicate_columns": [
+    {
+      "removed": "extended__custom_gate_definition_count",
+      "kept": "custom_definitions"
+    },
+    {
+      "removed": "extended__dag_critical_path_length",
+      "kept": "extended__circuit_depth"
+    },
+    {
+      "removed": "extended__dag_longest_dependency_chain",
+      "kept": "extended__circuit_depth"
+    },
+    {
+      "removed": "extended__expanded_gate_count_proxy",
+      "kept": "extended__custom_expanded_gate_count_proxy"
+    },
+    {
+      "removed": "extended__fast_graph_available",
+      "kept": "extended__fast_detail_mode"
+    },
+    {
+      "removed": "extended__gate_count__cz",
+      "kept": "gate_cz"
+    },
+    {
+      "removed": "extended__gate_count__rx",
+      "kept": "gate_rx"
+    },
+    {
+      "removed": "extended__gate_count__u3",
+      "kept": "gate_u3"
+    },
+    {
+      "removed": "extended__interaction_edge_count",
+      "kept": "extended__interaction_distinct_pair_count"
+    },
+    {
+      "removed": "extended__interaction_graph_density",
+      "kept": "extended__interaction_distinct_pair_fraction"
+    },
+    {
+      "removed": "extended__interaction_node_count",
+      "kept": "n_qubits"
+    },
+    {
+      "removed": "extended__interaction_repeat_factor",
+      "kept": "extended__interaction_edge_weight_mean"
+    },
+    {
+      "removed": "extended__measurement_count",
+      "kept": "measurements"
+    },
+    {
+      "removed": "extended__num_qubits",
+      "kept": "n_qubits"
+    },
+    {
+      "removed": "extended__reset_count",
+      "kept": "resets"
+    },
+    {
+      "removed": "extended__source_bytes",
+      "kept": "qasm_bytes"
+    },
+    {
+      "removed": "extended__structural_active_qubit_fraction",
+      "kept": "extended__fast_detail_mode"
+    },
+    {
+      "removed": "extended__structural_gate_depth",
+      "kept": "extended__circuit_depth"
+    },
+    {
+      "removed": "extended__structural_max_gate_layer_width",
+      "kept": "extended__dag_max_layer_width"
+    },
+    {
+      "removed": "extended__supermarq_communication",
+      "kept": "extended__interaction_distinct_pair_fraction"
+    },
+    {
+      "removed": "extended__threshold",
+      "kept": "threshold"
+    },
+    {
+      "removed": "extended__two_qubit_gate_fraction",
+      "kept": "extended__supermarq_entanglement_ratio"
+    }
+  ],
+  "candidates": {
+    "deduplicated": {
+      "limits": {
+        "global": null,
+        "specialist": null,
+        "classifier": null
+      },
+      "splits": {
+        "matched": {
+          "score": 0.9252063580559106,
+          "timeout_score": 0.9648483535005385,
+          "median_factor_error": 1.0708648534901284,
+          "p95_factor_error": 5.005868693209349,
+          "tenfold_misses": 29,
+          "predicted_timeouts": 42,
+          "threshold_scores": {
+            "16": 0.9301033731033655,
+            "64": 0.9234731771673645,
+            "512": 0.9213290565977114
+          },
+          "selected_column_counts": {
+            "global": [
+              241
+            ],
+            "specialist": [
+              456
+            ],
+            "classifier": [
+              456
+            ]
+          }
+        },
+        "structural": {
+          "score": 0.7499239173771041,
+          "timeout_score": 0.7905685257841517,
+          "median_factor_error": 1.9169901724284908,
+          "p95_factor_error": 63.535836786590934,
+          "tenfold_misses": 225,
+          "predicted_timeouts": 73,
+          "threshold_scores": {
+            "16": 0.6929627761755727,
+            "64": 0.7962130516734984,
+            "512": 0.7631884827613009
+          },
+          "selected_column_counts": {
+            "global": [
+              241
+            ],
+            "specialist": [
+              456
+            ],
+            "classifier": [
+              456
+            ]
+          }
+        }
+      },
+      "elapsed_seconds": 59.1
+    },
+    "moderate": {
+      "limits": {
+        "global": 120,
+        "specialist": 200,
+        "classifier": 80
+      },
+      "splits": {
+        "matched": {
+          "score": 0.9257843447060121,
+          "timeout_score": 0.9639152754960102,
+          "median_factor_error": 1.0722245492154727,
+          "p95_factor_error": 4.887911018024691,
+          "tenfold_misses": 28,
+          "predicted_timeouts": 43,
+          "threshold_scores": {
+            "16": 0.9301000792370355,
+            "64": 0.9238217731990354,
+            "512": 0.9228974300581809
+          },
+          "selected_column_counts": {
+            "global": [
+              120
+            ],
+            "specialist": [
+              200
+            ],
+            "classifier": [
+              80
+            ]
+          }
+        },
+        "structural": {
+          "score": 0.7553686958374755,
+          "timeout_score": 0.7974694962429586,
+          "median_factor_error": 1.8893572609373885,
+          "p95_factor_error": 56.128269399894606,
+          "tenfold_misses": 221,
+          "predicted_timeouts": 73,
+          "threshold_scores": {
+            "16": 0.6986958184615557,
+            "64": 0.801611538705108,
+            "512": 0.7683371189274623
+          },
+          "selected_column_counts": {
+            "global": [
+              120
+            ],
+            "specialist": [
+              200
+            ],
+            "classifier": [
+              80
+            ]
+          }
+        }
+      },
+      "elapsed_seconds": 90.1
+    },
+    "aggressive": {
+      "limits": {
+        "global": 80,
+        "specialist": 140,
+        "classifier": 60
+      },
+      "splits": {
+        "matched": {
+          "score": 0.9258682686782997,
+          "timeout_score": 0.9578226325653565,
+          "median_factor_error": 1.0762684839283612,
+          "p95_factor_error": 4.852110078795402,
+          "tenfold_misses": 28,
+          "predicted_timeouts": 43,
+          "threshold_scores": {
+            "16": 0.9289564357894583,
+            "64": 0.924468653232931,
+            "512": 0.923796754386136
+          },
+          "selected_column_counts": {
+            "global": [
+              80
+            ],
+            "specialist": [
+              140
+            ],
+            "classifier": [
+              60
+            ]
+          }
+        },
+        "structural": {
+          "score": 0.7484584627960371,
+          "timeout_score": 0.7996361420773248,
+          "median_factor_error": 1.982678495314966,
+          "p95_factor_error": 55.263506170113374,
+          "tenfold_misses": 222,
+          "predicted_timeouts": 72,
+          "threshold_scores": {
+            "16": 0.680699247412535,
+            "64": 0.806149044011925,
+            "512": 0.7610375307031693
+          },
+          "selected_column_counts": {
+            "global": [
+              80
+            ],
+            "specialist": [
+              140
+            ],
+            "classifier": [
+              60
+            ]
+          }
+        }
+      },
+      "elapsed_seconds": 80.7
+    }
+  },
+  "baseline": {
+    "matched": {
+      "score": 0.9254718850769831,
+      "timeout_score": 0.9617809605558605,
+      "median_factor_error": 1.0751489735748228,
+      "p95_factor_error": 4.967338294247283,
+      "tenfold_misses": 28,
+      "predicted_timeouts": 41,
+      "threshold_scores": {
+        "16": 0.9300739344234323,
+        "64": 0.9239589360369597,
+        "512": 0.921686994821583
+      }
+    },
+    "structural": {
+      "score": 0.7502992009584047,
+      "timeout_score": 0.7672946509031308,
+      "median_factor_error": 1.8996259961474133,
+      "p95_factor_error": 70.53191802016694,
+      "tenfold_misses": 228,
+      "predicted_timeouts": 73,
+      "threshold_scores": {
+        "16": 0.687606481318312,
+        "64": 0.8019394637952065,
+        "512": 0.7640536550848979
+      }
+    }
+  }
+}

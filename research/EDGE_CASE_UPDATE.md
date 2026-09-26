@@ -1,12 +1,13 @@
 # Edge-case continuation: large files and reset-heavy search circuits
 
-This update starts from the full-union handoff in `MERGED_AGENT_HANDOFF.md`.
-The selected artifact is `full_union_threshold_experts_v5` and uses the same
+This historical update starts from the full-union handoff in
+`MERGED_AGENT_HANDOFF.md`. It evaluates artifact
+`full_union_threshold_experts_v5`, which uses the same
 480 learned columns, global/specialist blend, and timeout router. It adds two
 narrow runtime floors, a guarded structural-template analogue blend, a
 threshold-specific near-basis rotation correction, and a faster large-file
 secondary scanner. No filename, benchmark source, or family label enters the
-predictor.
+predictor. The current selected artifact is v6; see `FEATURE_PRUNING_REPORT.md`.
 
 ## What changed
 
@@ -109,5 +110,6 @@ serialization and execution, not generalization. It is lower than v3's
 the circuit-held-out matched score is the relevant comparison. See
 `training_submission_final.csv` for its output and timings.
 
-Rebuild the artifact with `uv run --locked python research/train_full_union_model.py`.
+The current rebuild command is `uv run --locked python research/train_full_union_model.py`;
+it now produces the v6 pruned model.
 Generate this figure with `uv run --locked python research/plot_edge_case_update.py`.

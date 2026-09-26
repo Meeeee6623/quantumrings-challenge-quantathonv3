@@ -588,6 +588,10 @@ class RuntimeModel:
             all_columns.extend(part.get('columns',()))
             all_columns.extend(part.get('global_columns',()))
             all_columns.extend(part.get('specialist_columns',()))
+            for schema in part.get('specialist_columns_by_threshold',{}).values():
+                all_columns.extend(schema)
+            for schema in part.get('classifier_columns_by_threshold',{}).values():
+                all_columns.extend(schema)
         self.use_chi_walk = any(c.startswith('chi_walk_') for c in all_columns)
         self.use_extended_features = any(c.startswith('extended__') for c in all_columns)
         self.rotation_tolerance = (self.model.get('chi_walk_rotation_tolerance_rad',-1.0)
@@ -877,6 +881,8 @@ class RuntimeModel:
                 global_columns = self.model.get('global_columns',self.model['columns'])
                 specialist_columns = self.model.get('specialist_columns',self.model['columns'])
                 classifier_columns = self.model.get('classifier_columns',specialist_columns)
+                specialist_schemas = self.model.get('specialist_columns_by_threshold',{})
+                classifier_schemas = self.model.get('classifier_columns_by_threshold',{})
                 global_log = predict_component({
                     'columns':global_columns,
                     'estimator':self.model['global_estimator'],
@@ -884,8 +890,10 @@ class RuntimeModel:
                 specialists = self.model['threshold_specialists']
                 key = threshold if threshold in specialists else str(threshold)
                 if key in specialists:
+                    columns = specialist_schemas.get(
+                        threshold,specialist_schemas.get(str(threshold),specialist_columns))
                     specialist_log = float(specialists[key].predict(
-                        model_vector(specialist_columns))[0])
+                        model_vector(columns))[0])
                     weight = float(self.model.get('threshold_specialist_weight',.5))
                     log_seconds = (1-weight)*global_log + weight*specialist_log
                 else:
@@ -896,7 +904,9 @@ class RuntimeModel:
                 classifiers = self.model.get('timeout_classifiers',{})
                 classifier = classifiers.get(threshold,classifiers.get(str(threshold)))
                 if classifier is not None:
-                    vector = model_vector(classifier_columns)
+                    columns = classifier_schemas.get(
+                        threshold,classifier_schemas.get(str(threshold),classifier_columns))
+                    vector = model_vector(columns)
                     classes = list(classifier.classes_)
                     probability = (float(classifier.predict_proba(vector)[0,classes.index(1)])
                                    if 1 in classes else 0.0)

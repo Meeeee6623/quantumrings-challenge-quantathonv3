@@ -1,12 +1,13 @@
 # Merged runtime predictor: comparison and validation
 
 **Continuation update:** This document records the original v1 union selection.
-The current v5 artifact adds narrow reset-family and large-work floors, a
+The later v5 artifact added narrow reset-family and large-work floors, a
 guarded structural-template blend, a threshold-512 near-basis correction,
 and a faster coarse scanner. See
-[EDGE_CASE_UPDATE.md](EDGE_CASE_UPDATE.md) and the
-fresh paired metrics in `full_union_model_validation.json` for the deployed
-results.
+[EDGE_CASE_UPDATE.md](EDGE_CASE_UPDATE.md) for that snapshot. The current
+selected v6 artifact also prunes model inputs; see
+[FEATURE_PRUNING_REPORT.md](FEATURE_PRUNING_REPORT.md) and the fresh paired
+metrics in `full_union_model_validation.json`.
 
 This is the standalone submission selected after comparing two independently
 developed pipelines on the Quantum Rings training set.  It uses only information

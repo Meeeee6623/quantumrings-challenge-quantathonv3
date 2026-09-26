@@ -7,9 +7,10 @@ cross-pipeline analysis is in `MERGED_COMPARISON.md`.
 ## Current selected submission
 
 The checked-in `quantathon-harness/artifacts/runtime_model.joblib` is now the
-**full-union threshold-expert model**, artifact version
-`full_union_threshold_experts_v5`.  It replaces the previous single global
-ExtraTrees artifact.
+**pruned union threshold-expert model**, artifact version
+`pruned_union_threshold_experts_v6`. It retains the v5 prediction path and
+postprocessing, with model-specific feature limits validated in
+[`FEATURE_PRUNING_REPORT.md`](FEATURE_PRUNING_REPORT.md).
 
 The model uses only QASM-derived quantities and the requested threshold.  It
 does not use filename, benchmark source, provided/inferred family labels, or
@@ -19,14 +20,14 @@ Prediction path:
 
 ```text
 QASM
- ├─ existing bounded geometry parser + angle-aware chi walk → 243 columns
- └─ independent structural/DAG/graph/angle scanner          → 237 columns
+ ├─ existing bounded geometry parser + angle-aware chi walk → 243 candidates
+ └─ independent structural/DAG/graph/angle scanner          → 237 candidates
 
-global ExtraTrees(243 columns)
-threshold-specific ExtraTrees[16|64|512](480-column union)
+global ExtraTrees(120 selected columns)
+threshold-specific ExtraTrees[16|64|512](200 selected columns each)
 point log10(runtime) = 0.5 global + 0.5 threshold expert
 
-per-threshold timeout classifier(480 columns)
+per-threshold timeout classifier(80 selected columns each)
  └─ probability >= 0.35 → predict 14,400 seconds
 
 rare reset-heavy search analogue floor + large effective-work floor
@@ -34,10 +35,10 @@ two-reference structural-template blend when matching examples are available
 near-basis rotation correction at threshold 512 for non-cap predictions
 ```
 
-The continuation analysis, paired metrics, and parser timing are in
+The v5 continuation analysis, paired metrics, and parser timing are in
 [`EDGE_CASE_UPDATE.md`](EDGE_CASE_UPDATE.md). The table below preserves the
-original v1 comparison for historical context; the current v5 model scores
-**0.92547 matched** and **0.75030 structural stress** on a fresh paired refit.
+original v1 comparison for historical context; the current v6 model scores
+**0.92578 matched** and **0.75537 structural stress** on a fresh paired refit.
 
 Unknown future thresholds fall back safely to the global model.  The challenge
 holdout is expected to use the known thresholds 16, 64, and 512.
@@ -96,8 +97,10 @@ fast path.
 | `research/full_union_model_validation.json` | Machine-readable fixed-fold metrics |
 | `research/full_union_model_oof.csv` | Every fixed-fold prediction |
 | `research/PI_SYNTAX_PROBE.md` | Rejected source-angle syntax experiment and reproducible OOF evidence |
-| `research/training_submission_final.csv` | End-to-end training-library output for current v3 artifact |
-| `research/full_union_feature_columns.json` | Exact ordered input schemas |
+| `research/training_submission_final.csv` | Historical end-to-end training-library output for v5 |
+| `research/training_submission_pruned.csv` | End-to-end training-library output for selected v6 |
+| `research/full_union_model_validation.json` | Exact selected v6 input schemas and fixed-fold results |
+| `research/FEATURE_PRUNING_REPORT.md` | Feature audit and v5/v6 comparison |
 | `research/MERGED_COMPARISON.md` | Full comparison, caveats, and rationale |
 | `research/merged_model_comparison.png` | Presentation comparison figure |
 
@@ -144,10 +147,10 @@ run.
 4. Preserve the `extended__` namespace.  Some concepts intentionally appear in
    both representations; collapsing them changes the learned model.
 5. Do not present the fitted score as validation. Use the current
-   0.92547 matched OOF and disclose that model choices were made on the
+   0.92578 matched OOF and disclose that model choices were made on the
    available training data.
-6. Current v5 artifact SHA-256:
-   `f16bc8924d14acaa4d44aa9975397cbe1983c2673935c88f62570d7f46b15458`.
+6. Current v6 artifact SHA-256:
+   `0683b134c3a720e8992203939a99d056e7d3ba43e8f7055cf8fb6c352d55ef37`.
 
 ## Recommended challenge-time sequence
 

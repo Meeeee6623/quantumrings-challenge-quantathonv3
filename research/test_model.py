@@ -100,13 +100,21 @@ cMAJ q[0],q[1];
 
     def test_submission_artifact_uses_threshold_experts(self):
         self.assertEqual(self.model.model['artifact_version'],
-                         'full_union_threshold_experts_v5')
+                         'pruned_union_threshold_experts_v6')
         self.assertEqual(set(self.model.model['threshold_specialists']),{16,64,512})
         self.assertEqual(set(self.model.model['timeout_classifiers']),{16,64,512})
         self.assertAlmostEqual(self.model.model['threshold_specialist_weight'],.5)
         self.assertAlmostEqual(self.model.model['timeout_probability_cutoff'],.35)
-        self.assertTrue(any(column.startswith('extended__')
-                            for column in self.model.model['specialist_columns']))
+        self.assertEqual(len(self.model.model['global_columns']),120)
+        self.assertEqual({k:len(v) for k,v in
+                          self.model.model['specialist_columns_by_threshold'].items()},
+                         {16:200,64:200,512:200})
+        self.assertEqual({k:len(v) for k,v in
+                          self.model.model['classifier_columns_by_threshold'].items()},
+                         {16:80,64:80,512:80})
+        self.assertTrue(any(column.startswith('extended__') for columns in
+                            self.model.model['specialist_columns_by_threshold'].values()
+                            for column in columns))
         self.assertEqual(len(self.model.model['reset_family_references']),14)
         self.assertTrue(self.model.model['template_analogue_bank'])
 
