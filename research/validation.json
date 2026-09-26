@@ -1,0 +1,336 @@
+{
+  "rows": 1497,
+  "circuits": 532,
+  "distinct_feature_profiles": 531,
+  "folds": 5,
+  "results": [
+    {
+      "view": "basic",
+      "model": "ridge",
+      "score": 0.7004497138754117,
+      "threshold_scores": {
+        "16": 0.7518301987998439,
+        "64": 0.7745021759029915,
+        "512": 0.5473871326008934
+      },
+      "timeout_score": 0.5158269929854926,
+      "median_factor_error": 3.2812070576191212
+    },
+    {
+      "view": "basic",
+      "model": "extra_trees",
+      "score": 0.8741758485411704,
+      "threshold_scores": {
+        "16": 0.9054004918837623,
+        "64": 0.8737315261277379,
+        "512": 0.8365298269799298
+      },
+      "timeout_score": 0.5930987608199279,
+      "median_factor_error": 1.1348603308483602
+    },
+    {
+      "view": "basic",
+      "model": "hist_boost",
+      "score": 0.8548573020045327,
+      "threshold_scores": {
+        "16": 0.8838328877229419,
+        "64": 0.8459550504240521,
+        "512": 0.8302669151895005
+      },
+      "timeout_score": 0.6427919076257161,
+      "median_factor_error": 1.303106187200028
+    },
+    {
+      "view": "basic",
+      "model": "random_forest",
+      "score": 0.8626040104110422,
+      "threshold_scores": {
+        "16": 0.8947724107044889,
+        "64": 0.8613971856755992,
+        "512": 0.8247328107643097
+      },
+      "timeout_score": 0.614692588499502,
+      "median_factor_error": 1.1956818287419229
+    },
+    {
+      "view": "raw",
+      "model": "ridge",
+      "score": 0.7362885755999543,
+      "threshold_scores": {
+        "16": 0.7612617479405015,
+        "64": 0.8171191513356901,
+        "512": 0.6072634426686646
+      },
+      "timeout_score": 0.6804171804142165,
+      "median_factor_error": 3.0860178129513667
+    },
+    {
+      "view": "raw",
+      "model": "extra_trees",
+      "score": 0.8876490621394306,
+      "threshold_scores": {
+        "16": 0.9094779973197891,
+        "64": 0.8931481622528421,
+        "512": 0.8542524723094107
+      },
+      "timeout_score": 0.6541147343724664,
+      "median_factor_error": 1.1186963066782636
+    },
+    {
+      "view": "raw",
+      "model": "hist_boost",
+      "score": 0.8751911824311116,
+      "threshold_scores": {
+        "16": 0.8959483136027628,
+        "64": 0.8772779816094567,
+        "512": 0.8472629126659591
+      },
+      "timeout_score": 0.666204580665134,
+      "median_factor_error": 1.2806416200873378
+    },
+    {
+      "view": "raw",
+      "model": "random_forest",
+      "score": 0.8689469196493624,
+      "threshold_scores": {
+        "16": 0.8913894675403266,
+        "64": 0.8730802224786662,
+        "512": 0.8364639633791922
+      },
+      "timeout_score": 0.6121335751228463,
+      "median_factor_error": 1.1802541731201845
+    },
+    {
+      "view": "all",
+      "model": "ridge",
+      "score": 0.7356170497262982,
+      "threshold_scores": {
+        "16": 0.7609206416843615,
+        "64": 0.8158921445175578,
+        "512": 0.606864610275592
+      },
+      "timeout_score": 0.6869556981409849,
+      "median_factor_error": 3.132644107352062
+    },
+    {
+      "view": "all",
+      "model": "extra_trees",
+      "score": 0.891125044945926,
+      "threshold_scores": {
+        "16": 0.9110140176442064,
+        "64": 0.8980333323242935,
+        "512": 0.8583840661274897
+      },
+      "timeout_score": 0.6821462039807777,
+      "median_factor_error": 1.1225501098350505
+    },
+    {
+      "view": "all",
+      "model": "hist_boost",
+      "score": 0.8748671082601136,
+      "threshold_scores": {
+        "16": 0.8969498396253366,
+        "64": 0.8790580569340002,
+        "512": 0.8427539682981396
+      },
+      "timeout_score": 0.6831065026375299,
+      "median_factor_error": 1.2761513729918648
+    },
+    {
+      "view": "all",
+      "model": "random_forest",
+      "score": 0.8725299025724378,
+      "threshold_scores": {
+        "16": 0.8941645001862983,
+        "64": 0.8787439129847655,
+        "512": 0.8384999452181674
+      },
+      "timeout_score": 0.6462282724226165,
+      "median_factor_error": 1.1772818519128647
+    }
+  ],
+  "winner": {
+    "view": "all",
+    "model": "extra_trees",
+    "score": 0.891125044945926,
+    "threshold_scores": {
+      "16": 0.9110140176442064,
+      "64": 0.8980333323242935,
+      "512": 0.8583840661274897
+    },
+    "timeout_score": 0.6821462039807777,
+    "median_factor_error": 1.1225501098350505
+  },
+  "worst_grouped_rows": [
+    {
+      "filename": "3c2f55c1.qasm",
+      "threshold": 64,
+      "status": "success",
+      "actual_s": 10512.19065499999,
+      "predicted_s": 12.98030634352293,
+      "score": 0.0
+    },
+    {
+      "filename": "8bd576fc.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 1464.9315561000008,
+      "predicted_s": 12.453964138860359,
+      "score": 0.0
+    },
+    {
+      "filename": "3be98d6c.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 485.3121658,
+      "predicted_s": 0.46249653919299405,
+      "score": 0.0
+    },
+    {
+      "filename": "6de17b5a.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 1966.0381447999994,
+      "predicted_s": 0.5217729860939705,
+      "score": 0.0
+    },
+    {
+      "filename": "3c2f55c1.qasm",
+      "threshold": 16,
+      "status": "timeout",
+      "actual_s": 14399.999999999989,
+      "predicted_s": 29.332289627457993,
+      "score": 0.0
+    },
+    {
+      "filename": "5a741dbe.qasm",
+      "threshold": 16,
+      "status": "success",
+      "actual_s": 1607.2905075999995,
+      "predicted_s": 0.2674704747126707,
+      "score": 0.0
+    },
+    {
+      "filename": "5a741dbe.qasm",
+      "threshold": 64,
+      "status": "success",
+      "actual_s": 63.61018129999999,
+      "predicted_s": 0.2934398908321749,
+      "score": 0.0
+    },
+    {
+      "filename": "f0e878db.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 505.65583810000004,
+      "predicted_s": 4.911352466781206,
+      "score": 0.0
+    },
+    {
+      "filename": "96f82da7.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 0.1789396,
+      "predicted_s": 22.606783226159962,
+      "score": 0.0
+    },
+    {
+      "filename": "320de9fb.qasm",
+      "threshold": 512,
+      "status": "timeout",
+      "actual_s": 14399.999999999989,
+      "predicted_s": 50.13356627810323,
+      "score": 0.0
+    },
+    {
+      "filename": "72d8892d.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 142.81771470000007,
+      "predicted_s": 0.7102824336154451,
+      "score": 0.0
+    },
+    {
+      "filename": "ad74d7c1.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 690.9794292999997,
+      "predicted_s": 2.4608484680472165,
+      "score": 0.0
+    },
+    {
+      "filename": "f5d72dae.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 34.9589754,
+      "predicted_s": 0.36085658322975367,
+      "score": 0.0068879685599411156
+    },
+    {
+      "filename": "a1b3d3aa.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 212.50459400000003,
+      "predicted_s": 2.2867666089197534,
+      "score": 0.015926759427087656
+    },
+    {
+      "filename": "834596bc.qasm",
+      "threshold": 512,
+      "status": "timeout",
+      "actual_s": 14399.999999999989,
+      "predicted_s": 163.10240718162086,
+      "score": 0.02704893930997576
+    },
+    {
+      "filename": "6a5034af.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 6.5558647,
+      "predicted_s": 518.280943296564,
+      "score": 0.051032370742107425
+    },
+    {
+      "filename": "8bd576fc.qasm",
+      "threshold": 64,
+      "status": "success",
+      "actual_s": 13.2989912,
+      "predicted_s": 0.18448512127026803,
+      "score": 0.07107132370091673
+    },
+    {
+      "filename": "6533abd6.qasm",
+      "threshold": 16,
+      "status": "success",
+      "actual_s": 9723.491495600001,
+      "predicted_s": 140.41679756570224,
+      "score": 0.0797984126627238
+    },
+    {
+      "filename": "70d5d461.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 8.8462365,
+      "predicted_s": 586.0994476509571,
+      "score": 0.08939361687639424
+    },
+    {
+      "filename": "e260fc6a.qasm",
+      "threshold": 512,
+      "status": "success",
+      "actual_s": 0.1705179,
+      "predicted_s": 9.171243395520639,
+      "score": 0.1346708780765532
+    }
+  ],
+  "structural_cluster_holdout_score": 0.6901706001849904,
+  "structural_cluster_fold_scores": [
+    0.7613437610371843,
+    0.8468338784939892,
+    0.5153661166519351,
+    0.6463660128391971,
+    0.5308970874724341
+  ],
+  "artifact": "quantathon-harness/artifacts/runtime_model.joblib",
+  "score_definition": "quantathon-harness/score.py"
+}

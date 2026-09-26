@@ -1,0 +1,147 @@
+{
+  "reference": {
+    "generated_rows": 182,
+    "unique_geometry_rows": 129,
+    "size_grouped_accuracy": 0.9689922480620154,
+    "size_grouped_macro_f1": 0.9705144855144856,
+    "topology_only_accuracy": 0.6356589147286822,
+    "topology_only_macro_f1": 0.4841691512569783,
+    "volume_timing_only_accuracy": 0.9612403100775194,
+    "volume_timing_only_macro_f1": 0.960884855884856,
+    "families": [
+      "ghz",
+      "graphstate",
+      "qft",
+      "qaoa",
+      "randomcircuit",
+      "vqe_su2",
+      "wstate",
+      "qnn"
+    ],
+    "confusion_matrix": [
+      [
+        11,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        37,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        13,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        13,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        13,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        13,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        13,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12
+      ]
+    ]
+  },
+  "challenge": {
+    "circuits": 532,
+    "high_confidence_0_7": 124,
+    "median_confidence": 0.5604166666666667,
+    "median_scaled_distance_to_reference": 6.416323799210435,
+    "reference_95pct_across_size_distance": 2.8976455868335633,
+    "beyond_reference_95pct_distance": 443,
+    "predicted_class_counts": {
+      "ghz": 24,
+      "graphstate": 38,
+      "qaoa": 314,
+      "qft": 48,
+      "qnn": 22,
+      "randomcircuit": 47,
+      "vqe_su2": 15,
+      "wstate": 24
+    },
+    "reference_width_limit": 64,
+    "challenge_above_reference_width": 102
+  },
+  "runtime": {
+    "circuit": {
+      "current_score": 0.8970158155838096,
+      "with_geometry_family_score": 0.8958105281001256,
+      "delta": -0.0012052874836839663,
+      "bootstrap_95": [
+        -0.0024532501968982314,
+        2.5997072767904358e-05
+      ],
+      "timeout_delta": 0.0018993419216643162
+    },
+    "structural": {
+      "current_score": 0.7070460814804709,
+      "with_geometry_family_score": 0.7030667939287797,
+      "delta": -0.003979287551691016,
+      "bootstrap_95": [
+        -0.005799882072135776,
+        -0.00221995262654584
+      ],
+      "timeout_delta": 0.01567711009365927
+    }
+  },
+  "interpretation": "External MQT family labels validate only on generated MQT circuits. Challenge family predictions are unverified. Their probabilities are deterministic functions of geometry and cannot carry new information beyond complete geometry; a runtime gain would be an inductive-bias effect."
+}

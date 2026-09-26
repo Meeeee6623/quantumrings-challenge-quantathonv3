@@ -1,0 +1,26 @@
+Scoring 532 circuits x 3 thresholds = 1596 predictions ...
+  25/532 circuits done
+  50/532 circuits done
+  75/532 circuits done
+  100/532 circuits done
+  125/532 circuits done
+  150/532 circuits done
+  175/532 circuits done
+  200/532 circuits done
+  225/532 circuits done
+  250/532 circuits done
+  275/532 circuits done
+  300/532 circuits done
+  325/532 circuits done
+  350/532 circuits done
+  375/532 circuits done
+  400/532 circuits done
+  425/532 circuits done
+  450/532 circuits done
+  475/532 circuits done
+  500/532 circuits done
+  525/532 circuits done
+  532/532 circuits done
+
+Wrote 1596 rows to research/training_submission_chi_walk.csv
+DM this file to the organizers.

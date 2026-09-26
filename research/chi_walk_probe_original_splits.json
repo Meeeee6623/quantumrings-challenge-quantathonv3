@@ -1,0 +1,300 @@
+{
+  "rows": 1497,
+  "circuits": 532,
+  "walk_available": 528,
+  "unavailable": [
+    "0534bf07.qasm",
+    "0d08bd43.qasm",
+    "24ca3082.qasm",
+    "ebc3e166.qasm"
+  ],
+  "extrapolated": 9,
+  "max_walk_seconds": 3.0340000831056386,
+  "pricing": {
+    "cost_p2": {
+      "c1": 0,
+      "c2": 0,
+      "p": 2.0
+    },
+    "cost_p2_5": {
+      "c1": 0,
+      "c2": 0,
+      "p": 2.5
+    },
+    "cost_p3": {
+      "c1": 0,
+      "c2": 0,
+      "p": 3.0
+    },
+    "cost_overhead": {
+      "c1": 10,
+      "c2": 100,
+      "p": 2.5
+    },
+    "cost_high_overhead": {
+      "c1": 100,
+      "c2": 1000,
+      "p": 2.5
+    }
+  },
+  "views": {
+    "cost_p2": [
+      "cost_p2"
+    ],
+    "cost_p2_5": [
+      "cost_p2_5"
+    ],
+    "cost_p3": [
+      "cost_p3"
+    ],
+    "cost_overhead": [
+      "cost_overhead"
+    ],
+    "cost_high_overhead": [
+      "cost_high_overhead"
+    ],
+    "shape": [
+      "entangling_frac",
+      "max_logchi",
+      "sat_frac",
+      "sat_start",
+      "links_at_cap",
+      "extrapolated",
+      "available"
+    ],
+    "shape_cost": [
+      "cost_overhead",
+      "entangling_frac",
+      "max_logchi",
+      "sat_frac",
+      "sat_start",
+      "links_at_cap",
+      "extrapolated",
+      "available"
+    ],
+    "cost_uncapped": [
+      "cost_overhead",
+      "uncapped_cost",
+      "extrapolated",
+      "available"
+    ]
+  },
+  "runtime": {
+    "cost_p2": {
+      "circuit": {
+        "current_score": 0.8970158155838096,
+        "with_walk_score": 0.902572909712286,
+        "delta": 0.0055570941284762984,
+        "circuit_bootstrap_95": [
+          0.0030979614416935973,
+          0.008250895339930984
+        ],
+        "timeout_delta": 0.013729152815397536
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7207911854614025,
+        "delta": 0.013745103980931794,
+        "circuit_bootstrap_95": [
+          0.010077332787363578,
+          0.017790179272502864
+        ],
+        "timeout_delta": -0.03441371925326373,
+        "cluster_bootstrap_95": [
+          0.006527267390319513,
+          0.024517020141023676
+        ],
+        "positive_clusters": 10
+      }
+    },
+    "cost_p2_5": {
+      "circuit": {
+        "current_score": 0.8970158155838096,
+        "with_walk_score": 0.9028724846299997,
+        "delta": 0.005856669046190152,
+        "circuit_bootstrap_95": [
+          0.003433362581448202,
+          0.008302416286997098
+        ],
+        "timeout_delta": 0.004619495677478425
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7146579085674919,
+        "delta": 0.007611827087021061,
+        "circuit_bootstrap_95": [
+          0.0034944076399335937,
+          0.012227107561868759
+        ],
+        "timeout_delta": -0.036709504718796755,
+        "cluster_bootstrap_95": [
+          -0.0032009657695306563,
+          0.030643359126706324
+        ],
+        "positive_clusters": 8
+      }
+    },
+    "cost_p3": {
+      "circuit": {
+        "current_score": 0.8970158155838096,
+        "with_walk_score": 0.9019597851295982,
+        "delta": 0.004943969545788619,
+        "circuit_bootstrap_95": [
+          0.0026814241165562845,
+          0.007345753361385511
+        ],
+        "timeout_delta": 0.008219840065469797
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7174243035124278,
+        "delta": 0.010378222031956968,
+        "circuit_bootstrap_95": [
+          0.006239625623587577,
+          0.01476844720712759
+        ],
+        "timeout_delta": -0.04542234470872552,
+        "cluster_bootstrap_95": [
+          0.002137542046172233,
+          0.028616630878788792
+        ],
+        "positive_clusters": 10
+      }
+    },
+    "cost_overhead": {
+      "circuit": {
+        "current_score": 0.8970158155838096,
+        "with_walk_score": 0.9020182656161745,
+        "delta": 0.005002450032364882,
+        "circuit_bootstrap_95": [
+          0.0029858130719380496,
+          0.007091582648923349
+        ],
+        "timeout_delta": 0.008708337789970148
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7190352167944267,
+        "delta": 0.011989135313956019,
+        "circuit_bootstrap_95": [
+          0.008027922991514534,
+          0.016035636267887336
+        ],
+        "timeout_delta": -0.04944628059319143,
+        "cluster_bootstrap_95": [
+          -0.004707731441361591,
+          0.026260696529189293
+        ],
+        "positive_clusters": 11
+      }
+    },
+    "cost_high_overhead": {
+      "circuit": {
+        "current_score": 0.8970158155838096,
+        "with_walk_score": 0.9019740736990789,
+        "delta": 0.004958258115269346,
+        "circuit_bootstrap_95": [
+          0.003031602898663308,
+          0.007010451057736191
+        ],
+        "timeout_delta": 0.0121602446777353
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.717174039337309,
+        "delta": 0.010127957856838168,
+        "circuit_bootstrap_95": [
+          0.006270651530650154,
+          0.014032962738238364
+        ],
+        "timeout_delta": -0.05645641011607817,
+        "cluster_bootstrap_95": [
+          0.0034873575105000176,
+          0.025440835109412637
+        ],
+        "positive_clusters": 10
+      }
+    },
+    "shape": {
+      "circuit": {
+        "current_score": 0.8970158155838096,
+        "with_walk_score": 0.9076993492651091,
+        "delta": 0.010683533681299425,
+        "circuit_bootstrap_95": [
+          0.006947233916535644,
+          0.01457502222920653
+        ],
+        "timeout_delta": 0.02857077182189588
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7281180396375766,
+        "delta": 0.02107195815710576,
+        "circuit_bootstrap_95": [
+          0.01560275261777932,
+          0.026539353035994667
+        ],
+        "timeout_delta": 0.047055681761202235,
+        "cluster_bootstrap_95": [
+          0.010310486936642263,
+          0.045025399605036584
+        ],
+        "positive_clusters": 8
+      }
+    },
+    "shape_cost": {
+      "circuit": {
+        "current_score": 0.8970158155838096,
+        "with_walk_score": 0.910840147259316,
+        "delta": 0.01382433167550633,
+        "circuit_bootstrap_95": [
+          0.009618839719422121,
+          0.01811817440527195
+        ],
+        "timeout_delta": 0.021113464532258576
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7352021659491196,
+        "delta": 0.02815608446864884,
+        "circuit_bootstrap_95": [
+          0.02216717377846633,
+          0.03435392322965716
+        ],
+        "timeout_delta": -0.018922904740628407,
+        "cluster_bootstrap_95": [
+          0.012242238959216976,
+          0.051461590744054334
+        ],
+        "positive_clusters": 8
+      }
+    },
+    "cost_uncapped": {
+      "circuit": {
+        "current_score": 0.8970158155838096,
+        "with_walk_score": 0.9033194660573666,
+        "delta": 0.0063036504735569055,
+        "circuit_bootstrap_95": [
+          0.003453843070283501,
+          0.009222853918861287
+        ],
+        "timeout_delta": 0.0042908032585121225
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7261460799858899,
+        "delta": 0.019099998505419255,
+        "circuit_bootstrap_95": [
+          0.01465347624659566,
+          0.024110358255070255
+        ],
+        "timeout_delta": -0.031718392298427704,
+        "cluster_bootstrap_95": [
+          0.004878429113683391,
+          0.0349339439294668
+        ],
+        "positive_clusters": 10
+      }
+    }
+  }
+}

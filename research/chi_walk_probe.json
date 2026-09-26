@@ -1,0 +1,426 @@
+{
+  "rows": 1497,
+  "circuits": 532,
+  "walk_available": 528,
+  "unavailable": [
+    "0534bf07.qasm",
+    "0d08bd43.qasm",
+    "24ca3082.qasm",
+    "ebc3e166.qasm"
+  ],
+  "extrapolated": 9,
+  "max_walk_seconds": 3.0340000831056386,
+  "pricing": {
+    "cost_p2": {
+      "c1": 0,
+      "c2": 0,
+      "p": 2.0
+    },
+    "cost_p2_5": {
+      "c1": 0,
+      "c2": 0,
+      "p": 2.5
+    },
+    "cost_p3": {
+      "c1": 0,
+      "c2": 0,
+      "p": 3.0
+    },
+    "cost_overhead": {
+      "c1": 10,
+      "c2": 100,
+      "p": 2.5
+    },
+    "cost_high_overhead": {
+      "c1": 100,
+      "c2": 1000,
+      "p": 2.5
+    }
+  },
+  "views": {
+    "cost_p2": [
+      "cost_p2"
+    ],
+    "cost_p2_5": [
+      "cost_p2_5"
+    ],
+    "cost_p3": [
+      "cost_p3"
+    ],
+    "cost_overhead": [
+      "cost_overhead"
+    ],
+    "cost_high_overhead": [
+      "cost_high_overhead"
+    ],
+    "shape": [
+      "entangling_frac",
+      "max_logchi",
+      "sat_frac",
+      "sat_start",
+      "links_at_cap",
+      "extrapolated",
+      "available"
+    ],
+    "shape_cost": [
+      "cost_overhead",
+      "entangling_frac",
+      "max_logchi",
+      "sat_frac",
+      "sat_start",
+      "links_at_cap",
+      "extrapolated",
+      "available"
+    ],
+    "cost_uncapped": [
+      "cost_overhead",
+      "uncapped_cost",
+      "extrapolated",
+      "available"
+    ]
+  },
+  "runtime": {
+    "cost_p2": {
+      "matched": {
+        "current_score": 0.8992064054494114,
+        "with_walk_score": 0.9047447401648185,
+        "delta": 0.005538334715407132,
+        "circuit_bootstrap_95": [
+          0.0028067532461194308,
+          0.00835445711430395
+        ],
+        "timeout_delta": 0.004633350050044125
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7207911854614025,
+        "delta": 0.013745103980931785,
+        "circuit_bootstrap_95": [
+          0.010077332787363565,
+          0.017790179272502853
+        ],
+        "timeout_delta": -0.03441371925326377,
+        "cluster_bootstrap_95": [
+          0.006527267390319509,
+          0.024517020141023676
+        ],
+        "positive_clusters": 10
+      }
+    },
+    "cost_p2_5": {
+      "matched": {
+        "current_score": 0.8992064054494114,
+        "with_walk_score": 0.9048520500263757,
+        "delta": 0.005645644576964284,
+        "circuit_bootstrap_95": [
+          0.002992877052741102,
+          0.008733334173353806
+        ],
+        "timeout_delta": 0.000894251830607375
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7146579085674919,
+        "delta": 0.007611827087021055,
+        "circuit_bootstrap_95": [
+          0.003494407639933592,
+          0.012227107561868757
+        ],
+        "timeout_delta": -0.0367095047187967,
+        "cluster_bootstrap_95": [
+          -0.0032009657695306697,
+          0.030643359126706314
+        ],
+        "positive_clusters": 8
+      }
+    },
+    "cost_p3": {
+      "matched": {
+        "current_score": 0.8992064054494114,
+        "with_walk_score": 0.9046558624993685,
+        "delta": 0.005449457049957029,
+        "circuit_bootstrap_95": [
+          0.0028039568814315886,
+          0.008417277696761248
+        ],
+        "timeout_delta": -0.004791863750072089
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7174243035124278,
+        "delta": 0.01037822203195697,
+        "circuit_bootstrap_95": [
+          0.0062396256235875735,
+          0.014768447207127593
+        ],
+        "timeout_delta": -0.045422344708725554,
+        "cluster_bootstrap_95": [
+          0.0021375420461722367,
+          0.028616630878788796
+        ],
+        "positive_clusters": 10
+      }
+    },
+    "cost_overhead": {
+      "matched": {
+        "current_score": 0.8992064054494114,
+        "with_walk_score": 0.904518099401564,
+        "delta": 0.005311693952152654,
+        "circuit_bootstrap_95": [
+          0.002724291101592604,
+          0.008049004289920387
+        ],
+        "timeout_delta": -0.0023520696791842176
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7190352167944267,
+        "delta": 0.011989135313956012,
+        "circuit_bootstrap_95": [
+          0.00802792299151453,
+          0.01603563626788733
+        ],
+        "timeout_delta": -0.0494462805931914,
+        "cluster_bootstrap_95": [
+          -0.004707731441361588,
+          0.026260696529189293
+        ],
+        "positive_clusters": 11
+      }
+    },
+    "cost_high_overhead": {
+      "matched": {
+        "current_score": 0.8992064054494114,
+        "with_walk_score": 0.9028442305243521,
+        "delta": 0.0036378250749408156,
+        "circuit_bootstrap_95": [
+          0.0013666826183934687,
+          0.005920652198327457
+        ],
+        "timeout_delta": 0.0006629839760424985
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7171740393373089,
+        "delta": 0.010127957856838168,
+        "circuit_bootstrap_95": [
+          0.0062706515306501535,
+          0.01403296273823836
+        ],
+        "timeout_delta": -0.05645641011607821,
+        "cluster_bootstrap_95": [
+          0.0034873575105000146,
+          0.025440835109412644
+        ],
+        "positive_clusters": 10
+      }
+    },
+    "shape": {
+      "matched": {
+        "current_score": 0.8992064054494114,
+        "with_walk_score": 0.9086370745450312,
+        "delta": 0.009430669095619843,
+        "circuit_bootstrap_95": [
+          0.005100440526386028,
+          0.013959023441646935
+        ],
+        "timeout_delta": 0.0298760250682529
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7281180396375766,
+        "delta": 0.02107195815710575,
+        "circuit_bootstrap_95": [
+          0.015602752617779315,
+          0.026539353035994667
+        ],
+        "timeout_delta": 0.04705568176120224,
+        "cluster_bootstrap_95": [
+          0.01031048693664226,
+          0.04502539960503658
+        ],
+        "positive_clusters": 8
+      }
+    },
+    "shape_cost": {
+      "matched": {
+        "current_score": 0.8992064054494114,
+        "with_walk_score": 0.9104745617566862,
+        "delta": 0.011268156307274818,
+        "circuit_bootstrap_95": [
+          0.006731690884017278,
+          0.016193439518268342
+        ],
+        "timeout_delta": 0.021601988259358034
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.7352021659491196,
+        "delta": 0.028156084468648833,
+        "circuit_bootstrap_95": [
+          0.022167173778466324,
+          0.03435392322965716
+        ],
+        "timeout_delta": -0.01892290474062845,
+        "cluster_bootstrap_95": [
+          0.01224223895921699,
+          0.05146159074405434
+        ],
+        "positive_clusters": 8
+      }
+    },
+    "cost_uncapped": {
+      "matched": {
+        "current_score": 0.8992064054494114,
+        "with_walk_score": 0.9046666421521687,
+        "delta": 0.0054602367027573595,
+        "circuit_bootstrap_95": [
+          0.0022957107536780456,
+          0.009036562274348688
+        ],
+        "timeout_delta": 0.0042734300947166945
+      },
+      "structural": {
+        "current_score": 0.7070460814804709,
+        "with_walk_score": 0.72614607998589,
+        "delta": 0.019099998505419255,
+        "circuit_bootstrap_95": [
+          0.014653476246595666,
+          0.024110358255070262
+        ],
+        "timeout_delta": -0.031718392298427725,
+        "cluster_bootstrap_95": [
+          0.00487842911368338,
+          0.03493394392946678
+        ],
+        "positive_clusters": 10
+      }
+    }
+  },
+  "splits": {
+    "matched": "5-fold StratifiedGroupKFold by 12 feature-only structural clusters, grouped by circuit signature",
+    "structural": "5-fold GroupKFold holding out entire feature-only structural clusters"
+  },
+  "matched_fold_balance": [
+    {
+      "fold": 0,
+      "rows": 301,
+      "circuits": 107,
+      "threshold_counts": {
+        "16": 107,
+        "64": 107,
+        "512": 87
+      },
+      "cluster_counts": {
+        "0": 20,
+        "1": 130,
+        "2": 20,
+        "3": 6,
+        "4": 31,
+        "5": 6,
+        "6": 27,
+        "7": 28,
+        "8": 4,
+        "9": 3,
+        "10": 20,
+        "11": 6
+      }
+    },
+    {
+      "fold": 1,
+      "rows": 299,
+      "circuits": 106,
+      "threshold_counts": {
+        "16": 106,
+        "64": 106,
+        "512": 87
+      },
+      "cluster_counts": {
+        "0": 21,
+        "1": 130,
+        "2": 20,
+        "3": 9,
+        "4": 31,
+        "5": 3,
+        "6": 24,
+        "7": 28,
+        "8": 4,
+        "9": 3,
+        "10": 20,
+        "11": 6
+      }
+    },
+    {
+      "fold": 2,
+      "rows": 297,
+      "circuits": 105,
+      "threshold_counts": {
+        "16": 105,
+        "64": 105,
+        "512": 87
+      },
+      "cluster_counts": {
+        "0": 18,
+        "1": 131,
+        "2": 20,
+        "3": 6,
+        "4": 31,
+        "5": 6,
+        "6": 27,
+        "7": 28,
+        "8": 3,
+        "9": 3,
+        "10": 21,
+        "11": 3
+      }
+    },
+    {
+      "fold": 3,
+      "rows": 300,
+      "circuits": 107,
+      "threshold_counts": {
+        "16": 107,
+        "64": 106,
+        "512": 87
+      },
+      "cluster_counts": {
+        "0": 21,
+        "1": 130,
+        "2": 20,
+        "3": 6,
+        "4": 32,
+        "5": 3,
+        "6": 24,
+        "7": 29,
+        "8": 4,
+        "9": 3,
+        "10": 22,
+        "11": 6
+      }
+    },
+    {
+      "fold": 4,
+      "rows": 300,
+      "circuits": 107,
+      "threshold_counts": {
+        "16": 107,
+        "64": 106,
+        "512": 87
+      },
+      "cluster_counts": {
+        "0": 21,
+        "1": 130,
+        "2": 19,
+        "3": 6,
+        "4": 31,
+        "5": 6,
+        "6": 24,
+        "7": 28,
+        "8": 4,
+        "9": 3,
+        "10": 22,
+        "11": 6
+      }
+    }
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "rows": 1497,
+  "circuits": 532,
+  "folds": 5,
+  "model": "extra_trees",
+  "results": [
+    {
+      "view": "baseline",
+      "new_features": [],
+      "columns": 135,
+      "circuit": {
+        "score": 0.8881602909438755,
+        "fold_scores": [
+          0.8823070163833833,
+          0.8832555318506427,
+          0.8881237288509537,
+          0.879257054589671,
+          0.9078221410589049
+        ],
+        "timeout_score": 0.69250116409609
+      },
+      "structural": {
+        "score": 0.6935066614522994,
+        "fold_scores": [
+          0.7640603019681437,
+          0.7998454643604915,
+          0.542081534286203,
+          0.6830003839828138,
+          0.5343154301597921
+        ],
+        "timeout_score": 0.37799212216278966
+      }
+    },
+    {
+      "view": "chi_only",
+      "new_features": [
+        "chi_capacity_fraction",
+        "chi_mid_budget",
+        "chi_unsaturated_fraction",
+        "chi_upper_mean",
+        "chi_upper_mid",
+        "chi_upper_peak"
+      ],
+      "columns": 147,
+      "circuit": {
+        "score": 0.8900436295014379,
+        "fold_scores": [
+          0.883370908787617,
+          0.8831491911438337,
+          0.8920069045006968,
+          0.8825036420727366,
+          0.9091488213887317
+        ],
+        "timeout_score": 0.6883215293179613
+      },
+      "structural": {
+        "score": 0.6941545658534973,
+        "fold_scores": [
+          0.764195541213792,
+          0.8064499180562809,
+          0.5385917155992852,
+          0.6786487344278449,
+          0.5404815710496366
+        ],
+        "timeout_score": 0.37683154351251513
+      }
+    },
+    {
+      "view": "random_only",
+      "new_features": [
+        "random_angle_entropy",
+        "random_bigram_entropy",
+        "random_gate_entropy",
+        "random_pair_entropy",
+        "random_window_entropy",
+        "randomness_proxy"
+      ],
+      "columns": 147,
+      "circuit": {
+        "score": 0.8897465461035642,
+        "fold_scores": [
+          0.8829039142238927,
+          0.8828831960197663,
+          0.8916238422906375,
+          0.8811706774738328,
+          0.9101116715571033
+        ],
+        "timeout_score": 0.6943646895889999
+      },
+      "structural": {
+        "score": 0.692701415876454,
+        "fold_scores": [
+          0.7696127135358962,
+          0.80200351260254,
+          0.5175916409872187,
+          0.6852044189786286,
+          0.5317156296553441
+        ],
+        "timeout_score": 0.39549679855638425
+      }
+    },
+    {
+      "view": "chi_plus_random",
+      "new_features": [
+        "chi_capacity_fraction",
+        "chi_mid_budget",
+        "chi_unsaturated_fraction",
+        "chi_upper_mean",
+        "chi_upper_mid",
+        "chi_upper_peak",
+        "random_angle_entropy",
+        "random_bigram_entropy",
+        "random_gate_entropy",
+        "random_pair_entropy",
+        "random_window_entropy",
+        "randomness_proxy"
+      ],
+      "columns": 159,
+      "circuit": {
+        "score": 0.8921374643550644,
+        "fold_scores": [
+          0.8871398864346648,
+          0.8864187859144417,
+          0.8910265277911842,
+          0.8834533456460648,
+          0.9126093520125506
+        ],
+        "timeout_score": 0.6970440796649819
+      },
+      "structural": {
+        "score": 0.6996086695689485,
+        "fold_scores": [
+          0.7808253532826495,
+          0.8039662309830728,
+          0.5367180297016696,
+          0.6804257650784143,
+          0.5299949380098606
+        ],
+        "timeout_score": 0.37921507620126005
+      }
+    },
+    {
+      "view": "effective_chi_only",
+      "new_features": [
+        "chi_est_capacity_fraction",
+        "chi_est_log2_mean",
+        "chi_est_log2_mid",
+        "chi_est_log2_peak"
+      ],
+      "columns": 143,
+      "circuit": {
+        "score": 0.8889621786163608,
+        "fold_scores": [
+          0.8837102030808778,
+          0.8837920054339088,
+          0.89075217099105,
+          0.8806013346808508,
+          0.9059264050406394
+        ],
+        "timeout_score": 0.6782129007241176
+      },
+      "structural": {
+        "score": 0.6850440016043543,
+        "fold_scores": [
+          0.748664607541384,
+          0.8076861111454251,
+          0.5193766477950246,
+          0.678223337666696,
+          0.5424764052696827
+        ],
+        "timeout_score": 0.3593373149265285
+      }
+    },
+    {
+      "view": "chi_plus_effective_peak",
+      "new_features": [
+        "chi_capacity_fraction",
+        "chi_est_capacity_fraction",
+        "chi_est_log2_peak",
+        "chi_mid_budget",
+        "chi_unsaturated_fraction",
+        "chi_upper_mean",
+        "chi_upper_mid",
+        "chi_upper_peak",
+        "random_angle_entropy",
+        "random_bigram_entropy",
+        "random_gate_entropy",
+        "random_pair_entropy",
+        "random_window_entropy",
+        "randomness_proxy"
+      ],
+      "columns": 163,
+      "circuit": {
+        "score": 0.8918133228560488,
+        "fold_scores": [
+          0.8870627284816822,
+          0.886190394387653,
+          0.8928039510724708,
+          0.880906884587871,
+          0.9120713794351457
+        ],
+        "timeout_score": 0.6825538000374343
+      },
+      "structural": {
+        "score": 0.7028025751517202,
+        "fold_scores": [
+          0.7766882648137999,
+          0.8073702123643945,
+          0.5395382520029905,
+          0.6805087034116407,
+          0.5599344940120272
+        ],
+        "timeout_score": 0.37746112796188364
+      }
+    },
+    {
+      "view": "chi_plus_random_effective",
+      "new_features": [
+        "chi_capacity_fraction",
+        "chi_est_capacity_fraction",
+        "chi_est_log2_mean",
+        "chi_est_log2_mid",
+        "chi_est_log2_peak",
+        "chi_mid_budget",
+        "chi_unsaturated_fraction",
+        "chi_upper_mean",
+        "chi_upper_mid",
+        "chi_upper_peak",
+        "random_angle_entropy",
+        "random_bigram_entropy",
+        "random_gate_entropy",
+        "random_pair_entropy",
+        "random_window_entropy",
+        "randomness_proxy"
+      ],
+      "columns": 167,
+      "circuit": {
+        "score": 0.890965390359122,
+        "fold_scores": [
+          0.8846798338404633,
+          0.8850443131431704,
+          0.8940549681264062,
+          0.881116911216658,
+          0.9099005352823538
+        ],
+        "timeout_score": 0.6796370127952983
+      },
+      "structural": {
+        "score": 0.694191470505592,
+        "fold_scores": [
+          0.7610787248832563,
+          0.8062976893036444,
+          0.5279320038633674,
+          0.6895079009036987,
+          0.5499099693315821
+        ],
+        "timeout_score": 0.33919002082512817
+      }
+    },
+    {
+      "view": "chi_random_interactions",
+      "new_features": [
+        "chi_capacity_fraction",
+        "chi_mid_budget",
+        "chi_random_peak",
+        "chi_random_pressure",
+        "chi_unsaturated_fraction",
+        "chi_upper_mean",
+        "chi_upper_mid",
+        "chi_upper_peak",
+        "random_angle_entropy",
+        "random_bigram_entropy",
+        "random_gate_entropy",
+        "random_pair_entropy",
+        "random_window_entropy",
+        "randomness_proxy"
+      ],
+      "columns": 163,
+      "circuit": {
+        "score": 0.8913099080926432,
+        "fold_scores": [
+          0.886928369948425,
+          0.8850651129282308,
+          0.8919552463763595,
+          0.8816613038928077,
+          0.9109062373339769
+        ],
+        "timeout_score": 0.682947394900193
+      },
+      "structural": {
+        "score": 0.7131523745043538,
+        "fold_scores": [
+          0.804934814011576,
+          0.809282633635064,
+          0.5267191514453312,
+          0.681150868975529,
+          0.5565598249507233
+        ],
+        "timeout_score": 0.3603716646326514
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "view": "chi_only",
+      "grouped_delta": 0.0018833385575625127,
+      "grouped_delta_bootstrap_95": [
+        3.8961833301766574e-05,
+        0.0037225689563441075
+      ],
+      "structural_delta": 0.0006479044011978852,
+      "structural_delta_bootstrap_95": [
+        -0.0015996078351709641,
+        0.002915439096706099
+      ]
+    },
+    {
+      "view": "random_only",
+      "grouped_delta": 0.001586255159688674,
+      "grouped_delta_bootstrap_95": [
+        7.695874075224291e-05,
+        0.003154570945448964
+      ],
+      "structural_delta": -0.0008052455758454924,
+      "structural_delta_bootstrap_95": [
+        -0.003648365927759791,
+        0.002257751094269988
+      ]
+    },
+    {
+      "view": "chi_plus_random",
+      "grouped_delta": 0.003977173411189043,
+      "grouped_delta_bootstrap_95": [
+        0.0021026394775455386,
+        0.005905737748153838
+      ],
+      "structural_delta": 0.006102008116649071,
+      "structural_delta_bootstrap_95": [
+        0.002969896182150199,
+        0.009432640624376215
+      ]
+    },
+    {
+      "view": "effective_chi_only",
+      "grouped_delta": 0.0008018876724854262,
+      "grouped_delta_bootstrap_95": [
+        -0.0012230028965080325,
+        0.002885718618233706
+      ],
+      "structural_delta": -0.008462659847945142,
+      "structural_delta_bootstrap_95": [
+        -0.011630086901287409,
+        -0.005339506862939975
+      ]
+    },
+    {
+      "view": "chi_plus_effective_peak",
+      "grouped_delta": 0.0036530319121733,
+      "grouped_delta_bootstrap_95": [
+        0.0016303106890634491,
+        0.005766388163317623
+      ],
+      "structural_delta": 0.009295913699420733,
+      "structural_delta_bootstrap_95": [
+        0.006260293673540689,
+        0.012764648386201555
+      ]
+    },
+    {
+      "view": "chi_plus_random_effective",
+      "grouped_delta": 0.002805099415246575,
+      "grouped_delta_bootstrap_95": [
+        0.00044014954551559567,
+        0.005347666418461136
+      ],
+      "structural_delta": 0.000684809053292601,
+      "structural_delta_bootstrap_95": [
+        -0.003072418044881899,
+        0.004842394097763361
+      ]
+    },
+    {
+      "view": "chi_random_interactions",
+      "grouped_delta": 0.003149617148767812,
+      "grouped_delta_bootstrap_95": [
+        0.0008968192864504203,
+        0.00542238765713743
+      ],
+      "structural_delta": 0.019645713052054314,
+      "structural_delta_bootstrap_95": [
+        0.016133756063619088,
+        0.023308481490636586
+      ]
+    }
+  ],
+  "blends": [
+    {
+      "baseline_view": "chi_plus_random",
+      "target_view": "chi_plus_effective_peak",
+      "target_weight": 0.25,
+      "circuit": {
+        "score": 0.892098565113657,
+        "timeout_score": 0.6933867445300088
+      },
+      "structural": {
+        "score": 0.7004950307845998,
+        "timeout_score": 0.378776589141416
+      }
+    },
+    {
+      "baseline_view": "chi_plus_random",
+      "target_view": "chi_plus_effective_peak",
+      "target_weight": 0.5,
+      "circuit": {
+        "score": 0.8920426032983738,
+        "timeout_score": 0.6897294093950358
+      },
+      "structural": {
+        "score": 0.7013244032377118,
+        "timeout_score": 0.3783381020815719
+      }
+    },
+    {
+      "baseline_view": "chi_plus_random",
+      "target_view": "chi_plus_effective_peak",
+      "target_weight": 0.75,
+      "circuit": {
+        "score": 0.8919502542532635,
+        "timeout_score": 0.6860720742600628
+      },
+      "structural": {
+        "score": 0.7021446402937016,
+        "timeout_score": 0.3778996150217277
+      }
+    },
+    {
+      "baseline_view": "chi_plus_random",
+      "target_view": "chi_random_interactions",
+      "target_weight": 0.25,
+      "circuit": {
+        "score": 0.8919567098167905,
+        "timeout_score": 0.6935199084737845
+      },
+      "structural": {
+        "score": 0.7035608742142041,
+        "timeout_score": 0.37450422330910793
+      }
+    },
+    {
+      "baseline_view": "chi_plus_random",
+      "target_view": "chi_random_interactions",
+      "target_weight": 0.5,
+      "circuit": {
+        "score": 0.8917778562824846,
+        "timeout_score": 0.6899957372825875
+      },
+      "structural": {
+        "score": 0.70718291109732,
+        "timeout_score": 0.36979337041695576
+      }
+    },
+    {
+      "baseline_view": "chi_plus_random",
+      "target_view": "chi_random_interactions",
+      "target_weight": 0.75,
+      "circuit": {
+        "score": 0.8915732342526658,
+        "timeout_score": 0.6864715660913902
+      },
+      "structural": {
+        "score": 0.7103781164269861,
+        "timeout_score": 0.3650825175248036
+      }
+    }
+  ],
+  "bound": "For qubit-order cut k, log2(chi) <= min(k, n-k, sum of operator-Schmidt log-rank bounds for gates crossing k). The bound assumes product-state input and counts all gates before possible cancellation.",
+  "effective_chi": "log2(chi_est) = randomness_proxy * log2(chi_upper), so the heuristic rank approaches the cut upper bound as randomness approaches 1.",
+  "scope": "Exploratory feature ablation on the supplied training circuits; no hidden-circuit score or simulator timing claim."
+}
