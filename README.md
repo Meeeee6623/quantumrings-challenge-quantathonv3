@@ -77,6 +77,9 @@ The distribution of remaining errors is in
 For the final submission command, complete-row validator, and read-only
 geometry/nearest-training-circuit inspector, see
 [`research/HOLDOUT_READINESS.md`](research/HOLDOUT_READINESS.md).
+The independent runtime-only test of the 2026 family-aware residual paper,
+including grouped-fold ablations and seed checks, is in
+[`research/PAPER_RUNTIME_REPLICATION.md`](research/PAPER_RUNTIME_REPLICATION.md).
 
 Run a holdout directory directly:
 
