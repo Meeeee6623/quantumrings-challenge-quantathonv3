@@ -48,13 +48,17 @@ starter.  It combines two independent source-QASM feature representations:
   parameter-angle, gate-mix, and source-shape features;
 - a global log-runtime ExtraTrees model blended with one specialist for each
   guaranteed threshold (16, 64, 512); and
-- per-threshold timeout classifiers that can emit the 14,400-second cap.
+- per-threshold timeout classifiers that can emit the 14,400-second cap;
+- narrow lower bounds for reset-heavy search circuits and very large effective
+  operation counts.
 
-The selected 480-feature union scores **0.92266** on fixed circuit-grouped,
-distribution-matched out-of-fold validation, versus **0.91520** for the prior
-global model.  See [`research/MERGED_COMPARISON.md`](research/MERGED_COMPARISON.md)
-for the apples-to-apples methodology, structural stress test, uncertainty, and
-tradeoffs.
+The current predictor scores **0.92431** on fixed circuit-grouped,
+distribution-matched out-of-fold validation, versus **0.92218** for a freshly
+refitted union without the narrow floors. Its structural stress score is
+**0.74996**. See [`research/EDGE_CASE_UPDATE.md`](research/EDGE_CASE_UPDATE.md)
+for the paired evidence and large-file parser tests;
+[`research/MERGED_COMPARISON.md`](research/MERGED_COMPARISON.md) records the
+original union-model comparison.
 
 Run a holdout directory directly:
 

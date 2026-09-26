@@ -1,5 +1,5 @@
 {
-  "artifact_version": "full_union_threshold_experts_v1",
+  "artifact_version": "full_union_threshold_experts_v3",
   "rows": 1497,
   "circuits": 532,
   "parallel_features": 243,
@@ -10,73 +10,173 @@
   "splits": {
     "matched": {
       "parallel_global": {
-        "score": 0.9152014883088754,
-        "timeout_score": 0.7314757177569647,
-        "median_factor_error": 1.108992772522467,
-        "p95_factor_error": 5.6655283778204435,
-        "tenfold_misses": 46,
+        "score": 0.9145898866911574,
+        "timeout_score": 0.728420662687928,
+        "median_factor_error": 1.1082601105933254,
+        "p95_factor_error": 5.908543500372501,
+        "tenfold_misses": 45,
         "predicted_timeouts": 0,
         "threshold_scores": {
-          "16": 0.9213480512848038,
-          "64": 0.915527864927929,
-          "512": 0.9072866581679733
+          "16": 0.9205012930744598,
+          "64": 0.9149889877106617,
+          "512": 0.9068740436193089
         }
       },
       "full_union": {
-        "score": 0.9226578010509275,
-        "timeout_score": 0.9446791884430823,
-        "median_factor_error": 1.0783031358193644,
-        "p95_factor_error": 5.208707596763872,
+        "score": 0.9221838934403817,
+        "timeout_score": 0.9445507751166283,
+        "median_factor_error": 1.0805485013642264,
+        "p95_factor_error": 5.31215746032637,
+        "tenfold_misses": 34,
+        "predicted_timeouts": 41,
+        "threshold_scores": {
+          "16": 0.9289838074421151,
+          "64": 0.9195952852511388,
+          "512": 0.9170216131906728
+        }
+      },
+      "reset_family_floor": {
+        "score": 0.9239959012881093,
+        "timeout_score": 0.9617809605558605,
+        "median_factor_error": 1.0805485013642264,
+        "p95_factor_error": 5.0990780257775326,
         "tenfold_misses": 30,
         "predicted_timeouts": 41,
         "threshold_scores": {
-          "16": 0.9292375881290026,
-          "64": 0.9201681790083497,
-          "512": 0.9176441296877789
+          "16": 0.9301125263566389,
+          "64": 0.9235803744691038,
+          "512": 0.9170216131906728
         }
+      },
+      "both_floors": {
+        "score": 0.9243086573450642,
+        "timeout_score": 0.9617809605558605,
+        "median_factor_error": 1.0805485013642264,
+        "p95_factor_error": 5.0990780257775326,
+        "tenfold_misses": 29,
+        "predicted_timeouts": 41,
+        "threshold_scores": {
+          "16": 0.9301125263566389,
+          "64": 0.9235803744691038,
+          "512": 0.9180979254142625
+        }
+      },
+      "large_floor_vs_reset_floor": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.00031275605695495033,
+        "delta_95": [
+          0.0,
+          0.0009464875012026158
+        ]
+      },
+      "reset_floor_vs_full_union": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.0018120078477275004,
+        "delta_95": [
+          0.0,
+          0.004279314497301124
+        ]
       },
       "paired_bootstrap": {
         "unit": "circuit",
-        "delta_merged_minus_current": 0.007456312742052208,
+        "delta_merged_minus_current": 0.009718770653906776,
         "delta_95": [
-          0.0040232506860144795,
-          0.011094655730827633
+          0.005455189014161852,
+          0.014661964702358797
+        ]
+      },
+      "both_floors_vs_full_union": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.0021247639046824513,
+        "delta_95": [
+          0.0003106807015670608,
+          0.0047033807408968075
         ]
       }
     },
     "structural": {
       "parallel_global": {
-        "score": 0.7285436922887389,
-        "timeout_score": 0.38770500572681144,
-        "median_factor_error": 2.1125792006227244,
-        "p95_factor_error": 62.4807294524096,
-        "tenfold_misses": 254,
+        "score": 0.7278658252315655,
+        "timeout_score": 0.38072234999442894,
+        "median_factor_error": 2.2328557804097455,
+        "p95_factor_error": 60.257337860499526,
+        "tenfold_misses": 253,
         "predicted_timeouts": 0,
         "threshold_scores": {
-          "16": 0.6688491624198292,
-          "64": 0.7960885483722693,
-          "512": 0.7192533846243458
+          "16": 0.6723298954725632,
+          "64": 0.7992532038508083,
+          "512": 0.7088079033087851
         }
       },
       "full_union": {
-        "score": 0.7461066950542334,
-        "timeout_score": 0.7367881876471613,
-        "median_factor_error": 1.910003388951452,
-        "p95_factor_error": 80.39813914167334,
+        "score": 0.744893910105385,
+        "timeout_score": 0.736787711636074,
+        "median_factor_error": 1.8996259961474133,
+        "p95_factor_error": 81.49032653760099,
+        "tenfold_misses": 238,
+        "predicted_timeouts": 73,
+        "threshold_scores": {
+          "16": 0.6817299760870172,
+          "64": 0.7951532703430687,
+          "512": 0.7609071330290613
+        }
+      },
+      "reset_family_floor": {
+        "score": 0.7468478823414257,
+        "timeout_score": 0.7672946509031308,
+        "median_factor_error": 1.8996259961474133,
+        "p95_factor_error": 77.45130708095249,
         "tenfold_misses": 233,
         "predicted_timeouts": 73,
         "threshold_scores": {
-          "16": 0.6791649092678241,
-          "64": 0.7995842303287907,
-          "512": 0.7628191923941285
+          "16": 0.683910187971045,
+          "64": 0.7984838811261823,
+          "512": 0.7609071330290613
         }
+      },
+      "both_floors": {
+        "score": 0.749964106355158,
+        "timeout_score": 0.7672946509031308,
+        "median_factor_error": 1.8996259961474133,
+        "p95_factor_error": 70.53191802016688,
+        "tenfold_misses": 229,
+        "predicted_timeouts": 73,
+        "threshold_scores": {
+          "16": 0.687606481318312,
+          "64": 0.8019394637952065,
+          "512": 0.7629004674502761
+        }
+      },
+      "large_floor_vs_reset_floor": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.0031162240137323433,
+        "delta_95": [
+          0.0,
+          0.01202022792035639
+        ]
+      },
+      "reset_floor_vs_full_union": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.0019539722360407356,
+        "delta_95": [
+          0.0,
+          0.004300148854151604
+        ]
       },
       "paired_bootstrap": {
         "unit": "structural_cluster",
-        "delta_merged_minus_current": 0.017563002765494377,
+        "delta_merged_minus_current": 0.022098281123592585,
         "delta_95": [
-          -0.0027284118676294588,
-          0.02726994748911202
+          0.0006648291671739543,
+          0.03593108821175199
+        ]
+      },
+      "both_floors_vs_full_union": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.00507019624977308,
+        "delta_95": [
+          0.0011381325213060517,
+          0.013541968833469685
         ]
       }
     }
@@ -84,8 +184,8 @@
   "uncertainty": {
     "method": "fixed-fold conformal-style absolute log10 residual radius",
     "nominal_coverage": 0.9,
-    "log10_radius": 0.4990904622612953,
-    "multiplicative_factor": 3.1556618699929864,
+    "log10_radius": 0.4977795949016192,
+    "multiplicative_factor": 3.146151232424273,
     "observed_oof_coverage": 0.8997995991983968
   },
   "artifact": "quantathon-harness/artifacts/runtime_model.joblib",

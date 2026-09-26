@@ -6,12 +6,31 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'quantathon-harness'))
 from model import RuntimeModel, estimated_log_chi
+from extended_features import _coarse_prefix_counts
+from runtime_floors import apply_floor, eligible, large_work_floor, runtime_floor
 
 
 class FeatureParserTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.model = RuntimeModel()
+
+    def test_coarse_gate_prefixes_distinguish_bodies_and_longer_names(self):
+        top, definitions = _coarse_prefix_counts('''U(0,0,0) q[0];
+s q[0];
+sdg q[0];
+swap q[0],q[1];
+mcphase(pi) q[0],q[1],q[2];
+pragma foo;
+gate pair a,b {
+  h a;
+  cx a,b;
+}
+''')
+        self.assertEqual(top['u'],1)
+        self.assertEqual((top['s'],top['sdg'],top['swap']), (1,1,1))
+        self.assertEqual((top['mcp'],top['mcphase'],top['p']), (0,1,0))
+        self.assertEqual((definitions['h'],definitions['cx']), (1,1))
 
     def test_qasm2_measurement_and_entangling_gate(self):
         f = self.model.featurize('''OPENQASM 2.0;
@@ -79,13 +98,36 @@ cMAJ q[0],q[1];
 
     def test_submission_artifact_uses_threshold_experts(self):
         self.assertEqual(self.model.model['artifact_version'],
-                         'full_union_threshold_experts_v1')
+                         'full_union_threshold_experts_v3')
         self.assertEqual(set(self.model.model['threshold_specialists']),{16,64,512})
         self.assertEqual(set(self.model.model['timeout_classifiers']),{16,64,512})
         self.assertAlmostEqual(self.model.model['threshold_specialist_weight'],.5)
         self.assertAlmostEqual(self.model.model['timeout_probability_cutoff'],.35)
         self.assertTrue(any(column.startswith('extended__')
                             for column in self.model.model['specialist_columns']))
+        self.assertEqual(len(self.model.model['reset_family_references']),14)
+
+    def test_reset_family_floor_is_narrow_and_threshold_specific(self):
+        features = {'resets':65,'multi_q':130,'fingerprint_grover':1.0,'ops':500}
+        references = [(16,1000,100.0),(64,1000,10.0)]
+        self.assertTrue(eligible(features))
+        self.assertEqual(runtime_floor(features,16,references),50.0)
+        self.assertEqual(runtime_floor(features,64,references),5.0)
+        self.assertEqual(apply_floor(60.0,features,16,references),60.0)
+        self.assertEqual(apply_floor(1.0,features,16,references),50.0)
+        self.assertEqual(runtime_floor(features,512,references),0.0)
+        features['resets'] = 0
+        self.assertFalse(eligible(features))
+        self.assertEqual(runtime_floor(features,16,references),0.0)
+
+    def test_large_work_floor_requires_half_million_effective_operations(self):
+        self.assertEqual(large_work_floor({'effective_ops':499_999}),0.0)
+        self.assertEqual(large_work_floor({'effective_ops':500_000}),10.0)
+        self.assertEqual(large_work_floor({'effective_ops':999_999}),10.0)
+        self.assertEqual(large_work_floor({'effective_ops':1_000_000}),100.0)
+        fallback = RuntimeModel()
+        fallback.model = None
+        self.assertEqual(fallback.predict({'n_qubits':1,'effective_ops':1_000_000},16),100.0)
 
     def test_unknown_threshold_falls_back_to_global_model(self):
         f = self.model.featurize('OPENQASM 2.0;\nqreg q[1];\nh q[0];')

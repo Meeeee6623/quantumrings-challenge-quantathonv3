@@ -830,11 +830,6 @@ class RuntimeModel:
         out.update(custom_calls=custom_calls, custom_definitions=len(definitions),
                    unsupported_statements=unsupported, qasm_bytes=len(qasm_text),
                    huge_fast_path=0)
-        if self.use_chi_walk:
-            # Leave headroom under the harness's 15-second parser limit if the
-            # baseline scan itself is unusually slow on a new circuit.
-            budget = min(3.0,max(0.0,14.0-(time.perf_counter()-started)))
-            out.update(self._walk_features(qasm_text,budget_s=budget))
         if self.use_extended_features:
             try:
                 from extended_features import extract_fast_qasm_features
@@ -844,6 +839,12 @@ class RuntimeModel:
                 # The union model remains usable through its global component
                 # if the optional second structural scan encounters new syntax.
                 pass
+        if self.use_chi_walk:
+            # Price the optional second scan before the walk so the remaining
+            # walk budget reflects the total parser time, not just base QASM
+            # extraction.  Keep a one-second margin under the harness cap.
+            budget = min(3.0,max(0.0,14.0-(time.perf_counter()-started)))
+            out.update(self._walk_features(qasm_text,budget_s=budget))
         return out
 
     def predict(self, features: dict, threshold: int) -> float:
@@ -906,7 +907,13 @@ class RuntimeModel:
                                   for component in self.model['ensemble'])
             else:
                 log_seconds = predict_component(self.model)
-        return float(max(1e-4,min(1e7,10**max(-4,min(7,log_seconds)))))
+        seconds = float(max(1e-4,min(1e7,10**max(-4,min(7,log_seconds)))))
+        from runtime_floors import apply_floor, large_work_floor
+        seconds = max(seconds,large_work_floor(features))
+        references = self.model.get('reset_family_references',()) if self.model else ()
+        if references:
+            seconds = apply_floor(seconds,features,threshold,references)
+        return seconds
 
     def predict_interval(self, features: dict, threshold: int):
         """Return point, lower, and upper seconds from grouped-OOF residuals."""

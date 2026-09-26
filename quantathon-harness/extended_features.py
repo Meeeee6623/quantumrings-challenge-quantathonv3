@@ -123,6 +123,11 @@ COARSE_GATE_VOCABULARY = (
     "mcp",
     "mcphase",
 )
+_COARSE_PREFIX_RE = re.compile(
+    r"(?m)^(?P<indent>  )?(?P<name>"
+    + "|".join(map(re.escape, sorted((*COARSE_GATE_VOCABULARY, "U"), key=len, reverse=True)))
+    + r")"
+)
 
 PARAMETER_GATE_NAMES = {
     "u",
@@ -549,35 +554,26 @@ def _entropy(counts: Iterable[float]) -> tuple[float, float]:
     return float(entropy), float(normalized)
 
 
-def _coarse_prefix_counts(text: str, indent: str) -> Counter[str]:
-    """Count fixed-vocabulary line prefixes using fast C-level string scans.
+def _coarse_prefix_counts(text: str) -> tuple[Counter[str], Counter[str]]:
+    """Count executable and definition gate prefixes in one text pass.
 
-    The counts are corrected for vocabulary prefixes (for example ``s`` does
-    not absorb ``sdg`` or ``swap``).  Released large circuits use either no
-    indentation for executable statements or two spaces for gate bodies.
+    Longest-first alternatives preserve the old prefix correction (``s``
+    versus ``sdg``/``swap``).  The fixed vocabulary and indentation rule are
+    unchanged, while one regex scan replaces about sixty full-string scans.
     """
 
-    raw: dict[str, int] = {}
-    line_prefix = "\n" + indent
-    for name in COARSE_GATE_VOCABULARY:
-        value = text.count(line_prefix + name)
-        if name == "u":
-            value += text.count(line_prefix + "U")
-        if not indent and (text.startswith(name) or (name == "u" and text.startswith("U"))):
-            value += 1
-        raw[name] = value
-    exact: Counter[str] = Counter()
-    for name in sorted(COARSE_GATE_VOCABULARY, key=len, reverse=True):
-        longer = sum(
-            count
-            for longer_name, count in exact.items()
-            if longer_name.startswith(name) and longer_name != name
-        )
-        exact[name] = max(0, raw[name] - longer)
+    top: Counter[str] = Counter()
+    definitions: Counter[str] = Counter()
+    for match in _COARSE_PREFIX_RE.finditer(text):
+        indent = match.group("indent")
+        # The previous counter counted indented gate bodies only after a
+        # newline; preserve that edge case for feature-cache parity.
+        if indent and match.start() == 0:
+            continue
+        (definitions if indent else top)[match.group("name").lower()] += 1
     # ``pragma`` is the only common directive beginning with a gate token.
-    if indent == "":
-        exact["p"] = max(0, exact["p"] - text.count("\npragma"))
-    return exact
+    top["p"] = max(0, top["p"] - text.count("\npragma"))
+    return top, definitions
 
 
 def _treewidth_min_degree(adjacency: list[set[int]]) -> float:
@@ -904,8 +900,7 @@ def extract_fast_qasm_features(
         # regex calls.  These exact lexical counts run inside ``str.count`` and
         # distinguish top-level executable text from two-space-indented gate
         # definition bodies used by the released QASM3 generators.
-        top_counts = _coarse_prefix_counts(qasm_text, "")
-        definition_counts = _coarse_prefix_counts(qasm_text, "  ")
+        top_counts, definition_counts = _coarse_prefix_counts(qasm_text)
         gate_histogram.update(top_counts)
         definition_histogram.update(definition_counts)
         gate_count = sum(top_counts.values())
@@ -1321,4 +1316,3 @@ def add_threshold_features(
     result = dict(circuit_features)
     result.update(threshold_features(float(threshold), result))
     return result
-

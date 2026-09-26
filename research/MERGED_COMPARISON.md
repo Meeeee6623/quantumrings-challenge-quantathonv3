@@ -1,5 +1,11 @@
 # Merged runtime predictor: comparison and validation
 
+**Continuation update:** This document records the original v1 union selection.
+The current v3 artifact adds narrow reset-family and large-work floors and a
+faster coarse scanner. See [EDGE_CASE_UPDATE.md](EDGE_CASE_UPDATE.md) and the
+fresh paired metrics in `full_union_model_validation.json` for the deployed
+results.
+
 This is the standalone submission selected after comparing two independently
 developed pipelines on the Quantum Rings training set.  It uses only information
 derived from QASM text plus the supplied threshold.  Circuit filenames, source
