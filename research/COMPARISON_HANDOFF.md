@@ -90,6 +90,8 @@ Remaining >10× matched misses are concentrated in structural families, not prim
 
 The χ walk is an upper-path heuristic, not an exact Schmidt-rank simulation. It does not model every symbolic/parameterized custom-gate angle, detailed reset cost, or the simulator's compilation and representation choices. The soft algorithm fingerprints do not claim to identify ground-truth source algorithms. Four huge files lack detailed geometry/walk features. The artifact's feature selection, 0.3-radian rule, and cost settings were chosen on these training labels; the hidden holdout may differ.
 
+The [large-circuit evaluation](BIG_CIRCUITS_EVALUATION.md) isolates those four fast-path files: 12 matched-fold rows score 0.7500 with one >10× miss, while their structural-cluster stress score is 0.0062 with 12/12 >10× misses. It also reports parser timing, size bins, partial-walk behavior, and each fast-path prediction. The small sample and different circuit structures prevent a causal estimate of the cutoff's effect.
+
 ## Files and reproduction
 
 | File | Purpose |
@@ -102,6 +104,7 @@ The χ walk is an upper-path heuristic, not an exact Schmidt-rank simulation. It
 | [`rotation_filter_probe.json`](rotation_filter_probe.json), [`rotation_filter_oof.csv`](rotation_filter_oof.csv) | Detailed paired scores and all out-of-fold predictions. |
 | [`training_submission_rotation_filter.csv`](training_submission_rotation_filter.csv) | Full same-circuit harness run, **not** OOF. |
 | [`ROTATION_FILTER_EVALUATION.md`](ROTATION_FILTER_EVALUATION.md), [`rotation_filter_ablation.png`](rotation_filter_ablation.png), [`rotation_filter_predictions.png`](rotation_filter_predictions.png) | Narrative and figures. |
+| [`BIG_CIRCUITS_EVALUATION.md`](BIG_CIRCUITS_EVALUATION.md), [`big_circuit_evaluation.json`](big_circuit_evaluation.json) | Size-stratified error analysis and per-fast-path run details. |
 
 From the repository root:
 
