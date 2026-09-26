@@ -291,7 +291,12 @@ class Stats:
     def add_custom_span(self, qubits, gate_cost, window=None):
         """Conservative cut budget for a custom gate with unmapped body qubits."""
         if len(qubits) >= 2 and gate_cost > 0:
-            a, b = min(qubits), max(qubits)
+            if len(qubits) == 2:
+                a, b = qubits
+                if a > b:
+                    a, b = b, a
+            else:
+                a, b = min(qubits), max(qubits)
             if a < b:
                 self.cut_delta[a] += gate_cost
                 self.cut_delta[b] -= gate_cost
@@ -358,18 +363,33 @@ class Stats:
             gate_cost = (1 if gate in RANK2_GATES else 2) if arity == 2 else 2*(arity//2)
             self.c['chi_gate_cost'] += gate_cost
             self.add_custom_span(qubits, gate_cost, window)
-        level = max((self.depth.get(q, 0) for q in qubits), default=0) + 1
-        for q in qubits:
-            self.depth[q] = level
+        if arity == 1:
+            q0 = qubits[0]
+            level = self.depth.get(q0, 0) + 1
+            self.depth[q0] = level
+        elif arity == 2:
+            q0, q1 = qubits
+            level = max(self.depth.get(q0, 0), self.depth.get(q1, 0)) + 1
+            self.depth[q0] = self.depth[q1] = level
+        else:
+            level = max((self.depth.get(q, 0) for q in qubits), default=0) + 1
+            for q in qubits:
+                self.depth[q] = level
         if arity >= 2:
             self.windows[window] += 1
             self.temporal_twoq[window] += 1
-            level2 = max((self.two_depth.get(q, 0) for q in qubits), default=0) + 1
-            for q in qubits:
-                self.two_depth[q] = level2
-                self.last.pop(q, None)
             if arity == 2:
-                a, b = sorted(qubits)
+                level2 = max(self.two_depth.get(q0, 0), self.two_depth.get(q1, 0)) + 1
+                self.two_depth[q0] = self.two_depth[q1] = level2
+                self.last.pop(q0, None)
+                self.last.pop(q1, None)
+            else:
+                level2 = max((self.two_depth.get(q, 0) for q in qubits), default=0) + 1
+                for q in qubits:
+                    self.two_depth[q] = level2
+                    self.last.pop(q, None)
+            if arity == 2:
+                a, b = (q0, q1) if q0 <= q1 else (q1, q0)
                 if a != b:
                     if not self.pairs[(a,b)]:
                         self.degrees[a] += 1
@@ -712,7 +732,7 @@ class RuntimeModel:
         def resolve_qubits(operand):
             if current is main and len(regs) == 1 and '[' in operand:
                 base = next(iter(regs.values()))[0]
-                return [base+int(m.group(1)) for m in INDEX.finditer(operand)]
+                return [base+int(index) for index in INDEX.findall(operand)]
             if current is not main:
                 return [formal[m.group()] for m in IDENT.finditer(operand) if m.group() in formal]
             qubits = []

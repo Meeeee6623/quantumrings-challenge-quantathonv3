@@ -1,0 +1,146 @@
+{
+  "method": "alternate five-fold circuit-grouped assignments",
+  "seeds": {
+    "81": {
+      "baseline": {
+        "score": 0.9265200081590154,
+        "timeout_score": 0.967116037688095,
+        "median_factor_error": 1.0757872625809775,
+        "p95_factor_error": 4.565332852516801,
+        "tenfold_misses": 21,
+        "predicted_timeouts": 40,
+        "threshold_scores": {
+          "16": 0.9329999616938801,
+          "64": 0.9251525427811164,
+          "512": 0.920261206710138
+        }
+      },
+      "soft": {
+        "score": 0.9265200081590154,
+        "timeout_score": 0.967116037688095,
+        "median_factor_error": 1.0757872625809775,
+        "p95_factor_error": 4.565332852516801,
+        "tenfold_misses": 21,
+        "predicted_timeouts": 40,
+        "threshold_scores": {
+          "16": 0.9329999616938801,
+          "64": 0.9251525427811164,
+          "512": 0.920261206710138
+        },
+        "changed_rows": 0,
+        "changed_true_timeouts": 0
+      },
+      "uncap": {
+        "score": 0.9265200081590154,
+        "timeout_score": 0.967116037688095,
+        "median_factor_error": 1.0757872625809775,
+        "p95_factor_error": 4.565332852516801,
+        "tenfold_misses": 21,
+        "predicted_timeouts": 40,
+        "threshold_scores": {
+          "16": 0.9329999616938801,
+          "64": 0.9251525427811164,
+          "512": 0.920261206710138
+        },
+        "changed_rows": 0,
+        "changed_true_timeouts": 0
+      }
+    },
+    "99": {
+      "baseline": {
+        "score": 0.9197003662834631,
+        "timeout_score": 0.9636657775060057,
+        "median_factor_error": 1.082206149643418,
+        "p95_factor_error": 5.767573858700253,
+        "tenfold_misses": 36,
+        "predicted_timeouts": 47,
+        "threshold_scores": {
+          "16": 0.9249785841509977,
+          "64": 0.9199742700400267,
+          "512": 0.9129114446822972
+        }
+      },
+      "soft": {
+        "score": 0.9197003662834631,
+        "timeout_score": 0.9636657775060057,
+        "median_factor_error": 1.082206149643418,
+        "p95_factor_error": 5.767573858700253,
+        "tenfold_misses": 36,
+        "predicted_timeouts": 47,
+        "threshold_scores": {
+          "16": 0.9249785841509977,
+          "64": 0.9199742700400267,
+          "512": 0.9129114446822972
+        },
+        "changed_rows": 0,
+        "changed_true_timeouts": 0
+      },
+      "uncap": {
+        "score": 0.9197003662834631,
+        "timeout_score": 0.9636657775060057,
+        "median_factor_error": 1.082206149643418,
+        "p95_factor_error": 5.767573858700253,
+        "tenfold_misses": 36,
+        "predicted_timeouts": 47,
+        "threshold_scores": {
+          "16": 0.9249785841509977,
+          "64": 0.9199742700400267,
+          "512": 0.9129114446822972
+        },
+        "changed_rows": 0,
+        "changed_true_timeouts": 0
+      }
+    },
+    "113": {
+      "baseline": {
+        "score": 0.9244614215138821,
+        "timeout_score": 0.9352900380117939,
+        "median_factor_error": 1.0736651111822437,
+        "p95_factor_error": 5.037481761093148,
+        "tenfold_misses": 33,
+        "predicted_timeouts": 39,
+        "threshold_scores": {
+          "16": 0.9298551295195809,
+          "64": 0.9238963109166346,
+          "512": 0.9185535041748232
+        }
+      },
+      "soft": {
+        "score": 0.9240725964965009,
+        "timeout_score": 0.9242101739235856,
+        "median_factor_error": 1.07369036595109,
+        "p95_factor_error": 5.163519675970097,
+        "tenfold_misses": 33,
+        "predicted_timeouts": 37,
+        "threshold_scores": {
+          "16": 0.9298551295195809,
+          "64": 0.9227980636505597,
+          "512": 0.9185535041748232
+        },
+        "changed_rows": 2,
+        "changed_true_timeouts": 1
+      },
+      "uncap": {
+        "score": 0.9240725964965009,
+        "timeout_score": 0.9242101739235856,
+        "median_factor_error": 1.07369036595109,
+        "p95_factor_error": 5.163519675970097,
+        "tenfold_misses": 33,
+        "predicted_timeouts": 37,
+        "threshold_scores": {
+          "16": 0.9298551295195809,
+          "64": 0.9227980636505597,
+          "512": 0.9185535041748232
+        },
+        "changed_rows": 2,
+        "changed_true_timeouts": 1
+      }
+    }
+  },
+  "candidate": {
+    "threshold": 64,
+    "min_qasm_bytes": 1000000,
+    "max_uncapped_regression_seconds": 100,
+    "soft_cap_log_weight": 0.2
+  }
+}

@@ -39,6 +39,9 @@ The v5 continuation analysis, paired metrics, and parser timing are in
 [`EDGE_CASE_UPDATE.md`](EDGE_CASE_UPDATE.md). The table below preserves the
 original v1 comparison for historical context; the current v6 model scores
 **0.92578 matched** and **0.75537 structural stress** on a fresh paired refit.
+The current large-file parser timing is in
+[`PARSER_OPTIMIZATION.md`](PARSER_OPTIMIZATION.md); the full-library maximum
+fell from 14.03 to 13.13 seconds with the same fitted artifact.
 
 Unknown future thresholds fall back safely to the global model.  The challenge
 holdout is expected to use the known thresholds 16, 64, and 512.
@@ -101,6 +104,8 @@ fast path.
 | `research/training_submission_pruned.csv` | End-to-end training-library output for selected v6 |
 | `research/full_union_model_validation.json` | Exact selected v6 input schemas and fixed-fold results |
 | `research/FEATURE_PRUNING_REPORT.md` | Feature audit and v5/v6 comparison |
+| `research/PARSER_OPTIMIZATION.md` | Current full-harness parser timing and output check |
+| `research/TIMEOUT_DISAGREEMENT_EVALUATION.md` | Rejected timeout-router guard on alternate grouped folds |
 | `research/MERGED_COMPARISON.md` | Full comparison, caveats, and rationale |
 | `research/merged_model_comparison.png` | Presentation comparison figure |
 
