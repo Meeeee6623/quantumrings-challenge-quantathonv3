@@ -1,0 +1,345 @@
+{
+  "method": "five-fold circuit-grouped OOF; training-fold-only analogue bank",
+  "fixed": {
+    "matched": {
+      "eligible_rows": 584,
+      "weights": {
+        "0.5": {
+          "score": 0.9257843447060121,
+          "timeout_score": 0.9639152754960102,
+          "median_factor_error": 1.0722245492154727,
+          "p95_factor_error": 4.887911018024689,
+          "tenfold_misses": 28,
+          "predicted_timeouts": 43,
+          "threshold_scores": {
+            "16": 0.9301000792370355,
+            "64": 0.9238217731990354,
+            "512": 0.9228974300581809
+          }
+        },
+        "0.75": {
+          "score": 0.9259682988862605,
+          "timeout_score": 0.9639152754960102,
+          "median_factor_error": 1.0690975825163436,
+          "p95_factor_error": 4.887911018024689,
+          "tenfold_misses": 28,
+          "predicted_timeouts": 43,
+          "threshold_scores": {
+            "16": 0.9300395867938066,
+            "64": 0.9239338208682554,
+            "512": 0.9234679498810378
+          }
+        },
+        "1.0": {
+          "score": 0.9260962164646402,
+          "timeout_score": 0.9639152754960102,
+          "median_factor_error": 1.0652178539851491,
+          "p95_factor_error": 4.887911018024689,
+          "tenfold_misses": 28,
+          "predicted_timeouts": 43,
+          "threshold_scores": {
+            "16": 0.9299556961599955,
+            "64": 0.9239810964911737,
+            "512": 0.9239531598853492
+          }
+        },
+        "adaptive": {
+          "score": 0.9261526527252998,
+          "timeout_score": 0.9639152754960102,
+          "median_factor_error": 1.0649389663713609,
+          "p95_factor_error": 4.887911018024689,
+          "tenfold_misses": 28,
+          "predicted_timeouts": 43,
+          "threshold_scores": {
+            "16": 0.9300152213126028,
+            "64": 0.9240860185007006,
+            "512": 0.9239467438760862
+          }
+        }
+      },
+      "eligible_by_reference_count": {
+        "2": 125,
+        "3": 246,
+        "4": 213
+      },
+      "paired_bootstrap_direct_vs_half": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.0003118717586281328,
+        "delta_95": [
+          0.0001222993305775059,
+          0.000525930779143447
+        ]
+      },
+      "paired_bootstrap_adaptive_vs_half": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.0003683080192874621,
+        "delta_95": [
+          0.00018902029466847045,
+          0.0005763809055663937
+        ]
+      }
+    },
+    "structural": {
+      "eligible_rows": 0,
+      "weights": {
+        "0.5": {
+          "score": 0.7553686958374755,
+          "timeout_score": 0.7974694962429586,
+          "median_factor_error": 1.889357260937392,
+          "p95_factor_error": 56.128269399894606,
+          "tenfold_misses": 221,
+          "predicted_timeouts": 73,
+          "threshold_scores": {
+            "16": 0.6986958184615557,
+            "64": 0.801611538705108,
+            "512": 0.7683371189274623
+          }
+        },
+        "0.75": {
+          "score": 0.7553686958374755,
+          "timeout_score": 0.7974694962429586,
+          "median_factor_error": 1.889357260937392,
+          "p95_factor_error": 56.128269399894606,
+          "tenfold_misses": 221,
+          "predicted_timeouts": 73,
+          "threshold_scores": {
+            "16": 0.6986958184615557,
+            "64": 0.801611538705108,
+            "512": 0.7683371189274623
+          }
+        },
+        "1.0": {
+          "score": 0.7553686958374755,
+          "timeout_score": 0.7974694962429586,
+          "median_factor_error": 1.889357260937392,
+          "p95_factor_error": 56.128269399894606,
+          "tenfold_misses": 221,
+          "predicted_timeouts": 73,
+          "threshold_scores": {
+            "16": 0.6986958184615557,
+            "64": 0.801611538705108,
+            "512": 0.7683371189274623
+          }
+        },
+        "adaptive": {
+          "score": 0.7553686958374755,
+          "timeout_score": 0.7974694962429586,
+          "median_factor_error": 1.889357260937392,
+          "p95_factor_error": 56.128269399894606,
+          "tenfold_misses": 221,
+          "predicted_timeouts": 73,
+          "threshold_scores": {
+            "16": 0.6986958184615557,
+            "64": 0.801611538705108,
+            "512": 0.7683371189274623
+          }
+        }
+      },
+      "eligible_by_reference_count": {},
+      "paired_bootstrap_direct_vs_half": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.0,
+        "delta_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "paired_bootstrap_adaptive_vs_half": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.0,
+        "delta_95": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "alternate_seeds": {
+    "137": {
+      "eligible_rows": 592,
+      "weights": {
+        "0.5": {
+          "score": 0.9257993230532159,
+          "timeout_score": 0.9622772791192996,
+          "median_factor_error": 1.082100769816033,
+          "p95_factor_error": 4.631264251652494,
+          "tenfold_misses": 29,
+          "predicted_timeouts": 44,
+          "threshold_scores": {
+            "16": 0.9330776307487684,
+            "64": 0.9220523309364047,
+            "512": 0.9214633371402866
+          }
+        },
+        "0.75": {
+          "score": 0.9259862993482127,
+          "timeout_score": 0.9622772791192996,
+          "median_factor_error": 1.0802132541052598,
+          "p95_factor_error": 4.631264251652494,
+          "tenfold_misses": 29,
+          "predicted_timeouts": 44,
+          "threshold_scores": {
+            "16": 0.9330468680301756,
+            "64": 0.9221479582068426,
+            "512": 0.9220279045576885
+          }
+        },
+        "1.0": {
+          "score": 0.9261117191964309,
+          "timeout_score": 0.9622772791192996,
+          "median_factor_error": 1.0761550679506062,
+          "p95_factor_error": 4.631264251652494,
+          "tenfold_misses": 29,
+          "predicted_timeouts": 44,
+          "threshold_scores": {
+            "16": 0.9329835697302884,
+            "64": 0.9222103971745669,
+            "512": 0.9224608598575236
+          }
+        },
+        "adaptive": {
+          "score": 0.9261428803145607,
+          "timeout_score": 0.9622772791192996,
+          "median_factor_error": 1.0759774591410525,
+          "p95_factor_error": 4.631264251652494,
+          "tenfold_misses": 29,
+          "predicted_timeouts": 44,
+          "threshold_scores": {
+            "16": 0.932976935934969,
+            "64": 0.9223361403539833,
+            "512": 0.9224230058066272
+          }
+        }
+      },
+      "eligible_by_reference_count": {
+        "2": 112,
+        "3": 246,
+        "4": 234
+      }
+    },
+    "149": {
+      "eligible_rows": 584,
+      "weights": {
+        "0.5": {
+          "score": 0.9238747520923792,
+          "timeout_score": 0.9296674447931549,
+          "median_factor_error": 1.0918504629338652,
+          "p95_factor_error": 5.085929894221429,
+          "tenfold_misses": 29,
+          "predicted_timeouts": 41,
+          "threshold_scores": {
+            "16": 0.9300178601945771,
+            "64": 0.9227073350667819,
+            "512": 0.9177841716629478
+          }
+        },
+        "0.75": {
+          "score": 0.9240719900827096,
+          "timeout_score": 0.9296674447931549,
+          "median_factor_error": 1.0845381709191082,
+          "p95_factor_error": 5.085929894221429,
+          "tenfold_misses": 29,
+          "predicted_timeouts": 41,
+          "threshold_scores": {
+            "16": 0.9300172164215007,
+            "64": 0.922878385280117,
+            "512": 0.9182553237221057
+          }
+        },
+        "1.0": {
+          "score": 0.9241953006360419,
+          "timeout_score": 0.9296674447931549,
+          "median_factor_error": 1.082752851826479,
+          "p95_factor_error": 5.085929894221429,
+          "tenfold_misses": 29,
+          "predicted_timeouts": 41,
+          "threshold_scores": {
+            "16": 0.9299941339718383,
+            "64": 0.9230029010098831,
+            "512": 0.9185562028595374
+          }
+        },
+        "adaptive": {
+          "score": 0.9242397552216606,
+          "timeout_score": 0.9296674447931549,
+          "median_factor_error": 1.0826646075290869,
+          "p95_factor_error": 5.085929894221429,
+          "tenfold_misses": 29,
+          "predicted_timeouts": 41,
+          "threshold_scores": {
+            "16": 0.9300215811714577,
+            "64": 0.9230642222782522,
+            "512": 0.9186009070715787
+          }
+        }
+      },
+      "eligible_by_reference_count": {
+        "2": 131,
+        "3": 192,
+        "4": 261
+      }
+    },
+    "163": {
+      "eligible_rows": 580,
+      "weights": {
+        "0.5": {
+          "score": 0.9220107809808051,
+          "timeout_score": 0.9231221274197948,
+          "median_factor_error": 1.0783317441097533,
+          "p95_factor_error": 5.4639947340179695,
+          "tenfold_misses": 33,
+          "predicted_timeouts": 40,
+          "threshold_scores": {
+            "16": 0.9246004155671825,
+            "64": 0.9249252171618711,
+            "512": 0.9152927654039825
+          }
+        },
+        "0.75": {
+          "score": 0.9222267041237214,
+          "timeout_score": 0.9231221274197948,
+          "median_factor_error": 1.077665640432516,
+          "p95_factor_error": 5.4639947340179695,
+          "tenfold_misses": 33,
+          "predicted_timeouts": 40,
+          "threshold_scores": {
+            "16": 0.9245950781702403,
+            "64": 0.9250759089510625,
+            "512": 0.9158587649254707
+          }
+        },
+        "1.0": {
+          "score": 0.9223753037755349,
+          "timeout_score": 0.9231221274197948,
+          "median_factor_error": 1.074446824955944,
+          "p95_factor_error": 5.4639947340179695,
+          "tenfold_misses": 33,
+          "predicted_timeouts": 40,
+          "threshold_scores": {
+            "16": 0.924572596130991,
+            "64": 0.9251681707225035,
+            "512": 0.9162852370743949
+          }
+        },
+        "adaptive": {
+          "score": 0.9224052527214902,
+          "timeout_score": 0.9231221274197948,
+          "median_factor_error": 1.0729110550661303,
+          "p95_factor_error": 5.4639947340179695,
+          "tenfold_misses": 33,
+          "predicted_timeouts": 40,
+          "threshold_scores": {
+            "16": 0.9245861937314438,
+            "64": 0.9252533932341037,
+            "512": 0.9162678387238343
+          }
+        }
+      },
+      "eligible_by_reference_count": {
+        "2": 58,
+        "3": 264,
+        "4": 258
+      }
+    }
+  }
+}

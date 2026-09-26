@@ -51,17 +51,20 @@ starter.  It combines two independent source-QASM feature representations:
 - per-threshold timeout classifiers that can emit the 14,400-second cap;
 - narrow lower bounds for reset-heavy search circuits and very large effective
   operation counts; and
-- a guarded blend with training circuits sharing the same structural count
-  signature, followed by a small near-basis rotation correction at threshold 512.
+- a support-aware structural-count analogue: a guarded blend for two matching
+  training circuits, or their median runtime when three or more match, followed
+  by a small near-basis rotation correction at threshold 512.
 
-The fitted v6 model removes constant and duplicate inputs, then selects 120
+The fitted v7 model removes constant and duplicate inputs, then selects 120
 columns for the global regressor, 200 for each runtime specialist, and 80 for
 each timeout classifier. It uses 325 distinct columns across all components,
 down from 480 candidate columns.
 
-The current predictor scores **0.92578** on fixed circuit-grouped,
+The current predictor scores **0.92615** on fixed circuit-grouped,
 distribution-matched out-of-fold validation. Its structural stress score is
-**0.75537**. See [`research/FEATURE_PRUNING_REPORT.md`](research/FEATURE_PRUNING_REPORT.md)
+**0.75537**. See [`research/TEMPLATE_WEIGHT_EVALUATION.md`](research/TEMPLATE_WEIGHT_EVALUATION.md)
+for the v7 change and alternate grouped-fold checks,
+[`research/FEATURE_PRUNING_REPORT.md`](research/FEATURE_PRUNING_REPORT.md)
 for the feature audit and comparison,
 [`research/EDGE_CASE_UPDATE.md`](research/EDGE_CASE_UPDATE.md)
 for the v5 edge-case evidence and large-file parser tests;
@@ -69,6 +72,8 @@ for the v5 edge-case evidence and large-file parser tests;
 original union-model comparison.
 The current full-harness parser timing and 15-second cap check are in
 [`research/PARSER_OPTIMIZATION.md`](research/PARSER_OPTIMIZATION.md).
+The distribution of remaining errors is in
+[`research/REMAINING_HEADROOM.md`](research/REMAINING_HEADROOM.md).
 
 Run a holdout directory directly:
 

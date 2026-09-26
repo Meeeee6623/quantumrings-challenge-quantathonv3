@@ -209,7 +209,7 @@ def fit_artifact(parallel_X, union_X, parallel_columns, union_columns,
     selected.update(c for part in classifier_columns.values() for c in part)
     selected_columns = [c for c in union_columns if c in selected]
     artifact = {
-        'artifact_version':'pruned_union_threshold_experts_v6',
+        'artifact_version':'pruned_union_threshold_experts_v7',
         'columns':selected_columns,
         'global_columns':global_columns,
         'specialist_columns_by_threshold':specialist_columns,
@@ -259,7 +259,7 @@ def main():
     fold_by_name = load_fold_table()
     predictions = {}
     report = {
-        'artifact_version':'pruned_union_threshold_experts_v6',
+        'artifact_version':'pruned_union_threshold_experts_v7',
         'rows':len(rows),
         'circuits':len(set(names)),
         'parallel_features':len(parallel_columns),

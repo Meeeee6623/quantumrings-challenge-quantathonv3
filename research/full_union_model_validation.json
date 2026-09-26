@@ -1,9 +1,10 @@
 {
-  "artifact_version": "pruned_union_threshold_experts_v6",
+  "artifact_version": "pruned_union_threshold_experts_v7",
   "rows": 1497,
   "circuits": 532,
   "parallel_features": 241,
   "extended_features": 215,
+  "extended_candidate_features": 237,
   "union_features": 456,
   "original_union_features": 480,
   "constant_columns": [
@@ -111,9 +112,9 @@
     "matched": {
       "parallel_global": {
         "score": 0.9153471042602199,
-        "timeout_score": 0.7381425430114296,
-        "median_factor_error": 1.0951121198097193,
-        "p95_factor_error": 5.832984839897049,
+        "timeout_score": 0.7381425430114297,
+        "median_factor_error": 1.0951121198097196,
+        "p95_factor_error": 5.832984839897054,
         "tenfold_misses": 45,
         "predicted_timeouts": 0,
         "threshold_scores": {
@@ -162,61 +163,61 @@
         }
       },
       "template_analogues": {
-        "score": 0.9251046896279769,
+        "score": 0.9254729976472643,
         "timeout_score": 0.9639152754960102,
-        "median_factor_error": 1.0722245492154727,
+        "median_factor_error": 1.0649389663713609,
         "p95_factor_error": 4.982652594483591,
         "tenfold_misses": 28,
         "predicted_timeouts": 43,
         "threshold_scores": {
-          "16": 0.9301000792370355,
-          "64": 0.9238217731990354,
-          "512": 0.9205584791344591
+          "16": 0.9300152213126028,
+          "64": 0.9240860185007006,
+          "512": 0.9216077929523646
         }
       },
       "near_basis_calibration": {
-        "score": 0.9257843447060121,
+        "score": 0.9261526527252998,
         "timeout_score": 0.9639152754960102,
-        "median_factor_error": 1.0722245492154727,
-        "p95_factor_error": 4.88791101802469,
+        "median_factor_error": 1.0649389663713609,
+        "p95_factor_error": 4.887911018024689,
         "tenfold_misses": 28,
         "predicted_timeouts": 43,
         "threshold_scores": {
-          "16": 0.9301000792370355,
-          "64": 0.9238217731990354,
-          "512": 0.922897430058181
+          "16": 0.9300152213126028,
+          "64": 0.9240860185007006,
+          "512": 0.9239467438760862
         }
       },
       "basis_vs_template": {
         "unit": "circuit",
-        "delta_merged_minus_current": 0.0006796550780353951,
+        "delta_merged_minus_current": 0.0006796550780353953,
         "delta_95": [
           0.0002024411537753741,
-          0.0012297017533603335
+          0.0012297017533603343
         ]
       },
       "template_vs_both_floors": {
         "unit": "circuit",
-        "delta_merged_minus_current": 0.00043627602751849647,
+        "delta_merged_minus_current": 0.0008045840468059574,
         "delta_95": [
-          0.00023871045017992743,
-          0.0006585675554049835
+          0.0004309981859405383,
+          0.0012335113802349653
         ]
       },
       "both_floors_vs_full_union": {
         "unit": "circuit",
-        "delta_merged_minus_current": 0.0021223633918973747,
+        "delta_merged_minus_current": 0.002122363391897374,
         "delta_95": [
-          0.0003044284415172267,
+          0.00030442844151722657,
           0.004677528941694815
         ]
       },
       "large_floor_vs_reset_floor": {
         "unit": "circuit",
-        "delta_merged_minus_current": 0.0003064620316409222,
+        "delta_merged_minus_current": 0.00030646203164092216,
         "delta_95": [
           0.0,
-          0.0009274400162394756
+          0.0009274400162394752
         ]
       },
       "reset_floor_vs_full_union": {
@@ -229,24 +230,24 @@
       },
       "paired_bootstrap": {
         "unit": "circuit",
-        "delta_merged_minus_current": 0.010437240445792398,
+        "delta_merged_minus_current": 0.010805548465079853,
         "delta_95": [
-          0.006221441781605006,
-          0.015272295131258206
+          0.006607795638195347,
+          0.01565133388204896
         ]
       }
     },
     "structural": {
       "parallel_global": {
         "score": 0.7397669919054831,
-        "timeout_score": 0.3745754983722227,
-        "median_factor_error": 2.1516513241442308,
-        "p95_factor_error": 61.926044765453426,
+        "timeout_score": 0.37457549837222265,
+        "median_factor_error": 2.151651324144233,
+        "p95_factor_error": 61.92604476545343,
         "tenfold_misses": 246,
         "predicted_timeouts": 0,
         "threshold_scores": {
           "16": 0.6929564913335132,
-          "64": 0.813940348915117,
+          "64": 0.8139403489151169,
           "512": 0.7066435599265916
         }
       },
@@ -254,7 +255,7 @@
         "score": 0.7498359775334376,
         "timeout_score": 0.7677757199525246,
         "median_factor_error": 1.889357260937392,
-        "p95_factor_error": 72.30979599636717,
+        "p95_factor_error": 72.30979599636719,
         "tenfold_misses": 231,
         "predicted_timeouts": 73,
         "threshold_scores": {
@@ -317,10 +318,10 @@
       },
       "basis_vs_template": {
         "unit": "structural_cluster",
-        "delta_merged_minus_current": 0.0003585391425900539,
+        "delta_merged_minus_current": 0.0003585391425900541,
         "delta_95": [
           0.0,
-          0.0007506667606085232
+          0.0007506667606085238
         ]
       },
       "template_vs_both_floors": {
@@ -335,7 +336,7 @@
         "unit": "structural_cluster",
         "delta_merged_minus_current": 0.0051741791614478855,
         "delta_95": [
-          0.0011523359115621396,
+          0.0011523359115621398,
           0.013978639695813137
         ]
       },
@@ -357,9 +358,9 @@
       },
       "paired_bootstrap": {
         "unit": "structural_cluster",
-        "delta_merged_minus_current": 0.015601703931992375,
+        "delta_merged_minus_current": 0.01560170393199238,
         "delta_95": [
-          0.0033367936770732935,
+          0.003336793677073283,
           0.03646840652301296
         ]
       }
@@ -368,8 +369,8 @@
   "uncertainty": {
     "method": "fixed-fold conformal-style absolute log10 residual radius",
     "nominal_coverage": 0.9,
-    "log10_radius": 0.4889354609589187,
-    "multiplicative_factor": 3.082729802109126,
+    "log10_radius": 0.48893546095891877,
+    "multiplicative_factor": 3.0827298021091263,
     "observed_oof_coverage": 0.8997995991983968
   },
   "selected_schema": {
@@ -714,6 +715,5 @@
     ]
   },
   "artifact": "quantathon-harness/artifacts/runtime_model.joblib",
-  "oof_predictions": "research/full_union_model_oof.csv",
-  "extended_candidate_features": 237
+  "oof_predictions": "research/full_union_model_oof.csv"
 }

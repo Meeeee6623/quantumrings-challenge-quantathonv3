@@ -100,7 +100,7 @@ cMAJ q[0],q[1];
 
     def test_submission_artifact_uses_threshold_experts(self):
         self.assertEqual(self.model.model['artifact_version'],
-                         'pruned_union_threshold_experts_v6')
+                         'pruned_union_threshold_experts_v7')
         self.assertEqual(set(self.model.model['threshold_specialists']),{16,64,512})
         self.assertEqual(set(self.model.model['timeout_classifiers']),{16,64,512})
         self.assertAlmostEqual(self.model.model['threshold_specialist_weight'],.5)
@@ -124,6 +124,7 @@ cMAJ q[0],q[1];
         self.assertEqual(blend_with_analogues(4.0,features,16,{key:(2.0,)}),4.0)
         self.assertEqual(blend_with_analogues(4.0,features,64,{key:(2.0,2.0)}),4.0)
         self.assertEqual(blend_with_analogues(4.0,features,16,{key:(2.0,2.0)}),20.0)
+        self.assertEqual(blend_with_analogues(4.0,features,16,{key:(2.0,2.0,2.0)}),100.0)
 
     def test_near_basis_calibration_has_threshold_and_work_guards(self):
         features={'chi_walk_rot_near_frac':1.0,'ops':2000}

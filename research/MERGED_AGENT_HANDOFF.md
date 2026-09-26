@@ -8,9 +8,9 @@ cross-pipeline analysis is in `MERGED_COMPARISON.md`.
 
 The checked-in `quantathon-harness/artifacts/runtime_model.joblib` is now the
 **pruned union threshold-expert model**, artifact version
-`pruned_union_threshold_experts_v6`. It retains the v5 prediction path and
-postprocessing, with model-specific feature limits validated in
-[`FEATURE_PRUNING_REPORT.md`](FEATURE_PRUNING_REPORT.md).
+`pruned_union_threshold_experts_v7`. It retains the v6 selected feature sets
+and prediction path; its support-aware structural analogue is documented in
+[`TEMPLATE_WEIGHT_EVALUATION.md`](TEMPLATE_WEIGHT_EVALUATION.md).
 
 The model uses only QASM-derived quantities and the requested threshold.  It
 does not use filename, benchmark source, provided/inferred family labels, or
@@ -31,17 +31,18 @@ per-threshold timeout classifier(80 selected columns each)
  └─ probability >= 0.35 → predict 14,400 seconds
 
 rare reset-heavy search analogue floor + large effective-work floor
-two-reference structural-template blend when matching examples are available
+structural-template blend for two references, direct median for three or more
 near-basis rotation correction at threshold 512 for non-cap predictions
 ```
 
 The v5 continuation analysis, paired metrics, and parser timing are in
 [`EDGE_CASE_UPDATE.md`](EDGE_CASE_UPDATE.md). The table below preserves the
-original v1 comparison for historical context; the current v6 model scores
-**0.92578 matched** and **0.75537 structural stress** on a fresh paired refit.
-The current large-file parser timing is in
+original v1 comparison for historical context; the current v7 model scores
+**0.92615 matched** and **0.75537 structural stress** on a fresh paired refit.
+The v6-to-v6 parser timing comparison is in
 [`PARSER_OPTIMIZATION.md`](PARSER_OPTIMIZATION.md); the full-library maximum
-fell from 14.03 to 13.13 seconds with the same fitted artifact.
+fell from 14.03 to 13.13 seconds. The v7 full-harness check is documented in
+[`TEMPLATE_WEIGHT_EVALUATION.md`](TEMPLATE_WEIGHT_EVALUATION.md).
 
 Unknown future thresholds fall back safely to the global model.  The challenge
 holdout is expected to use the known thresholds 16, 64, and 512.
@@ -101,11 +102,14 @@ fast path.
 | `research/full_union_model_oof.csv` | Every fixed-fold prediction |
 | `research/PI_SYNTAX_PROBE.md` | Rejected source-angle syntax experiment and reproducible OOF evidence |
 | `research/training_submission_final.csv` | Historical end-to-end training-library output for v5 |
-| `research/training_submission_pruned.csv` | End-to-end training-library output for selected v6 |
-| `research/full_union_model_validation.json` | Exact selected v6 input schemas and fixed-fold results |
+| `research/training_submission_pruned.csv` | Historical end-to-end training-library output for v6 |
+| `research/training_submission_template_v7.csv` | End-to-end training-library output for selected v7 |
+| `research/full_union_model_validation.json` | Exact selected v7 input schemas and fixed-fold results |
 | `research/FEATURE_PRUNING_REPORT.md` | Feature audit and v5/v6 comparison |
 | `research/PARSER_OPTIMIZATION.md` | Current full-harness parser timing and output check |
 | `research/TIMEOUT_DISAGREEMENT_EVALUATION.md` | Rejected timeout-router guard on alternate grouped folds |
+| `research/TEMPLATE_WEIGHT_EVALUATION.md` | v7 analogue weighting and alternate grouped-fold checks |
+| `research/REMAINING_HEADROOM.md` | Error concentration and scope of possible gains |
 | `research/MERGED_COMPARISON.md` | Full comparison, caveats, and rationale |
 | `research/merged_model_comparison.png` | Presentation comparison figure |
 
@@ -152,10 +156,10 @@ run.
 4. Preserve the `extended__` namespace.  Some concepts intentionally appear in
    both representations; collapsing them changes the learned model.
 5. Do not present the fitted score as validation. Use the current
-   0.92578 matched OOF and disclose that model choices were made on the
+   0.92615 matched OOF and disclose that model choices were made on the
    available training data.
-6. Current v6 artifact SHA-256:
-   `0683b134c3a720e8992203939a99d056e7d3ba43e8f7055cf8fb6c352d55ef37`.
+6. Current v7 artifact SHA-256:
+   `3f0f8a04f99dfa03aadcc2179c62a1093fefb46e97198df89c8dd6ee1d183958`.
 
 ## Recommended challenge-time sequence
 

@@ -14,9 +14,11 @@ def signature(features):
 
 
 def blend_with_analogues(predicted_seconds, features, threshold, bank):
-    """Blend only when two or more same-threshold templates are available."""
+    """Trust the median directly only when at least three templates agree."""
     log_seconds = bank.get((int(threshold),*signature(features)),())
     if len(log_seconds) < 2:
         return float(predicted_seconds)
     analogue = 10**statistics.median(log_seconds)
-    return math.sqrt(float(predicted_seconds)*analogue)
+    if len(log_seconds) == 2:
+        return math.sqrt(float(predicted_seconds)*analogue)
+    return analogue
