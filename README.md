@@ -6,6 +6,7 @@ Predict how long a quantum-circuit simulation will take, straight from the circu
 ## Contents
 
 - [Overview](#overview)
+- [Included merged predictor](#included-merged-predictor)
 - [Timeline](#timeline)
 - [The task](#the-task)
 - [Runtime & timeouts](#runtime--timeouts)
@@ -35,6 +36,40 @@ You will build two things:
 2. A **model** — maps `(features, simulator setting)` → predicted runtime.
 
 Designing the feature set is the core of the challenge. No parser or feature list is provided.
+
+## Included merged predictor
+
+This branch contains a complete fitted submission, not only the challenge
+starter.  It combines two independent source-QASM feature representations:
+
+- a bounded QASM2/3 geometry parser with temporal cut/χ features and
+  angle-aware effective-entanglement walk;
+- a second structural extractor covering graph, DAG, SupermarQ-style,
+  parameter-angle, gate-mix, and source-shape features;
+- a global log-runtime ExtraTrees model blended with one specialist for each
+  guaranteed threshold (16, 64, 512); and
+- per-threshold timeout classifiers that can emit the 14,400-second cap.
+
+The selected 480-feature union scores **0.92266** on fixed circuit-grouped,
+distribution-matched out-of-fold validation, versus **0.91520** for the prior
+global model.  See [`research/MERGED_COMPARISON.md`](research/MERGED_COMPARISON.md)
+for the apples-to-apples methodology, structural stress test, uncertainty, and
+tradeoffs.
+
+Run a holdout directory directly:
+
+```bash
+uv sync --locked
+uv run --locked python quantathon-harness/run.py \
+  --team "Your Team" --circuits path/to/holdout --out submission.csv
+```
+
+Rebuild the training cache and artifact with:
+
+```bash
+uv run --locked python research/extract_extended_features.py
+uv run --locked python research/train_full_union_model.py
+```
 
 ## Timeline
 
@@ -150,7 +185,8 @@ scored on a **log scale**:
 score = max(0, 1 − |log10(pred / actual)| / 2)
 ```
 
-An exact prediction scores 100%; off by 10× scores 0%. Log scale because runtimes
+An exact prediction scores 100%; off by 10× scores 50%, and off by 100× scores 0%.
+Log scale because runtimes
 span seconds to hours — being 2× off costs the same whether the run is 1 second or
 1 hour. Your automated score is the average over **every** hold-out run; a run
 missing from your submission scores 0.

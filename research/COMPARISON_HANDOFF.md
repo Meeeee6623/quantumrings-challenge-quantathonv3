@@ -1,5 +1,9 @@
 # Quantum Rings runtime predictor: comparison handoff
 
+> **Update:** the cross-agent comparison and selected standalone union model are
+> documented in [MERGED_COMPARISON.md](MERGED_COMPARISON.md).  This file remains
+> the immutable methodological handoff for the parallel research flow.
+
 This document describes the **current fitted implementation** in this workspace, its evidence, and a fair protocol for comparing another agent's implementation. It is a local training-data result, **not** a hidden-holdout score. The official challenge repository is [Quantum-Rings/quantumrings-challenge-quantathonv3](https://github.com/Quantum-Rings/quantumrings-challenge-quantathonv3). The code, trained artifact, caches, and reports named below are in this repository's working tree; several are currently uncommitted, so a fresh clone of upstream does not contain them.
 
 ## Evaluation contract

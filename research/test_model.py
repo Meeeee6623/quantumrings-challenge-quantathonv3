@@ -77,6 +77,55 @@ cMAJ q[0],q[1];
             p = self.model.predict(f,threshold)
             self.assertTrue(math.isfinite(p) and p > 0)
 
+    def test_submission_artifact_uses_threshold_experts(self):
+        self.assertEqual(self.model.model['artifact_version'],
+                         'full_union_threshold_experts_v1')
+        self.assertEqual(set(self.model.model['threshold_specialists']),{16,64,512})
+        self.assertEqual(set(self.model.model['timeout_classifiers']),{16,64,512})
+        self.assertAlmostEqual(self.model.model['threshold_specialist_weight'],.5)
+        self.assertAlmostEqual(self.model.model['timeout_probability_cutoff'],.35)
+        self.assertTrue(any(column.startswith('extended__')
+                            for column in self.model.model['specialist_columns']))
+
+    def test_unknown_threshold_falls_back_to_global_model(self):
+        f = self.model.featurize('OPENQASM 2.0;\nqreg q[1];\nh q[0];')
+        prediction = self.model.predict(f,32)
+        self.assertTrue(math.isfinite(prediction) and prediction > 0)
+
+    def test_prediction_interval_contains_point(self):
+        f = self.model.featurize('OPENQASM 2.0;\nqreg q[2];\nh q[0];\ncx q[0],q[1];')
+        point,lower,upper = self.model.predict_interval(f,64)
+        self.assertLessEqual(lower,point)
+        self.assertLessEqual(point,upper)
+        self.assertGreater(lower,0)
+
+    def test_union_exposes_graph_dag_and_angle_features(self):
+        f = self.model.featurize('''OPENQASM 2.0;
+qreg q[3];
+h q[0];
+rx(pi/7) q[1];
+cx q[0],q[1];
+cz q[1],q[2];
+''')
+        self.assertEqual(f['extended__interaction_edge_count'],2)
+        self.assertGreaterEqual(f['extended__dag_critical_path_length'],3)
+        self.assertGreater(f['extended__angle_generic_fraction'],0)
+        self.assertEqual(f['extended__fast_detail_mode'],1)
+
+    def test_union_qasm3_registers_and_operations(self):
+        f = self.model.featurize('''OPENQASM 3.0;
+include "stdgates.inc";
+qubit[2] q;
+bit[2] c;
+h q[0];
+cx q[0], q[1];
+c[0] = measure q[0];
+''')
+        self.assertEqual(f['extended__qasm_version_3'],1)
+        self.assertEqual(f['extended__num_qubits'],2)
+        self.assertEqual(f['extended__num_clbits'],2)
+        self.assertEqual(f['extended__measurement_count'],1)
+
     def test_chi_cut_bound_distinguishes_controlled_and_generic_gates(self):
         controlled = self.model.featurize('OPENQASM 2.0;\nqreg q[4];\ncx q[1],q[2];')
         generic = self.model.featurize('OPENQASM 2.0;\nqreg q[4];\nswap q[1],q[2];')

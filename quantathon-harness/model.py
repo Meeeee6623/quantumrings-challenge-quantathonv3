@@ -1,7 +1,8 @@
 """QASM structure -> Quantum Rings runtime.
 
-The trained scikit-learn estimator is in artifacts/runtime_model.joblib.
-Rebuild the selected model with research/fit_rotation_filter.py.
+The trained scikit-learn artifact is in ``artifacts/runtime_model.joblib``.
+Rebuild the selected union model with ``research/train_full_union_model.py``;
+``research/train_merged_model.py`` builds the compact fallback.
 """
 from collections import Counter, deque
 import io
@@ -572,9 +573,23 @@ class RuntimeModel:
             self.model = joblib.load(file)
         else:
             self.model = None
+        if self.model and 'threshold_specialists' in self.model:
+            # Tree prediction for one row is faster without joblib's parallel
+            # dispatch overhead. Training remains parallel in research scripts.
+            estimators = [self.model.get('global_estimator')]
+            estimators += list(self.model.get('threshold_specialists',{}).values())
+            estimators += list(self.model.get('timeout_classifiers',{}).values())
+            for estimator in estimators:
+                if estimator is not None and hasattr(estimator,'n_jobs'):
+                    estimator.n_jobs = 1
         components = self.model.get('ensemble', [self.model]) if self.model else []
-        self.use_chi_walk = any(any(c.startswith('chi_walk_') for c in part['columns'])
-                                for part in components)
+        all_columns = []
+        for part in components:
+            all_columns.extend(part.get('columns',()))
+            all_columns.extend(part.get('global_columns',()))
+            all_columns.extend(part.get('specialist_columns',()))
+        self.use_chi_walk = any(c.startswith('chi_walk_') for c in all_columns)
+        self.use_extended_features = any(c.startswith('extended__') for c in all_columns)
         self.rotation_tolerance = (self.model.get('chi_walk_rotation_tolerance_rad',-1.0)
                                    if self.model else -1.0)
 
@@ -670,6 +685,13 @@ class RuntimeModel:
             out = self._huge_features(qasm_text)
             if self.use_chi_walk:
                 out.update(self._walk_features(qasm_text,too_large=True))
+            if self.use_extended_features:
+                try:
+                    from extended_features import extract_fast_qasm_features
+                    out.update({'extended__'+key:value for key,value
+                                in extract_fast_qasm_features(qasm_text).items()})
+                except Exception:
+                    pass
             return out
         main = Stats(sequence=include_sequence)
         current = main
@@ -813,6 +835,15 @@ class RuntimeModel:
             # baseline scan itself is unusually slow on a new circuit.
             budget = min(3.0,max(0.0,14.0-(time.perf_counter()-started)))
             out.update(self._walk_features(qasm_text,budget_s=budget))
+        if self.use_extended_features:
+            try:
+                from extended_features import extract_fast_qasm_features
+                out.update({'extended__'+key:value for key,value
+                            in extract_fast_qasm_features(qasm_text).items()})
+            except Exception:
+                # The union model remains usable through its global component
+                # if the optional second structural scan encounters new syntax.
+                pass
         return out
 
     def predict(self, features: dict, threshold: int) -> float:
@@ -825,17 +856,62 @@ class RuntimeModel:
             x = features.copy()
             x['log_threshold'] = math.log2(max(1,threshold))
             x['threshold'] = threshold
+            x['extended__threshold'] = threshold
             if self.use_chi_walk:
                 from chi_walk import select_model_features
                 x.update(select_model_features(features,threshold))
+            def model_vector(columns):
+                return np.array([[math.log1p(max(0,float(x.get(c[4:],0)))) if c.startswith('log_') and c != 'log_threshold'
+                                  else float(x.get(c,0)) for c in columns]],dtype=float)
+
             def predict_component(component):
                 columns = component['columns']
-                vector = np.array([[math.log1p(max(0,float(x.get(c[4:],0)))) if c.startswith('log_') and c != 'log_threshold'
-                                    else float(x.get(c,0)) for c in columns]],dtype=float)
+                vector = model_vector(columns)
                 return float(component['estimator'].predict(vector)[0])
-            if 'ensemble' in self.model:
+
+            if 'threshold_specialists' in self.model:
+                # The known challenge thresholds are stable across train and
+                # holdout.  Blend a global model with a regressor trained only
+                # at the requested threshold in log space, matching the score.
+                global_columns = self.model.get('global_columns',self.model['columns'])
+                specialist_columns = self.model.get('specialist_columns',self.model['columns'])
+                classifier_columns = self.model.get('classifier_columns',specialist_columns)
+                global_log = predict_component({
+                    'columns':global_columns,
+                    'estimator':self.model['global_estimator'],
+                })
+                specialists = self.model['threshold_specialists']
+                key = threshold if threshold in specialists else str(threshold)
+                if key in specialists:
+                    specialist_log = float(specialists[key].predict(
+                        model_vector(specialist_columns))[0])
+                    weight = float(self.model.get('threshold_specialist_weight',.5))
+                    log_seconds = (1-weight)*global_log + weight*specialist_log
+                else:
+                    # Unknown future settings remain usable through the global
+                    # threshold-aware model rather than selecting a wrong expert.
+                    log_seconds = global_log
+
+                classifiers = self.model.get('timeout_classifiers',{})
+                classifier = classifiers.get(threshold,classifiers.get(str(threshold)))
+                if classifier is not None:
+                    vector = model_vector(classifier_columns)
+                    classes = list(classifier.classes_)
+                    probability = (float(classifier.predict_proba(vector)[0,classes.index(1)])
+                                   if 1 in classes else 0.0)
+                    if probability >= float(self.model.get('timeout_probability_cutoff',.3)):
+                        return CAP_SECONDS
+            elif 'ensemble' in self.model:
                 log_seconds = sum(component['weight']*predict_component(component)
                                   for component in self.model['ensemble'])
             else:
                 log_seconds = predict_component(self.model)
         return float(max(1e-4,min(1e7,10**max(-4,min(7,log_seconds)))))
+
+    def predict_interval(self, features: dict, threshold: int):
+        """Return point, lower, and upper seconds from grouped-OOF residuals."""
+        prediction = self.predict(features,threshold)
+        radius = float(self.model.get('interval_log10_radius',.5)) if self.model else .5
+        lower = max(1e-4,10**(math.log10(prediction)-radius))
+        upper = min(1e7,10**(math.log10(prediction)+radius))
+        return prediction,float(lower),float(upper)

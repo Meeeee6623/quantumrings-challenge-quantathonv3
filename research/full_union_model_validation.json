@@ -1,0 +1,93 @@
+{
+  "artifact_version": "full_union_threshold_experts_v1",
+  "rows": 1497,
+  "circuits": 532,
+  "parallel_features": 243,
+  "extended_features": 237,
+  "union_features": 480,
+  "specialist_weight": 0.5,
+  "timeout_probability_cutoff": 0.35,
+  "splits": {
+    "matched": {
+      "parallel_global": {
+        "score": 0.9152014883088754,
+        "timeout_score": 0.7314757177569647,
+        "median_factor_error": 1.108992772522467,
+        "p95_factor_error": 5.6655283778204435,
+        "tenfold_misses": 46,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.9213480512848038,
+          "64": 0.915527864927929,
+          "512": 0.9072866581679733
+        }
+      },
+      "full_union": {
+        "score": 0.9226578010509275,
+        "timeout_score": 0.9446791884430823,
+        "median_factor_error": 1.0783031358193644,
+        "p95_factor_error": 5.208707596763872,
+        "tenfold_misses": 30,
+        "predicted_timeouts": 41,
+        "threshold_scores": {
+          "16": 0.9292375881290026,
+          "64": 0.9201681790083497,
+          "512": 0.9176441296877789
+        }
+      },
+      "paired_bootstrap": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.007456312742052208,
+        "delta_95": [
+          0.0040232506860144795,
+          0.011094655730827633
+        ]
+      }
+    },
+    "structural": {
+      "parallel_global": {
+        "score": 0.7285436922887389,
+        "timeout_score": 0.38770500572681144,
+        "median_factor_error": 2.1125792006227244,
+        "p95_factor_error": 62.4807294524096,
+        "tenfold_misses": 254,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.6688491624198292,
+          "64": 0.7960885483722693,
+          "512": 0.7192533846243458
+        }
+      },
+      "full_union": {
+        "score": 0.7461066950542334,
+        "timeout_score": 0.7367881876471613,
+        "median_factor_error": 1.910003388951452,
+        "p95_factor_error": 80.39813914167334,
+        "tenfold_misses": 233,
+        "predicted_timeouts": 73,
+        "threshold_scores": {
+          "16": 0.6791649092678241,
+          "64": 0.7995842303287907,
+          "512": 0.7628191923941285
+        }
+      },
+      "paired_bootstrap": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.017563002765494377,
+        "delta_95": [
+          -0.0027284118676294588,
+          0.02726994748911202
+        ]
+      }
+    }
+  },
+  "uncertainty": {
+    "method": "fixed-fold conformal-style absolute log10 residual radius",
+    "nominal_coverage": 0.9,
+    "log10_radius": 0.4990904622612953,
+    "multiplicative_factor": 3.1556618699929864,
+    "observed_oof_coverage": 0.8997995991983968
+  },
+  "artifact": "quantathon-harness/artifacts/runtime_model.joblib",
+  "oof_predictions": "research/full_union_model_oof.csv"
+}
