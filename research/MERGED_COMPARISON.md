@@ -1,8 +1,9 @@
 # Merged runtime predictor: comparison and validation
 
 **Continuation update:** This document records the original v1 union selection.
-The current v3 artifact adds narrow reset-family and large-work floors and a
-faster coarse scanner. See [EDGE_CASE_UPDATE.md](EDGE_CASE_UPDATE.md) and the
+The current v4 artifact adds narrow reset-family and large-work floors, a
+guarded structural-template blend, and a faster coarse scanner. See
+[EDGE_CASE_UPDATE.md](EDGE_CASE_UPDATE.md) and the
 fresh paired metrics in `full_union_model_validation.json` for the deployed
 results.
 

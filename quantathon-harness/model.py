@@ -913,6 +913,10 @@ class RuntimeModel:
         references = self.model.get('reset_family_references',()) if self.model else ()
         if references:
             seconds = apply_floor(seconds,features,threshold,references)
+        bank = self.model.get('template_analogue_bank',{}) if self.model else {}
+        if bank:
+            from template_analogues import blend_with_analogues
+            seconds = blend_with_analogues(seconds,features,threshold,bank)
         return seconds
 
     def predict_interval(self, features: dict, threshold: int):

@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'quantathon-harness
 from model import RuntimeModel, estimated_log_chi
 from extended_features import _coarse_prefix_counts
 from runtime_floors import apply_floor, eligible, large_work_floor, runtime_floor
+from template_analogues import blend_with_analogues, signature
 
 
 class FeatureParserTests(unittest.TestCase):
@@ -98,7 +99,7 @@ cMAJ q[0],q[1];
 
     def test_submission_artifact_uses_threshold_experts(self):
         self.assertEqual(self.model.model['artifact_version'],
-                         'full_union_threshold_experts_v3')
+                         'full_union_threshold_experts_v4')
         self.assertEqual(set(self.model.model['threshold_specialists']),{16,64,512})
         self.assertEqual(set(self.model.model['timeout_classifiers']),{16,64,512})
         self.assertAlmostEqual(self.model.model['threshold_specialist_weight'],.5)
@@ -106,6 +107,14 @@ cMAJ q[0],q[1];
         self.assertTrue(any(column.startswith('extended__')
                             for column in self.model.model['specialist_columns']))
         self.assertEqual(len(self.model.model['reset_family_references']),14)
+        self.assertTrue(self.model.model['template_analogue_bank'])
+
+    def test_template_blend_needs_two_same_threshold_analogues(self):
+        features={'n_qubits':4,'ops':100,'two_q':40,'multi_q':0}
+        key=(16,*signature(features))
+        self.assertEqual(blend_with_analogues(4.0,features,16,{key:(2.0,)}),4.0)
+        self.assertEqual(blend_with_analogues(4.0,features,64,{key:(2.0,2.0)}),4.0)
+        self.assertEqual(blend_with_analogues(4.0,features,16,{key:(2.0,2.0)}),20.0)
 
     def test_reset_family_floor_is_narrow_and_threshold_specific(self):
         features = {'resets':65,'multi_q':130,'fingerprint_grover':1.0,'ops':500}

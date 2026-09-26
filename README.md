@@ -50,11 +50,13 @@ starter.  It combines two independent source-QASM feature representations:
   guaranteed threshold (16, 64, 512); and
 - per-threshold timeout classifiers that can emit the 14,400-second cap;
 - narrow lower bounds for reset-heavy search circuits and very large effective
-  operation counts.
+  operation counts; and
+- a guarded blend with training circuits sharing the same structural count
+  signature.
 
-The current predictor scores **0.92431** on fixed circuit-grouped,
+The current predictor scores **0.92479** on fixed circuit-grouped,
 distribution-matched out-of-fold validation, versus **0.92218** for a freshly
-refitted union without the narrow floors. Its structural stress score is
+refitted union without the edge-case adjustments. Its structural stress score is
 **0.74996**. See [`research/EDGE_CASE_UPDATE.md`](research/EDGE_CASE_UPDATE.md)
 for the paired evidence and large-file parser tests;
 [`research/MERGED_COMPARISON.md`](research/MERGED_COMPARISON.md) records the

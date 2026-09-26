@@ -8,7 +8,7 @@ cross-pipeline analysis is in `MERGED_COMPARISON.md`.
 
 The checked-in `quantathon-harness/artifacts/runtime_model.joblib` is now the
 **full-union threshold-expert model**, artifact version
-`full_union_threshold_experts_v3`.  It replaces the previous single global
+`full_union_threshold_experts_v4`.  It replaces the previous single global
 ExtraTrees artifact.
 
 The model uses only QASM-derived quantities and the requested threshold.  It
@@ -30,12 +30,13 @@ per-threshold timeout classifier(480 columns)
  └─ probability >= 0.35 → predict 14,400 seconds
 
 rare reset-heavy search analogue floor + large effective-work floor
+two-reference structural-template blend when matching examples are available
 ```
 
 The continuation analysis, paired metrics, and parser timing are in
 [`EDGE_CASE_UPDATE.md`](EDGE_CASE_UPDATE.md). The table below preserves the
-original v1 comparison for historical context; the current v3 model scores
-**0.92431 matched** and **0.74996 structural stress** on a fresh paired refit.
+original v1 comparison for historical context; the current v4 model scores
+**0.92479 matched** and **0.74996 structural stress** on a fresh paired refit.
 
 Unknown future thresholds fall back safely to the global model.  The challenge
 holdout is expected to use the known thresholds 16, 64, and 512.
@@ -82,6 +83,7 @@ fast path.
 |---|---|
 | `quantathon-harness/model.py` | Runtime integration, blending, timeout routing, intervals |
 | `quantathon-harness/runtime_floors.py` | Narrow reset-family and large-work runtime floors |
+| `quantathon-harness/template_analogues.py` | Guarded structural-template runtime blend |
 | `quantathon-harness/extended_features.py` | Embedded second source-QASM scanner |
 | `quantathon-harness/extended_threshold.py` | Threshold transforms used by that scanner |
 | `quantathon-harness/artifacts/runtime_model.joblib` | Selected fitted artifact |
@@ -138,11 +140,11 @@ run.
    different split definitions as if they were paired.
 4. Preserve the `extended__` namespace.  Some concepts intentionally appear in
    both representations; collapsing them changes the learned model.
-5. Do not present the 0.9912 fitted score as validation. Use the current
-   0.92431 matched OOF and disclose that model choices were made on the
+5. Do not present the fitted score as validation. Use the current
+   0.92479 matched OOF and disclose that model choices were made on the
    available training data.
-6. Current v3 artifact SHA-256:
-   `376bd04fbc8530519a7c57d58b71355ac4c8e4f3df683bffc146f50575fd0cb8`.
+6. Current v4 artifact SHA-256:
+   `3095752d449342ee4333982738b99f92f77f07ed5db9ee94dfaae280474786af`.
 
 ## Recommended challenge-time sequence
 
