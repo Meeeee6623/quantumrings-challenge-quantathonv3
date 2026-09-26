@@ -91,6 +91,11 @@ cached angle and randomness summaries differ only modestly. Aggregate geometry
 alone cannot resolve every backend/runtime effect; a new hard family rule for
 this pair would be unreliable.
 
+A separate [source-level π syntax probe](PI_SYNTAX_PROBE.md) explored nearly
+identical circuits with very different runtimes. Its extra features improved
+structural stress but slightly reduced matched-fold accuracy, so they were not
+added to the selected v5 artifact.
+
 ![Large-file timing and size-bin validation](edge_case_update.png)
 
 ## Operational check

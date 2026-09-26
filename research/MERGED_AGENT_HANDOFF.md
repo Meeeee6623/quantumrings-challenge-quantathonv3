@@ -95,6 +95,7 @@ fast path.
 | `research/extended_features.json` | Cached 532-circuit second-pass features |
 | `research/full_union_model_validation.json` | Machine-readable fixed-fold metrics |
 | `research/full_union_model_oof.csv` | Every fixed-fold prediction |
+| `research/PI_SYNTAX_PROBE.md` | Rejected source-angle syntax experiment and reproducible OOF evidence |
 | `research/training_submission_final.csv` | End-to-end training-library output for current v3 artifact |
 | `research/full_union_feature_columns.json` | Exact ordered input schemas |
 | `research/MERGED_COMPARISON.md` | Full comparison, caveats, and rationale |
