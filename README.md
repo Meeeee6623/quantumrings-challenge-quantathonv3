@@ -52,12 +52,12 @@ starter.  It combines two independent source-QASM feature representations:
 - narrow lower bounds for reset-heavy search circuits and very large effective
   operation counts; and
 - a guarded blend with training circuits sharing the same structural count
-  signature.
+  signature, followed by a small near-basis rotation correction at threshold 512.
 
-The current predictor scores **0.92479** on fixed circuit-grouped,
+The current predictor scores **0.92547** on fixed circuit-grouped,
 distribution-matched out-of-fold validation, versus **0.92218** for a freshly
 refitted union without the edge-case adjustments. Its structural stress score is
-**0.74996**. See [`research/EDGE_CASE_UPDATE.md`](research/EDGE_CASE_UPDATE.md)
+**0.75030**. See [`research/EDGE_CASE_UPDATE.md`](research/EDGE_CASE_UPDATE.md)
 for the paired evidence and large-file parser tests;
 [`research/MERGED_COMPARISON.md`](research/MERGED_COMPARISON.md) records the
 original union-model comparison.

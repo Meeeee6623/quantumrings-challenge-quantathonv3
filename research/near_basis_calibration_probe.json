@@ -1,0 +1,420 @@
+{
+  "threshold_16_factor_0.5": {
+    "matched": {
+      "score_before": 0.9247882369529028,
+      "score_after": 0.9226954907582765,
+      "delta": -0.0020927461946262937,
+      "changed_rows": 25,
+      "helped_rows": 1,
+      "hurt_rows": 24,
+      "changed_circuits": [
+        "149b1e7c.qasm",
+        "1cb3c32c.qasm",
+        "2ea1bf91.qasm",
+        "32f44532.qasm",
+        "46de7f9b.qasm",
+        "5357322a.qasm",
+        "635bd24f.qasm",
+        "6f6328cc.qasm",
+        "6fef948c.qasm",
+        "70d5d461.qasm",
+        "7afdbe61.qasm",
+        "82b89c68.qasm",
+        "884b47f6.qasm",
+        "9a442b56.qasm",
+        "a75c691c.qasm",
+        "ab8a1b3c.qasm",
+        "b7694c8e.qasm",
+        "bd462bd7.qasm",
+        "c20bb346.qasm",
+        "ca0a2ce5.qasm",
+        "ce7207a3.qasm",
+        "d20d9d2e.qasm",
+        "d21812d8.qasm",
+        "ebc18fd7.qasm",
+        "fc5872f2.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "circuit",
+        "delta_merged_minus_current": -0.0020927461946263545,
+        "delta_95": [
+          -0.003009537621273032,
+          -0.0012352152476457592
+        ]
+      }
+    },
+    "structural": {
+      "score_before": 0.749964106355158,
+      "score_after": 0.7485122700148213,
+      "delta": -0.001451836340336632,
+      "changed_rows": 24,
+      "helped_rows": 4,
+      "hurt_rows": 20,
+      "changed_circuits": [
+        "149b1e7c.qasm",
+        "1cb3c32c.qasm",
+        "2ea1bf91.qasm",
+        "32f44532.qasm",
+        "46de7f9b.qasm",
+        "5357322a.qasm",
+        "635bd24f.qasm",
+        "6f6328cc.qasm",
+        "6fef948c.qasm",
+        "7afdbe61.qasm",
+        "82b89c68.qasm",
+        "8fb9e9ac.qasm",
+        "9a442b56.qasm",
+        "a75c691c.qasm",
+        "b11883af.qasm",
+        "b7694c8e.qasm",
+        "bd462bd7.qasm",
+        "c20bb346.qasm",
+        "ca0a2ce5.qasm",
+        "ce7207a3.qasm",
+        "d20d9d2e.qasm",
+        "d21812d8.qasm",
+        "ebc18fd7.qasm",
+        "fc5872f2.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": -0.0014518363403365673,
+        "delta_95": [
+          -0.002875426690038619,
+          0.0012465980967606338
+        ]
+      }
+    }
+  },
+  "threshold_16_factor_0.33": {
+    "matched": {
+      "score_before": 0.9247882369529028,
+      "score_after": 0.921309221726033,
+      "delta": -0.003479015226869775,
+      "changed_rows": 25,
+      "helped_rows": 1,
+      "hurt_rows": 24,
+      "changed_circuits": [
+        "149b1e7c.qasm",
+        "1cb3c32c.qasm",
+        "2ea1bf91.qasm",
+        "32f44532.qasm",
+        "46de7f9b.qasm",
+        "5357322a.qasm",
+        "635bd24f.qasm",
+        "6f6328cc.qasm",
+        "6fef948c.qasm",
+        "70d5d461.qasm",
+        "7afdbe61.qasm",
+        "82b89c68.qasm",
+        "884b47f6.qasm",
+        "9a442b56.qasm",
+        "a75c691c.qasm",
+        "ab8a1b3c.qasm",
+        "b7694c8e.qasm",
+        "bd462bd7.qasm",
+        "c20bb346.qasm",
+        "ca0a2ce5.qasm",
+        "ce7207a3.qasm",
+        "d20d9d2e.qasm",
+        "d21812d8.qasm",
+        "ebc18fd7.qasm",
+        "fc5872f2.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "circuit",
+        "delta_merged_minus_current": -0.0034790152268698474,
+        "delta_95": [
+          -0.0049924804762191246,
+          -0.002087602389811287
+        ]
+      }
+    },
+    "structural": {
+      "score_before": 0.749964106355158,
+      "score_after": 0.7475450366910729,
+      "delta": -0.002419069664085116,
+      "changed_rows": 24,
+      "helped_rows": 4,
+      "hurt_rows": 20,
+      "changed_circuits": [
+        "149b1e7c.qasm",
+        "1cb3c32c.qasm",
+        "2ea1bf91.qasm",
+        "32f44532.qasm",
+        "46de7f9b.qasm",
+        "5357322a.qasm",
+        "635bd24f.qasm",
+        "6f6328cc.qasm",
+        "6fef948c.qasm",
+        "7afdbe61.qasm",
+        "82b89c68.qasm",
+        "8fb9e9ac.qasm",
+        "9a442b56.qasm",
+        "a75c691c.qasm",
+        "b11883af.qasm",
+        "b7694c8e.qasm",
+        "bd462bd7.qasm",
+        "c20bb346.qasm",
+        "ca0a2ce5.qasm",
+        "ce7207a3.qasm",
+        "d20d9d2e.qasm",
+        "d21812d8.qasm",
+        "ebc18fd7.qasm",
+        "fc5872f2.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": -0.0024190696640851877,
+        "delta_95": [
+          -0.004761239560149664,
+          0.0019805320099034645
+        ]
+      }
+    }
+  },
+  "threshold_64_factor_0.5": {
+    "matched": {
+      "score_before": 0.9247882369529028,
+      "score_after": 0.924892103020386,
+      "delta": 0.00010386606748324922,
+      "changed_rows": 7,
+      "helped_rows": 4,
+      "hurt_rows": 3,
+      "changed_circuits": [
+        "6fef948c.qasm",
+        "70d5d461.qasm",
+        "884b47f6.qasm",
+        "ab8a1b3c.qasm",
+        "c20bb346.qasm",
+        "ebc18fd7.qasm",
+        "fc5872f2.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.00010386606748309956,
+        "delta_95": [
+          -0.00039819433822968616,
+          0.0006107331480339364
+        ]
+      }
+    },
+    "structural": {
+      "score_before": 0.749964106355158,
+      "score_after": 0.7524102037281462,
+      "delta": 0.0024460973729881763,
+      "changed_rows": 27,
+      "helped_rows": 26,
+      "hurt_rows": 1,
+      "changed_circuits": [
+        "149b1e7c.qasm",
+        "1cb3c32c.qasm",
+        "2ea1bf91.qasm",
+        "32f44532.qasm",
+        "46de7f9b.qasm",
+        "5357322a.qasm",
+        "635bd24f.qasm",
+        "6f6328cc.qasm",
+        "6fef948c.qasm",
+        "70d5d461.qasm",
+        "7afdbe61.qasm",
+        "82b89c68.qasm",
+        "884b47f6.qasm",
+        "8fb9e9ac.qasm",
+        "9a442b56.qasm",
+        "a75c691c.qasm",
+        "ab8a1b3c.qasm",
+        "b11883af.qasm",
+        "b7694c8e.qasm",
+        "bd462bd7.qasm",
+        "c20bb346.qasm",
+        "ca0a2ce5.qasm",
+        "ce7207a3.qasm",
+        "d20d9d2e.qasm",
+        "d21812d8.qasm",
+        "ebc18fd7.qasm",
+        "fc5872f2.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.0024460973729881594,
+        "delta_95": [
+          -0.0001465830783676528,
+          0.003811439158814452
+        ]
+      }
+    }
+  },
+  "threshold_64_factor_0.33": {
+    "matched": {
+      "score_before": 0.9247882369529028,
+      "score_after": 0.9249523755870052,
+      "delta": 0.00016413863410236207,
+      "changed_rows": 7,
+      "helped_rows": 4,
+      "hurt_rows": 3,
+      "changed_circuits": [
+        "6fef948c.qasm",
+        "70d5d461.qasm",
+        "884b47f6.qasm",
+        "ab8a1b3c.qasm",
+        "c20bb346.qasm",
+        "ebc18fd7.qasm",
+        "fc5872f2.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.00016413863410238188,
+        "delta_95": [
+          -0.0006395191021722398,
+          0.0009753262527794311
+        ]
+      }
+    },
+    "structural": {
+      "score_before": 0.749964106355158,
+      "score_after": 0.7536093162037064,
+      "delta": 0.0036452098485484363,
+      "changed_rows": 27,
+      "helped_rows": 25,
+      "hurt_rows": 2,
+      "changed_circuits": [
+        "149b1e7c.qasm",
+        "1cb3c32c.qasm",
+        "2ea1bf91.qasm",
+        "32f44532.qasm",
+        "46de7f9b.qasm",
+        "5357322a.qasm",
+        "635bd24f.qasm",
+        "6f6328cc.qasm",
+        "6fef948c.qasm",
+        "70d5d461.qasm",
+        "7afdbe61.qasm",
+        "82b89c68.qasm",
+        "884b47f6.qasm",
+        "8fb9e9ac.qasm",
+        "9a442b56.qasm",
+        "a75c691c.qasm",
+        "ab8a1b3c.qasm",
+        "b11883af.qasm",
+        "b7694c8e.qasm",
+        "bd462bd7.qasm",
+        "c20bb346.qasm",
+        "ca0a2ce5.qasm",
+        "ce7207a3.qasm",
+        "d20d9d2e.qasm",
+        "d21812d8.qasm",
+        "ebc18fd7.qasm",
+        "fc5872f2.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.003645209848548445,
+        "delta_95": [
+          -0.0003663958313819197,
+          0.005934716385385625
+        ]
+      }
+    }
+  },
+  "threshold_512_factor_0.5": {
+    "matched": {
+      "score_before": 0.9247882369529028,
+      "score_after": 0.9254718850769831,
+      "delta": 0.0006836481240802827,
+      "changed_rows": 7,
+      "helped_rows": 7,
+      "hurt_rows": 0,
+      "changed_circuits": [
+        "6fef948c.qasm",
+        "70d5d461.qasm",
+        "884b47f6.qasm",
+        "8fb9e9ac.qasm",
+        "ab8a1b3c.qasm",
+        "c20bb346.qasm",
+        "ebc18fd7.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.0006836481240800602,
+        "delta_95": [
+          0.0002024411537753741,
+          0.001241633269174114
+        ]
+      }
+    },
+    "structural": {
+      "score_before": 0.749964106355158,
+      "score_after": 0.7502992009584047,
+      "delta": 0.0003350946032467661,
+      "changed_rows": 5,
+      "helped_rows": 4,
+      "hurt_rows": 0,
+      "changed_circuits": [
+        "6fef948c.qasm",
+        "8fb9e9ac.qasm",
+        "b11883af.qasm",
+        "c20bb346.qasm",
+        "ebc18fd7.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.00033509460324682616,
+        "delta_95": [
+          0.0,
+          0.0006599286716808292
+        ]
+      }
+    }
+  },
+  "threshold_512_factor_0.33": {
+    "matched": {
+      "score_before": 0.9247882369529028,
+      "score_after": 0.9256597085299764,
+      "delta": 0.0008714715770735681,
+      "changed_rows": 7,
+      "helped_rows": 7,
+      "hurt_rows": 0,
+      "changed_circuits": [
+        "6fef948c.qasm",
+        "70d5d461.qasm",
+        "884b47f6.qasm",
+        "8fb9e9ac.qasm",
+        "ab8a1b3c.qasm",
+        "c20bb346.qasm",
+        "ebc18fd7.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.00087147157707351,
+        "delta_95": [
+          0.00027001093555166923,
+          0.0016453248963043928
+        ]
+      }
+    },
+    "structural": {
+      "score_before": 0.749964106355158,
+      "score_after": 0.7505980548293544,
+      "delta": 0.0006339484741963997,
+      "changed_rows": 5,
+      "helped_rows": 5,
+      "hurt_rows": 0,
+      "changed_circuits": [
+        "6fef948c.qasm",
+        "8fb9e9ac.qasm",
+        "b11883af.qasm",
+        "c20bb346.qasm",
+        "ebc18fd7.qasm"
+      ],
+      "paired_bootstrap": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.0006339484741962654,
+        "delta_95": [
+          0.0,
+          0.001468023446753522
+        ]
+      }
+    }
+  }
+}

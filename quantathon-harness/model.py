@@ -917,6 +917,8 @@ class RuntimeModel:
         if bank:
             from template_analogues import blend_with_analogues
             seconds = blend_with_analogues(seconds,features,threshold,bank)
+        from rotation_calibration import calibrate_near_basis_runtime
+        seconds = calibrate_near_basis_runtime(seconds,features,threshold)
         return seconds
 
     def predict_interval(self, features: dict, threshold: int):

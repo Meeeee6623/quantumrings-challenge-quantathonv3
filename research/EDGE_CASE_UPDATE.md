@@ -1,11 +1,12 @@
 # Edge-case continuation: large files and reset-heavy search circuits
 
 This update starts from the full-union handoff in `MERGED_AGENT_HANDOFF.md`.
-The selected artifact is `full_union_threshold_experts_v4` and uses the same
+The selected artifact is `full_union_threshold_experts_v5` and uses the same
 480 learned columns, global/specialist blend, and timeout router. It adds two
-narrow runtime floors, a guarded structural-template analogue blend, and a
-faster large-file secondary scanner. No filename, benchmark source, or family
-label enters the predictor.
+narrow runtime floors, a guarded structural-template analogue blend, a
+threshold-specific near-basis rotation correction, and a faster large-file
+secondary scanner. No filename, benchmark source, or family label enters the
+predictor.
 
 ## What changed
 
@@ -14,8 +15,8 @@ label enters the predictor.
    features matched on all 24 coarse-mode training circuits. Controlled
    microbenchmarks reduced the scanner from 2.49 to 1.10 seconds on a 51.7 MB
    decoded file and from 10.88 to 3.47 seconds on a 218 MB file. The 532-circuit
-   final 532-circuit harness run had 0 parser-cap violations, maximum 14.04
-   seconds (median 0.093, p95 3.23). The earlier
+   final 532-circuit harness run had 0 parser-cap violations, maximum 14.03
+   seconds (median 0.094, p95 3.23). The earlier
    handoff run had 9 violations, maximum 38.32 seconds; those whole-run timings
    were collected under different machine conditions and are not a controlled
    A/B estimate.
@@ -44,6 +45,14 @@ label enters the predictor.
    The artifact stores count signatures and log runtimes, never filenames. The
    rejected variants are reproducible in `probe_template_analogues.py` and
    `template_analogue_probe.json`.
+5. At threshold 512, circuits with at least 1,000 operations and at least 90%
+   of parsed rotations near integer multiples of π were often overpredicted.
+   For non-timeout predictions of at least one second, a conservative 0.5
+   multiplier improved all 7 changed matched rows and 4 of 5 changed
+   structural-stress rows (the fifth was unchanged by score clipping). The
+   same factor at threshold 16 hurt both splits, so it is not applied there.
+   The alternate factors and thresholds are in
+   `probe_near_basis_calibration.py` and `near_basis_calibration_probe.json`.
 
 ## Fixed-fold evidence
 
@@ -56,6 +65,7 @@ Freshly refitted results in `full_union_model_validation.json` on the same
 | Plus reset-family floor | 0.92400 | 0.74685 | 30 |
 | Plus large-work floor | **0.92431** | **0.74996** | **29** |
 | Plus two-reference template blend | **0.92479** | **0.74996** | **29** |
+| Plus near-basis rotation correction | **0.92547** | **0.75030** | **28** |
 
 The reset floor changed 4 matched rows and 5 structural rows. The large-work
 floor changed 1 matched row and 14 structural rows. Each floor improved all of
@@ -63,6 +73,9 @@ its changed rows in these folds. The template blend changed 584 matched rows;
 its paired gain was +0.00048 with circuit-bootstrap 95% interval
 [+0.00028, +0.00071]. It changed no structural-stress rows because this
 signature does not cross the structural-cluster folds. The matched
+near-basis correction adds +0.00068, with a circuit-bootstrap 95% interval
+[+0.00020, +0.00124]; the 12-cluster stress estimate adds +0.00034 with an
+interval that includes zero. This is a small, post-selection result. The matched
 circuit-bootstrap 95% interval for
 both floors versus the refitted full union is [+0.00031, +0.00470]; the
 12-cluster structural-stress interval is [+0.00114, +0.01354]. These are
@@ -83,9 +96,9 @@ this pair would be unreliable.
 ## Operational check
 
 `uv run --locked python -m unittest discover -s research -p 'test_*.py' -q`
-passes 30 tests. The final full harness produced all 1,596 requested
-predictions, all positive and finite, with maximum prediction time 0.080
-seconds. Its fitted same-data score is 0.9889; that number verifies
+passes 31 tests. The final full harness produced all 1,596 requested
+predictions, all positive and finite, with maximum prediction time 0.081
+seconds. Its fitted same-data score is 0.9886; that number verifies
 serialization and execution, not generalization. It is lower than v3's
 0.9912 because the template blend smooths some memorized training predictions;
 the circuit-held-out matched score is the relevant comparison. See

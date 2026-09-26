@@ -9,6 +9,7 @@ from model import RuntimeModel, estimated_log_chi
 from extended_features import _coarse_prefix_counts
 from runtime_floors import apply_floor, eligible, large_work_floor, runtime_floor
 from template_analogues import blend_with_analogues, signature
+from rotation_calibration import calibrate_near_basis_runtime
 
 
 class FeatureParserTests(unittest.TestCase):
@@ -99,7 +100,7 @@ cMAJ q[0],q[1];
 
     def test_submission_artifact_uses_threshold_experts(self):
         self.assertEqual(self.model.model['artifact_version'],
-                         'full_union_threshold_experts_v4')
+                         'full_union_threshold_experts_v5')
         self.assertEqual(set(self.model.model['threshold_specialists']),{16,64,512})
         self.assertEqual(set(self.model.model['timeout_classifiers']),{16,64,512})
         self.assertAlmostEqual(self.model.model['threshold_specialist_weight'],.5)
@@ -115,6 +116,15 @@ cMAJ q[0],q[1];
         self.assertEqual(blend_with_analogues(4.0,features,16,{key:(2.0,)}),4.0)
         self.assertEqual(blend_with_analogues(4.0,features,64,{key:(2.0,2.0)}),4.0)
         self.assertEqual(blend_with_analogues(4.0,features,16,{key:(2.0,2.0)}),20.0)
+
+    def test_near_basis_calibration_has_threshold_and_work_guards(self):
+        features={'chi_walk_rot_near_frac':1.0,'ops':2000}
+        self.assertEqual(calibrate_near_basis_runtime(10.0,features,512),5.0)
+        self.assertEqual(calibrate_near_basis_runtime(10.0,features,16),10.0)
+        self.assertEqual(calibrate_near_basis_runtime(.5,features,512),.5)
+        self.assertEqual(calibrate_near_basis_runtime(14400.0,features,512),14400.0)
+        features['ops']=999
+        self.assertEqual(calibrate_near_basis_runtime(10.0,features,512),10.0)
 
     def test_reset_family_floor_is_narrow_and_threshold_specific(self):
         features = {'resets':65,'multi_q':130,'fingerprint_grover':1.0,'ops':500}

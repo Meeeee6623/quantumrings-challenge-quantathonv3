@@ -23,7 +23,8 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / 'quantathon-harness'),str(ROOT / 'research')]
-from chi_walk import BASIS_ROTATION_TOLERANCE  # noqa: E402
+from chi_walk import BASIS_ROTATION_TOLERANCE, model_features  # noqa: E402
+from rotation_calibration import calibrate_near_basis_runtime  # noqa: E402
 from runtime_floors import apply_floor, eligible, large_work_floor  # noqa: E402
 from template_analogues import blend_with_analogues, signature  # noqa: E402
 from train_merged_model import (  # noqa: E402
@@ -96,6 +97,12 @@ def template_fold_predictions(predicted_seconds, rows, features, assigned):
     return adjusted
 
 
+def near_basis_predictions(predicted_seconds, rows, features):
+    return np.asarray([calibrate_near_basis_runtime(
+        predicted_seconds[i],features[row['filename']],row['threshold'])
+        for i,row in enumerate(rows)])
+
+
 def load_extended_matrix(rows, thresholds):
     if not EXTENDED.exists():
         raise SystemExit('missing research/extended_features.json; run '
@@ -143,6 +150,7 @@ def cross_predict(parallel_X, union_X, y, timeout, thresholds, names, rows,
     adjusted = floor_fold_predictions(seconds,rows,features,assigned)
     large_adjusted = large_work_predictions(adjusted,rows,features)
     template_adjusted = template_fold_predictions(large_adjusted,rows,features,assigned)
+    basis_adjusted = near_basis_predictions(template_adjusted,rows,features)
     return {
         'global_log':global_log,
         'specialist_log':specialist_log,
@@ -151,6 +159,7 @@ def cross_predict(parallel_X, union_X, y, timeout, thresholds, names, rows,
         'adjusted_seconds':adjusted,
         'large_adjusted_seconds':large_adjusted,
         'template_adjusted_seconds':template_adjusted,
+        'basis_adjusted_seconds':basis_adjusted,
     }
 
 
@@ -170,7 +179,7 @@ def fit_artifact(parallel_X, union_X, parallel_columns, union_columns,
         classifier.fit(union_X[mask],timeout[mask].astype(int))
         classifiers[threshold] = classifier
     artifact = {
-        'artifact_version':'full_union_threshold_experts_v4',
+        'artifact_version':'full_union_threshold_experts_v5',
         'columns':union_columns,
         'global_columns':parallel_columns,
         'specialist_columns':union_columns,
@@ -198,13 +207,16 @@ def fit_artifact(parallel_X, union_X, parallel_columns, union_columns,
 def main():
     rows, parallel_X, parallel_columns, y, timeout, thresholds, names = load_training_table()
     features = json.loads((ROOT / 'research' / 'features.json').read_text())
+    walks = json.loads((ROOT / 'research' / 'chi_walk_angle_cache.json').read_text())['tables']
+    for name,walk in walks.items():
+        features[name]['chi_walk_rot_near_frac'] = model_features(walk)['chi_walk_rot_near_frac']
     extended_X, extended_columns = load_extended_matrix(rows,thresholds)
     union_X = np.column_stack((parallel_X,extended_X))
     union_columns = parallel_columns+extended_columns
     fold_by_name = load_fold_table()
     predictions = {}
     report = {
-        'artifact_version':'full_union_threshold_experts_v4',
+        'artifact_version':'full_union_threshold_experts_v5',
         'rows':len(rows),
         'circuits':len(set(names)),
         'parallel_features':len(parallel_columns),
@@ -225,6 +237,10 @@ def main():
             'reset_family_floor':metrics(y,timeout,thresholds,pred['adjusted_seconds']),
             'both_floors':metrics(y,timeout,thresholds,pred['large_adjusted_seconds']),
             'template_analogues':metrics(y,timeout,thresholds,pred['template_adjusted_seconds']),
+            'near_basis_calibration':metrics(y,timeout,thresholds,pred['basis_adjusted_seconds']),
+            'basis_vs_template':paired_bootstrap(
+                y,timeout,names,fold_by_name,split,pred['template_adjusted_seconds'],
+                pred['basis_adjusted_seconds']),
             'template_vs_both_floors':paired_bootstrap(
                 y,timeout,names,fold_by_name,split,pred['large_adjusted_seconds'],
                 pred['template_adjusted_seconds']),
@@ -239,7 +255,7 @@ def main():
                 pred['adjusted_seconds']),
             'paired_bootstrap':paired_bootstrap(
                 y,timeout,names,fold_by_name,split,current_seconds,
-                pred['template_adjusted_seconds']),
+                pred['basis_adjusted_seconds']),
         }
         report['splits'][split] = split_report
         print(split,json.dumps(split_report,indent=2),flush=True)
@@ -250,7 +266,7 @@ def main():
             fields += [f'{split}_global_pred_s',f'{split}_specialist_pred_s',
                        f'{split}_timeout_probability',f'{split}_full_union_pred_s',
                        f'{split}_reset_floor_pred_s',f'{split}_both_floors_pred_s',
-                       f'{split}_template_pred_s']
+                       f'{split}_template_pred_s',f'{split}_basis_pred_s']
         writer = csv.DictWriter(file,fieldnames=fields,lineterminator='\n')
         writer.writeheader()
         for i,row in enumerate(rows):
@@ -265,9 +281,10 @@ def main():
                     f'{split}_reset_floor_pred_s':predictions[split]['adjusted_seconds'][i],
                     f'{split}_both_floors_pred_s':predictions[split]['large_adjusted_seconds'][i],
                     f'{split}_template_pred_s':predictions[split]['template_adjusted_seconds'][i],
+                    f'{split}_basis_pred_s':predictions[split]['basis_adjusted_seconds'][i],
                 })
             writer.writerow(entry)
-    matched_seconds = predictions['matched']['template_adjusted_seconds']
+    matched_seconds = predictions['matched']['basis_adjusted_seconds']
     interval_radius = float(np.quantile(
         np.abs(np.log10(np.maximum(1e-9,matched_seconds))-y),.90))
     report['uncertainty'] = {

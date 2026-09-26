@@ -59,13 +59,13 @@ def main():
                                    float(row['matched_full_union_pred_s']))
                              for row in subset]))
         corrected.append(np.mean([score(float(row['actual_s']),
-                                        float(row['matched_template_pred_s']))
+                                        float(row['matched_basis_pred_s']))
                                   for row in subset]))
     ax=axes[1]
     positions=np.arange(len(bins))
     width=.36
     ax.bar(positions-width/2,base,width,color='#64748b',label='Full union')
-    ax.bar(positions+width/2,corrected,width,color='#0891b2',label='Floors + template blend')
+    ax.bar(positions+width/2,corrected,width,color='#0891b2',label='Selected v5 predictor')
     ax.set_xticks(positions,labels)
     ax.set_ylim(.65,1.0)
     ax.set(ylabel='Matched out-of-fold score',title='Accuracy by decoded file size')
