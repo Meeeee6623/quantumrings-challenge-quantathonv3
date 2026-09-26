@@ -1,0 +1,5778 @@
+{
+  "method": "training-fold-only same-threshold neighbor labels; label-free feature scaling on all released QASM; exact-template rows untouched",
+  "splits": {
+    "core": {
+      "matched": {
+        "baseline_score": 0.9261526527252997,
+        "top_10": [
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 217,
+            "score": 0.9258925588643686
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 217,
+            "score": 0.9258925588643686
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 217,
+            "score": 0.9258925588643686
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 213,
+            "score": 0.9257358875802865
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 217,
+            "score": 0.9249520699951006
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 217,
+            "score": 0.9249520699951006
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 217,
+            "score": 0.9249520699951006
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 213,
+            "score": 0.9247807883834107
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 379,
+            "score": 0.9244745304843587
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 379,
+            "score": 0.9244745304843587
+          }
+        ],
+        "all": [
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 217,
+            "score": 0.9258925588643686
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 217,
+            "score": 0.9258925588643686
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 217,
+            "score": 0.9258925588643686
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 213,
+            "score": 0.9257358875802865
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 217,
+            "score": 0.9249520699951006
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 217,
+            "score": 0.9249520699951006
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 217,
+            "score": 0.9249520699951006
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 213,
+            "score": 0.9247807883834107
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 379,
+            "score": 0.9244745304843587
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 379,
+            "score": 0.9244745304843587
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 379,
+            "score": 0.9244745304843587
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 359,
+            "score": 0.9244512601343876
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 360,
+            "score": 0.9242937307287152
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 360,
+            "score": 0.9242937307287152
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 353,
+            "score": 0.9242329939624605
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 366,
+            "score": 0.9242131619277408
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 217,
+            "score": 0.9238724228808896
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 217,
+            "score": 0.9238724228808896
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 217,
+            "score": 0.9238724228808896
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 213,
+            "score": 0.9237496065099265
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 542,
+            "score": 0.9230864864502905
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 521,
+            "score": 0.9230262832790387
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 543,
+            "score": 0.9229289570446181
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 543,
+            "score": 0.9229289570446181
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 379,
+            "score": 0.92167906878416
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 379,
+            "score": 0.92167906878416
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 379,
+            "score": 0.92167906878416
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 359,
+            "score": 0.9216072225743009
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 353,
+            "score": 0.921312751186921
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 366,
+            "score": 0.9212940113813513
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 360,
+            "score": 0.9212921637629563
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 360,
+            "score": 0.9212921637629563
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 379,
+            "score": 0.9192632285299981
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 379,
+            "score": 0.9192632285299981
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 379,
+            "score": 0.9192632285299981
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 366,
+            "score": 0.9188718604689713
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 359,
+            "score": 0.9185545396640492
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 353,
+            "score": 0.9183209457924983
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 360,
+            "score": 0.9180819514470322
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 360,
+            "score": 0.9180819514470322
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 542,
+            "score": 0.9179538692953358
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 521,
+            "score": 0.9178700068910156
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 543,
+            "score": 0.9176388104839912
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 543,
+            "score": 0.9176388104839912
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 798,
+            "score": 0.9169212536218883
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 798,
+            "score": 0.9166604795392311
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 905,
+            "score": 0.9145374984050246
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 798,
+            "score": 0.9140661885505253
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 798,
+            "score": 0.9140661885505253
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 798,
+            "score": 0.9140661885505253
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9140424567474824
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9140424567474824
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 905,
+            "score": 0.9136291920507355
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 521,
+            "score": 0.913235033850414
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 542,
+            "score": 0.9131582136548422
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9130998222856781
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9130998222856781
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 543,
+            "score": 0.9126856254378252
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 543,
+            "score": 0.9126856254378252
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 905,
+            "score": 0.9112330392618317
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 905,
+            "score": 0.9112330392618317
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 905,
+            "score": 0.9112330392618317
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9107429756866872
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9107429756866872
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9107429756866872
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9107429756866872
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9107429756866872
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9107429756866872
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 798,
+            "score": 0.9037768346415047
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 798,
+            "score": 0.9026134734006531
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 905,
+            "score": 0.8980324500021496
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 798,
+            "score": 0.8974051170616834
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 798,
+            "score": 0.8974051170616834
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 798,
+            "score": 0.8974051170616834
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.8962707972600796
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.8962707972600796
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 905,
+            "score": 0.8953348101926615
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.893581383035834
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.893581383035834
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 905,
+            "score": 0.8910245696963192
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 905,
+            "score": 0.8910245696963192
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 905,
+            "score": 0.8910245696963192
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 798,
+            "score": 0.8906416978352717
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.8892728731190446
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.8892728731190446
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.8892728731190446
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.8892728731190446
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.8892728731190446
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.8892728731190446
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 798,
+            "score": 0.8889941466471529
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 798,
+            "score": 0.8818856639172643
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 798,
+            "score": 0.8818856639172643
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 798,
+            "score": 0.8818856639172643
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 905,
+            "score": 0.8816791534050972
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8787887415115021
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8787887415115021
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 905,
+            "score": 0.8778564933453682
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8749784198296369
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8749784198296369
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 905,
+            "score": 0.8723691968917471
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 905,
+            "score": 0.8723691968917471
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 905,
+            "score": 0.8723691968917471
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.869493719245345
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.869493719245345
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.869493719245345
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.869493719245345
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.869493719245345
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.869493719245345
+          }
+        ],
+        "rows_without_exact_template": 913
+      },
+      "structural": {
+        "baseline_score": 0.7553686958374756,
+        "top_10": [
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 284,
+            "score": 0.76018403641236
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 284,
+            "score": 0.76018403641236
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 284,
+            "score": 0.7599563592769405
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 284,
+            "score": 0.7599563592769405
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 269,
+            "score": 0.7597168142596591
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 269,
+            "score": 0.759139499911149
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 200,
+            "score": 0.7587996965890265
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 200,
+            "score": 0.7583962382580177
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 301,
+            "score": 0.7580655812344572
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 301,
+            "score": 0.7580655812344572
+          }
+        ],
+        "all": [
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 284,
+            "score": 0.76018403641236
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 284,
+            "score": 0.76018403641236
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 284,
+            "score": 0.7599563592769405
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 284,
+            "score": 0.7599563592769405
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 269,
+            "score": 0.7597168142596591
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 269,
+            "score": 0.759139499911149
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 200,
+            "score": 0.7587996965890265
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 200,
+            "score": 0.7583962382580177
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 301,
+            "score": 0.7580655812344572
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 301,
+            "score": 0.7580655812344572
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 290,
+            "score": 0.7579442028433524
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 222,
+            "score": 0.7570813492545186
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 290,
+            "score": 0.7568222306208345
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 301,
+            "score": 0.7567934743707639
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 301,
+            "score": 0.7567934743707639
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 156,
+            "score": 0.7565308157308336
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 161,
+            "score": 0.7563564794449728
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 161,
+            "score": 0.7563564794449728
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 222,
+            "score": 0.7562650368661632
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 156,
+            "score": 0.7557698082985681
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 111,
+            "score": 0.755515377903771
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 161,
+            "score": 0.7554606341051562
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 161,
+            "score": 0.7554606341051562
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 111,
+            "score": 0.755107772969762
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 200,
+            "score": 0.7550465453903388
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 111,
+            "score": 0.7544496425388365
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 615,
+            "score": 0.754006868027797
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 617,
+            "score": 0.754006868027797
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 156,
+            "score": 0.7532744592183633
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 161,
+            "score": 0.7530750197780912
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 161,
+            "score": 0.7530750197780912
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 222,
+            "score": 0.7528564419104102
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 592,
+            "score": 0.7527823437721746
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 284,
+            "score": 0.7527517535458428
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 284,
+            "score": 0.7527517535458428
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 269,
+            "score": 0.7523089231258581
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 503,
+            "score": 0.7517066822240072
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 290,
+            "score": 0.7516850807412021
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 301,
+            "score": 0.7514388306431583
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 301,
+            "score": 0.7514388306431583
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1491,
+            "score": 0.750305065369719
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7501638885987322
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1402,
+            "score": 0.7496678811568628
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1168,
+            "score": 0.7495412612077763
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7489040341698985
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1491,
+            "score": 0.7486740545033261
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1402,
+            "score": 0.7462467741771409
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1168,
+            "score": 0.7456613576489741
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 615,
+            "score": 0.7446149793355074
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 617,
+            "score": 0.7446149793355074
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 592,
+            "score": 0.74342222962384
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 503,
+            "score": 0.7432157491358011
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.733501112880701
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.733501112880701
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.733501112880701
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 1491,
+            "score": 0.7332597212850038
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 1491,
+            "score": 0.7332597212850038
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1491,
+            "score": 0.7332597212850038
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 1168,
+            "score": 0.731895311628288
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 1168,
+            "score": 0.731895311628288
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1168,
+            "score": 0.731895311628288
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 1402,
+            "score": 0.731074759930288
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 1402,
+            "score": 0.731074759930288
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1402,
+            "score": 0.731074759930288
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 503,
+            "score": 0.7293569266397137
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 592,
+            "score": 0.7271466509283274
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 615,
+            "score": 0.7270384523559759
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 617,
+            "score": 0.7270384523559759
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1168,
+            "score": 0.7244272314293871
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1402,
+            "score": 0.7219672693628192
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1491,
+            "score": 0.7197958812903231
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.7196193143162153
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1168,
+            "score": 0.7139907468288255
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.7131245666512267
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1491,
+            "score": 0.7125588207502163
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1402,
+            "score": 0.7122695970808454
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1168,
+            "score": 0.6922656369002264
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 1168,
+            "score": 0.6878796128550773
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 1168,
+            "score": 0.6878796128550773
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1168,
+            "score": 0.6878796128550773
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1402,
+            "score": 0.686569730486466
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.6839034760379019
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.6839034760379019
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.6839034760379019
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 1491,
+            "score": 0.6833149062786419
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 1491,
+            "score": 0.6833149062786419
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1491,
+            "score": 0.6833149062786419
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 1402,
+            "score": 0.6818581828702273
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 1402,
+            "score": 0.6818581828702273
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1402,
+            "score": 0.6818581828702273
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1491,
+            "score": 0.6804459810375647
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6802340238603359
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1168,
+            "score": 0.6723729943285714
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1402,
+            "score": 0.6677329400587777
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6658632165326721
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1491,
+            "score": 0.6649617043972236
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 1168,
+            "score": 0.6367513578257799
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 1168,
+            "score": 0.6367513578257799
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1168,
+            "score": 0.6367513578257799
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6251017931507175
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6251017931507175
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6251017931507175
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 1402,
+            "score": 0.6247247803511218
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 1402,
+            "score": 0.6247247803511218
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1402,
+            "score": 0.6247247803511218
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 1491,
+            "score": 0.6241660452278943
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 1491,
+            "score": 0.6241660452278943
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1491,
+            "score": 0.6241660452278943
+          }
+        ],
+        "rows_without_exact_template": 1497
+      }
+    },
+    "gates": {
+      "matched": {
+        "baseline_score": 0.9261526527252997,
+        "top_10": [
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 364,
+            "score": 0.9267094951055119
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 523,
+            "score": 0.9266645930123255
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 351,
+            "score": 0.9265935151795645
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 368,
+            "score": 0.9265868559319378
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 368,
+            "score": 0.9265868559319378
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 366,
+            "score": 0.9264342429891765
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 244,
+            "score": 0.9264182021909977
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 528,
+            "score": 0.926406683862014
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 528,
+            "score": 0.926406683862014
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 499,
+            "score": 0.9263866138703056
+          }
+        ],
+        "all": [
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 364,
+            "score": 0.9267094951055119
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 523,
+            "score": 0.9266645930123255
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 351,
+            "score": 0.9265935151795645
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 368,
+            "score": 0.9265868559319378
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 368,
+            "score": 0.9265868559319378
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 366,
+            "score": 0.9264342429891765
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 244,
+            "score": 0.9264182021909977
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 528,
+            "score": 0.926406683862014
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 528,
+            "score": 0.926406683862014
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 499,
+            "score": 0.9263866138703056
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 353,
+            "score": 0.9263829599783833
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 235,
+            "score": 0.9263441665216696
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 364,
+            "score": 0.9263353694916979
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 370,
+            "score": 0.9263067390752155
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 370,
+            "score": 0.9263067390752155
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 244,
+            "score": 0.9262353506832264
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 247,
+            "score": 0.9262212927225224
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 247,
+            "score": 0.9262212927225224
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 351,
+            "score": 0.9261657263012693
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 235,
+            "score": 0.9261495960060365
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 247,
+            "score": 0.9259678559703962
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 247,
+            "score": 0.9259678559703962
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 368,
+            "score": 0.9259045547084818
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 368,
+            "score": 0.9259045547084818
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 244,
+            "score": 0.925877522592518
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 235,
+            "score": 0.9257800489074663
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 247,
+            "score": 0.925676841131999
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 247,
+            "score": 0.925676841131999
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 366,
+            "score": 0.9256710283282781
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 353,
+            "score": 0.9256307789681579
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 499,
+            "score": 0.925230992680817
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 370,
+            "score": 0.9252304840642883
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 370,
+            "score": 0.9252304840642883
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 364,
+            "score": 0.9251664094467945
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 523,
+            "score": 0.9250676602508776
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 895,
+            "score": 0.9249779114314255
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 895,
+            "score": 0.9249779114314255
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 895,
+            "score": 0.9249779114314255
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 351,
+            "score": 0.9249431029918846
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 810,
+            "score": 0.924688748816998
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 810,
+            "score": 0.924688748816998
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 810,
+            "score": 0.924688748816998
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 368,
+            "score": 0.9245648175506024
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 368,
+            "score": 0.9245648175506024
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 910,
+            "score": 0.9244558540830383
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 910,
+            "score": 0.9244558540830383
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 910,
+            "score": 0.9244558540830383
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 528,
+            "score": 0.9243663055141867
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 528,
+            "score": 0.9243663055141867
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 366,
+            "score": 0.9242691752249477
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 353,
+            "score": 0.9242399595155005
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9240962624311728
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9240962624311728
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9240962624311728
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 370,
+            "score": 0.9236529891075951
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 370,
+            "score": 0.9236529891075951
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 499,
+            "score": 0.9228720563972103
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 810,
+            "score": 0.9227958573043666
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 523,
+            "score": 0.9221539580258484
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 528,
+            "score": 0.9211465561994442
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 528,
+            "score": 0.9211465561994442
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 895,
+            "score": 0.9211284057927117
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 810,
+            "score": 0.9209985834303835
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 910,
+            "score": 0.920629258977223
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9200114094296081
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 895,
+            "score": 0.9195370064914989
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 910,
+            "score": 0.9190190153676888
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9184917406073297
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 810,
+            "score": 0.9180716484910454
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 810,
+            "score": 0.9180716484910454
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 810,
+            "score": 0.9180716484910454
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 895,
+            "score": 0.9157167224180055
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 895,
+            "score": 0.9157167224180055
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 895,
+            "score": 0.9157167224180055
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 810,
+            "score": 0.9142963431805746
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 910,
+            "score": 0.9136493168522386
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 910,
+            "score": 0.9136493168522386
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 910,
+            "score": 0.9136493168522386
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9129301335485076
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9129301335485076
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9129301335485076
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 810,
+            "score": 0.9110149638084593
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 895,
+            "score": 0.9083356543246089
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 910,
+            "score": 0.9068498228958222
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 810,
+            "score": 0.9062920689518925
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 810,
+            "score": 0.9062920689518925
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 810,
+            "score": 0.9062920689518925
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9058014792835742
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 895,
+            "score": 0.9054232043980867
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 910,
+            "score": 0.9040631810022444
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9030622494683905
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 810,
+            "score": 0.9029830285616038
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 895,
+            "score": 0.9002695187656303
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 895,
+            "score": 0.9002695187656303
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 895,
+            "score": 0.9002695187656303
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 810,
+            "score": 0.8991396982747599
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 910,
+            "score": 0.896604366019136
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 910,
+            "score": 0.896604366019136
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 910,
+            "score": 0.896604366019136
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8956672164099391
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8956672164099391
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8956672164099391
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 895,
+            "score": 0.892841645706942
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 910,
+            "score": 0.8905528814790671
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 895,
+            "score": 0.8895748297793082
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8892781143114936
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 910,
+            "score": 0.8878021217797407
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8865477331548395
+          }
+        ],
+        "rows_without_exact_template": 913
+      },
+      "structural": {
+        "baseline_score": 0.7553686958374756,
+        "top_10": [
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 474,
+            "score": 0.7805892186204758
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 350,
+            "score": 0.7770543664038548
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 474,
+            "score": 0.7759124009265005
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 583,
+            "score": 0.7741348958261959
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 586,
+            "score": 0.7736332116182635
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 350,
+            "score": 0.7720854240565413
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 301,
+            "score": 0.7713939972103631
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 425,
+            "score": 0.7710442691275247
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 425,
+            "score": 0.7710442691275247
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 583,
+            "score": 0.7698733292738534
+          }
+        ],
+        "all": [
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 474,
+            "score": 0.7805892186204758
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 350,
+            "score": 0.7770543664038548
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 474,
+            "score": 0.7759124009265005
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 583,
+            "score": 0.7741348958261959
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 586,
+            "score": 0.7736332116182635
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 350,
+            "score": 0.7720854240565413
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 301,
+            "score": 0.7713939972103631
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 425,
+            "score": 0.7710442691275247
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 425,
+            "score": 0.7710442691275247
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 583,
+            "score": 0.7698733292738534
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 583,
+            "score": 0.7693914840474014
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 425,
+            "score": 0.769227540944865
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 425,
+            "score": 0.769227540944865
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 586,
+            "score": 0.7691406419434352
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 586,
+            "score": 0.7691208029619547
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 301,
+            "score": 0.7672159402467531
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 425,
+            "score": 0.7664328807613461
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 425,
+            "score": 0.7664328807613461
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 474,
+            "score": 0.7660352798651351
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 269,
+            "score": 0.765645940392605
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 393,
+            "score": 0.7650149792369287
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 393,
+            "score": 0.7650149792369287
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 186,
+            "score": 0.7647173029507743
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 877,
+            "score": 0.7646389813945538
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 877,
+            "score": 0.7641381348911643
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 877,
+            "score": 0.7637192789756018
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 877,
+            "score": 0.7637192789756018
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 877,
+            "score": 0.7637192789756018
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 393,
+            "score": 0.7637082927586849
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 393,
+            "score": 0.7637082927586849
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 269,
+            "score": 0.7635868134419591
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 350,
+            "score": 0.763520282203898
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 877,
+            "score": 0.7634213657176094
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 186,
+            "score": 0.762455549079459
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1484,
+            "score": 0.7624538815909714
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7617908204223423
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 393,
+            "score": 0.7615722934526902
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 393,
+            "score": 0.7615722934526902
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 185,
+            "score": 0.7614291979012457
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 301,
+            "score": 0.7613254101084465
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 406,
+            "score": 0.7604444535087602
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 406,
+            "score": 0.7604444535087602
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 406,
+            "score": 0.7604444535087602
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 219,
+            "score": 0.7601825399089122
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 219,
+            "score": 0.7601825399089122
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 269,
+            "score": 0.7601664944016467
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 877,
+            "score": 0.7600375933741854
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 877,
+            "score": 0.7600375933741854
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 877,
+            "score": 0.7600375933741854
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 185,
+            "score": 0.7598688720769319
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 406,
+            "score": 0.7597457970302295
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 186,
+            "score": 0.7596129654731889
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 406,
+            "score": 0.7596022469435705
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 406,
+            "score": 0.7596022469435705
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 406,
+            "score": 0.7596022469435705
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 177,
+            "score": 0.7595544117586691
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 877,
+            "score": 0.7592089641749941
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 406,
+            "score": 0.759175255745791
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 406,
+            "score": 0.7591546291161826
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 177,
+            "score": 0.7590795189905221
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 406,
+            "score": 0.7590626689148066
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 406,
+            "score": 0.7590626689148066
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 406,
+            "score": 0.7590626689148066
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 406,
+            "score": 0.7587999457466343
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 406,
+            "score": 0.7586484328198685
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 219,
+            "score": 0.758634885698593
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 219,
+            "score": 0.758634885698593
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 406,
+            "score": 0.7586267135683702
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 102,
+            "score": 0.7584950433862394
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 185,
+            "score": 0.758110487359601
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 177,
+            "score": 0.7579983243885792
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 102,
+            "score": 0.7578650356141283
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 219,
+            "score": 0.7573402462401551
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 219,
+            "score": 0.7573402462401551
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 102,
+            "score": 0.756900612717629
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 877,
+            "score": 0.7562845751377308
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1484,
+            "score": 0.7559787150367387
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7554391272113997
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 1484,
+            "score": 0.7536305621638819
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 1484,
+            "score": 0.7536305621638819
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1484,
+            "score": 0.7536305621638819
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7528248451286208
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7528248451286208
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7528248451286208
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 877,
+            "score": 0.7446472369024606
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 877,
+            "score": 0.7446472369024606
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 877,
+            "score": 0.7446472369024606
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 877,
+            "score": 0.7432576163897924
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1484,
+            "score": 0.7410421304964699
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.739605011013015
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1484,
+            "score": 0.7325254544669189
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.7312294951021778
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 1484,
+            "score": 0.7246641274184249
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 1484,
+            "score": 0.7246641274184249
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1484,
+            "score": 0.7246641274184249
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.7228359096338399
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.7228359096338399
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.7228359096338399
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1484,
+            "score": 0.7029512948290227
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.7011211639353181
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1484,
+            "score": 0.6999714199480553
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6980167679608738
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 1484,
+            "score": 0.6786138671952697
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 1484,
+            "score": 0.6786138671952697
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1484,
+            "score": 0.6786138671952697
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6762844092405975
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6762844092405975
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6762844092405975
+          }
+        ],
+        "rows_without_exact_template": 1497
+      }
+    },
+    "shape": {
+      "matched": {
+        "baseline_score": 0.9261526527252997,
+        "top_10": [
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 227,
+            "score": 0.9268864874345242
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 227,
+            "score": 0.9268864874345242
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 373,
+            "score": 0.9268806492562338
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 373,
+            "score": 0.9268806492562338
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 226,
+            "score": 0.9268212212431658
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 226,
+            "score": 0.9268160972595314
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 227,
+            "score": 0.9267798904999972
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 227,
+            "score": 0.9267798904999972
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 372,
+            "score": 0.9267791763053411
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 227,
+            "score": 0.9267533483729111
+          }
+        ],
+        "all": [
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 227,
+            "score": 0.9268864874345242
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 227,
+            "score": 0.9268864874345242
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 373,
+            "score": 0.9268806492562338
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 373,
+            "score": 0.9268806492562338
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 226,
+            "score": 0.9268212212431658
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 226,
+            "score": 0.9268160972595314
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 227,
+            "score": 0.9267798904999972
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 227,
+            "score": 0.9267798904999972
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 372,
+            "score": 0.9267791763053411
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 227,
+            "score": 0.9267533483729111
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 227,
+            "score": 0.9267533483729111
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 546,
+            "score": 0.9267515355033311
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 546,
+            "score": 0.9267515355033311
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 361,
+            "score": 0.9267185515381422
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 361,
+            "score": 0.9267185515381422
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 217,
+            "score": 0.9266872900730946
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 226,
+            "score": 0.9266518754220184
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 545,
+            "score": 0.926649723308801
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 360,
+            "score": 0.9266167393436121
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 217,
+            "score": 0.9266156969775634
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 217,
+            "score": 0.9265849098369829
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 352,
+            "score": 0.9265796045226107
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 361,
+            "score": 0.9264915478322725
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 361,
+            "score": 0.9264915478322725
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 373,
+            "score": 0.9264651430757627
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 373,
+            "score": 0.9264651430757627
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 360,
+            "score": 0.9264269601281889
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 372,
+            "score": 0.9263998768844043
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 340,
+            "score": 0.926289179960933
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 734,
+            "score": 0.9261844009649736
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 734,
+            "score": 0.9261844009649736
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 734,
+            "score": 0.9261844009649736
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 508,
+            "score": 0.9261628123129013
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 352,
+            "score": 0.9260007333189434
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 360,
+            "score": 0.9257814430061067
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 340,
+            "score": 0.9257718413628304
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 546,
+            "score": 0.9257644885350013
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 546,
+            "score": 0.9257644885350013
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 361,
+            "score": 0.9257442185156601
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 361,
+            "score": 0.9257442185156601
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 545,
+            "score": 0.9256999008309177
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 372,
+            "score": 0.9254814145277952
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 373,
+            "score": 0.9254452077682609
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 373,
+            "score": 0.9254452077682609
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 352,
+            "score": 0.9249082759719081
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 340,
+            "score": 0.9248036878307473
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 508,
+            "score": 0.9247919148935686
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 904,
+            "score": 0.9239212205117947
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 904,
+            "score": 0.9239212205117947
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 904,
+            "score": 0.9239212205117947
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.923834258520499
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.923834258520499
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.923834258520499
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.923834258520499
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.923834258520499
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.923834258520499
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 545,
+            "score": 0.9233472427253867
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 546,
+            "score": 0.9233100182349402
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 546,
+            "score": 0.9233100182349402
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 734,
+            "score": 0.9231145996358372
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 508,
+            "score": 0.9223390528977151
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 734,
+            "score": 0.9222320888436878
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 734,
+            "score": 0.9222320888436878
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 734,
+            "score": 0.9222320888436878
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 734,
+            "score": 0.9202886114159841
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 904,
+            "score": 0.9185528003459578
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9184685293135684
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9184685293135684
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 734,
+            "score": 0.9170251233164247
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 904,
+            "score": 0.9161121951201858
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9157823135752147
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 913,
+            "score": 0.9157823135752147
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 904,
+            "score": 0.9157074571259786
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 904,
+            "score": 0.9157074571259786
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 904,
+            "score": 0.9157074571259786
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 734,
+            "score": 0.9149408596580888
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 734,
+            "score": 0.9149408596580888
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 734,
+            "score": 0.9149408596580888
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9145969887183251
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9145969887183251
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9145969887183251
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9145969887183251
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9145969887183251
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.9145969887183251
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 734,
+            "score": 0.9098435013466221
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 734,
+            "score": 0.9087245649225997
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 904,
+            "score": 0.9065305098997533
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.905868347436946
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.905868347436946
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 904,
+            "score": 0.9033447253175144
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 904,
+            "score": 0.9033447253175144
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 904,
+            "score": 0.9033447253175144
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.9014244257972176
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.9014244257972176
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.9014244257972176
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.9014244257972176
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.9014244257972176
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.9014244257972176
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 904,
+            "score": 0.8997145680751402
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 734,
+            "score": 0.8990262128057599
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.8984346203008033
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 913,
+            "score": 0.8984346203008033
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 904,
+            "score": 0.8926241198906014
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.890935069856071
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.890935069856071
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 904,
+            "score": 0.883074079093005
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8806226496196461
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 913,
+            "score": 0.8806226496196461
+          }
+        ],
+        "rows_without_exact_template": 913
+      },
+      "structural": {
+        "baseline_score": 0.7553686958374756,
+        "top_10": [
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 362,
+            "score": 0.7656820850552447
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 499,
+            "score": 0.7654837641111105
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 368,
+            "score": 0.765336122112651
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 330,
+            "score": 0.765247048910592
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 505,
+            "score": 0.7651378011685168
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 456,
+            "score": 0.7650670826746159
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 330,
+            "score": 0.7649495692594899
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 362,
+            "score": 0.7647301223336386
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 368,
+            "score": 0.7640421077222538
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 456,
+            "score": 0.7629526329083723
+          }
+        ],
+        "all": [
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 362,
+            "score": 0.7656820850552447
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 499,
+            "score": 0.7654837641111105
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 368,
+            "score": 0.765336122112651
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 330,
+            "score": 0.765247048910592
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 505,
+            "score": 0.7651378011685168
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 456,
+            "score": 0.7650670826746159
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 330,
+            "score": 0.7649495692594899
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 362,
+            "score": 0.7647301223336386
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 368,
+            "score": 0.7640421077222538
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 456,
+            "score": 0.7629526329083723
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 249,
+            "score": 0.7617591695489545
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 499,
+            "score": 0.7607542625988659
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 249,
+            "score": 0.7607159079815909
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 281,
+            "score": 0.7603192777929613
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 119,
+            "score": 0.7602866345451755
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 286,
+            "score": 0.7600710212413427
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 505,
+            "score": 0.7600662479874811
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 93,
+            "score": 0.7599383762051368
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 207,
+            "score": 0.7591772368210475
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 207,
+            "score": 0.7591772368210475
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 207,
+            "score": 0.7591772368210475
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 99,
+            "score": 0.7590968972221281
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 119,
+            "score": 0.7589200061460317
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 281,
+            "score": 0.7586609396388759
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 207,
+            "score": 0.7586529343042638
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 207,
+            "score": 0.7586529343042638
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 207,
+            "score": 0.7586529343042638
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 93,
+            "score": 0.7586329142240319
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 99,
+            "score": 0.7583596948172862
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 119,
+            "score": 0.7582707809712821
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 93,
+            "score": 0.7582220773416861
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 286,
+            "score": 0.7581928487514575
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 207,
+            "score": 0.757902325963533
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 207,
+            "score": 0.7575192738480873
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 249,
+            "score": 0.7569359844248351
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 207,
+            "score": 0.7568987451241065
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 330,
+            "score": 0.7568532107060336
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 65,
+            "score": 0.7567973623087683
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 65,
+            "score": 0.7567924106282957
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 99,
+            "score": 0.7566508274163332
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 207,
+            "score": 0.7564274729345316
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 207,
+            "score": 0.7564274729345316
+          },
+          {
+            "k": 1,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 207,
+            "score": 0.7564274729345316
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 65,
+            "score": 0.7562734098976304
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 137,
+            "score": 0.7560658048754085
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 137,
+            "score": 0.7559817474737718
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 154,
+            "score": 0.7553302194588538
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 207,
+            "score": 0.7553073309867833
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 362,
+            "score": 0.7552496529816705
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 156,
+            "score": 0.7551386964700946
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 137,
+            "score": 0.7550808903037723
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 154,
+            "score": 0.7545123334088112
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 156,
+            "score": 0.7542307467859132
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 368,
+            "score": 0.7541487134783786
+          },
+          {
+            "k": 3,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 207,
+            "score": 0.7534099462177476
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 154,
+            "score": 0.7531461455057109
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 156,
+            "score": 0.7528645588828129
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 281,
+            "score": 0.7517574639355427
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 286,
+            "score": 0.7508885850247586
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 456,
+            "score": 0.7506011225734063
+          },
+          {
+            "k": 5,
+            "radius": 0.4,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 207,
+            "score": 0.7504009036984678
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 1344,
+            "score": 0.7502118665340571
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 1344,
+            "score": 0.7502118665340571
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1344,
+            "score": 0.7502118665340571
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 1483,
+            "score": 0.7497622267665405
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 1483,
+            "score": 0.7497622267665405
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1483,
+            "score": 0.7497622267665405
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7488265416631432
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7488265416631432
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7488265416631432
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1344,
+            "score": 0.7483594202447902
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1483,
+            "score": 0.7470686660388206
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 499,
+            "score": 0.7462464265660136
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.7459834365964951
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 505,
+            "score": 0.7451454870627219
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1344,
+            "score": 0.7414259973338062
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1483,
+            "score": 0.7396462931363804
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.25,
+            "eligible_rows": 1497,
+            "score": 0.738610458671735
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 1344,
+            "score": 0.7184048508788128
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 1344,
+            "score": 0.7184048508788128
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1344,
+            "score": 0.7184048508788128
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1344,
+            "score": 0.714903005143171
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 1483,
+            "score": 0.7121180259586521
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 1483,
+            "score": 0.7121180259586521
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1483,
+            "score": 0.7121180259586521
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.7092318445228689
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.7092318445228689
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.7092318445228689
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1483,
+            "score": 0.7085122512630395
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.7052546285424985
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1344,
+            "score": 0.6955261776589068
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1483,
+            "score": 0.6887275951237781
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.5,
+            "eligible_rows": 1497,
+            "score": 0.6856698678767534
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 1344,
+            "score": 0.6718243717963894
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 1344,
+            "score": 0.6718243717963894
+          },
+          {
+            "k": 1,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1344,
+            "score": 0.6718243717963894
+          },
+          {
+            "k": 3,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1344,
+            "score": 0.6685343534771124
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 1483,
+            "score": 0.6592434965377069
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 1483,
+            "score": 0.6592434965377069
+          },
+          {
+            "k": 1,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1483,
+            "score": 0.6592434965377069
+          },
+          {
+            "k": 3,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1483,
+            "score": 0.6573410340712217
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.3,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6552891191173242
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": 0.6,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6552891191173242
+          },
+          {
+            "k": 1,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6552891191173242
+          },
+          {
+            "k": 3,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6528766788951884
+          },
+          {
+            "k": 5,
+            "radius": 0.8,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1344,
+            "score": 0.640333345182996
+          },
+          {
+            "k": 5,
+            "radius": 1.6,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1483,
+            "score": 0.6286420543793425
+          },
+          {
+            "k": 5,
+            "radius": Infinity,
+            "spread_limit": Infinity,
+            "weight": 0.75,
+            "eligible_rows": 1497,
+            "score": 0.6244303582420978
+          }
+        ],
+        "rows_without_exact_template": 1497
+      }
+    }
+  },
+  "selected_configs": {
+    "gates": {
+      "k": 3,
+      "radius": 0.8,
+      "spread_limit": 0.6,
+      "weight": 0.25
+    },
+    "shape": {
+      "k": 3,
+      "radius": 1.6,
+      "spread_limit": 0.6,
+      "weight": 0.25
+    }
+  },
+  "alternate_seeds": {
+    "181": {
+      "baseline_score": 0.919164674732301,
+      "candidates": {
+        "gates": {
+          "score": 0.9191021475745531,
+          "changed_rows": 533
+        },
+        "shape": {
+          "score": 0.918555374309593,
+          "changed_rows": 556
+        }
+      }
+    },
+    "197": {
+      "baseline_score": 0.9233186088273879,
+      "candidates": {
+        "gates": {
+          "score": 0.9248265732831921,
+          "changed_rows": 515
+        },
+        "shape": {
+          "score": 0.9244013251857965,
+          "changed_rows": 536
+        }
+      }
+    },
+    "211": {
+      "baseline_score": 0.9221634408005039,
+      "candidates": {
+        "gates": {
+          "score": 0.9222357376734148,
+          "changed_rows": 520
+        },
+        "shape": {
+          "score": 0.9235693077678965,
+          "changed_rows": 535
+        }
+      }
+    }
+  }
+}

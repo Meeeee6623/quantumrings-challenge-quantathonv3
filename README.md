@@ -37,7 +37,7 @@ You will build two things:
 
 Designing the feature set is the core of the challenge. No parser or feature list is provided.
 
-## Included merged predictor
+## Selected holdout predictor
 
 This branch contains a complete fitted submission, not only the challenge
 starter.  It combines two independent source-QASM feature representations:
@@ -74,6 +74,9 @@ The current full-harness parser timing and 15-second cap check are in
 [`research/PARSER_OPTIMIZATION.md`](research/PARSER_OPTIMIZATION.md).
 The distribution of remaining errors is in
 [`research/REMAINING_HEADROOM.md`](research/REMAINING_HEADROOM.md).
+For the final submission command, complete-row validator, and read-only
+geometry/nearest-training-circuit inspector, see
+[`research/HOLDOUT_READINESS.md`](research/HOLDOUT_READINESS.md).
 
 Run a holdout directory directly:
 

@@ -110,6 +110,8 @@ fast path.
 | `research/TIMEOUT_DISAGREEMENT_EVALUATION.md` | Rejected timeout-router guard on alternate grouped folds |
 | `research/TEMPLATE_WEIGHT_EVALUATION.md` | v7 analogue weighting and alternate grouped-fold checks |
 | `research/REMAINING_HEADROOM.md` | Error concentration and scope of possible gains |
+| `research/HOLDOUT_READINESS.md` | Holdout commands, output validation, and geometry inspector |
+| `research/STRUCTURAL_NEIGHBOR_PROBE.md` | Rejected neighbor postprocessing candidate |
 | `research/MERGED_COMPARISON.md` | Full comparison, caveats, and rationale |
 | `research/merged_model_comparison.png` | Presentation comparison figure |
 
