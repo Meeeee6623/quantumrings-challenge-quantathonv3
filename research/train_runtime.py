@@ -34,7 +34,7 @@ ARTIFACT = ROOT / 'quantathon-harness' / 'artifacts' / 'runtime_model.joblib'
 
 
 def extract():
-    model = RuntimeModel()
+    model = RuntimeModel(full_features=True)
     paths = sorted((ROOT / 'training_circuits').glob('*.qasm.zst'))
     data = {}
     slow = []
@@ -206,7 +206,7 @@ if __name__=='__main__':
     args=parser.parse_args()
     if args.refresh_unsupported:
         feats=json.loads(CACHE.read_text())
-        model=RuntimeModel()
+        model=RuntimeModel(full_features=True)
         targets=[name for name,f in feats.items() if f['unsupported_statements']]
         for i,name in enumerate(targets,1):
             path=ROOT/'training_circuits'/(name+'.zst')

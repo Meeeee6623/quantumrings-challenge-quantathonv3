@@ -1,5 +1,9 @@
 # Final feature decisions and grouped runtime plots
 
+Historical v7-to-v8 screening audit. The current production v9 predictor uses
+the frozen 120-input [schema](../../quantathon-harness/production_features.json)
+after a further importance cut and grouped validation.
+
 The release model treats the simulator setting as the three categories **16, 64, and 512**. It uses three one-hot fields in the global model; the specialists and timeout classifiers are routed by setting. Numeric `threshold` and `log_threshold` were removed. The table below makes one decision for every input referenced by the previous v7 artifact, plus the three new setting indicators: **241 keep, 87 drop**. All 241 keeps are in the fitted v8 artifact. The prior v7 model had 325 selected inputs; its plot gallery covers those 325 one by one. The category plot covers the three new indicators. Other parser outputs never selected by v7 are outside this fitted-input audit.
 
 Of the 87 final drops, **78** were near-perfect rank duplicates with a stronger retained counterpart, **4** had tiny fitted importance and weak grouped trends, **2** were ordinal encodings replaced by categories, and **3** passed the prescreen but were not selected in the final fit.

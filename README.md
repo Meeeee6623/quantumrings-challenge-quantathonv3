@@ -55,42 +55,25 @@ starter.  It combines two independent source-QASM feature representations:
   training circuits, or their median runtime when three or more match, followed
   by a small near-basis rotation correction at threshold 512.
 
-The fitted v8 model treats the three simulator settings as categories. A
-feature-by-feature audit pruned redundant and weak inputs from the previous
-325-column model. Its 244 candidate columns yielded 241 distinct fitted
-inputs across the global regressor, runtime specialists, and timeout
-classifiers. The component limits remain 120, 200, and 80 columns.
+The production v9 model treats simulator settings as three categories and has
+**120 fixed inputs**: 79 primary-parser fields or log transforms, 30 secondary
+fields, eight χ-walk fields, and three setting indicators. The exact training
+schema is frozen in
+[`quantathon-harness/production_features.json`](quantathon-harness/production_features.json).
+The production extractor returns only fields needed for these inputs and the
+four narrow prediction rules; it skips unused secondary graph calculations.
+The full feature mode remains available for inspection and research.
 
-The current predictor scores **0.92691** on fixed circuit-grouped,
-distribution-matched out-of-fold validation. Its structural stress score is
-**0.76019**. Feature screening used the released labels, so these gains over
-v7 may be optimistic. See the [one-by-one feature decisions and grouped
-plots](research/feature_audit/FINAL_FEATURE_DECISIONS.md),
-[`research/TEMPLATE_WEIGHT_EVALUATION.md`](research/TEMPLATE_WEIGHT_EVALUATION.md)
-for the previous v7 change and alternate grouped-fold checks,
-[`research/FEATURE_PRUNING_REPORT.md`](research/FEATURE_PRUNING_REPORT.md)
-for the feature audit and comparison,
-[`research/EDGE_CASE_UPDATE.md`](research/EDGE_CASE_UPDATE.md)
-for the v5 edge-case evidence and large-file parser tests;
-[`research/MERGED_COMPARISON.md`](research/MERGED_COMPARISON.md) records the
-original union-model comparison.
-[`jepa/README.md`](jepa/README.md) is the full write-up of a fold-isolated
-masked-latent circuit-embedding experiment. It did not pass the predeclared
-acceptance gate against its v7 baseline and its code remains inactive; the
-newer v8 artifact remains the shipped holdout predictor.
-The current full-harness parser timing and 15-second cap check are in
-[`research/PARSER_OPTIMIZATION.md`](research/PARSER_OPTIMIZATION.md).
-The distribution of remaining errors is in
-[`research/REMAINING_HEADROOM.md`](research/REMAINING_HEADROOM.md).
-For the final submission command, complete-row validator, and read-only
-geometry/nearest-training-circuit inspector, see
-[`research/HOLDOUT_READINESS.md`](research/HOLDOUT_READINESS.md).
-The independent runtime-only test of the 2026 family-aware residual paper,
-including grouped-fold ablations and seed checks, is in
-[`research/PAPER_RUNTIME_REPLICATION.md`](research/PAPER_RUNTIME_REPLICATION.md).
-For the final technical handoff, see the [feature and model specification](research/FINAL_MODEL_AND_FEATURES.md),
-the [remaining failure modes](research/FINAL_FAILURE_MODES.md), and the
-[complete experiment history](research/RESEARCH_PROCESS_END_TO_END.md).
+The fixed circuit-grouped scores are **0.92774** distribution-matched and
+**0.76638** under structural-cluster stress. Two fresh circuit-grouped
+assignments also favored 120 inputs over the previous 241-input model.
+Feature selection reused released labels, so these are tuning checks rather
+than hidden-holdout accuracy. The earlier [v8 feature audit](research/feature_audit/FINAL_FEATURE_DECISIONS.md)
+and [research history](research/RESEARCH_PROCESS_END_TO_END.md) remain as
+historical records, not the production schema. See the
+[holdout guide](research/HOLDOUT_READINESS.md) for validation and inspection.
+The optional [JEPA embedding experiment](jepa/README.md) did not meet its
+acceptance gate and is inactive in the production model.
 
 Run a holdout directory directly:
 
@@ -100,15 +83,12 @@ uv run --locked python quantathon-harness/run.py \
   --team "Your Team" --circuits path/to/holdout --out submission.csv
 ```
 
-Rebuild the training cache and artifact with:
+Refit the frozen production schema with:
 
 ```bash
 uv run --locked python research/extract_extended_features.py
-uv run --locked python research/train_full_union_model.py
-uv run --locked --extra report python research/audit_selected_features.py
-uv run --locked python research/train_categorical_final_model.py --pruned
+uv run --locked python research/train_production_model.py
 uv run --locked python research/write_final_feature_catalog.py
-uv run --locked --extra report python research/write_feature_decisions.py
 ```
 
 ## Timeline

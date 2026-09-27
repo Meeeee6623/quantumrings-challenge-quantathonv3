@@ -586,7 +586,10 @@ class Stats:
 
 
 class RuntimeModel:
-    def __init__(self, artifacts_dir='artifacts'):
+    """Runtime predictor; full_features keeps diagnostic fields for research."""
+
+    def __init__(self, artifacts_dir='artifacts', *, full_features=False):
+        self.full_features = full_features
         p = Path(artifacts_dir)
         if not p.is_absolute():
             p = Path(__file__).resolve().parent / p
@@ -617,6 +620,21 @@ class RuntimeModel:
                 all_columns.extend(schema)
         self.use_chi_walk = any(c.startswith('chi_walk_') for c in all_columns)
         self.use_extended_features = any(c.startswith('extended__') for c in all_columns)
+        self.extended_required = ({c[len('extended__'):] for c in all_columns
+                                   if c.startswith('extended__')}
+                                  if self.model and not full_features else None)
+        self.required_features = set()
+        for column in all_columns:
+            if column.startswith('log_') and column != 'log_threshold':
+                self.required_features.add(column[4:])
+            elif not column.startswith('setting_'):
+                self.required_features.add(column)
+            if column.startswith('chi_walk_'):
+                self.required_features.update(
+                    f'{column}_{setting}' for setting in (16, 64, 512))
+        self.required_features.update(('n_qubits', 'ops', 'two_q', 'multi_q',
+                                       'resets', 'fingerprint_grover',
+                                       'effective_ops', 'chi_walk_rot_near_frac'))
         self.rotation_tolerance = (self.model.get('chi_walk_rotation_tolerance_rad',-1.0)
                                    if self.model else -1.0)
         self.use_jepa = any(c.startswith('jepa_') for c in all_columns)
@@ -660,6 +678,12 @@ class RuntimeModel:
             # unfamiliar QASM construct defeats this optional walk.
             result = None
         return model_features(result)
+
+    def _production_features(self, features):
+        if self.full_features or self.model is None:
+            return features
+        return {name: value for name, value in features.items()
+                if name in self.required_features or name == '_jepa_tokens'}
 
     def _huge_features(self, qasm_text):
         """Bound parsing time for exceptionally large QASM using C-level counts.
@@ -749,10 +773,12 @@ class RuntimeModel:
                 try:
                     from extended_features import extract_fast_qasm_features
                     out.update({'extended__'+key:value for key,value
-                                in extract_fast_qasm_features(qasm_text).items()})
+                                in extract_fast_qasm_features(
+                                    qasm_text, requested_features=self.extended_required
+                                ).items()})
                 except Exception:
                     pass
-            return out
+            return self._production_features(out)
         # The main parser is already close to the cap for a few 20--40 MB
         # generated programs.  Keep their established feature path exact and
         # make the learned embedding an explicitly trained fallback there.
@@ -910,7 +936,9 @@ class RuntimeModel:
             try:
                 from extended_features import extract_fast_qasm_features
                 out.update({'extended__'+key:value for key,value
-                            in extract_fast_qasm_features(qasm_text).items()})
+                            in extract_fast_qasm_features(
+                                qasm_text, requested_features=self.extended_required
+                            ).items()})
             except Exception:
                 # The union model remains usable through its global component
                 # if the optional second structural scan encounters new syntax.
@@ -921,7 +949,7 @@ class RuntimeModel:
             # extraction.  Keep a one-second margin under the harness cap.
             budget = min(3.0,max(0.0,14.0-(time.perf_counter()-started)))
             out.update(self._walk_features(qasm_text,budget_s=budget))
-        return out
+        return self._production_features(out)
 
     def predict(self, features: dict, threshold: int) -> float:
         if self.model is None:

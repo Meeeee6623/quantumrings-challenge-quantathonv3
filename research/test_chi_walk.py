@@ -51,7 +51,7 @@ class ChiWalkTests(unittest.TestCase):
         self.assertEqual(expanded['n_rotation_near_pi'],custom['n_rotation_near_pi'])
 
     def test_model_exposes_near_zero_and_pi_counts(self):
-        model=RuntimeModel()
+        model=RuntimeModel(full_features=True)
         qasm='OPENQASM 2.0;\nqreg q[2];\nrx(0) q[0];\nry(pi) q[1];\n'
         out=model.featurize(qasm)
         self.assertEqual(out['chi_walk_rot_near_zero'],1)
@@ -82,7 +82,7 @@ class ChiWalkTests(unittest.TestCase):
 
     def test_model_parser_adds_chi_walk_for_trained_artifact(self):
         qasm='OPENQASM 2.0;\nqreg q[2];\nh q[0];\ncx q[0],q[1];\n'
-        model=RuntimeModel()
+        model=RuntimeModel(full_features=True)
         model.use_chi_walk=True
         extracted=model.featurize(qasm)
         expected=model_features(walk(qasm,classical_tracking=True,budget_s=3.0))

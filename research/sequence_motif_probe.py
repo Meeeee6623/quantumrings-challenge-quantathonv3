@@ -104,7 +104,7 @@ def generate():
 
 
 def extract():
-    model=RuntimeModel()
+    model=RuntimeModel(full_features=True)
     paths=sorted((ROOT/'training_circuits').glob('*.qasm.zst'))
     rows={}
     started=time.perf_counter()

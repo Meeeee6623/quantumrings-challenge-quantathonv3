@@ -1,6 +1,6 @@
 # Quantum Rings runtime predictor: research process and decisions
 
-This is the end-to-end record of the **experiment families** tried for the released Quantum Rings Quantathon v3 data. Individual grid settings, per-row predictions, and exact seeds live in the linked scripts/JSON/CSVs. The selected result is [v8](FINAL_MODEL_AND_FEATURES.md), a dual-QASM-scanner, χ-walk, categorical-setting ExtraTrees system with narrow validated rules; the [one-by-one feature audit](feature_audit/FINAL_FEATURE_DECISIONS.md) records the final keep/drop choices. The [detailed miss analysis](FINAL_FAILURE_MODES.md) is for the earlier v7 artifact. These are released-label validation results, not hidden-holdout scores.
+This is the research record through v8 for the released Quantum Rings Quantathon v3 data. Individual grid settings, per-row predictions, and exact seeds live in the linked scripts/JSON/CSVs. The current 120-input production v9 model is described in the [README](../README.md); the [one-by-one v8 feature audit](feature_audit/FINAL_FEATURE_DECISIONS.md) is historical. The [detailed miss analysis](FINAL_FAILURE_MODES.md) is for the earlier v7 artifact. These are released-label validation results, not hidden-holdout scores.
 
 ## Problem and evaluation contract
 

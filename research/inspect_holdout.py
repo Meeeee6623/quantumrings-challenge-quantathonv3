@@ -313,12 +313,14 @@ def main():
     references = {'gate_mix': build_reference(training, GATE_FIELDS),
                   'shape': build_reference(training, SHAPE_FIELDS)}
     bounds = feature_bounds(training)
-    oof_path = ROOT / 'research' / 'categorical_model_oof.csv'
+    oof_path = ROOT / 'research' / 'production_model_oof.csv'
+    if not oof_path.exists():
+        oof_path = ROOT / 'research' / 'categorical_model_oof.csv'
     if not oof_path.exists():
         oof_path = ROOT / 'research' / 'full_union_model_oof.csv'
     oof = {(row['filename'], int(row['threshold'])): row
            for row in csv.DictReader(oof_path.open())}
-    model = RuntimeModel()
+    model = RuntimeModel(full_features=True)
     records = []
     failures = []
     for i, path in enumerate(files, 1):

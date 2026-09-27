@@ -1,5 +1,6 @@
 """Focused parser and prediction checks for syntax present in the challenge."""
 import math
+import json
 from pathlib import Path
 import sys
 import unittest
@@ -15,7 +16,7 @@ from rotation_calibration import calibrate_near_basis_runtime
 class FeatureParserTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.model = RuntimeModel()
+        cls.model = RuntimeModel(full_features=True)
 
     def test_coarse_gate_prefixes_distinguish_bodies_and_longer_names(self):
         top, definitions = _coarse_prefix_counts('''U(0,0,0) q[0];
@@ -100,7 +101,11 @@ cMAJ q[0],q[1];
 
     def test_submission_artifact_uses_threshold_experts(self):
         self.assertEqual(self.model.model['artifact_version'],
-                         'categorical_setting_threshold_experts_v8')
+                         'categorical_setting_threshold_experts_v9')
+        schema = json.loads((Path(__file__).resolve().parents[1] /
+                             'quantathon-harness/production_features.json').read_text())
+        self.assertEqual(set(self.model.model['columns']), set(schema['columns']))
+        self.assertEqual(len(self.model.model['columns']), 120)
         self.assertEqual(self.model.model['setting_encoding'],
                          'one_hot_categorical')
         self.assertEqual({column for column in self.model.model['columns']
@@ -112,10 +117,10 @@ cMAJ q[0],q[1];
         self.assertEqual(set(self.model.model['timeout_classifiers']),{16,64,512})
         self.assertAlmostEqual(self.model.model['threshold_specialist_weight'],.5)
         self.assertAlmostEqual(self.model.model['timeout_probability_cutoff'],.35)
-        self.assertEqual(len(self.model.model['global_columns']),120)
+        self.assertLessEqual(len(self.model.model['global_columns']),120)
         self.assertEqual({k:len(v) for k,v in
                           self.model.model['specialist_columns_by_threshold'].items()},
-                         {16:200,64:200,512:200})
+                         {16:120,64:120,512:120})
         self.assertEqual({k:len(v) for k,v in
                           self.model.model['classifier_columns_by_threshold'].items()},
                          {16:80,64:80,512:80})
@@ -124,6 +129,27 @@ cMAJ q[0],q[1];
                             for column in columns))
         self.assertEqual(len(self.model.model['reset_family_references']),14)
         self.assertTrue(self.model.model['template_analogue_bank'])
+
+    def test_production_extended_features_match_full_extractor(self):
+        qasm = ('OPENQASM 2.0;\nqreg q[4];\n'
+                'rx(pi/7) q[0];\nh q[1];\n'
+                'cx q[0],q[1];\ncz q[1],q[2];\ncx q[2],q[3];\n')
+        compact_model = RuntimeModel()
+        compact = compact_model.featurize(qasm)
+        full = self.model.featurize(qasm)
+        self.assertLess(len(compact), len(full))
+        expected = {'extended__' + name
+                    for name in compact_model.extended_required}
+        self.assertEqual({name for name in compact
+                          if name.startswith('extended__')}, expected)
+        for name in expected:
+            if math.isnan(full[name]):
+                self.assertTrue(math.isnan(compact[name]))
+            else:
+                self.assertEqual(compact[name], full[name])
+        for threshold in (16, 64, 512):
+            self.assertEqual(compact_model.predict(compact, threshold),
+                             self.model.predict(full, threshold))
 
     def test_template_blend_needs_two_same_threshold_analogues(self):
         features={'n_qubits':4,'ops':100,'two_q':40,'multi_q':0}

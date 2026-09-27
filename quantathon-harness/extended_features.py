@@ -623,7 +623,11 @@ def _graph_features(
     pair_weights: Counter[tuple[int, int]],
     *,
     min_fill_max_qubits: int,
+    requested_features: set[str] | None = None,
 ) -> dict[str, float]:
+    def wants(name: str) -> bool:
+        return requested_features is None or name in requested_features
+
     adjacency = [set() for _ in range(num_qubits)]
     weighted_degree = [0.0] * num_qubits
     for (left, right), weight in pair_weights.items():
@@ -656,7 +660,7 @@ def _graph_features(
 
     largest = max(components, key=len, default=[])
     diameter = math.nan
-    if largest:
+    if largest and wants("interaction_diameter"):
         diameter_value = 0
         for root in largest:
             distances = {root: 0}
@@ -670,16 +674,17 @@ def _graph_features(
         diameter = float(diameter_value)
 
     clustering_values: list[float] = []
-    for neighbors in adjacency:
-        degree = len(neighbors)
-        if degree < 2:
-            clustering_values.append(0.0)
-            continue
-        links = sum(len(adjacency[left] & neighbors) for left in neighbors) / 2
-        clustering_values.append(float(links / (degree * (degree - 1) / 2)))
+    if wants("interaction_clustering_coefficient"):
+        for neighbors in adjacency:
+            degree = len(neighbors)
+            if degree < 2:
+                clustering_values.append(0.0)
+                continue
+            links = sum(len(adjacency[left] & neighbors) for left in neighbors) / 2
+            clustering_values.append(float(links / (degree * (degree - 1) / 2)))
 
     assortativity = math.nan
-    if edge_count >= 2:
+    if edge_count >= 2 and wants("interaction_assortativity"):
         pairs = [(degrees[left], degrees[right]) for left, right in pair_weights]
         left_values = [float(left) for pair in pairs for left in pair]
         right_values = [float(right) for pair in pairs for right in reversed(pair)]
@@ -696,7 +701,7 @@ def _graph_features(
 
     # Weighted adjacency spectral radius via a fixed-count power iteration.
     spectral_radius = 0.0
-    if num_qubits and edge_count:
+    if num_qubits and edge_count and wants("interaction_spectral_radius"):
         vector = [1.0 / math.sqrt(num_qubits)] * num_qubits
         for _ in range(24):
             product = [0.0] * num_qubits
@@ -714,8 +719,10 @@ def _graph_features(
     degree_variance = (
         sum((degree - degree_mean) ** 2 for degree in degrees) / num_qubits if num_qubits else 0.0
     )
-    min_degree_width = _treewidth_min_degree(adjacency) if num_qubits else 0.0
-    min_fill_width = _treewidth_min_fill(adjacency, min_fill_max_qubits) if num_qubits else 0.0
+    need_min_degree = wants("treewidth_min_degree") or wants("approx_treewidth")
+    need_min_fill = wants("treewidth_min_fill") or wants("approx_treewidth")
+    min_degree_width = (_treewidth_min_degree(adjacency) if num_qubits else 0.0) if need_min_degree else math.nan
+    min_fill_width = (_treewidth_min_fill(adjacency, min_fill_max_qubits) if num_qubits else 0.0) if need_min_fill else math.nan
     finite_widths = [value for value in (min_degree_width, min_fill_width) if math.isfinite(value)]
 
     span_total = 0.0
@@ -811,8 +818,12 @@ def extract_fast_qasm_features(
     qasm_text: str,
     *,
     config: FastQASMConfig | None = None,
+    requested_features: set[str] | None = None,
 ) -> dict[str, float]:
     """Extract a stable numeric feature vector from OpenQASM 2 or 3 text.
+
+    A requested feature set returns only those fields and avoids expensive
+    graph summaries that the fitted production model does not consume.
 
     Small and medium files receive exact per-operation scheduling and
     interaction accounting.  Large files retain exact lexical/gate counts but
@@ -1299,12 +1310,15 @@ def extract_fast_qasm_features(
             num_qubits,
             pair_weights,
             min_fill_max_qubits=settings.min_fill_max_qubits,
+            requested_features=requested_features,
         )
     )
     features["supermarq_communication"] = features["interaction_graph_density"]
     features["supermarq_critical_depth"] = (
         float(sampled_critical_two_qubit / max(1, two_count / stride)) if two_count else 0.0
     )
+    if requested_features is not None:
+        return {name: features[name] for name in requested_features if name in features}
     return features
 
 

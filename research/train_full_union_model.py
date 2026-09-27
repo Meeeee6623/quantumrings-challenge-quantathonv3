@@ -223,9 +223,9 @@ def fit_artifact(parallel_X, union_X, parallel_columns, union_columns,
         'reset_family_references':references,
         'template_analogue_bank':template_bank,
         'view':('categorical_pruned_union_geometry_chi_structural_dag_angle_threshold_experts'
-                if artifact_version.endswith('_v8') else
+                if artifact_version.startswith('categorical_setting_') else
                 'pruned_union_geometry_chi_structural_dag_angle_threshold_experts'),
-        'setting_encoding': ('one_hot_categorical' if artifact_version.endswith('_v8')
+        'setting_encoding': ('one_hot_categorical' if artifact_version.startswith('categorical_setting_')
                              else 'ordinal_and_log2'),
         'chi_walk_budget_s':3.0,
         'chi_walk_large_cutoff_bytes':40_000_000,
