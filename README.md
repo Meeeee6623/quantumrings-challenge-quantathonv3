@@ -72,6 +72,9 @@ than hidden-holdout accuracy. The earlier [v8 feature audit](research/feature_au
 and [research history](research/RESEARCH_PROCESS_END_TO_END.md) remain as
 historical records, not the production schema. See the
 [holdout guide](research/HOLDOUT_READINESS.md) for validation and inspection.
+The [presentation agent handoff](research/PRESENTATION_AGENT_HANDOFF.md) traces every
+stage of the 87.66% → 92.77% chart and gives fresh-clone commands for its results
+and all nine presentation figures.
 The optional [JEPA embedding experiment](jepa/README.md) did not meet its
 acceptance gate and is inactive in the production model.
 
