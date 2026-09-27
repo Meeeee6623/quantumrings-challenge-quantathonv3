@@ -2,6 +2,11 @@
 
 Predict how long a quantum-circuit simulation will take, straight from the circuit file, without running it.
 
+**SUBMISSION UPDATE 9/27**
+Validation circuits have been uploaded to this repo in the *holdout-circuits* repo. Please run your model on them and DM Omar the returned submission.csv on Discord.
+
+Great job everyone!
+
 
 ## Contents
 
