@@ -131,60 +131,56 @@ def plot_initial_model_sweep():
 
 def plot_feature_progression():
     report = json.loads((OUT / "model_sweep.json").read_text())
-    names = report["pack_names"]
     model_names = report["model_names"]
     winners = [max(model_names, key=lambda model:
-                   report["packs"][name]["models"][model]["score"]) for name in names]
-    best = [report["packs"][name]["models"][winner]["score"]
-            for name, winner in zip(names, winners)]
+                   report["packs"][name]["models"][model]["score"])
+               for name in report["pack_names"][:7]]
+    feature_scores = [report["packs"][name]["models"][winner]["score"]
+                      for name, winner in zip(report["pack_names"][:7], winners)]
     assert set(winners) == {"extra_trees"}
-    production = production_oof_scores()["matched"]
-    assert abs(production-.927739) < 1e-5
-    gain = 100*(np.array(best)-best[0])
-    production_gain = 100*(production-best[0])
-    fig, ax = plt.subplots(figsize=(18, 9))
-    fig.subplots_adjust(left=.085, right=.96, top=.79, bottom=.25)
-    ax.plot(np.arange(7), gain[:7], color=NAVY, lw=2.8, zorder=2)
-    ax.plot([6,7], gain[6:8], color=RUST, lw=2.2, ls="--", zorder=2)
-    ax.plot([6,8], [gain[6],production_gain], color=PURPLE, lw=2.5,
-            ls="-.", zorder=2)
-    for i,value in enumerate(gain[:7]):
-        ax.scatter(i,value,s=240,color=TEAL,edgecolor="white",
-                   lw=2.5,zorder=3)
-        ax.annotate(f"{best[i]*100:.2f}%",(i,value),xytext=(0,17),
-                    textcoords="offset points",ha="center",fontsize=13,
-                    color=TEAL,fontweight="bold")
-    ax.scatter(7,gain[7],s=290,color=RUST,edgecolor="white",lw=2.5,
-               marker="X",zorder=3)
-    ax.annotate(f"{best[7]*100:.2f}%",(7,gain[7]),xytext=(0,-29),
-                textcoords="offset points",ha="center",fontsize=13,
-                color=RUST,fontweight="bold")
-    ax.scatter(8,production_gain,s=310,color=PURPLE,edgecolor="white",
-               lw=2.5,marker="D",zorder=3)
-    ax.annotate(f"{production*100:.2f}%",(8,production_gain),xytext=(0,17),
-                textcoords="offset points",ha="center",fontsize=15,
-                color=PURPLE,fontweight="bold")
-    short_labels=["Basic counts", "Gate mix +\ntiming", "χ bound +\ndiversity",
-                  "Graph + cut\ngeometry", "Soft circuit\npatterns", "χ walk",
-                  "Gated walk +\nangle stats", "External family\nrejected",
-                  "Production\nfull system"]
-    ax.set_xticks(np.arange(9),short_labels,fontsize=11)
-    ax.set_ylabel("Gain over basic QASM pack (score points)")
-    ax.set_ylim(-.25,production_gain+.9)
-    ax.set_xlim(-.4,8.4)
-    ax.grid(axis="y",color=GRID)
-    ax.spines[["top","right"]].set_visible(False)
-    ax.text(.02,.97,f"Basic pack = {best[0]*100:.2f}%",
-            transform=ax.transAxes,ha="left",va="top",fontsize=12,color=MUTED)
-    legend=[Patch(color=TEAL,label="Best global regressor: ExtraTrees"),
-            Patch(color=RUST,label="Rejected classifier branch"),
-            Patch(color=PURPLE,label="Final production system")]
-    fig.legend(handles=legend,loc="upper right",bbox_to_anchor=(.94,.89),
-               ncol=3,frameon=False,fontsize=11)
-    title(fig,"From basic QASM to production: 87.66% → 92.77%",
-          "Best of four fixed regressors at every feature stage; final system adds parsing, routing and runtime rules",
-          "Sources: model_sweep.json and production_model_oof.csv · Same matched circuit-grouped folds."
-          " Production combines a secondary parser, experts, timeout routing and pruning; its jump is not one feature's effect.")
+    merged = read("merged_model_validation")
+    union = read("full_union_model_validation")
+    categorical = read("categorical_model_validation")
+    scores = np.array(feature_scores + [
+        merged["splits"]["matched"]["merged"]["score"],
+        union["splits"]["matched"]["full_union"]["score"],
+        union["splits"]["matched"]["near_basis_calibration"]["score"],
+        categorical["splits"]["matched"]["categorical_v8"]["score"],
+        production_oof_scores()["matched"],
+    ]) * 100
+    assert len(scores) == 12 and np.all(np.diff(scores) > 0)
+    labels = ["Basic counts", "Gate mix +\ntiming", "χ bound +\ndiversity",
+              "Graph + cut\ngeometry", "Soft circuit\npatterns", "χ walk",
+              "Gated walk +\nangle stats", "Experts +\ntimeout router",
+              "Secondary\nDAG / angle", "Floors + templates\n+ calibration",
+              "Categorical +\nfeature audit", "Final model\n120 inputs"]
+    x = np.arange(len(scores))
+    fig, ax = plt.subplots(figsize=(20, 9))
+    fig.subplots_adjust(left=.075, right=.96, top=.80, bottom=.26)
+    ax.plot(x, scores, color=NAVY, lw=2.7, zorder=2)
+    colors = [TEAL] * 7 + [GOLD, GREEN, PURPLE, RUST, TAB[5]]
+    for i, (value, color) in enumerate(zip(scores, colors)):
+        ax.scatter(i, value, s=240, color=color, edgecolor="white",
+                   lw=2.4, zorder=3)
+        ax.annotate(f"{value:.2f}%", (i, value), xytext=(0, 16),
+                    textcoords="offset points", ha="center", fontsize=12,
+                    color=color, fontweight="bold")
+    ax.set_xticks(x, labels, fontsize=10)
+    ax.set_xlim(-.35, len(scores)-.65)
+    ax.set_ylim(87, 94)
+    ax.set_yticks(range(87, 95))
+    ax.set_ylabel("Official duration score (%)")
+    ax.grid(axis="y", color=GRID, lw=.8)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.axvline(6.5, color=GRID, lw=1.2, ls="--", zorder=1)
+    ax.text(3, 93.70, "FEATURE ENGINEERING · BEST OF FOUR MODELS",
+            ha="center", color=TEAL, fontsize=11, fontweight="bold")
+    ax.text(9, 93.70, "MODEL + SYSTEM REFINEMENTS",
+            ha="center", color=PURPLE, fontsize=11, fontweight="bold")
+    title(fig, "From basic QASM to the final model: 87.66% → 92.77%",
+          "One continuous path on matched circuit-grouped folds · ExtraTrees won each feature-stage model sweep",
+          "Sources: model_sweep.json, merged/full_union/categorical validations, final-model OOF."
+          " Later points are successive implementations, not isolated effects; rejected classifier branch is shown separately.")
     export(fig,"00_feature_progression")
 
 
@@ -341,7 +337,7 @@ def plot_pruning():
     assert abs(matched[-1]-.927739)<1e-5 and abs(stress[-1]-.766378)<1e-5
     fig, axes = plt.subplots(1, 2, figsize=(16, 9))
     fig.subplots_adjust(left=.08, right=.95, top=.77, bottom=.21, wspace=.25)
-    labels = ["Before audit", "Audit trim", "Production"]
+    labels = ["Before audit", "Audit trim", "Final model"]
     x = np.arange(3)
     bars = axes[0].bar(x, counts, width=.58, color=[PURPLE, GREEN, TEAL])
     for b,n in zip(bars,counts):
@@ -371,52 +367,11 @@ def plot_pruning():
     axes[1].set_axisbelow(True)
     axes[1].spines[["top", "right"]].set_visible(False)
     axes[1].legend(loc="center left", frameon=False, fontsize=11)
-    title(fig, "Final pruning makes the production model smaller",
+    title(fig, "Pruning keeps the final model compact",
           "Same 1,497 labeled rows; 532 circuits; the final two stages use categorical settings",
-          "Sources: full_union_model_validation.json, categorical_model_validation.json, production_model_oof.csv, production_features.json."
+          "Sources: full_union and categorical validations, final-model OOF and feature schema."
           " Feature selection reused released labels, so small gains may be optimistic.")
     export(fig, "06_final_pruning")
-
-
-def plot_production_bridge():
-    sweep = json.loads((OUT / "model_sweep.json").read_text())
-    merged = read("merged_model_validation")
-    union = read("full_union_model_validation")
-    categorical = read("categorical_model_validation")
-    scores = np.array([
-        sweep["packs"]["angle_gated"]["models"]["extra_trees"]["score"],
-        merged["splits"]["matched"]["merged"]["score"],
-        union["splits"]["matched"]["full_union"]["score"],
-        union["splits"]["matched"]["near_basis_calibration"]["score"],
-        categorical["splits"]["matched"]["categorical_v8"]["score"],
-        production_oof_scores()["matched"],
-    ]) * 100
-    assert np.all(np.diff(scores) > 0)
-    labels = ["Global features", "Threshold experts\n+ timeout router",
-              "Secondary DAG /\nangle parser", "Runtime floors +\ntemplate / basis rules",
-              "Categorical setting\n+ feature audit", "Frozen 120-input\nproduction model"]
-    colors = [TEAL, GOLD, GREEN, PURPLE, RUST, TAB[5]]
-    x = np.arange(len(scores))
-    fig, ax = plt.subplots(figsize=(16, 9))
-    fig.subplots_adjust(left=.085, right=.96, top=.80, bottom=.25)
-    ax.plot(x, scores, color=NAVY, lw=2.5, zorder=2)
-    for i, (value, color) in enumerate(zip(scores, colors)):
-        ax.scatter(i, value, s=270, color=color, edgecolor="white", lw=2.5, zorder=3)
-        ax.annotate(f"{value:.2f}%", (i, value), xytext=(0, 18),
-                    textcoords="offset points", ha="center", fontsize=16,
-                    fontweight="bold", color=color)
-    ax.set_xticks(x, labels, fontsize=11)
-    ax.set_xlim(-.25, len(scores)-.75)
-    ax.set_ylim(91.2, 93.05)
-    ax.set_yticks(np.arange(91.25, 93.01, .25))
-    ax.set_ylabel("Official duration score (%)")
-    ax.grid(axis="y", color=GRID, lw=.8)
-    ax.spines[["top", "right"]].set_visible(False)
-    title(fig, "From the feature-rich global model to production",
-          "The recorded score rose 1.22 points across model architecture, a second parser, runtime rules and pruning",
-          "Sources: model_sweep.json, merged/full_union/categorical validations, production_model_oof.csv."
-          " Same matched circuit-grouped folds; successive implementations, not isolated step effects.")
-    export(fig, "09_production_bridge")
 
 
 def card(ax, x, y, width, height, heading, lines, *, selected=(), index=0):
@@ -489,7 +444,7 @@ def architecture_box(ax,x,y,w,h,head,body,color=TEAL):
 def plot_model_tree():
     fig,ax=plt.subplots(figsize=(18,10))
     ax.set_xlim(0,18);ax.set_ylim(0,10);ax.axis("off")
-    fig.text(.055,.965,"Model tree: from a global regressor to the production system",
+    fig.text(.055,.965,"Model tree: from a global regressor to the final model",
              fontsize=24,fontweight="bold",color=NAVY,va="top")
     fig.text(.055,.92,"The broad estimator sweep came first; later gains primarily came from representations and routing",
              fontsize=13,color=MUTED,va="top")
@@ -499,7 +454,7 @@ def plot_model_tree():
         ("Dual parser", "Primary + secondary\nDAG/angle scanner\n480 candidates"),
         ("Threshold experts", "One ExtraTrees per\nsetting; 50/50 log\nblend with global"),
         ("Timeout router", "One classifier per\nsetting; cap at\np(timeout) ≥ .35"),
-        ("Production", "325 → 241 → 120\nfitted inputs\ngrouped OOF 0.9277"),
+        ("Final model", "325 → 241 → 120\nfitted inputs\ngrouped OOF 0.9277"),
     ]
     w=2.65;gap=.28;x0=.34;y=5.15;h=2.6
     for i,(head,body) in enumerate(main):
@@ -522,7 +477,7 @@ def plot_model_tree():
         architecture_box(ax,x,1.55,w,2.05,head,body,MUTED)
     ax.text(.35,4.34,"other branches tested / not shipped",fontsize=12,color=MUTED,fontweight="bold")
     fig.text(.055,.052,"Sources: validation.json, merged_model_validation.json, full_union_model_validation.json,"
-             " paper_runtime_replication.json, jepa/results.json, production_model_oof.csv.",
+             " paper_runtime_replication.json, jepa/results.json, final-model OOF.",
              fontsize=10,color=MUTED,va="bottom")
     export(fig,"08_model_architecture_tree")
 
@@ -537,8 +492,7 @@ def main():
     plot_pruning()
     plot_feature_tree()
     plot_model_tree()
-    plot_production_bridge()
-    print(f"Exported 10 PNG + 10 SVG figures to {OUT}")
+    print(f"Exported 9 PNG + 9 SVG figures to {OUT}")
 
 
 if __name__ == "__main__":
