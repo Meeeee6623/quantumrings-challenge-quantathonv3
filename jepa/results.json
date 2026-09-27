@@ -1,0 +1,248 @@
+{
+  "method": "fold-isolated QASM-only masked latent prediction; tree schema and postprocessing match v7",
+  "baseline": {
+    "matched": {
+      "score": 0.9261526527252998,
+      "timeout_score": 0.9639152754960102,
+      "median_factor_error": 1.0649389663713609,
+      "p95_factor_error": 4.887911018024689,
+      "tenfold_misses": 28,
+      "predicted_timeouts": 43,
+      "threshold_scores": {
+        "16": 0.9300152213126028,
+        "64": 0.9240860185007006,
+        "512": 0.9239467438760862
+      }
+    },
+    "structural": {
+      "score": 0.7553686958374755,
+      "timeout_score": 0.7974694962429586,
+      "median_factor_error": 1.889357260937392,
+      "p95_factor_error": 56.128269399894606,
+      "tenfold_misses": 221,
+      "predicted_timeouts": 73,
+      "threshold_scores": {
+        "16": 0.6986958184615557,
+        "64": 0.801611538705108,
+        "512": 0.7683371189274623
+      }
+    }
+  },
+  "acceptance_gate": {
+    "min_structural_gain": 0.005,
+    "max_matched_drop": 0.002,
+    "rule": "promote only if both conditions hold"
+  },
+  "variants": {
+    "experts_only": {
+      "matched": {
+        "score": 0.9246103061541258,
+        "timeout_score": 0.9418375716932761,
+        "median_factor_error": 1.0670830169715186,
+        "p95_factor_error": 5.223652974601973,
+        "tenfold_misses": 28,
+        "predicted_timeouts": 42,
+        "threshold_scores": {
+          "16": 0.9292948568346294,
+          "64": 0.9236411623144201,
+          "512": 0.9200619504599095
+        },
+        "delta_vs_v7": -0.0015423465711740247,
+        "encoder_training": [
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 416,
+            "mean_loss": 0.0029777622607070954,
+            "fold": 0
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 419,
+            "mean_loss": 0.0027471688110381363,
+            "fold": 1
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 421,
+            "mean_loss": 0.002248672425048426,
+            "fold": 2
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 419,
+            "mean_loss": 0.0025662421016022564,
+            "fold": 3
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 417,
+            "mean_loss": 0.0033553278830368073,
+            "fold": 4
+          }
+        ]
+      },
+      "structural": {
+        "score": 0.7533914718392678,
+        "timeout_score": 0.797686614653444,
+        "median_factor_error": 1.9013778907913819,
+        "p95_factor_error": 55.46584705344505,
+        "tenfold_misses": 220,
+        "predicted_timeouts": 72,
+        "threshold_scores": {
+          "16": 0.6971648209237951,
+          "64": 0.7977251093883752,
+          "512": 0.7681403233013474
+        },
+        "delta_vs_v7": -0.0019772239982076556,
+        "encoder_training": [
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 298,
+            "mean_loss": 0.006257354677654803,
+            "fold": 0
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 450,
+            "mean_loss": 0.0017754287197021767,
+            "fold": 1
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 452,
+            "mean_loss": 0.0020418261468876154,
+            "fold": 2
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 441,
+            "mean_loss": 0.0021211757411947474,
+            "fold": 3
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 451,
+            "mean_loss": 0.002476342162117362,
+            "fold": 4
+          }
+        ]
+      }
+    },
+    "full": {
+      "matched": {
+        "score": 0.9241414165275946,
+        "timeout_score": 0.9437045987305828,
+        "median_factor_error": 1.0718474997979277,
+        "p95_factor_error": 5.136359914166236,
+        "tenfold_misses": 30,
+        "predicted_timeouts": 42,
+        "threshold_scores": {
+          "16": 0.9286863695984984,
+          "64": 0.9234484114848845,
+          "512": 0.9194273421342966
+        },
+        "delta_vs_v7": -0.0020112361977051574,
+        "encoder_training": [
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 416,
+            "mean_loss": 0.0029777622607070954,
+            "fold": 0
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 419,
+            "mean_loss": 0.0027471688110381363,
+            "fold": 1
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 421,
+            "mean_loss": 0.002248672425048426,
+            "fold": 2
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 419,
+            "mean_loss": 0.0025662421016022564,
+            "fold": 3
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 417,
+            "mean_loss": 0.0033553278830368073,
+            "fold": 4
+          }
+        ]
+      },
+      "structural": {
+        "score": 0.7467277524954818,
+        "timeout_score": 0.7972022704026757,
+        "median_factor_error": 2.0422918726769033,
+        "p95_factor_error": 60.57237453906852,
+        "tenfold_misses": 225,
+        "predicted_timeouts": 72,
+        "threshold_scores": {
+          "16": 0.6815896065481665,
+          "64": 0.8064077109859857,
+          "512": 0.7536774436311252
+        },
+        "delta_vs_v7": -0.008640943341993612,
+        "encoder_training": [
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 298,
+            "mean_loss": 0.006257354677654803,
+            "fold": 0
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 450,
+            "mean_loss": 0.0017754287197021767,
+            "fold": 1
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 452,
+            "mean_loss": 0.0020418261468876154,
+            "fold": 2
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 441,
+            "mean_loss": 0.0021211757411947474,
+            "fold": 3
+          },
+          {
+            "device": "cpu",
+            "epochs": 6,
+            "examples": 451,
+            "mean_loss": 0.002476342162117362,
+            "fold": 4
+          }
+        ]
+      }
+    }
+  },
+  "decision": "reject_keep_v7",
+  "elapsed_s": 394.07464120798977
+}

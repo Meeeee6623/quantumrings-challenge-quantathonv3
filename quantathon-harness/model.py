@@ -262,7 +262,7 @@ class SequenceMotifs:
 
 
 class Stats:
-    def __init__(self, n=0, sequence=False):
+    def __init__(self, n=0, sequence=False, jepa_collector=None):
         self.n = n
         self.sequence = SequenceMotifs() if sequence else None
         self.c = Counter()
@@ -287,6 +287,7 @@ class Stats:
         self.angle_bins = Counter()
         self.gate_bigrams = Counter()
         self.previous_gate = None
+        self.jepa_collector = jepa_collector
 
     def add_custom_span(self, qubits, gate_cost, window=None):
         """Conservative cut budget for a custom gate with unmapped body qubits."""
@@ -310,6 +311,8 @@ class Stats:
         self.window_active[window].update(qubits)
 
     def add(self, gate, qubits, angle=None, conditional=False, window=0, parameters=None):
+        if self.jepa_collector is not None:
+            self.jepa_collector.add(gate,qubits,angle,window)
         if self.sequence is not None:
             self.sequence.add(gate,qubits,parameters or ((angle,) if angle is not None else ()),window)
         if gate == 'barrier':
@@ -616,6 +619,34 @@ class RuntimeModel:
         self.use_extended_features = any(c.startswith('extended__') for c in all_columns)
         self.rotation_tolerance = (self.model.get('chi_walk_rotation_tolerance_rad',-1.0)
                                    if self.model else -1.0)
+        self.use_jepa = any(c.startswith('jepa_') for c in all_columns)
+        self.jepa_encoder = None
+        self.jepa_device = 'cpu'
+        if self.use_jepa:
+            encoder_file = p / self.model.get('jepa_encoder_file','jepa_encoder.pt')
+            if encoder_file.exists():
+                try:
+                    from jepa_encoder import load_encoder
+                    self.jepa_encoder, _ = load_encoder(encoder_file,self.jepa_device)
+                except Exception:
+                    # A missing optional torch dependency must leave the known
+                    # v7 path usable instead of crashing submission generation.
+                    self.jepa_encoder = None
+
+    @staticmethod
+    def _empty_jepa_features():
+        return {'jepa_available':0, **{f'jepa_{i:02d}':0.0 for i in range(32)}}
+
+    def _jepa_features(self, collector, n_qubits):
+        if self.jepa_encoder is None:
+            return self._empty_jepa_features()
+        try:
+            from jepa_encoder import embed_rows
+            vector = embed_rows(self.jepa_encoder,[collector.matrix(n_qubits)],self.jepa_device)[0]
+            return {'jepa_available':1, **{f'jepa_{i:02d}':float(value)
+                                           for i,value in enumerate(vector)}}
+        except Exception:
+            return self._empty_jepa_features()
 
     def _walk_features(self, qasm_text, budget_s=3.0, too_large=False):
         from chi_walk import model_features, walk
@@ -703,13 +734,18 @@ class RuntimeModel:
                    component_dense_over_128gb=int(n >= 34))
         return out
 
-    def featurize(self, qasm_text: str, include_sequence=False) -> dict:
+    def featurize(self, qasm_text: str, include_sequence=False, collect_jepa_tokens=False,
+                  run_aux_features=True) -> dict:
         started = time.perf_counter() if self.use_chi_walk else 0.0
         if len(qasm_text) > 40_000_000:
             out = self._huge_features(qasm_text)
-            if self.use_chi_walk:
+            if self.use_jepa or collect_jepa_tokens:
+                out.update(self._empty_jepa_features())
+                if collect_jepa_tokens:
+                    out['_jepa_tokens'] = []
+            if self.use_chi_walk and run_aux_features:
                 out.update(self._walk_features(qasm_text,too_large=True))
-            if self.use_extended_features:
+            if self.use_extended_features and run_aux_features:
                 try:
                     from extended_features import extract_fast_qasm_features
                     out.update({'extended__'+key:value for key,value
@@ -717,7 +753,14 @@ class RuntimeModel:
                 except Exception:
                     pass
             return out
-        main = Stats(sequence=include_sequence)
+        # The main parser is already close to the cap for a few 20--40 MB
+        # generated programs.  Keep their established feature path exact and
+        # make the learned embedding an explicitly trained fallback there.
+        collector = None
+        if (self.use_jepa or collect_jepa_tokens) and len(qasm_text) <= 20_000_000:
+            from jepa_tokens import JEPATokenCollector
+            collector = JEPATokenCollector()
+        main = Stats(sequence=include_sequence,jepa_collector=collector)
         current = main
         regs = {}
         definitions = {}
@@ -854,7 +897,16 @@ class RuntimeModel:
         out.update(custom_calls=custom_calls, custom_definitions=len(definitions),
                    unsupported_statements=unsupported, qasm_bytes=len(qasm_text),
                    huge_fast_path=0)
-        if self.use_extended_features:
+        if collector is not None:
+            if collect_jepa_tokens:
+                out['_jepa_tokens'] = collector.matrix(main.n)
+            if self.use_jepa:
+                out.update(self._jepa_features(collector,main.n))
+        elif self.use_jepa or collect_jepa_tokens:
+            out.update(self._empty_jepa_features())
+            if collect_jepa_tokens:
+                out['_jepa_tokens'] = []
+        if self.use_extended_features and run_aux_features:
             try:
                 from extended_features import extract_fast_qasm_features
                 out.update({'extended__'+key:value for key,value
@@ -863,7 +915,7 @@ class RuntimeModel:
                 # The union model remains usable through its global component
                 # if the optional second structural scan encounters new syntax.
                 pass
-        if self.use_chi_walk:
+        if self.use_chi_walk and run_aux_features:
             # Price the optional second scan before the walk so the remaining
             # walk budget reflects the total parser time, not just base QASM
             # extraction.  Keep a one-second margin under the harness cap.

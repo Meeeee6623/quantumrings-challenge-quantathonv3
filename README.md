@@ -74,6 +74,10 @@ for the feature audit and comparison,
 for the v5 edge-case evidence and large-file parser tests;
 [`research/MERGED_COMPARISON.md`](research/MERGED_COMPARISON.md) records the
 original union-model comparison.
+[`jepa/README.md`](jepa/README.md) is the full write-up of a fold-isolated
+masked-latent circuit-embedding experiment. It did not pass the predeclared
+acceptance gate against its v7 baseline and its code remains inactive; the
+newer v8 artifact remains the shipped holdout predictor.
 The current full-harness parser timing and 15-second cap check are in
 [`research/PARSER_OPTIMIZATION.md`](research/PARSER_OPTIMIZATION.md).
 The distribution of remaining errors is in
