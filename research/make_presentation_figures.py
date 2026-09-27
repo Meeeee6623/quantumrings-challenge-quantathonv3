@@ -2,9 +2,9 @@
 
 Run: uv run --locked --extra report python research/make_presentation_figures.py
 
-All plotted scores come from the checked-in validation JSON/OOF files. An
-ablation's delta is always relative to its own paired baseline; the early
-12-model sweep used a different grouped assignment and is a separate figure.
+All plotted scores come from the checked-in validation JSON/OOF files and the
+new, same-fold four-model sweep. An ablation's delta is always relative to its
+own paired baseline; historical ExtraTrees ablations are shown separately.
 """
 from __future__ import annotations
 
@@ -16,7 +16,6 @@ from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Patch
 import numpy as np
 
@@ -25,15 +24,18 @@ SRC = ROOT / "research"
 OUT = SRC / "presentation_figures"
 OUT.mkdir(exist_ok=True)
 
+TAB = plt.get_cmap("tab10").colors
 NAVY = "#17324D"
-TEAL = "#116B7A"
-GOLD = "#D89232"
-RUST = "#A6543D"
+TEAL = TAB[0]
+GOLD = TAB[1]
+GREEN = TAB[2]
+RUST = TAB[3]
+PURPLE = TAB[4]
 INK = "#172A3A"
 MUTED = "#607183"
 GRID = "#D9E2E8"
 PALE = "#F5F8FA"
-TEAL_PALE = "#DBEEF0"
+TEAL_PALE = "#E4F1E7"
 GRAY_PALE = "#E9EEF1"
 
 plt.rcParams.update({
@@ -95,36 +97,83 @@ def paired_bars(ax, labels, matched, structural, *, selected=(), xlim=None,
 
 
 def plot_initial_model_sweep():
-    report = read("validation")
-    feature_views = ["basic", "raw", "all"]
-    models = ["ridge", "hist_boost", "random_forest", "extra_trees"]
-    scores = {(row["view"], row["model"]): row["score"]
-              for row in report["results"]}
-    assert len(scores) == 12
-    matrix = np.array([[scores[v, m] for m in models] for v in feature_views])
-    cmap = LinearSegmentedColormap.from_list("slide", ["#E8EFF3", "#7CB8BA", TEAL])
+    report = json.loads((OUT / "model_sweep.json").read_text())
+    feature_views = report["pack_names"]
+    models = report["model_names"]
+    assert len(feature_views) == 8 and len(models) == 4
+    matrix = np.array([[report["packs"][view]["models"][model]["score"]
+                        for model in models] for view in feature_views])
     fig, ax = plt.subplots(figsize=(16, 9))
-    fig.subplots_adjust(left=.08, right=.94, top=.78, bottom=.18)
-    image = ax.imshow(matrix, aspect="auto", cmap=cmap, vmin=.69, vmax=.90)
+    fig.subplots_adjust(left=.22, right=.94, top=.81, bottom=.15)
+    image = ax.imshow(matrix, aspect="auto", cmap="viridis", vmin=.69, vmax=.94)
     ax.set_xticks(range(4), ["Ridge", "Histogram\nboosting", "Random\nforest", "ExtraTrees"])
-    ax.set_yticks(range(3), ["Basic counts\n+ depth", "Raw gate +\nconnectivity", "+ simplification\n+ timing"])
-    ax.tick_params(length=0, labelsize=16, pad=14)
-    for i in range(3):
+    ax.set_yticks(range(8), [report["packs"][view]["label"] for view in feature_views])
+    ax.tick_params(length=0, labelsize=13, pad=13)
+    for i in range(8):
+        winner = int(np.argmax(matrix[i]))
         for j in range(4):
-            best = j == 3
+            best = j == winner
             ax.text(j, i, f"{matrix[i,j]:.3f}", ha="center", va="center",
-                    fontsize=22, fontweight="bold" if best else "normal",
-                    color="white" if matrix[i,j] > .85 else INK)
+                    fontsize=18, fontweight="bold" if best else "normal",
+                    color="white" if matrix[i,j] < .80 else INK)
             if best:
                 ax.add_patch(plt.Rectangle((j-.49, i-.49), .98, .98,
-                                           fill=False, ec=NAVY, lw=2.5))
+                                           fill=False, ec=GREEN, lw=3))
     ax.spines[:].set_visible(False)
     cb = fig.colorbar(image, ax=ax, fraction=.03, pad=.025)
     cb.set_label("Official duration score · higher is better", rotation=90, labelpad=12)
-    title(fig, "Start with QASM counts; choose a strong default model",
-          "Initial 3 feature views × 4 out-of-box regressors · 5 circuit-grouped folds",
-          "Source: research/validation.json · 1,497 labeled runs. This early fold assignment differs from later ablations.")
+    title(fig, "Run the same model tree for every feature set",
+          "Eight staged QASM packs × four fixed regressors · ExtraTrees won every row",
+          "Source: presentation_figures/model_sweep.json · Same 5 circuit-grouped folds, categorical setting, and 1,497 labeled runs."
+          " Global regressors only; experts and timeout routing come later.")
     export(fig, "01_initial_model_sweep")
+
+
+def plot_feature_progression():
+    report = json.loads((OUT / "model_sweep.json").read_text())
+    names = report["pack_names"]
+    model_names = report["model_names"]
+    winners = [max(model_names, key=lambda model:
+                   report["packs"][name]["models"][model]["score"]) for name in names]
+    best = [report["packs"][name]["models"][winner]["score"]
+            for name, winner in zip(names, winners)]
+    gain = 100*(np.array(best)-best[0])
+    x = np.arange(len(names))
+    colors = {"ridge": TAB[3], "hist_boost": TAB[1],
+              "random_forest": TAB[2], "extra_trees": TAB[0]}
+    fig, ax = plt.subplots(figsize=(16, 9))
+    fig.subplots_adjust(left=.095, right=.94, top=.80, bottom=.24)
+    ax.plot(x[:7], gain[:7], color=NAVY, lw=2.8, zorder=2)
+    ax.plot(x[6:], gain[6:], color=RUST, lw=2.2, ls="--", zorder=2)
+    for i,(winner,value) in enumerate(zip(winners,gain)):
+        ax.scatter(i,value,s=240,color=colors[winner],edgecolor=RUST if i==7 else "white",
+                   lw=2.5,marker="X" if i==7 else "o",zorder=3)
+        ax.annotate(f"{best[i]*100:.2f}%",(i,value),xytext=(0,17),
+                    textcoords="offset points",ha="center",fontsize=13,
+                    color=RUST if i==7 else colors[winner],fontweight="bold")
+    short_labels=["Basic counts", "Gate mix +\ntiming", "χ bound +\ndiversity",
+                  "Graph + cut\ngeometry", "Soft circuit\npatterns", "χ walk",
+                  "Gated walk +\nangle stats", "External family\nprobabilities"]
+    ax.set_xticks(x,short_labels,fontsize=11)
+    ax.set_ylabel("Gain over basic QASM pack (score points)")
+    ax.set_ylim(-.25,max(gain)+.9)
+    ax.set_xlim(-.4,len(names)-.6)
+    ax.grid(axis="y",color=GRID)
+    ax.spines[["top","right"]].set_visible(False)
+    ax.text(.02,.97,f"Basic pack = {best[0]*100:.2f}%",
+            transform=ax.transAxes,ha="left",va="top",fontsize=12,color=MUTED)
+    ax.text(.98,.08,"Dashed branch: tested, not shipped",transform=ax.transAxes,
+            ha="right",va="bottom",fontsize=11,color=RUST)
+    legend=[Patch(color=color,label=label) for label,color in
+            [("Ridge",colors["ridge"]),("Histogram boost",colors["hist_boost"]),
+             ("Random forest",colors["random_forest"]),("ExtraTrees",colors["extra_trees"])]]
+    fig.legend(handles=legend,loc="upper right",bbox_to_anchor=(.94,.89),
+               ncol=4,frameon=False,fontsize=11)
+    title(fig,"Feature engineering lifts the best model's grouped score",
+          "Best of the same four fixed regressors on grouped folds · ExtraTrees won every stage",
+          "Source: presentation_figures/model_sweep.json · Score is the challenge duration metric; these are global models without later expert/rule gains."
+          " Released-label feature selection can make gains optimistic.")
+    export(fig,"00_feature_progression")
 
 
 def plot_foundations():
@@ -280,9 +329,9 @@ def plot_pruning():
     assert abs(matched[-1]-.927739)<1e-5 and abs(stress[-1]-.766378)<1e-5
     fig, axes = plt.subplots(1, 2, figsize=(16, 9))
     fig.subplots_adjust(left=.08, right=.95, top=.77, bottom=.21, wspace=.25)
-    labels = ["v7", "v8", "v9 production"]
+    labels = ["Before audit", "Audit trim", "Production"]
     x = np.arange(3)
-    bars = axes[0].bar(x, counts, width=.58, color=[GRAY_PALE, "#B1D8DC", TEAL])
+    bars = axes[0].bar(x, counts, width=.58, color=[PURPLE, GREEN, TEAL])
     for b,n in zip(bars,counts):
         axes[0].text(b.get_x()+b.get_width()/2, b.get_height()+7, str(n),
                      ha="center", va="bottom", fontsize=20, fontweight="bold", color=NAVY)
@@ -311,7 +360,7 @@ def plot_pruning():
     axes[1].spines[["top", "right"]].set_visible(False)
     axes[1].legend(loc="center left", frameon=False, fontsize=11)
     title(fig, "Final pruning makes the production model smaller",
-          "Same 1,497 labeled rows; 532 circuits; setting remains categorical in v8/v9",
+          "Same 1,497 labeled rows; 532 circuits; the final two stages use categorical settings",
           "Sources: full_union_model_validation.json, categorical_model_validation.json, production_model_oof.csv, production_features.json."
           " Feature selection reused released labels, so small gains may be optimistic.")
     export(fig, "06_final_pruning")
@@ -321,8 +370,9 @@ def card(ax, x, y, width, height, heading, lines, *, selected=(), index=0):
     box = FancyBboxPatch((x,y),width,height,boxstyle="round,pad=0.03,rounding_size=.14",
                          lw=1.2, ec=GRID, fc="white")
     ax.add_patch(box)
+    stage_color=(TAB[0],TAB[1],TAB[2],TAB[4],TAB[5])[index]
     ax.add_patch(plt.Rectangle((x,y+height-.67), width, .67,
-                               facecolor=NAVY if index==0 else TEAL,
+                               facecolor=stage_color,
                                edgecolor="none"))
     ax.text(x+.22,y+height-.34,heading,va="center",ha="left",
             color="white",fontsize=14,fontweight="bold")
@@ -368,9 +418,9 @@ def plot_feature_tree():
                                          lw=2,color=GOLD))
     fig.text(.055,.965,"Feature experiment tree",fontsize=25,fontweight="bold",
              color=NAVY,va="top")
-    fig.text(.055,.92,"Selected packages in teal · other rows are paired ablations",
+    fig.text(.055,.92,"Selected feature variants highlighted in green · other rows are paired ablations",
              fontsize=14,color=MUTED,va="top")
-    fig.text(.055,.05,"Initial 12-model sweep is chart 01. An unhighlighted component may enter a later bundle; later ablations held ExtraTrees fixed.",
+    fig.text(.055,.05,"The four-model tree was rerun for each staged pack (overview + heatmap). Historical paired ablations held ExtraTrees fixed.",
              fontsize=11,color=MUTED,va="bottom")
     export(fig,"07_feature_experiment_tree")
 
@@ -386,27 +436,28 @@ def architecture_box(ax,x,y,w,h,head,body,color=TEAL):
 def plot_model_tree():
     fig,ax=plt.subplots(figsize=(18,10))
     ax.set_xlim(0,18);ax.set_ylim(0,10);ax.axis("off")
-    fig.text(.055,.965,"Model tree: from a stock regressor to the production system",
+    fig.text(.055,.965,"Model tree: from a global regressor to the production system",
              fontsize=24,fontweight="bold",color=NAVY,va="top")
     fig.text(.055,.92,"The broad estimator sweep came first; later gains primarily came from representations and routing",
              fontsize=13,color=MUTED,va="top")
     main=[
-        ("ExtraTrees", "Best of 4 initial\nregressor families\nlog₁₀(runtime)"),
+        ("ExtraTrees", "Won the same four-\nmodel sweep across\nfeature packs"),
         ("Feature-rich global", "QASM geometry + χ\nwalk + angle gate\nrefit on grouped folds"),
         ("Dual parser", "Primary + secondary\nDAG/angle scanner\n480 candidates"),
         ("Threshold experts", "One ExtraTrees per\nsetting; 50/50 log\nblend with global"),
         ("Timeout router", "One classifier per\nsetting; cap at\np(timeout) ≥ .35"),
-        ("v9 production", "v7 325 → v8 241\n→ v9 120 inputs\ngrouped OOF 0.9277"),
+        ("Production", "325 → 241 → 120\nfitted inputs\ngrouped OOF 0.9277"),
     ]
     w=2.65;gap=.28;x0=.34;y=5.15;h=2.6
     for i,(head,body) in enumerate(main):
         x=x0+i*(w+gap)
-        architecture_box(ax,x,y,w,h,head,body,NAVY if i==0 else TEAL)
+        architecture_box(ax,x,y,w,h,head,body,
+                         (TAB[0],TAB[1],TAB[2],TAB[4],TAB[5],TAB[3])[i])
         if i<5:
             ax.add_patch(FancyArrowPatch((x+w+.02,y+h/2),(x+w+gap-.05,y+h/2),
                                          arrowstyle="-|>",mutation_scale=17,lw=2,color=GOLD))
     alternatives=[
-        ("Ridge / RF / HistGB", "Lower scores in the\ninitial 12-model sweep"),
+        ("Ridge / RF / HistGB", "Lower scores across\nthe feature-pack sweep"),
         ("Compact union", "0.9197 matched;\nstronger structural;\nnot selected"),
         ("Family neural", "FiLM residual 0.9009;\nbelow tree baseline"),
         ("JEPA embedding", "Did not pass paired\nacceptance gate"),
@@ -424,6 +475,7 @@ def plot_model_tree():
 
 
 def main():
+    plot_feature_progression()
     plot_initial_model_sweep()
     plot_foundations()
     plot_chi_walk()
@@ -432,7 +484,7 @@ def main():
     plot_pruning()
     plot_feature_tree()
     plot_model_tree()
-    print(f"Exported 8 PNG + 8 SVG figures to {OUT}")
+    print(f"Exported 9 PNG + 9 SVG figures to {OUT}")
 
 
 if __name__ == "__main__":
