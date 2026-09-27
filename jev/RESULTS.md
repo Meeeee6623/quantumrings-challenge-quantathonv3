@@ -1,102 +1,62 @@
 # JEV runtime-bin experiment
 
-**Status:** partial live result. Vercel AI Gateway accepted the account and
-produced two evaluations for one held-out circuit, then its TypeSafe upstream
-repeatedly returned `429 rate_limit_exceeded` / “high demand.” The results below
-are useful as a probe, not an accuracy claim.
+**Status:** complete evaluation through OpenRouter on JEV latest. The experiment made 214 successful JEV calls for 107 held-out circuits / 301 measured circuit-threshold runs. Reported cost was **$0.06080**, median request latency **0.334 s**, p95 **0.422 s**.
 
 ## Question
 
-Can TypeSafe JEV classify a Quantum Rings circuit into log-runtime
-representatives, and does showing it structurally similar labelled circuits
-improve the result?
+Can JEV classify a Quantum Rings circuit into log-runtime categories? Does providing measured, structurally similar circuits improve its prediction?
 
-The challenge scores predictions as:
+The challenge score is:
 
 ```
 score = max(0, 1 - abs(log10(predicted_s / actual_s)) / 2)
 ```
 
-A classifier should therefore be evaluated by its decoded seconds and this
-score, not only by class accuracy.
+We report decoded-seconds challenge score and nearest-category accuracy separately.
 
-## Fixed evaluation design
+## Evaluation design
 
-- **Evaluation split:** existing matched grouped fold 0: 107 circuits / 301
-  labelled runs.
-- **References:** the other folds, 425 circuits. Every threshold of a circuit
-  remains in the same split.
-- **Inputs to JEV:** QASM-derived structural summaries, gate counts, temporal
-  two-qubit-operation windows, and the fixed simulator and hardware
-  configuration.
-- **Not sent:** raw QASM, filenames, source/family labels, or target labels.
-- **Zero-shot condition:** only target circuit summary.
-- **Example-assisted condition:** eight nearest training circuits by
-  standardized log1p structural features; labels were not used to choose
-  neighbors. JEV then receives their measured threshold/runtime pairs.
-- **Categories tested:** `[1, 10, 100, 1000]` seconds, and a wider set
-  `[0.1, 1, 10, 100, 1000, 10000, 14400, 100000]` seconds. JEV returns a
-  probability for every category.
+- Test split: the pre-existing matched grouped fold 0, 107 circuits / 301 runs.
+- Reference pool: remaining folds, 425 circuits. All threshold rows for one circuit remain together.
+- Circuit input: QASM-derived structural summaries, gate counts, temporal two-qubit windows, fixed simulator setting, and hardware configuration.
+- Excluded: raw QASM, filenames, source/family labels, and target labels.
+- Zero-shot: target circuit summary only.
+- Retrieval-assisted: eight nearest training circuits using standardized log1p structural features. Measured runtimes were not used to select references; they were shown to JEV after selection.
+- JEV model: `~typesafe/jev-latest` through OpenRouter's Decisions API.
+- Categories:
+  - four-bin: `[1, 10, 100, 1000]` seconds;
+  - wide-bin: `[0.1, 1, 10, 100, 1000, 10000, 14400, 100000]` seconds.
 
-The wide set includes a 14,400-second timeout representative. Successful runs
-can exceed 14,400 seconds, so it also includes 100,000 seconds.
+The 14,400-second category represents a timeout; successful runs may exceed it, hence the 100,000-second category.
 
-## Live JEV probe
+## Results
 
-The completed circuit had actual runtimes of 86.85 s, 144.50 s, and 5,763.22 s.
+| Method | Categories | Class accuracy | Challenge score | 95% circuit bootstrap interval |
+|---|---|---:|---:|---:|
+| JEV zero-shot | Four | 19.9% | 24.5% | 20.6%–28.5% |
+| JEV zero-shot | Wide | 6.3% | 16.0% | 11.9%–20.7% |
+| JEV + eight structural references | Four | 85.7% | 73.9% | 70.1%–77.3% |
+| JEV + eight structural references | Wide | 76.4% | **78.7%** | 75.3%–82.0% |
+| Eight-reference nearest-neighbour baseline | Continuous runtime | — | **84.4%** | — |
+| Current predictor, stored grouped OOF predictions | Continuous runtime | — | **93.2%** | — |
 
-| Threshold | Actual | Zero-shot choice | Zero-shot score | Eight-example choice | Eight-example score |
-|---:|---:|---:|---:|---:|---:|
-| 16 | 86.85 s | 1,000 s | 46.9% | 100 s | 96.9% |
-| 64 | 144.50 s | 1,000 s | 58.0% | 100 s | 92.0% |
-| 512 | 5,763.22 s | 1,000 s | 62.0% | 1,000 s | 62.0% |
+For context, the maximum possible score if an oracle is restricted to four representative outputs is 80.9%; with the wide bins it is 87.6%. Bins themselves leave substantial precision on the table.
 
-For the wide-bin version at threshold 512, both conditions chose 14,400 s and
-scored 80.1%; the example-assisted call assigned only 39% probability to that
-category.
+JEV's probability-weighted expected-score decoder did not materially improve it: 74.5% for retrieved four-bin and 78.1% for retrieved wide-bin, versus 73.9% and 78.7% from its selected categories.
 
-The probe suggests that retrieved, measured analogues can make JEV's low- and
-medium-threshold choice materially better. It also shows that a coarse bin
-remains lossy for high runtimes. It is only one circuit and must not be
-presented as a benchmark result.
+## What happened
 
-## Offline binning reference
+Zero-shot JEV systematically predicted slow or timeout-like bins. It is not usable as a standalone runtime classifier on these structural summaries.
 
-These scores use all 301 runs in the fixed fold. They are **not JEV results**.
+Retrieval changes the result dramatically: it reaches 85.7% four-bin category accuracy and 78.7% challenge score with wide bins. But the plain nearest-neighbour baseline using the exact same eight reference circuits scores 84.4% continuously, so most of the value is in structural retrieval and known reference runtimes, rather than JEV adding predictive power.
 
-| Method | Challenge score |
-|---|---:|
-| Current predictor, continuous stored OOF predictions | 93.25% |
-| Current predictor rounded to 1 / 10 / 100 / 1,000 s | 78.65% |
-| Oracle restricted to 1 / 10 / 100 / 1,000 s | 80.86% |
-| Current predictor rounded to wider bins | 84.22% |
-| Oracle restricted to wider bins | 87.62% |
-
-The current predictor identifies the nearest four-bin class on 92.03% of rows,
-but its binned score is only 78.65%. Correct coarse classification and accurate
-log-runtime prediction are therefore different objectives. A four-class JEV
-model cannot exceed 80.86% on this fold even with perfect class choices.
-
-## Interpretation
-
-JEV looks most interesting here as a retrieval-aware decision layer: provide a
-target summary plus selected measured analogues, then use its probability
-distribution as one signal beside the existing runtime predictor. It should not
-replace the continuous model with four coarse outputs.
-
-To test it properly, complete the cached 107-circuit evaluation, report both
-zero-shot and reference-assisted scores with circuit-grouped confidence
-intervals, and compare with a plain nearest-neighbour baseline that uses the
-same eight references. The Vercel TypeSafe provider currently needs to recover
-from its temporary capacity errors before that run can finish.
+JEV can be an explainable coarse routing or uncertainty signal, but it should not replace the local continuous predictor. A possible later ablation is to add JEV's category probabilities to a cross-fitted blend and retain it only if grouped OOF score improves beyond the existing 93.2% baseline.
 
 ## Reproduction
 
-The local experiment runner was prepared as `research/jev_benchmark.py` in the
-development workspace. It uses Vercel AI Gateway's evaluation endpoint and
-model `typesafe-ai/jev`; credentials are read at runtime and are not committed.
+The experiment uses the OpenRouter Decisions endpoint, model `~typesafe/jev-latest`, and a server-side API key. No credential is committed. The request cache records all prompts, response probabilities, and split metadata; it must remain outside the public repository because it contains circuit-derived summaries and training reference runtimes.
 
 References:
 
-- [JEV on Vercel AI Gateway](https://vercel.com/ai-gateway/models/jev)
-- [Vercel evaluation API](https://vercel.com/docs/ai-gateway/modalities/evaluation)
+- [JEV latest on OpenRouter](https://openrouter.ai/~typesafe/jev-latest)
+- [OpenRouter Decisions API](https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-request)
