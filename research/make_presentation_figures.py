@@ -137,42 +137,54 @@ def plot_feature_progression():
                    report["packs"][name]["models"][model]["score"]) for name in names]
     best = [report["packs"][name]["models"][winner]["score"]
             for name, winner in zip(names, winners)]
+    assert set(winners) == {"extra_trees"}
+    production = production_oof_scores()["matched"]
+    assert abs(production-.927739) < 1e-5
     gain = 100*(np.array(best)-best[0])
-    x = np.arange(len(names))
-    colors = {"ridge": TAB[3], "hist_boost": TAB[1],
-              "random_forest": TAB[2], "extra_trees": TAB[0]}
-    fig, ax = plt.subplots(figsize=(16, 9))
-    fig.subplots_adjust(left=.095, right=.94, top=.80, bottom=.24)
-    ax.plot(x[:7], gain[:7], color=NAVY, lw=2.8, zorder=2)
-    ax.plot(x[6:], gain[6:], color=RUST, lw=2.2, ls="--", zorder=2)
-    for i,(winner,value) in enumerate(zip(winners,gain)):
-        ax.scatter(i,value,s=240,color=colors[winner],edgecolor=RUST if i==7 else "white",
-                   lw=2.5,marker="X" if i==7 else "o",zorder=3)
+    production_gain = 100*(production-best[0])
+    fig, ax = plt.subplots(figsize=(18, 9))
+    fig.subplots_adjust(left=.085, right=.96, top=.79, bottom=.25)
+    ax.plot(np.arange(7), gain[:7], color=NAVY, lw=2.8, zorder=2)
+    ax.plot([6,7], gain[6:8], color=RUST, lw=2.2, ls="--", zorder=2)
+    ax.plot([6,8], [gain[6],production_gain], color=PURPLE, lw=2.5,
+            ls="-.", zorder=2)
+    for i,value in enumerate(gain[:7]):
+        ax.scatter(i,value,s=240,color=TEAL,edgecolor="white",
+                   lw=2.5,zorder=3)
         ax.annotate(f"{best[i]*100:.2f}%",(i,value),xytext=(0,17),
                     textcoords="offset points",ha="center",fontsize=13,
-                    color=RUST if i==7 else colors[winner],fontweight="bold")
+                    color=TEAL,fontweight="bold")
+    ax.scatter(7,gain[7],s=290,color=RUST,edgecolor="white",lw=2.5,
+               marker="X",zorder=3)
+    ax.annotate(f"{best[7]*100:.2f}%",(7,gain[7]),xytext=(0,-29),
+                textcoords="offset points",ha="center",fontsize=13,
+                color=RUST,fontweight="bold")
+    ax.scatter(8,production_gain,s=310,color=PURPLE,edgecolor="white",
+               lw=2.5,marker="D",zorder=3)
+    ax.annotate(f"{production*100:.2f}%",(8,production_gain),xytext=(0,17),
+                textcoords="offset points",ha="center",fontsize=15,
+                color=PURPLE,fontweight="bold")
     short_labels=["Basic counts", "Gate mix +\ntiming", "χ bound +\ndiversity",
                   "Graph + cut\ngeometry", "Soft circuit\npatterns", "χ walk",
-                  "Gated walk +\nangle stats", "External family\nprobabilities"]
-    ax.set_xticks(x,short_labels,fontsize=11)
+                  "Gated walk +\nangle stats", "External family\nrejected",
+                  "Production\nfull system"]
+    ax.set_xticks(np.arange(9),short_labels,fontsize=11)
     ax.set_ylabel("Gain over basic QASM pack (score points)")
-    ax.set_ylim(-.25,max(gain)+.9)
-    ax.set_xlim(-.4,len(names)-.6)
+    ax.set_ylim(-.25,production_gain+.9)
+    ax.set_xlim(-.4,8.4)
     ax.grid(axis="y",color=GRID)
     ax.spines[["top","right"]].set_visible(False)
     ax.text(.02,.97,f"Basic pack = {best[0]*100:.2f}%",
             transform=ax.transAxes,ha="left",va="top",fontsize=12,color=MUTED)
-    ax.text(.98,.08,"Dashed branch: tested, not shipped",transform=ax.transAxes,
-            ha="right",va="bottom",fontsize=11,color=RUST)
-    legend=[Patch(color=color,label=label) for label,color in
-            [("Ridge",colors["ridge"]),("Histogram boost",colors["hist_boost"]),
-             ("Random forest",colors["random_forest"]),("ExtraTrees",colors["extra_trees"])]]
+    legend=[Patch(color=TEAL,label="Best global regressor: ExtraTrees"),
+            Patch(color=RUST,label="Rejected classifier branch"),
+            Patch(color=PURPLE,label="Final production system")]
     fig.legend(handles=legend,loc="upper right",bbox_to_anchor=(.94,.89),
-               ncol=4,frameon=False,fontsize=11)
-    title(fig,"Feature engineering lifts the best model's grouped score",
-          "Best of the same four fixed regressors on grouped folds · ExtraTrees won every stage",
-          "Source: presentation_figures/model_sweep.json · Score is the challenge duration metric; these are global models without later expert/rule gains."
-          " Released-label feature selection can make gains optimistic.")
+               ncol=3,frameon=False,fontsize=11)
+    title(fig,"From basic QASM to production: 87.66% → 92.77%",
+          "Best of four fixed regressors at every feature stage; final system adds parsing, routing and runtime rules",
+          "Sources: model_sweep.json and production_model_oof.csv · Same matched circuit-grouped folds."
+          " Production combines a secondary parser, experts, timeout routing and pruning; its jump is not one feature's effect.")
     export(fig,"00_feature_progression")
 
 
@@ -366,6 +378,47 @@ def plot_pruning():
     export(fig, "06_final_pruning")
 
 
+def plot_production_bridge():
+    sweep = json.loads((OUT / "model_sweep.json").read_text())
+    merged = read("merged_model_validation")
+    union = read("full_union_model_validation")
+    categorical = read("categorical_model_validation")
+    scores = np.array([
+        sweep["packs"]["angle_gated"]["models"]["extra_trees"]["score"],
+        merged["splits"]["matched"]["merged"]["score"],
+        union["splits"]["matched"]["full_union"]["score"],
+        union["splits"]["matched"]["near_basis_calibration"]["score"],
+        categorical["splits"]["matched"]["categorical_v8"]["score"],
+        production_oof_scores()["matched"],
+    ]) * 100
+    assert np.all(np.diff(scores) > 0)
+    labels = ["Global features", "Threshold experts\n+ timeout router",
+              "Secondary DAG /\nangle parser", "Runtime floors +\ntemplate / basis rules",
+              "Categorical setting\n+ feature audit", "Frozen 120-input\nproduction model"]
+    colors = [TEAL, GOLD, GREEN, PURPLE, RUST, TAB[5]]
+    x = np.arange(len(scores))
+    fig, ax = plt.subplots(figsize=(16, 9))
+    fig.subplots_adjust(left=.085, right=.96, top=.80, bottom=.25)
+    ax.plot(x, scores, color=NAVY, lw=2.5, zorder=2)
+    for i, (value, color) in enumerate(zip(scores, colors)):
+        ax.scatter(i, value, s=270, color=color, edgecolor="white", lw=2.5, zorder=3)
+        ax.annotate(f"{value:.2f}%", (i, value), xytext=(0, 18),
+                    textcoords="offset points", ha="center", fontsize=16,
+                    fontweight="bold", color=color)
+    ax.set_xticks(x, labels, fontsize=11)
+    ax.set_xlim(-.25, len(scores)-.75)
+    ax.set_ylim(91.2, 93.05)
+    ax.set_yticks(np.arange(91.25, 93.01, .25))
+    ax.set_ylabel("Official duration score (%)")
+    ax.grid(axis="y", color=GRID, lw=.8)
+    ax.spines[["top", "right"]].set_visible(False)
+    title(fig, "From the feature-rich global model to production",
+          "The recorded score rose 1.22 points across model architecture, a second parser, runtime rules and pruning",
+          "Sources: model_sweep.json, merged/full_union/categorical validations, production_model_oof.csv."
+          " Same matched circuit-grouped folds; successive implementations, not isolated step effects.")
+    export(fig, "09_production_bridge")
+
+
 def card(ax, x, y, width, height, heading, lines, *, selected=(), index=0):
     box = FancyBboxPatch((x,y),width,height,boxstyle="round,pad=0.03,rounding_size=.14",
                          lw=1.2, ec=GRID, fc="white")
@@ -484,7 +537,8 @@ def main():
     plot_pruning()
     plot_feature_tree()
     plot_model_tree()
-    print(f"Exported 9 PNG + 9 SVG figures to {OUT}")
+    plot_production_bridge()
+    print(f"Exported 10 PNG + 10 SVG figures to {OUT}")
 
 
 if __name__ == "__main__":
