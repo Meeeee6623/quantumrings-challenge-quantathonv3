@@ -9,6 +9,8 @@ scramble-circuits.py
 /internal/
 __pycache__/
 *.pyc
+/submission.csv
+/holdout_submission.csv
 split-circuits.py
 .uv-cache/
 .venv/

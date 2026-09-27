@@ -1,8 +1,7 @@
 """QASM structure -> Quantum Rings runtime.
 
-The trained scikit-learn artifact is in ``artifacts/runtime_model.joblib``.
-Rebuild the selected union model with ``research/train_full_union_model.py``;
-``research/train_merged_model.py`` builds the compact fallback.
+The fitted scikit-learn artifact is in ``artifacts/runtime_model.joblib``.
+``research/train_production_model.py`` refits the final frozen feature schema.
 """
 from collections import Counter, deque
 import io

@@ -11,7 +11,7 @@ Great job everyone!
 ## Contents
 
 - [Overview](#overview)
-- [Included merged predictor](#included-merged-predictor)
+- [Final predictor and reviewer quick start](#final-predictor-and-reviewer-quick-start)
 - [Timeline](#timeline)
 - [The task](#the-task)
 - [Runtime & timeouts](#runtime--timeouts)
@@ -42,7 +42,32 @@ You will build two things:
 
 Designing the feature set is the core of the challenge. No parser or feature list is provided.
 
-## Selected holdout predictor
+## Final predictor and reviewer quick start
+
+The fork's `main` branch includes the fitted model artifact and the 59 released
+holdout circuits. From a fresh checkout, with Python 3.12+ and `uv` installed,
+run the complete submission path from the repository root:
+
+```bash
+uv sync --locked
+uv run --locked python quantathon-harness/run.py \
+  --team "Your Registered Team Name" --circuits holdout-circuits \
+  --out submission.csv
+uv run --locked python research/validate_submission.py \
+  --circuits holdout-circuits --submission submission.csv
+```
+
+The validator should report `valid: True`, `circuits: 59`, and `csv_rows: 177`,
+with parsing and prediction times below 15 seconds. The script only creates a
+local CSV; it does not send it. Holdout runtimes are private, so this validation
+checks coverage and execution rather than holdout accuracy. The model and its
+supporting modules are in `quantathon-harness/`; the fitted weights are in
+`quantathon-harness/artifacts/runtime_model.joblib`. The artifact is already
+trained on all 1,497 released labeled runs, so reviewers do not need to refit it
+to reproduce the submission path. See
+[`quantathon-harness/README.md`](quantathon-harness/README.md) for the harness
+interface and [`research/HOLDOUT_READINESS.md`](research/HOLDOUT_READINESS.md)
+for inspection and optional refitting.
 
 This branch contains a complete fitted submission, not only the challenge
 starter.  It combines two independent source-QASM feature representations:
@@ -60,7 +85,7 @@ starter.  It combines two independent source-QASM feature representations:
   training circuits, or their median runtime when three or more match, followed
   by a small near-basis rotation correction at threshold 512.
 
-The production v9 model treats simulator settings as three categories and has
+The final model treats simulator settings as three categories and has
 **120 fixed inputs**: 79 primary-parser fields or log transforms, 30 secondary
 fields, eight χ-walk fields, and three setting indicators. The exact training
 schema is frozen in

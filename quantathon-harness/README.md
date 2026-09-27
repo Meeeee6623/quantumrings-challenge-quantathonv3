@@ -3,15 +3,20 @@
 Predict how long each circuit takes to simulate, straight from the `.qasm` file.
 This harness produces the **one file you send back to us**.
 
-## Setup (once)
+## Setup (once, from the repository root)
 
 ```bash
-pip install -r requirements.txt
+uv sync --locked
 ```
 
-## What you edit
+The repository also has a pinned `requirements.txt` for environments that
+cannot use `uv`, but the locked `uv` environment is the tested path. The fitted
+artifact and supporting Python modules are checked in; no training step is
+required for inference.
 
-**Only `model.py`.** Implement these methods:
+## Harness interface
+
+The harness calls these methods in `model.py`:
 
 | Method | Job | Called |
 |---|---|---|
@@ -22,8 +27,11 @@ pip install -r requirements.txt
 There is no timeout flag — if you think a run will time out, just predict a duration
 **≥ the 4-hour cap (14400 s)**.
 
-A trivial baseline is already in `model.py` so the harness runs before you touch
-anything. Replace its body with your real parser and model.
+This fork already includes the final predictor. It uses `chi_walk.py`,
+`extended_features.py`, `extended_threshold.py`, `runtime_floors.py`,
+`template_analogues.py`, `rotation_calibration.py`, and
+`artifacts/runtime_model.joblib` alongside `model.py`. Keep these files together
+when copying the harness to another location.
 
 **Caps:** `featurize` and `predict` must each run in **≤ 15 s per circuit**. The
 harness times you and warns on anything over.
@@ -32,26 +40,25 @@ harness times you and warns on anything over.
 
 | Path | Contents |
 |---|---|
-| `circuits/` | the training circuits, one `<id>.qasm.zst` per circuit |
-| `runtime-data.csv` | training labels, one row per `(circuit, threshold)` run |
+| `../training_circuits/` | the training circuits, one `<id>.qasm.zst` per circuit |
+| `../holdout-circuits/` | the 59 released circuits, with no runtime labels |
+| `../runtime-data.csv` | training labels, one row per labeled `(circuit, threshold)` run |
 
 The circuits are `zstd`-compressed. `run.py` decompresses them for you, so you
 don't need raw files to run the harness. To get raw `.qasm` files for exploring
 and training, see
 [Getting the raw `.qasm` files](../README.md#getting-the-raw-qasm-files) in the
-main README. Decompress them **outside** `circuits/`, or the harness will read
-each circuit twice.
+main README. Do not put a raw copy beside its compressed file in the same
+input folder, or the harness will predict it twice.
 
 ## Run it
 
-1. `circuits/` already holds the training circuits. In the final hours we DM you
-   the hold-out circuits: put them in `circuits/` too (`.qasm` or `.qasm.zst`,
-   subfolders are fine). Only hold-out runs are scored, so you can remove the
-   training circuits first to make the run faster.
-2. Generate your submission:
+1. From the repository root, generate a CSV from the released holdout folder:
 
 ```bash
-python run.py --team "Your Team Name"
+uv run --locked python quantathon-harness/run.py \
+  --team "Your Registered Team Name" --circuits holdout-circuits \
+  --out submission.csv
 ```
 
 This writes **`submission.csv`**:
@@ -60,16 +67,31 @@ This writes **`submission.csv`**:
 team,filename,threshold,pred_duration_s,parse_s,predict_s
 ```
 
-3. **DM `submission.csv` back to us.** That's your entry.
-
-## Check your score first (optional but recommended)
-
-You have the training labels (`runtime-data.csv`). Run `run.py` on the training
-circuits, then score yourself with the *exact* metric we use:
+2. Validate all 177 predictions and the 15-second limits:
 
 ```bash
-python score.py --pred submission.csv --labels runtime-data.csv
+uv run --locked python research/validate_submission.py \
+  --circuits holdout-circuits --submission submission.csv
 ```
+
+3. **DM `submission.csv` back to the organizers.** The command does not send it.
+
+## Training pipeline check (optional)
+
+You have the training labels (`../runtime-data.csv`). Run the harness on
+`../training_circuits/` and use the scorer for an in-sample pipeline check:
+
+```bash
+uv run --locked python quantathon-harness/run.py \
+  --team "Your Registered Team Name" --circuits training_circuits \
+  --out training_submission.csv
+uv run --locked python quantathon-harness/score.py \
+  --pred training_submission.csv --labels runtime-data.csv
+```
+
+Because the shipped artifact was fitted on all released training labels, this
+score is not a holdout estimate. The circuit-grouped validation results are in
+the root README and research handoff.
 
 ## How the automated third is scored
 
