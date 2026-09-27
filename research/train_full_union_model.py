@@ -179,7 +179,7 @@ def cross_predict(parallel_X, union_X, y, timeout, thresholds, names, rows,
 
 def fit_artifact(parallel_X, union_X, parallel_columns, union_columns,
                  y, timeout, thresholds, interval_log10_radius, references,
-                 template_bank):
+                 template_bank, artifact_version='pruned_union_threshold_experts_v7'):
     global_indices = importance_choice(global_regressor(17),parallel_X,y,GLOBAL_LIMIT)
     global_columns = [parallel_columns[j] for j in global_indices]
     global_model = global_regressor(17)
@@ -209,7 +209,7 @@ def fit_artifact(parallel_X, union_X, parallel_columns, union_columns,
     selected.update(c for part in classifier_columns.values() for c in part)
     selected_columns = [c for c in union_columns if c in selected]
     artifact = {
-        'artifact_version':'pruned_union_threshold_experts_v7',
+        'artifact_version':artifact_version,
         'columns':selected_columns,
         'global_columns':global_columns,
         'specialist_columns_by_threshold':specialist_columns,
@@ -222,7 +222,11 @@ def fit_artifact(parallel_X, union_X, parallel_columns, union_columns,
         'timeout_probability_cutoff':TIMEOUT_CUTOFF,
         'reset_family_references':references,
         'template_analogue_bank':template_bank,
-        'view':'pruned_union_geometry_chi_structural_dag_angle_threshold_experts',
+        'view':('categorical_pruned_union_geometry_chi_structural_dag_angle_threshold_experts'
+                if artifact_version.endswith('_v8') else
+                'pruned_union_geometry_chi_structural_dag_angle_threshold_experts'),
+        'setting_encoding': ('one_hot_categorical' if artifact_version.endswith('_v8')
+                             else 'ordinal_and_log2'),
         'chi_walk_budget_s':3.0,
         'chi_walk_large_cutoff_bytes':40_000_000,
         'chi_walk_rotation_tolerance_rad':BASIS_ROTATION_TOLERANCE,

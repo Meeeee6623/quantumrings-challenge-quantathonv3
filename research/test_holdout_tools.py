@@ -55,12 +55,16 @@ class HoldoutToolTests(unittest.TestCase):
                                 for issue in result['issues']))
 
     def test_neighbor_labels_use_grouped_oof_factor(self):
-        row = {'actual_s': '10', 'matched_basis_pred_s': '40',
+        row = {'actual_s': '10', 'matched_pred_s': '40',
                'status': 'success'}
         outcome = training_outcome({('x.qasm', 16): row}, 'x.qasm', 16)
         self.assertEqual(outcome['label'], 'missed')
         self.assertEqual(outcome['oof_factor_error'], 4)
         self.assertIsNone(training_outcome({}, 'x.qasm', 64))
+        legacy = {'actual_s': '10', 'matched_basis_pred_s': '40',
+                  'status': 'success'}
+        self.assertEqual(training_outcome({('x.qasm', 16): legacy},
+                                          'x.qasm', 16)['oof_factor_error'], 4)
 
 
 if __name__ == '__main__':

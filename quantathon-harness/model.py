@@ -879,9 +879,14 @@ class RuntimeModel:
         else:
             import numpy as np
             x = features.copy()
-            x['log_threshold'] = math.log2(max(1,threshold))
-            x['threshold'] = threshold
-            x['extended__threshold'] = threshold
+            if self.model.get('setting_encoding') != 'one_hot_categorical':
+                x['log_threshold'] = math.log2(max(1,threshold))
+                x['threshold'] = threshold
+                x['extended__threshold'] = threshold
+            # The release artifact treats the three simulator settings as
+            # categories; old artifacts can still consume their numeric fields.
+            for known_setting in (16,64,512):
+                x[f'setting_{known_setting}'] = float(threshold == known_setting)
             if self.use_chi_walk:
                 from chi_walk import select_model_features
                 x.update(select_model_features(features,threshold))

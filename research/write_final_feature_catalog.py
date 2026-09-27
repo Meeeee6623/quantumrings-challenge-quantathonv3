@@ -1,4 +1,4 @@
-"""Write the exact fitted v7 feature list and component membership.
+"""Write the exact fitted release feature list and component membership.
 
     uv run --locked python research/write_final_feature_catalog.py
 
@@ -16,7 +16,7 @@ import joblib
 
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT = ROOT / 'quantathon-harness' / 'artifacts' / 'runtime_model.joblib'
-REPORT = ROOT / 'research' / 'full_union_model_validation.json'
+REPORT = ROOT / 'research' / 'categorical_model_validation.json'
 OUT = ROOT / 'research' / 'final_feature_catalog.csv'
 
 
@@ -25,7 +25,7 @@ def view(name: str) -> str:
         return 'secondary QASM scanner'
     if name.startswith('chi_walk_'):
         return 'angle-aware chi walk'
-    if name in ('threshold', 'log_threshold'):
+    if name.startswith('setting_') or name in ('threshold', 'log_threshold'):
         return 'simulator setting'
     if name.startswith('log_'):
         return 'log1p primary-parser transform'
@@ -44,12 +44,13 @@ def main() -> None:
         roles[f'timeout_{threshold}'] = set(
             artifact['classifier_columns_by_threshold'][threshold])
     assert set(names) == set().union(*roles.values())
-    assert len(names) == 325 and len(roles['global_runtime']) == 120
+    assert len(names) == schema['selected_unique_columns']
+    assert len(roles['global_runtime']) == 120
     assert all(len(roles[f'runtime_{t}']) == 200 and
                len(roles[f'timeout_{t}']) == 80 for t in (16, 64, 512))
     with OUT.open('w', newline='') as handle:
         writer = csv.DictWriter(handle, fieldnames=['ordinal', 'feature', 'view',
-                                                     *roles])
+                                                     *roles], lineterminator='\n')
         writer.writeheader()
         for ordinal, name in enumerate(names, start=1):
             writer.writerow({'ordinal': ordinal, 'feature': name,

@@ -55,15 +55,19 @@ starter.  It combines two independent source-QASM feature representations:
   training circuits, or their median runtime when three or more match, followed
   by a small near-basis rotation correction at threshold 512.
 
-The fitted v7 model removes constant and duplicate inputs, then selects 120
-columns for the global regressor, 200 for each runtime specialist, and 80 for
-each timeout classifier. It uses 325 distinct columns across all components,
-down from 480 candidate columns.
+The fitted v8 model treats the three simulator settings as categories. A
+feature-by-feature audit pruned redundant and weak inputs from the previous
+325-column model. Its 244 candidate columns yielded 241 distinct fitted
+inputs across the global regressor, runtime specialists, and timeout
+classifiers. The component limits remain 120, 200, and 80 columns.
 
-The current predictor scores **0.92615** on fixed circuit-grouped,
+The current predictor scores **0.92691** on fixed circuit-grouped,
 distribution-matched out-of-fold validation. Its structural stress score is
-**0.75537**. See [`research/TEMPLATE_WEIGHT_EVALUATION.md`](research/TEMPLATE_WEIGHT_EVALUATION.md)
-for the v7 change and alternate grouped-fold checks,
+**0.76019**. Feature screening used the released labels, so these gains over
+v7 may be optimistic. See the [one-by-one feature decisions and grouped
+plots](research/feature_audit/FINAL_FEATURE_DECISIONS.md),
+[`research/TEMPLATE_WEIGHT_EVALUATION.md`](research/TEMPLATE_WEIGHT_EVALUATION.md)
+for the previous v7 change and alternate grouped-fold checks,
 [`research/FEATURE_PRUNING_REPORT.md`](research/FEATURE_PRUNING_REPORT.md)
 for the feature audit and comparison,
 [`research/EDGE_CASE_UPDATE.md`](research/EDGE_CASE_UPDATE.md)
@@ -97,6 +101,10 @@ Rebuild the training cache and artifact with:
 ```bash
 uv run --locked python research/extract_extended_features.py
 uv run --locked python research/train_full_union_model.py
+uv run --locked --extra report python research/audit_selected_features.py
+uv run --locked python research/train_categorical_final_model.py --pruned
+uv run --locked python research/write_final_feature_catalog.py
+uv run --locked --extra report python research/write_feature_decisions.py
 ```
 
 ## Timeline

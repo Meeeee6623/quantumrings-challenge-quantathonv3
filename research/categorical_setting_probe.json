@@ -1,0 +1,170 @@
+{
+  "encoding": "one-hot (16, 64, 512); no ordinal or log threshold input",
+  "rows": 1497,
+  "primary_columns": 242,
+  "union_columns": 457,
+  "constant_columns": [
+    "unsupported_statements",
+    "log_unsupported_statements"
+  ],
+  "exact_duplicate_columns": [
+    {
+      "removed": "extended__custom_gate_definition_count",
+      "kept": "custom_definitions"
+    },
+    {
+      "removed": "extended__dag_critical_path_length",
+      "kept": "extended__circuit_depth"
+    },
+    {
+      "removed": "extended__dag_longest_dependency_chain",
+      "kept": "extended__circuit_depth"
+    },
+    {
+      "removed": "extended__expanded_gate_count_proxy",
+      "kept": "extended__custom_expanded_gate_count_proxy"
+    },
+    {
+      "removed": "extended__fast_graph_available",
+      "kept": "extended__fast_detail_mode"
+    },
+    {
+      "removed": "extended__gate_count__cz",
+      "kept": "gate_cz"
+    },
+    {
+      "removed": "extended__gate_count__rx",
+      "kept": "gate_rx"
+    },
+    {
+      "removed": "extended__gate_count__u3",
+      "kept": "gate_u3"
+    },
+    {
+      "removed": "extended__interaction_edge_count",
+      "kept": "extended__interaction_distinct_pair_count"
+    },
+    {
+      "removed": "extended__interaction_graph_density",
+      "kept": "extended__interaction_distinct_pair_fraction"
+    },
+    {
+      "removed": "extended__interaction_node_count",
+      "kept": "n_qubits"
+    },
+    {
+      "removed": "extended__interaction_repeat_factor",
+      "kept": "extended__interaction_edge_weight_mean"
+    },
+    {
+      "removed": "extended__measurement_count",
+      "kept": "measurements"
+    },
+    {
+      "removed": "extended__num_qubits",
+      "kept": "n_qubits"
+    },
+    {
+      "removed": "extended__reset_count",
+      "kept": "resets"
+    },
+    {
+      "removed": "extended__source_bytes",
+      "kept": "qasm_bytes"
+    },
+    {
+      "removed": "extended__structural_active_qubit_fraction",
+      "kept": "extended__fast_detail_mode"
+    },
+    {
+      "removed": "extended__structural_gate_depth",
+      "kept": "extended__circuit_depth"
+    },
+    {
+      "removed": "extended__structural_max_gate_layer_width",
+      "kept": "extended__dag_max_layer_width"
+    },
+    {
+      "removed": "extended__supermarq_communication",
+      "kept": "extended__interaction_distinct_pair_fraction"
+    },
+    {
+      "removed": "extended__two_qubit_gate_fraction",
+      "kept": "extended__supermarq_entanglement_ratio"
+    }
+  ],
+  "splits": {
+    "matched": {
+      "current_ordinal_v7": {
+        "score": 0.9261526527252998,
+        "timeout_score": 0.9639152754960102,
+        "median_factor_error": 1.0649389663713609,
+        "p95_factor_error": 4.887911018024689,
+        "tenfold_misses": 28,
+        "predicted_timeouts": 43,
+        "threshold_scores": {
+          "16": 0.9300152213126028,
+          "64": 0.9240860185007006,
+          "512": 0.9239467438760862
+        }
+      },
+      "categorical": {
+        "score": 0.9260460275349599,
+        "timeout_score": 0.9659308875415561,
+        "median_factor_error": 1.068526058644969,
+        "p95_factor_error": 5.196584229399136,
+        "tenfold_misses": 29,
+        "predicted_timeouts": 44,
+        "threshold_scores": {
+          "16": 0.9295015636706999,
+          "64": 0.924660349911846,
+          "512": 0.9235082434338947
+        }
+      },
+      "paired": {
+        "unit": "circuit",
+        "delta_merged_minus_current": -0.00010662519033979624,
+        "delta_95": [
+          -0.001249945966098804,
+          0.0008124393117196098
+        ]
+      }
+    },
+    "structural": {
+      "current_ordinal_v7": {
+        "score": 0.7553686958374755,
+        "timeout_score": 0.7974694962429586,
+        "median_factor_error": 1.889357260937392,
+        "p95_factor_error": 56.128269399894606,
+        "tenfold_misses": 221,
+        "predicted_timeouts": 73,
+        "threshold_scores": {
+          "16": 0.6986958184615557,
+          "64": 0.801611538705108,
+          "512": 0.7683371189274623
+        }
+      },
+      "categorical": {
+        "score": 0.7542550148838923,
+        "timeout_score": 0.7959849513771341,
+        "median_factor_error": 1.8773453806216087,
+        "p95_factor_error": 58.78437835574733,
+        "tenfold_misses": 223,
+        "predicted_timeouts": 75,
+        "threshold_scores": {
+          "16": 0.6945038025449285,
+          "64": 0.8056055211603873,
+          "512": 0.7647650761201829
+        }
+      },
+      "paired": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": -0.0011136809535832615,
+        "delta_95": [
+          -0.0041828491171927865,
+          0.0007531659020635934
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "source_feature_count": 325,
+  "pruned_primary_count": 134,
+  "pruned_union_count": 244,
+  "dropped_from_source": [
+    "active_qubits",
+    "barriers",
+    "chi_mid_budget",
+    "chi_timeline_mid_auc",
+    "chi_timeline_peak_auc",
+    "chi_upper_mean",
+    "chi_upper_mid",
+    "chi_upper_peak",
+    "conditional",
+    "dense_log2_bytes",
+    "depth",
+    "diagonal",
+    "fingerprint_arithmetic",
+    "fingerprint_ghz",
+    "gate_ccx",
+    "gate_h",
+    "gate_rx",
+    "gate_rz",
+    "gate_rzz",
+    "gate_swap",
+    "gate_sx",
+    "gate_t",
+    "gate_u3",
+    "graph_cutwidth_original",
+    "graph_cutwidth_rcm",
+    "graph_mean_cut_original",
+    "graph_mean_cut_rcm",
+    "graph_span_rcm",
+    "liveness_mean_span",
+    "liveness_peak_window",
+    "max_degree",
+    "mean_degree",
+    "measurements",
+    "multi_q",
+    "n_qubits",
+    "nonclifford",
+    "pair_reuse",
+    "random_angle_entropy",
+    "random_bigram_entropy",
+    "random_gate_entropy",
+    "random_pair_entropy",
+    "randomness_proxy",
+    "rotation_folds",
+    "small_angles",
+    "two_depth",
+    "two_q",
+    "twoq_window_3",
+    "twoq_window_4",
+    "unique_pairs",
+    "zero_angles",
+    "log_active_qubits",
+    "log_chi_timeline_mid_t50",
+    "log_chi_timeline_mid_t90",
+    "log_chi_timeline_post_mid_sat_twoq",
+    "log_chi_upper_mean",
+    "log_component_dense_log2_bytes",
+    "log_component_dense_over_128gb",
+    "log_fingerprint_qaoa",
+    "log_gate_cp",
+    "log_graph_density",
+    "log_graph_mindegree_width",
+    "log_peak_window_twoq",
+    "log_random_window_entropy",
+    "log_twoq_window_2",
+    "log_twoq_window_7",
+    "threshold",
+    "log_threshold",
+    "extended__angle_numeric_count",
+    "extended__barrier_count",
+    "extended__fast_detail_mode",
+    "extended__gate_count__cswap",
+    "extended__gate_count__ry",
+    "extended__gate_freq__ccx",
+    "extended__gate_freq__p",
+    "extended__gate_freq__rccx",
+    "extended__gate_freq__rzz",
+    "extended__gate_freq__t",
+    "extended__gate_freq__tdg",
+    "extended__gate_freq__z",
+    "extended__num_clbits",
+    "extended__source_conditional_count",
+    "extended__source_semicolon_count",
+    "extended__total_gate_count",
+    "extended__treewidth_min_degree"
+  ],
+  "splits": {
+    "matched": {
+      "categorical_full": {
+        "score": 0.9260460275349599,
+        "timeout_score": 0.9659308875415561,
+        "median_factor_error": 1.068526058644969,
+        "p95_factor_error": 5.196584229399136,
+        "tenfold_misses": 29,
+        "predicted_timeouts": 44,
+        "threshold_scores": {
+          "16": 0.9295015636706999,
+          "64": 0.924660349911846,
+          "512": 0.9235082434338947
+        }
+      },
+      "categorical_audit_pruned": {
+        "score": 0.9269144781280482,
+        "timeout_score": 0.9426060640203459,
+        "median_factor_error": 1.0623358116743846,
+        "p95_factor_error": 5.061286655261178,
+        "tenfold_misses": 25,
+        "predicted_timeouts": 41,
+        "threshold_scores": {
+          "16": 0.9317248219785063,
+          "64": 0.9258767908292007,
+          "512": 0.92229579155321
+        }
+      },
+      "paired": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.0008684505930882393,
+        "delta_95": [
+          -0.0007780344250499087,
+          0.0024561523737222065
+        ]
+      }
+    },
+    "structural": {
+      "categorical_full": {
+        "score": 0.7542550148838923,
+        "timeout_score": 0.7959849513771341,
+        "median_factor_error": 1.8773453806216087,
+        "p95_factor_error": 58.78437835574733,
+        "tenfold_misses": 223,
+        "predicted_timeouts": 75,
+        "threshold_scores": {
+          "16": 0.6945038025449285,
+          "64": 0.8056055211603873,
+          "512": 0.7647650761201829
+        }
+      },
+      "categorical_audit_pruned": {
+        "score": 0.7601916162814915,
+        "timeout_score": 0.7971485574493247,
+        "median_factor_error": 1.8532999074713115,
+        "p95_factor_error": 40.96853522166239,
+        "tenfold_misses": 217,
+        "predicted_timeouts": 69,
+        "threshold_scores": {
+          "16": 0.6943210231246366,
+          "64": 0.8093820785235823,
+          "512": 0.7808173877093962
+        }
+      },
+      "paired": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.005936601397599099,
+        "delta_95": [
+          7.818732789232987e-05,
+          0.021495399699756345
+        ]
+      }
+    }
+  },
+  "numeric_setting_fields_removed_by_categorical_encoding": [
+    "threshold",
+    "log_threshold"
+  ]
+}

@@ -1,5 +1,12 @@
 # Circuits the final model still misses
 
+This detailed case audit is for the previous **v7** artifact. The selected
+**v8** categorical/pruned model has 25 >10× matched-fold rows and 217 such
+rows on the structural stress split, versus v7's 28 and 221. Its exact
+per-row out-of-fold predictions are in [the v8 OOF table](categorical_model_oof.csv).
+The algorithm-pattern hypotheses below remain exploratory and have not been
+rechecked case by case for v8.
+
 This is an audit of the **selected v7 model's circuit-grouped out-of-fold predictions on released training labels**. It does not identify failures on the unseen holdout. The exact scoring rule caps a prediction at 14,400 seconds **only for a timed-out actual run**; successful runs retain their measured duration. Regenerate [the 28-row severe-error table](final_failure_audit.csv) and [segment counts](final_failure_summary.json) with [`analyze_final_failures.py`](analyze_final_failures.py). The script never changes the fitted artifact.
 
 The matched-fold score is **0.926153** over 1,497 runs. **28 rows from 25 circuits exceed 10× error**: 18 underpredictions, 10 overpredictions, 26 successful runs, and 2 timeouts. Their errors are distributed: the worst 10 circuits account for only **11.8%** of all score loss, and perfect hindsight correction of every run on those 10 would add at most **0.00870** score. Subsecond runs are 501 rows but **37.6%** of remaining score loss; 33 timeout rows contribute only **1.1%**. The separate structural-cluster holdout scores **0.755369** and has **221** >10× rows, indicating that unseen structure is a much harder transfer setting than the expected similar-distribution holdout. [The headroom report](REMAINING_HEADROOM.md) gives the loss accounting.

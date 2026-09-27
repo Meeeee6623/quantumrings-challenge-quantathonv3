@@ -100,7 +100,14 @@ cMAJ q[0],q[1];
 
     def test_submission_artifact_uses_threshold_experts(self):
         self.assertEqual(self.model.model['artifact_version'],
-                         'pruned_union_threshold_experts_v7')
+                         'categorical_setting_threshold_experts_v8')
+        self.assertEqual(self.model.model['setting_encoding'],
+                         'one_hot_categorical')
+        self.assertEqual({column for column in self.model.model['columns']
+                          if column.startswith('setting_')},
+                         {'setting_16','setting_64','setting_512'})
+        self.assertFalse({'threshold','log_threshold','extended__threshold'}
+                         & set(self.model.model['columns']))
         self.assertEqual(set(self.model.model['threshold_specialists']),{16,64,512})
         self.assertEqual(set(self.model.model['timeout_classifiers']),{16,64,512})
         self.assertAlmostEqual(self.model.model['threshold_specialist_weight'],.5)

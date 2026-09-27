@@ -120,7 +120,7 @@ def training_outcome(oof: dict, name: str, threshold: int):
     if not row:
         return None
     actual = float(row['actual_s'])
-    predicted = float(row['matched_basis_pred_s'])
+    predicted = float(row.get('matched_pred_s', row.get('matched_basis_pred_s')))
     factor = max(actual / predicted, predicted / actual)
     return {'actual_s': actual, 'oof_pred_s': predicted,
             'oof_factor_error': factor,
@@ -313,8 +313,11 @@ def main():
     references = {'gate_mix': build_reference(training, GATE_FIELDS),
                   'shape': build_reference(training, SHAPE_FIELDS)}
     bounds = feature_bounds(training)
+    oof_path = ROOT / 'research' / 'categorical_model_oof.csv'
+    if not oof_path.exists():
+        oof_path = ROOT / 'research' / 'full_union_model_oof.csv'
     oof = {(row['filename'], int(row['threshold'])): row
-           for row in csv.DictReader((ROOT / 'research' / 'full_union_model_oof.csv').open())}
+           for row in csv.DictReader(oof_path.open())}
     model = RuntimeModel()
     records = []
     failures = []
