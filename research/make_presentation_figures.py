@@ -140,25 +140,23 @@ def plot_feature_progression():
     assert set(winners) == {"extra_trees"}
     merged = read("merged_model_validation")
     union = read("full_union_model_validation")
-    categorical = read("categorical_model_validation")
     scores = np.array(feature_scores + [
         merged["splits"]["matched"]["merged"]["score"],
         union["splits"]["matched"]["full_union"]["score"],
         union["splits"]["matched"]["near_basis_calibration"]["score"],
-        categorical["splits"]["matched"]["categorical_v8"]["score"],
         production_oof_scores()["matched"],
     ]) * 100
-    assert len(scores) == 12 and np.all(np.diff(scores) > 0)
+    assert len(scores) == 11 and np.all(np.diff(scores) > 0)
     labels = ["Basic counts", "Gate mix +\ntiming", "χ bound +\ndiversity",
               "Graph + cut\ngeometry", "Soft circuit\npatterns", "χ walk",
               "Gated walk +\nangle stats", "Experts +\ntimeout router",
               "Secondary\nDAG / angle", "Floors + templates\n+ calibration",
-              "Categorical +\nfeature audit", "Final model\n120 inputs"]
+              "Categorical +\nfeature audit +\nfinal 120 inputs"]
     x = np.arange(len(scores))
     fig, ax = plt.subplots(figsize=(20, 9))
     fig.subplots_adjust(left=.075, right=.96, top=.80, bottom=.26)
     ax.plot(x, scores, color=NAVY, lw=2.7, zorder=2)
-    colors = [TEAL] * 7 + [GOLD, GREEN, PURPLE, RUST, TAB[5]]
+    colors = [TEAL] * 7 + [GOLD, GREEN, PURPLE, TAB[5]]
     for i, (value, color) in enumerate(zip(scores, colors)):
         ax.scatter(i, value, s=240, color=color, edgecolor="white",
                    lw=2.4, zorder=3)
@@ -166,7 +164,7 @@ def plot_feature_progression():
                     textcoords="offset points", ha="center", fontsize=12,
                     color=color, fontweight="bold")
     ax.set_xticks(x, labels, fontsize=10)
-    ax.set_xlim(-.35, len(scores)-.65)
+    ax.set_xlim(-.35, 11.35)
     ax.set_ylim(87, 94)
     ax.set_yticks(range(87, 95))
     ax.set_ylabel("Official duration score (%)")
