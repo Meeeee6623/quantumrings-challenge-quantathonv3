@@ -80,6 +80,9 @@ geometry/nearest-training-circuit inspector, see
 The independent runtime-only test of the 2026 family-aware residual paper,
 including grouped-fold ablations and seed checks, is in
 [`research/PAPER_RUNTIME_REPLICATION.md`](research/PAPER_RUNTIME_REPLICATION.md).
+For the final technical handoff, see the [feature and model specification](research/FINAL_MODEL_AND_FEATURES.md),
+the [remaining failure modes](research/FINAL_FAILURE_MODES.md), and the
+[complete experiment history](research/RESEARCH_PROCESS_END_TO_END.md).
 
 Run a holdout directory directly:
 
