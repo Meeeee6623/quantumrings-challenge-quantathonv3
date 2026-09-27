@@ -78,7 +78,7 @@ process, etc. — judged live, five equally-weighted categories). The automated 
 is **pure duration accuracy**, per `(circuit, threshold)`:
 
 ```
-score = max(0, 1 − |log10(pred / actual)| / 2)      # exact = 1.0, off by 10× = 0
+score = max(0, 1 − |log10(pred / actual)| / 2)      # exact=1, 10× off=.5, 100× off=0
 ```
 
 Runtimes span seconds to hours, so accuracy is measured in **log scale** — being

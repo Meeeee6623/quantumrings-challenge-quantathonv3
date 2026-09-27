@@ -1,0 +1,16 @@
+{
+  "artifact_version": "pruned_union_threshold_experts_v7",
+  "features": 325,
+  "decisions": {
+    "keep": 241,
+    "drop": 84
+  },
+  "circuits": 532,
+  "rows": 1497,
+  "settings": [
+    16,
+    64,
+    512
+  ],
+  "note": "Within-setting binned medians and IQR are descriptive; decisions require grouped ablation before deployment."
+}

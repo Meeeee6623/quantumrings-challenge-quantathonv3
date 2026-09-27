@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "training-label-audit",
+      "title": "Training labels and modeling constraints",
+      "queries": [
+        {
+          "id": "label-profile",
+          "source": {
+            "label": "runtime-data.csv"
+          },
+          "summary": "1,497 labeled runs cover 532 circuits. There are 33 explicit timeouts, 99 absent threshold combinations, and one successful duration above the stated cap. All circuit files match the labels.",
+          "rows": [
+            {
+              "threshold": 16,
+              "runs": 532,
+              "timeouts": 9,
+              "median_success_seconds": 1.5307986
+            },
+            {
+              "threshold": 64,
+              "runs": 530,
+              "timeouts": 4,
+              "median_success_seconds": 4.156196400000001
+            },
+            {
+              "threshold": 512,
+              "runs": 435,
+              "timeouts": 20,
+              "median_success_seconds": 91.7516627
+            }
+          ],
+          "columns": [
+            "threshold",
+            "runs",
+            "timeouts",
+            "median_success_seconds"
+          ],
+          "preview": {
+            "kind": "aggregate",
+            "note": "Aggregate of all 1,497 labeled runs; medians include successful runs only.",
+            "totalRows": 1497
+          },
+          "methods": [
+            {
+              "language": "python",
+              "code": "\"\"\"Reproduce the proposal's label audit; no simulator or third-party dependencies.\"\"\"\nimport csv\nimport json\nimport statistics\nfrom collections import Counter, defaultdict\nfrom pathlib import Path\n\nROOT = Path(__file__).resolve().parents[1]\n\n\ndef audit():\n    rows = list(csv.DictReader((ROOT / 'runtime-data.csv').open()))\n    grouped = defaultdict(dict)\n    for row in rows:\n        grouped[row['filename']][int(row['threshold'])] = row\n    result = {\n        'rows': len(rows), 'circuits': len(grouped),\n        'duplicate_keys': len(rows) - sum(map(len, grouped.values())),\n        'settings': {k: sorted({r[k] for r in rows})\n                     for k in ('shots', 'backend', 'precision')},\n        'threshold_coverage': {str(k): v for k, v in\n                               Counter(tuple(sorted(g)) for g in grouped.values()).items()},\n        'status_duration_mismatches': sum((r['status'] == 'timeout') !=\n                                         (not r['duration_s']) for r in rows),\n        'success_above_cap': [r for r in rows if r['status'] == 'success'\n                              and float(r['duration_s']) > 14400],\n        'by_threshold': {}, 'paired_comparisons': {},\n    }\n    for threshold in (16, 64, 512):\n        subset = [r for r in rows if int(r['threshold']) == threshold]\n        durations = [float(r['duration_s']) for r in subset if r['status'] == 'success']\n        result['by_threshold'][threshold] = {\n            'rows': len(subset), 'status': dict(Counter(r['status'] for r in subset)),\n            'success_min': min(durations), 'success_median': statistics.median(durations),\n            'success_max': max(durations),\n        }\n    for low, high in ((16, 64), (64, 512), (16, 512)):\n        pairs = [(float(g[low]['duration_s']), float(g[high]['duration_s']))\n                 for g in grouped.values() if low in g and high in g\n                 and g[low]['status'] == g[high]['status'] == 'success']\n        result['paired_comparisons'][f'{low}->{high}'] = {\n            'both_success': len(pairs), 'higher_threshold_faster': sum(b < a for a, b in pairs),\n            'higher_threshold_at_least_20pct_faster': sum(b < .8*a for a, b in pairs),\n            'median_runtime_ratio': statistics.median(b/a for a, b in pairs),\n        }\n    files = {p.name.removesuffix('.zst') for p in (ROOT / 'training_circuits').glob('*.qasm.zst')}\n    result['circuit_files'] = len(files)\n    result['missing_files'] = sorted(set(grouped) - files)\n    result['unlabeled_files'] = sorted(files - set(grouped))\n    return result\n\n\nif __name__ == '__main__':\n    print(json.dumps(audit(), indent=2))\n"
+            }
+          ]
+        }
+      ],
+      "caveats": [
+        "Missing threshold measurements are not timeout labels.",
+        "Threshold medians describe different observed subsets.",
+        "One success is recorded at 42,993.9847111 seconds; its validity is unresolved."
+      ]
+    }
+  ]
+}

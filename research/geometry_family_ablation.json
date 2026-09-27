@@ -1,0 +1,366 @@
+{
+  "rows": 1497,
+  "circuits": 532,
+  "model": "extra_trees",
+  "results": [
+    {
+      "view": "current_single",
+      "features": [],
+      "columns": 159,
+      "circuit": {
+        "score": 0.8921374643550644,
+        "timeout_score": 0.6970440796649819,
+        "median_factor_error": 1.1241481062164986
+      },
+      "structural": {
+        "score": 0.6996086695689485,
+        "timeout_score": 0.37921507620126,
+        "median_factor_error": 2.903880999286263
+      }
+    },
+    {
+      "view": "timeline",
+      "features": [
+        "chi_timeline_capacity_auc",
+        "chi_timeline_mid_auc",
+        "chi_timeline_mid_t50",
+        "chi_timeline_mid_t90",
+        "chi_timeline_peak_auc",
+        "chi_timeline_post_mid_sat_twoq"
+      ],
+      "columns": 171,
+      "circuit": {
+        "score": 0.8914098213395983,
+        "timeout_score": 0.6927250897469988,
+        "median_factor_error": 1.1278379169286272
+      },
+      "structural": {
+        "score": 0.7039086873135613,
+        "timeout_score": 0.34305893890005124,
+        "median_factor_error": 2.7385135028576943
+      }
+    },
+    {
+      "view": "geometry",
+      "features": [
+        "graph_cutwidth_original",
+        "graph_cutwidth_rcm",
+        "graph_degree_entropy",
+        "graph_density",
+        "graph_mean_cut_original",
+        "graph_mean_cut_rcm",
+        "graph_mindegree_available",
+        "graph_mindegree_width",
+        "graph_rcm_gain",
+        "graph_span_rcm"
+      ],
+      "columns": 179,
+      "circuit": {
+        "score": 0.8909362439191579,
+        "timeout_score": 0.6707549161639559,
+        "median_factor_error": 1.1241714351407823
+      },
+      "structural": {
+        "score": 0.7061340930221809,
+        "timeout_score": 0.3604215801399337,
+        "median_factor_error": 3.092753632317404
+      }
+    },
+    {
+      "view": "family",
+      "features": [
+        "fingerprint_arithmetic",
+        "fingerprint_ghz",
+        "fingerprint_graph_state",
+        "fingerprint_grover",
+        "fingerprint_phase_dyadic",
+        "fingerprint_qaoa",
+        "fingerprint_qft",
+        "fingerprint_random_grid",
+        "fingerprint_variational"
+      ],
+      "columns": 177,
+      "circuit": {
+        "score": 0.8976675125599378,
+        "timeout_score": 0.7314257394392116,
+        "median_factor_error": 1.116934941026017
+      },
+      "structural": {
+        "score": 0.703389723800193,
+        "timeout_score": 0.4205123355626163,
+        "median_factor_error": 2.914587893022659
+      }
+    },
+    {
+      "view": "misc",
+      "features": [
+        "component_dense_log2_bytes",
+        "component_dense_over_128gb",
+        "dense_log2_bytes",
+        "dense_over_128gb",
+        "diagonal_run_frac",
+        "diagonal_run_max",
+        "liveness_mean_span",
+        "liveness_mean_window",
+        "liveness_peak_window",
+        "measurement_early_frac",
+        "reset_early_frac"
+      ],
+      "columns": 181,
+      "circuit": {
+        "score": 0.8921965218161294,
+        "timeout_score": 0.7059140572535358,
+        "median_factor_error": 1.122997329040519
+      },
+      "structural": {
+        "score": 0.6988371634997854,
+        "timeout_score": 0.3884969115856768,
+        "median_factor_error": 2.4678257763702165
+      }
+    },
+    {
+      "view": "timeline_geometry",
+      "features": [
+        "chi_timeline_capacity_auc",
+        "chi_timeline_mid_auc",
+        "chi_timeline_mid_t50",
+        "chi_timeline_mid_t90",
+        "chi_timeline_peak_auc",
+        "chi_timeline_post_mid_sat_twoq",
+        "graph_cutwidth_original",
+        "graph_cutwidth_rcm",
+        "graph_degree_entropy",
+        "graph_density",
+        "graph_mean_cut_original",
+        "graph_mean_cut_rcm",
+        "graph_mindegree_available",
+        "graph_mindegree_width",
+        "graph_rcm_gain",
+        "graph_span_rcm"
+      ],
+      "columns": 191,
+      "circuit": {
+        "score": 0.892410488120568,
+        "timeout_score": 0.6683371217016897,
+        "median_factor_error": 1.1205912965110065
+      },
+      "structural": {
+        "score": 0.7146486587264059,
+        "timeout_score": 0.3455550320582736,
+        "median_factor_error": 2.66317599649135
+      }
+    },
+    {
+      "view": "all_new",
+      "features": [
+        "chi_timeline_capacity_auc",
+        "chi_timeline_mid_auc",
+        "chi_timeline_mid_t50",
+        "chi_timeline_mid_t90",
+        "chi_timeline_peak_auc",
+        "chi_timeline_post_mid_sat_twoq",
+        "component_dense_log2_bytes",
+        "component_dense_over_128gb",
+        "dense_log2_bytes",
+        "dense_over_128gb",
+        "diagonal_run_frac",
+        "diagonal_run_max",
+        "fingerprint_arithmetic",
+        "fingerprint_ghz",
+        "fingerprint_graph_state",
+        "fingerprint_grover",
+        "fingerprint_phase_dyadic",
+        "fingerprint_qaoa",
+        "fingerprint_qft",
+        "fingerprint_random_grid",
+        "fingerprint_variational",
+        "graph_cutwidth_original",
+        "graph_cutwidth_rcm",
+        "graph_degree_entropy",
+        "graph_density",
+        "graph_mean_cut_original",
+        "graph_mean_cut_rcm",
+        "graph_mindegree_available",
+        "graph_mindegree_width",
+        "graph_rcm_gain",
+        "graph_span_rcm",
+        "liveness_mean_span",
+        "liveness_mean_window",
+        "liveness_peak_window",
+        "measurement_early_frac",
+        "reset_early_frac"
+      ],
+      "columns": 231,
+      "circuit": {
+        "score": 0.8970158155838096,
+        "timeout_score": 0.723386271230338,
+        "median_factor_error": 1.118540931042143
+      },
+      "structural": {
+        "score": 0.7070460814804709,
+        "timeout_score": 0.3702240991290011,
+        "median_factor_error": 2.7727602966554974
+      }
+    },
+    {
+      "view": "all_new_effective_peak",
+      "features": [
+        "chi_timeline_capacity_auc",
+        "chi_timeline_mid_auc",
+        "chi_timeline_mid_t50",
+        "chi_timeline_mid_t90",
+        "chi_timeline_peak_auc",
+        "chi_timeline_post_mid_sat_twoq",
+        "component_dense_log2_bytes",
+        "component_dense_over_128gb",
+        "dense_log2_bytes",
+        "dense_over_128gb",
+        "diagonal_run_frac",
+        "diagonal_run_max",
+        "fingerprint_arithmetic",
+        "fingerprint_ghz",
+        "fingerprint_graph_state",
+        "fingerprint_grover",
+        "fingerprint_phase_dyadic",
+        "fingerprint_qaoa",
+        "fingerprint_qft",
+        "fingerprint_random_grid",
+        "fingerprint_variational",
+        "graph_cutwidth_original",
+        "graph_cutwidth_rcm",
+        "graph_degree_entropy",
+        "graph_density",
+        "graph_mean_cut_original",
+        "graph_mean_cut_rcm",
+        "graph_mindegree_available",
+        "graph_mindegree_width",
+        "graph_rcm_gain",
+        "graph_span_rcm",
+        "liveness_mean_span",
+        "liveness_mean_window",
+        "liveness_peak_window",
+        "measurement_early_frac",
+        "reset_early_frac"
+      ],
+      "columns": 235,
+      "circuit": {
+        "score": 0.896383590630661,
+        "timeout_score": 0.7329027865186575,
+        "median_factor_error": 1.1136691267856396
+      },
+      "structural": {
+        "score": 0.7045167679235468,
+        "timeout_score": 0.3730887933708587,
+        "median_factor_error": 2.7440518262976026
+      }
+    }
+  ],
+  "vs_current_blend": [
+    {
+      "view": "current_single",
+      "circuit_delta_vs_current_blend": 3.889924140742539e-05,
+      "circuit_bootstrap_95": [
+        -0.00027326423178751833,
+        0.00035345184967250105
+      ],
+      "structural_delta_vs_current_blend": -0.0008863612156514834,
+      "structural_bootstrap_95": [
+        -0.001583952586931313,
+        -0.00023026019862618208
+      ]
+    },
+    {
+      "view": "timeline",
+      "circuit_delta_vs_current_blend": -0.0006887437740587457,
+      "circuit_bootstrap_95": [
+        -0.002487539506599712,
+        0.0011618734465040916
+      ],
+      "structural_delta_vs_current_blend": 0.00341365652896137,
+      "structural_bootstrap_95": [
+        0.0007032559437664763,
+        0.006280672855392152
+      ]
+    },
+    {
+      "view": "geometry",
+      "circuit_delta_vs_current_blend": -0.0011623211944991635,
+      "circuit_bootstrap_95": [
+        -0.0034495726306116047,
+        0.0010751854507932937
+      ],
+      "structural_delta_vs_current_blend": 0.005639062237580988,
+      "structural_bootstrap_95": [
+        0.0028031950239511593,
+        0.008285092249224852
+      ]
+    },
+    {
+      "view": "family",
+      "circuit_delta_vs_current_blend": 0.005568947446280635,
+      "circuit_bootstrap_95": [
+        0.0027758355841861993,
+        0.008430845203617417
+      ],
+      "structural_delta_vs_current_blend": 0.002894693015593125,
+      "structural_bootstrap_95": [
+        -0.000275563562617979,
+        0.005734015304090854
+      ]
+    },
+    {
+      "view": "misc",
+      "circuit_delta_vs_current_blend": 9.795670247225785e-05,
+      "circuit_bootstrap_95": [
+        -0.002547073645819684,
+        0.002651199844489121
+      ],
+      "structural_delta_vs_current_blend": -0.001657867284814373,
+      "structural_bootstrap_95": [
+        -0.0061662200382352665,
+        0.002792571746891495
+      ]
+    },
+    {
+      "view": "timeline_geometry",
+      "circuit_delta_vs_current_blend": 0.00031192300691099237,
+      "circuit_bootstrap_95": [
+        -0.0023118409442777653,
+        0.0028754175920774104
+      ],
+      "structural_delta_vs_current_blend": 0.014153627941806074,
+      "structural_bootstrap_95": [
+        0.010843780122755985,
+        0.017556545702220375
+      ]
+    },
+    {
+      "view": "all_new",
+      "circuit_delta_vs_current_blend": 0.004917250470152582,
+      "circuit_bootstrap_95": [
+        0.0018198988918875694,
+        0.00802338056804288
+      ],
+      "structural_delta_vs_current_blend": 0.006551050695870946,
+      "structural_bootstrap_95": [
+        0.001169090491448234,
+        0.012026308868517547
+      ]
+    },
+    {
+      "view": "all_new_effective_peak",
+      "circuit_delta_vs_current_blend": 0.004285025517003938,
+      "circuit_bootstrap_95": [
+        0.0009636839064671584,
+        0.007492180698052481
+      ],
+      "structural_delta_vs_current_blend": 0.004021737138946963,
+      "structural_bootstrap_95": [
+        -0.001375182924672337,
+        0.009305109570897082
+      ]
+    }
+  ],
+  "reference": "research/chi_randomness_oof.csv",
+  "scope": "Circuit-grouped and structural-cluster training-data holdouts; no hidden-circuit claim."
+}

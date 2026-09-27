@@ -1,0 +1,335 @@
+{
+  "external": {
+    "generated_rows": 256,
+    "unique_geometry_rows": 196,
+    "class_counts": {
+      "arithmetic": 48,
+      "ghz": 13,
+      "graphstate": 38,
+      "qaoa": 13,
+      "qft": 13,
+      "qnn": 13,
+      "qpe": 19,
+      "randomcircuit": 13,
+      "vqe_su2": 13,
+      "wstate": 13
+    },
+    "size_grouped_accuracy": 0.9540816326530612,
+    "size_grouped_macro_f1": 0.947452193876353,
+    "topology_only_macro_f1": 0.440670646591718,
+    "volume_timing_only_macro_f1": 0.9434233656733657,
+    "per_class_f1": {
+      "arithmetic": 0.9787234042553191,
+      "ghz": 0.88,
+      "graphstate": 0.961038961038961,
+      "qaoa": 0.8387096774193549,
+      "qft": 0.96,
+      "qnn": 0.9230769230769231,
+      "qpe": 0.972972972972973,
+      "randomcircuit": 1.0,
+      "vqe_su2": 0.96,
+      "wstate": 1.0
+    },
+    "classes": [
+      "arithmetic",
+      "ghz",
+      "graphstate",
+      "qaoa",
+      "qft",
+      "qnn",
+      "qpe",
+      "randomcircuit",
+      "vqe_su2",
+      "wstate"
+    ],
+    "confusion_matrix": [
+      [
+        46,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        11,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        37,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        13,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        12,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        12,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        18,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        13,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        12,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        13
+      ]
+    ]
+  },
+  "qpe_exact_inexact_same_geometry_by_size": {
+    "4": false,
+    "6": false,
+    "8": true,
+    "10": false,
+    "12": false,
+    "16": true,
+    "20": true,
+    "24": false,
+    "28": false,
+    "32": true,
+    "40": true,
+    "48": true,
+    "64": true
+  },
+  "shor_out_of_family": [
+    {
+      "size": 18,
+      "operations": 31069,
+      "nearest_known_family": "arithmetic",
+      "max_probability": 0.4453259922578617,
+      "all_family_probabilities": {
+        "arithmetic": 0.4453259922578617,
+        "ghz": 0.0,
+        "graphstate": 0.0,
+        "qaoa": 0.16632298281888447,
+        "qft": 0.0,
+        "qnn": 0.0,
+        "qpe": 0.0,
+        "randomcircuit": 0.34043435825658713,
+        "vqe_su2": 0.04791666666666667,
+        "wstate": 0.0
+      },
+      "scaled_reference_distance": 4.163608082671639,
+      "outside_reference_95pct": true
+    },
+    {
+      "size": 42,
+      "operations": 683545,
+      "nearest_known_family": "arithmetic",
+      "max_probability": 0.4332031135652155,
+      "all_family_probabilities": {
+        "arithmetic": 0.4332031135652155,
+        "ghz": 0.0,
+        "graphstate": 0.0010620915032679738,
+        "qaoa": 0.17062291317353998,
+        "qft": 0.0,
+        "qnn": 0.0,
+        "qpe": 0.0023255813953488376,
+        "randomcircuit": 0.326119633695961,
+        "vqe_su2": 0.06666666666666667,
+        "wstate": 0.0
+      },
+      "scaled_reference_distance": 5.92967101300932,
+      "outside_reference_95pct": true
+    }
+  ],
+  "challenge": {
+    "circuits": 532,
+    "high_confidence_0_7": 92,
+    "median_confidence": 0.49364891316341986,
+    "beyond_reference_95pct_distance": 449,
+    "reference_95pct_distance": 2.1016326937269287,
+    "nearest_family_counts": {
+      "arithmetic": 63,
+      "ghz": 24,
+      "graphstate": 41,
+      "qaoa": 250,
+      "qft": 27,
+      "qnn": 22,
+      "qpe": 13,
+      "randomcircuit": 22,
+      "vqe_su2": 49,
+      "wstate": 21
+    }
+  },
+  "runtime": {
+    "circuit": {
+      "current_score": 0.8970158155838096,
+      "with_qpe_arithmetic_family_score": 0.897121501600281,
+      "delta": 0.00010568601647139012,
+      "bootstrap_95": [
+        -0.0013260698352034438,
+        0.0014775567174675854
+      ],
+      "timeout_delta": 0.013994124619732616
+    },
+    "structural": {
+      "current_score": 0.7070460814804709,
+      "with_qpe_arithmetic_family_score": 0.7101005146554762,
+      "delta": 0.003054433175005487,
+      "bootstrap_95": [
+        0.0010148340790890375,
+        0.005091358337969297
+      ],
+      "timeout_delta": 0.0013201982533702673,
+      "cluster_bootstrap_95": [
+        -0.006787938770886906,
+        0.007748693324922317
+      ],
+      "positive_clusters": 6,
+      "clusters": 12,
+      "cluster_effects": [
+        {
+          "cluster": 0,
+          "rows": 101,
+          "mean_delta": -0.018590778143912846
+        },
+        {
+          "cluster": 1,
+          "rows": 651,
+          "mean_delta": 0.010461194285863252
+        },
+        {
+          "cluster": 2,
+          "rows": 99,
+          "mean_delta": 0.0023402821369510867
+        },
+        {
+          "cluster": 3,
+          "rows": 33,
+          "mean_delta": 8.680386148966978e-05
+        },
+        {
+          "cluster": 4,
+          "rows": 156,
+          "mean_delta": 0.005424668252058925
+        },
+        {
+          "cluster": 5,
+          "rows": 24,
+          "mean_delta": -0.010654595505757971
+        },
+        {
+          "cluster": 6,
+          "rows": 126,
+          "mean_delta": -0.0022890454284002423
+        },
+        {
+          "cluster": 7,
+          "rows": 141,
+          "mean_delta": -0.006992907492257561
+        },
+        {
+          "cluster": 8,
+          "rows": 19,
+          "mean_delta": -0.00391929075668633
+        },
+        {
+          "cluster": 9,
+          "rows": 15,
+          "mean_delta": 0.009039765168603726
+        },
+        {
+          "cluster": 10,
+          "rows": 105,
+          "mean_delta": 0.00388602650763914
+        },
+        {
+          "cluster": 11,
+          "rows": 27,
+          "mean_delta": -0.014070959067268933
+        }
+      ]
+    }
+  },
+  "interpretation": "Shor is out of training; nearest-class probabilities are not Shor identification. QPE and arithmetic labels are externally validated MQT generator labels, not challenge ground truth."
+}

@@ -1,0 +1,14 @@
+{
+  "groupedScorePct": 89.1125044945926,
+  "groupedBootLoPct": 87.59662880809189,
+  "groupedBootHiPct": 90.43402151914172,
+  "structuralScorePct": 69.01706001849904,
+  "labeledRows": 1497,
+  "circuits": 532,
+  "harnessRows": 1596,
+  "timeoutRows": 33,
+  "zeroScoreRows": 12,
+  "maxParseS": 10.1855,
+  "maxPredictS": 0.2922,
+  "capExceeded": 0
+}

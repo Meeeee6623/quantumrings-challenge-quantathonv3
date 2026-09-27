@@ -1,0 +1,128 @@
+{
+  "columns": [
+    "pi_literal_fraction",
+    "pi_tail_fraction"
+  ],
+  "splits": {
+    "pi_literal_fraction": {
+      "matched": {
+        "baseline": {
+          "score": 0.9254718850769831,
+          "timeout_score": 0.9617809605558605,
+          "median_factor_error": 1.0751489735748228,
+          "p95_factor_error": 4.967338294247283,
+          "tenfold_misses": 28,
+          "predicted_timeouts": 41,
+          "threshold_scores": {
+            "16": 0.9300739344234323,
+            "64": 0.9239589360369597,
+            "512": 0.921686994821583
+          }
+        },
+        "candidate": {
+          "score": 0.9250713162455247,
+          "timeout_score": 0.9380613502930002,
+          "median_factor_error": 1.0731324716995085,
+          "p95_factor_error": 4.967731850494145,
+          "tenfold_misses": 27,
+          "predicted_timeouts": 41,
+          "threshold_scores": {
+            "16": 0.9299607149468213,
+            "64": 0.9242357501374787,
+            "512": 0.9201096838965008
+          }
+        },
+        "delta": -0.00040056883145833666
+      },
+      "structural": {
+        "baseline": {
+          "score": 0.7502992009584047,
+          "timeout_score": 0.7672946509031308,
+          "median_factor_error": 1.8996259961474133,
+          "p95_factor_error": 70.53191802016694,
+          "tenfold_misses": 228,
+          "predicted_timeouts": 73,
+          "threshold_scores": {
+            "16": 0.687606481318312,
+            "64": 0.8019394637952065,
+            "512": 0.7640536550848979
+          }
+        },
+        "candidate": {
+          "score": 0.7566780285752444,
+          "timeout_score": 0.7900534258197727,
+          "median_factor_error": 1.8919717255098565,
+          "p95_factor_error": 52.69518893295228,
+          "tenfold_misses": 216,
+          "predicted_timeouts": 64,
+          "threshold_scores": {
+            "16": 0.6925393952693946,
+            "64": 0.81635459993482,
+            "512": 0.7624094540882026
+          }
+        },
+        "delta": 0.006378827616839611
+      }
+    },
+    "pi_literal_fraction+pi_tail_fraction": {
+      "matched": {
+        "baseline": {
+          "score": 0.9254718850769831,
+          "timeout_score": 0.9617809605558605,
+          "median_factor_error": 1.0751489735748228,
+          "p95_factor_error": 4.967338294247283,
+          "tenfold_misses": 28,
+          "predicted_timeouts": 41,
+          "threshold_scores": {
+            "16": 0.9300739344234323,
+            "64": 0.9239589360369597,
+            "512": 0.921686994821583
+          }
+        },
+        "candidate": {
+          "score": 0.9252361877861561,
+          "timeout_score": 0.9382628544928083,
+          "median_factor_error": 1.075201553291669,
+          "p95_factor_error": 4.985063296500235,
+          "tenfold_misses": 26,
+          "predicted_timeouts": 41,
+          "threshold_scores": {
+            "16": 0.9299228827811781,
+            "64": 0.924263685468823,
+            "512": 0.9206893015581907
+          }
+        },
+        "delta": -0.0002356972908269528
+      },
+      "structural": {
+        "baseline": {
+          "score": 0.7502992009584047,
+          "timeout_score": 0.7672946509031308,
+          "median_factor_error": 1.8996259961474133,
+          "p95_factor_error": 70.53191802016694,
+          "tenfold_misses": 228,
+          "predicted_timeouts": 73,
+          "threshold_scores": {
+            "16": 0.687606481318312,
+            "64": 0.8019394637952065,
+            "512": 0.7640536550848979
+          }
+        },
+        "candidate": {
+          "score": 0.7528767777844989,
+          "timeout_score": 0.7901739574492105,
+          "median_factor_error": 1.9080216960590026,
+          "p95_factor_error": 63.868864094424694,
+          "tenfold_misses": 225,
+          "predicted_timeouts": 70,
+          "threshold_scores": {
+            "16": 0.6895625288425963,
+            "64": 0.8066784751477915,
+            "512": 0.7647578831512738
+          }
+        },
+        "delta": 0.0025775768260941634
+      }
+    }
+  }
+}

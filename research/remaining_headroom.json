@@ -1,0 +1,57 @@
+{
+  "method": "selected v7 fixed circuit-grouped matched OOF; challenge loss = min(1, |log10(pred/actual)|/2)",
+  "rows": 1497,
+  "circuits": 532,
+  "score": 0.9261526527252997,
+  "greater_than_10x_rows": 28,
+  "top_circuit_loss_share": {
+    "5": 0.06498499990432258,
+    "10": 0.11776631905775424,
+    "20": 0.208233408706999,
+    "50": 0.4315833951710564
+  },
+  "oracle_gain_if_top_circuits_perfect": {
+    "5": 0.004798969855580878,
+    "10": 0.008696730260721137,
+    "20": 0.015377484846980363,
+    "50": 0.03187128886119123
+  },
+  "size": {
+    "<10 MB": {
+      "rows": 1449,
+      "score": 0.9285202945200566,
+      "loss_share": 0.936902591481442,
+      "oracle_gain_if_perfect": 0.06918777103569673
+    },
+    ">=10 MB": {
+      "rows": 48,
+      "score": 0.8546794660460756,
+      "loss_share": 0.063097408518558,
+      "oracle_gain_if_perfect": 0.004659576239003587
+    }
+  },
+  "duration": {
+    ">=1 second": {
+      "rows": 996,
+      "score": 0.930776815423344,
+      "loss_share": 0.623669080514483
+    },
+    "<1 second": {
+      "rows": 501,
+      "score": 0.9169597065231996,
+      "loss_share": 0.3763309194855169
+    }
+  },
+  "status": {
+    "success": {
+      "rows": 1464,
+      "score": 0.9253014460644845,
+      "loss_share": 0.9892283896694842
+    },
+    "timeout": {
+      "rows": 33,
+      "score": 0.9639152754960101,
+      "loss_share": 0.010771610330515796
+    }
+  }
+}

@@ -1,0 +1,437 @@
+{
+  "artifact_version": "categorical_setting_threshold_experts_v8",
+  "setting_encoding": "one-hot categorical (16, 64, 512)",
+  "audit_pruned": true,
+  "rows": 1497,
+  "circuits": 532,
+  "primary_candidates": 134,
+  "union_candidates": 244,
+  "constant_columns": [
+    "unsupported_statements",
+    "log_unsupported_statements"
+  ],
+  "exact_duplicate_columns": [
+    {
+      "removed": "extended__custom_gate_definition_count",
+      "kept": "custom_definitions"
+    },
+    {
+      "removed": "extended__dag_critical_path_length",
+      "kept": "extended__circuit_depth"
+    },
+    {
+      "removed": "extended__dag_longest_dependency_chain",
+      "kept": "extended__circuit_depth"
+    },
+    {
+      "removed": "extended__expanded_gate_count_proxy",
+      "kept": "extended__custom_expanded_gate_count_proxy"
+    },
+    {
+      "removed": "extended__fast_graph_available",
+      "kept": "extended__fast_detail_mode"
+    },
+    {
+      "removed": "extended__gate_count__cz",
+      "kept": "gate_cz"
+    },
+    {
+      "removed": "extended__gate_count__rx",
+      "kept": "gate_rx"
+    },
+    {
+      "removed": "extended__gate_count__u3",
+      "kept": "gate_u3"
+    },
+    {
+      "removed": "extended__interaction_edge_count",
+      "kept": "extended__interaction_distinct_pair_count"
+    },
+    {
+      "removed": "extended__interaction_graph_density",
+      "kept": "extended__interaction_distinct_pair_fraction"
+    },
+    {
+      "removed": "extended__interaction_node_count",
+      "kept": "n_qubits"
+    },
+    {
+      "removed": "extended__interaction_repeat_factor",
+      "kept": "extended__interaction_edge_weight_mean"
+    },
+    {
+      "removed": "extended__measurement_count",
+      "kept": "measurements"
+    },
+    {
+      "removed": "extended__num_qubits",
+      "kept": "n_qubits"
+    },
+    {
+      "removed": "extended__reset_count",
+      "kept": "resets"
+    },
+    {
+      "removed": "extended__source_bytes",
+      "kept": "qasm_bytes"
+    },
+    {
+      "removed": "extended__structural_active_qubit_fraction",
+      "kept": "extended__fast_detail_mode"
+    },
+    {
+      "removed": "extended__structural_gate_depth",
+      "kept": "extended__circuit_depth"
+    },
+    {
+      "removed": "extended__structural_max_gate_layer_width",
+      "kept": "extended__dag_max_layer_width"
+    },
+    {
+      "removed": "extended__supermarq_communication",
+      "kept": "extended__interaction_distinct_pair_fraction"
+    },
+    {
+      "removed": "extended__two_qubit_gate_fraction",
+      "kept": "extended__supermarq_entanglement_ratio"
+    }
+  ],
+  "splits": {
+    "matched": {
+      "current_v7": {
+        "score": 0.9261526527252998,
+        "timeout_score": 0.9639152754960102,
+        "median_factor_error": 1.0649389663713609,
+        "p95_factor_error": 4.887911018024689,
+        "tenfold_misses": 28,
+        "predicted_timeouts": 43,
+        "threshold_scores": {
+          "16": 0.9300152213126028,
+          "64": 0.9240860185007006,
+          "512": 0.9239467438760862
+        }
+      },
+      "categorical_v8": {
+        "score": 0.9269144781280482,
+        "timeout_score": 0.9426060640203457,
+        "median_factor_error": 1.0623358116743846,
+        "p95_factor_error": 5.061286655261178,
+        "tenfold_misses": 25,
+        "predicted_timeouts": 41,
+        "threshold_scores": {
+          "16": 0.9317248219785063,
+          "64": 0.9258767908292007,
+          "512": 0.92229579155321
+        }
+      },
+      "paired": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.0007618254027484433,
+        "delta_95": [
+          -0.0007913985921032135,
+          0.001989378065838579
+        ]
+      }
+    },
+    "structural": {
+      "current_v7": {
+        "score": 0.7553686958374755,
+        "timeout_score": 0.7974694962429586,
+        "median_factor_error": 1.889357260937392,
+        "p95_factor_error": 56.128269399894606,
+        "tenfold_misses": 221,
+        "predicted_timeouts": 73,
+        "threshold_scores": {
+          "16": 0.6986958184615557,
+          "64": 0.801611538705108,
+          "512": 0.7683371189274623
+        }
+      },
+      "categorical_v8": {
+        "score": 0.7601916162814915,
+        "timeout_score": 0.7971485574493247,
+        "median_factor_error": 1.8532999074713121,
+        "p95_factor_error": 40.96853522166242,
+        "tenfold_misses": 217,
+        "predicted_timeouts": 69,
+        "threshold_scores": {
+          "16": 0.6943210231246366,
+          "64": 0.8093820785235821,
+          "512": 0.7808173877093962
+        }
+      },
+      "paired": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.004822920444015833,
+        "delta_95": [
+          -0.0007742617956088482,
+          0.019434069369212038
+        ]
+      }
+    }
+  },
+  "uncertainty": {
+    "interval_alpha": 0.1,
+    "interval_log10_radius": 0.47788590859396524,
+    "multiplicative_factor": 3.00528669456139
+  },
+  "selected_schema": {
+    "selected_unique_columns": 241,
+    "global_columns": 120,
+    "specialist_columns_by_threshold": {
+      "16": 200,
+      "64": 200,
+      "512": 200
+    },
+    "classifier_columns_by_threshold": {
+      "16": 80,
+      "64": 80,
+      "512": 80
+    },
+    "selected_columns": [
+      "cancel_pairs",
+      "chi_timeline_mid_t50",
+      "chi_timeline_mid_t90",
+      "chi_timeline_post_mid_sat_twoq",
+      "clifford",
+      "component_dense_over_128gb",
+      "dense_over_128gb",
+      "depth_per_qubit",
+      "diagonal_run_frac",
+      "diagonal_run_max",
+      "effective_ops",
+      "fingerprint_grover",
+      "fingerprint_phase_dyadic",
+      "fingerprint_qaoa",
+      "fingerprint_qft",
+      "fingerprint_random_grid",
+      "fingerprint_variational",
+      "gate_cp",
+      "gate_cx",
+      "gate_ry",
+      "gate_x",
+      "graph_degree_entropy",
+      "graph_density",
+      "graph_mindegree_width",
+      "graph_rcm_gain",
+      "largest_component_frac",
+      "late_new_pair_ratio",
+      "liveness_mean_window",
+      "measurement_early_frac",
+      "nonclifford_ratio",
+      "one_q",
+      "ops",
+      "peak_window_twoq",
+      "qasm_bytes",
+      "random_window_entropy",
+      "reset_early_frac",
+      "resets",
+      "two_q_ratio",
+      "twoq_window_2",
+      "twoq_window_7",
+      "log_barriers",
+      "log_cancel_pairs",
+      "log_chi_mid_budget",
+      "log_chi_timeline_mid_auc",
+      "log_chi_timeline_peak_auc",
+      "log_chi_upper_mid",
+      "log_chi_upper_peak",
+      "log_clifford",
+      "log_conditional",
+      "log_custom_calls",
+      "log_custom_definitions",
+      "log_dense_log2_bytes",
+      "log_dense_over_128gb",
+      "log_depth",
+      "log_diagonal",
+      "log_diagonal_run_frac",
+      "log_diagonal_run_max",
+      "log_effective_ops",
+      "log_fingerprint_arithmetic",
+      "log_fingerprint_ghz",
+      "log_fingerprint_grover",
+      "log_fingerprint_phase_dyadic",
+      "log_fingerprint_qft",
+      "log_fingerprint_random_grid",
+      "log_fingerprint_variational",
+      "log_gate_ccx",
+      "log_gate_cx",
+      "log_gate_h",
+      "log_gate_p",
+      "log_gate_rx",
+      "log_gate_rz",
+      "log_gate_rzz",
+      "log_gate_s",
+      "log_gate_t",
+      "log_gate_u1",
+      "log_gate_u2",
+      "log_gate_u3",
+      "log_gate_x",
+      "log_graph_cutwidth_original",
+      "log_graph_cutwidth_rcm",
+      "log_graph_degree_entropy",
+      "log_graph_mean_cut_original",
+      "log_graph_mean_cut_rcm",
+      "log_graph_mindegree_available",
+      "log_graph_rcm_gain",
+      "log_graph_span_rcm",
+      "log_largest_component",
+      "log_late_new_pair_ratio",
+      "log_liveness_mean_span",
+      "log_liveness_mean_window",
+      "log_liveness_peak_window",
+      "log_max_degree",
+      "log_max_span",
+      "log_mean_degree",
+      "log_measurement_early_frac",
+      "log_measurements",
+      "log_multi_q",
+      "log_n_qubits",
+      "log_nonclifford",
+      "log_one_q",
+      "log_ops",
+      "log_pair_reuse",
+      "log_qasm_bytes",
+      "log_random_angle_entropy",
+      "log_random_bigram_entropy",
+      "log_random_gate_entropy",
+      "log_random_pair_entropy",
+      "log_randomness_proxy",
+      "log_reset_early_frac",
+      "log_resets",
+      "log_rotation_folds",
+      "log_small_angles",
+      "log_two_depth",
+      "log_two_q",
+      "log_twoq_window_3",
+      "log_twoq_window_4",
+      "log_twoq_window_6",
+      "log_unique_pairs",
+      "log_zero_angles",
+      "chi_walk_cost_overhead",
+      "chi_walk_entangling_frac",
+      "chi_walk_max_logchi",
+      "chi_walk_sat_frac",
+      "chi_walk_sat_start",
+      "chi_walk_links_at_cap",
+      "chi_walk_available",
+      "chi_walk_rot_near_zero",
+      "chi_walk_rot_near_frac",
+      "chi_walk_rot_mixing_mean",
+      "setting_16",
+      "setting_64",
+      "setting_512",
+      "extended__angle_abs_over_pi_max",
+      "extended__angle_abs_over_pi_mean",
+      "extended__angle_abs_over_pi_std",
+      "extended__angle_clifford_fraction",
+      "extended__angle_distinct_count",
+      "extended__angle_distinct_overflow",
+      "extended__angle_expression_count",
+      "extended__angle_generic_fraction",
+      "extended__angle_mod_two_pi_distance_mean",
+      "extended__angle_negative_fraction",
+      "extended__angle_numeric_fraction",
+      "extended__angle_quarter_turn_fraction",
+      "extended__angle_symbolic_count",
+      "extended__angle_t_like_fraction",
+      "extended__angle_value_entropy",
+      "extended__angle_value_entropy_normalized",
+      "extended__angle_zero_mod_two_pi_fraction",
+      "extended__approx_treewidth",
+      "extended__circuit_depth",
+      "extended__classical_register_count",
+      "extended__coarse_unclassified_semicolon_count",
+      "extended__custom_expanded_gate_count_proxy",
+      "extended__custom_expanded_parameter_count_proxy",
+      "extended__custom_expanded_two_qubit_fraction",
+      "extended__custom_expanded_two_qubit_gate_count_proxy",
+      "extended__custom_gate_invocation_count",
+      "extended__cut_crossings_active_fraction",
+      "extended__cut_crossings_max",
+      "extended__cut_crossings_max_fraction",
+      "extended__cut_crossings_mean",
+      "extended__cut_crossings_std",
+      "extended__dag_density",
+      "extended__dag_dependency_edge_count",
+      "extended__dag_layer_utilization",
+      "extended__dag_max_layer_width",
+      "extended__dag_mean_layer_width",
+      "extended__dag_node_count",
+      "extended__dag_parallelizable_gate_fraction",
+      "extended__dag_width_depth_ratio",
+      "extended__depth_per_gate",
+      "extended__fast_detailed_work_units",
+      "extended__fast_sampled_operation_count",
+      "extended__gate_count__ccx",
+      "extended__gate_count__cu1",
+      "extended__gate_count__cx",
+      "extended__gate_count__h",
+      "extended__gate_count__rz",
+      "extended__gate_count__rzz",
+      "extended__gate_count__s",
+      "extended__gate_count__sxdg",
+      "extended__gate_count__t",
+      "extended__gate_count__tdg",
+      "extended__gate_count__u2",
+      "extended__gate_count__x",
+      "extended__gate_count__z",
+      "extended__gate_freq__cp",
+      "extended__gate_freq__cx",
+      "extended__gate_freq__h",
+      "extended__gate_freq__rx",
+      "extended__gate_freq__rz",
+      "extended__gate_freq__s",
+      "extended__gate_freq__sdg",
+      "extended__gate_freq__swap",
+      "extended__gate_freq__x",
+      "extended__gate_type_distinct_count",
+      "extended__gates_per_qubit",
+      "extended__interaction_assortativity",
+      "extended__interaction_clustering_coefficient",
+      "extended__interaction_connected_components",
+      "extended__interaction_cycle_rank_fraction",
+      "extended__interaction_diameter",
+      "extended__interaction_distinct_pair_count",
+      "extended__interaction_distinct_pair_fraction",
+      "extended__interaction_edge_weight_max",
+      "extended__interaction_edge_weight_mean",
+      "extended__interaction_edge_weight_std",
+      "extended__interaction_entropy",
+      "extended__interaction_entropy_normalized",
+      "extended__interaction_largest_component_fraction",
+      "extended__interaction_max_edge_weight_fraction",
+      "extended__interaction_max_weighted_degree",
+      "extended__interaction_mean_degree",
+      "extended__interaction_mean_weighted_degree",
+      "extended__interaction_nontrivial_components",
+      "extended__interaction_spectral_radius",
+      "extended__interaction_total_count",
+      "extended__multi_qubit_gate_count",
+      "extended__multi_qubit_gate_fraction",
+      "extended__parameter_count",
+      "extended__parameterized_gate_count",
+      "extended__qasm_version_3",
+      "extended__quantum_register_count",
+      "extended__single_qubit_gate_count",
+      "extended__source_chars_per_line",
+      "extended__source_lines",
+      "extended__source_pi_token_count",
+      "extended__structural_gate_entropy_normalized",
+      "extended__structural_mean_gate_width",
+      "extended__supermarq_critical_depth",
+      "extended__supermarq_entanglement_ratio",
+      "extended__supermarq_liveness",
+      "extended__supermarq_measurement",
+      "extended__supermarq_parallelism",
+      "extended__total_operation_count",
+      "extended__treewidth_min_fill",
+      "extended__two_qubit_angle_abs_over_pi_mean",
+      "extended__two_qubit_angle_clifford_fraction",
+      "extended__two_qubit_angle_numeric_count",
+      "extended__two_qubit_gate_count"
+    ]
+  },
+  "artifact": "quantathon-harness/artifacts/runtime_model.joblib",
+  "oof_predictions": "research/categorical_model_oof.csv"
+}

@@ -1,0 +1,71 @@
+{
+  "basis": "v7 matched circuit-grouped out-of-fold predictions",
+  "rows": 1497,
+  "circuits": 532,
+  "mean_score": 0.9261526527252996,
+  "greater_than_10x_rows": 28,
+  "greater_than_10x_circuits": 25,
+  "greater_than_10x_direction": {
+    "under": 18,
+    "over": 10
+  },
+  "greater_than_10x_timeouts": 2,
+  "greater_than_10x_outside_generated_reference_rows": 23,
+  "tag_definitions": "Multi-label QASM-pattern thresholds in analyze_final_failures.py; not verified algorithms.",
+  "tag_segments": {
+    "QAOA-like ordered motif": {
+      "circuits": 33,
+      "rows": 93,
+      "mean_score": 0.8711822688083045,
+      "greater_than_10x_rows": 5
+    },
+    "QFT/phase-like fingerprint": {
+      "circuits": 26,
+      "rows": 76,
+      "mean_score": 0.8458305807632244,
+      "greater_than_10x_rows": 5
+    },
+    "arithmetic-like fingerprint": {
+      "circuits": 56,
+      "rows": 144,
+      "mean_score": 0.8972476345552606,
+      "greater_than_10x_rows": 6
+    },
+    "graph-state-like fingerprint": {
+      "circuits": 8,
+      "rows": 23,
+      "mean_score": 0.8100538739708988,
+      "greater_than_10x_rows": 2
+    },
+    "large-file fast path": {
+      "circuits": 4,
+      "rows": 12,
+      "mean_score": 0.7623386123920789,
+      "greater_than_10x_rows": 1
+    },
+    "random-grid-like fingerprint": {
+      "circuits": 60,
+      "rows": 173,
+      "mean_score": 0.8737332671932834,
+      "greater_than_10x_rows": 8
+    },
+    "reset-heavy": {
+      "circuits": 7,
+      "rows": 14,
+      "mean_score": 0.911232646211219,
+      "greater_than_10x_rows": 0
+    },
+    "unclassified by these patterns": {
+      "circuits": 303,
+      "rows": 884,
+      "mean_score": 0.9564888029354635,
+      "greater_than_10x_rows": 5
+    },
+    "variational-like fingerprint": {
+      "circuits": 105,
+      "rows": 275,
+      "mean_score": 0.8954479619055352,
+      "greater_than_10x_rows": 8
+    }
+  }
+}

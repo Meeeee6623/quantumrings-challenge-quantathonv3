@@ -10,3 +10,6 @@ scramble-circuits.py
 __pycache__/
 *.pyc
 split-circuits.py
+.uv-cache/
+.venv/
+research/jepa_tokens.json

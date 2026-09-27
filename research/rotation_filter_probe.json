@@ -1,0 +1,170 @@
+{
+  "rows": 1497,
+  "views": {
+    "baseline": {
+      "matched": {
+        "score": 0.8992064054494114,
+        "tenfold_misses": 71,
+        "threshold_scores": {
+          "16": 0.9170558071600905,
+          "64": 0.9070122750792582,
+          "512": 0.8678661925438941
+        },
+        "delta_vs_old": -0.011268156307274823,
+        "circuit_bootstrap_95": [
+          -0.016231836389539584,
+          -0.006746434912011194
+        ]
+      },
+      "structural": {
+        "score": 0.7070460814804709,
+        "tenfold_misses": 273,
+        "threshold_scores": {
+          "16": 0.6968810289205638,
+          "64": 0.7934980162742152,
+          "512": 0.614145581529174
+        },
+        "delta_vs_old": -0.028156084468648847,
+        "circuit_bootstrap_95": [
+          -0.034362908733798825,
+          -0.02218647928325528
+        ]
+      }
+    },
+    "old_walk": {
+      "matched": {
+        "score": 0.9104745617566862,
+        "tenfold_misses": 54,
+        "threshold_scores": {
+          "16": 0.9216885581224339,
+          "64": 0.9108883621845673,
+          "512": 0.896255802461618
+        },
+        "delta_vs_old": 0.0,
+        "circuit_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "structural": {
+        "score": 0.7352021659491196,
+        "tenfold_misses": 256,
+        "threshold_scores": {
+          "16": 0.6737086805615476,
+          "64": 0.8073728721263208,
+          "512": 0.7224758669888247
+        },
+        "delta_vs_old": 0.0,
+        "circuit_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "old_walk_plus_angles": {
+      "matched": {
+        "score": 0.9136440983860382,
+        "tenfold_misses": 47,
+        "threshold_scores": {
+          "16": 0.922351911267117,
+          "64": 0.9140317558164432,
+          "512": 0.9025222250737421
+        },
+        "delta_vs_old": 0.0031695366293518217,
+        "circuit_bootstrap_95": [
+          0.0012092588594351768,
+          0.005435204435701448
+        ]
+      },
+      "structural": {
+        "score": 0.7350915098024816,
+        "tenfold_misses": 248,
+        "threshold_scores": {
+          "16": 0.6830001083309659,
+          "64": 0.8035666771500203,
+          "512": 0.7153691808108742
+        },
+        "delta_vs_old": -0.00011065614663807555,
+        "circuit_bootstrap_95": [
+          -0.0024449230432250077,
+          0.002089084389546565
+        ]
+      }
+    },
+    "filtered_walk": {
+      "matched": {
+        "score": 0.9139770652897772,
+        "tenfold_misses": 42,
+        "threshold_scores": {
+          "16": 0.9200163199305631,
+          "64": 0.914233015287663,
+          "512": 0.9062792791569552
+        },
+        "delta_vs_old": 0.00350250353309094,
+        "circuit_bootstrap_95": [
+          9.32220583927366e-06,
+          0.007251050183080772
+        ]
+      },
+      "structural": {
+        "score": 0.7312409991503172,
+        "tenfold_misses": 261,
+        "threshold_scores": {
+          "16": 0.6858770018945465,
+          "64": 0.8115380790239021,
+          "512": 0.6888874226148458
+        },
+        "delta_vs_old": -0.003961166798802506,
+        "circuit_bootstrap_95": [
+          -0.006236787077836195,
+          -0.00180772803019647
+        ]
+      }
+    },
+    "filtered_plus_angles": {
+      "matched": {
+        "score": 0.9145898866911574,
+        "tenfold_misses": 45,
+        "threshold_scores": {
+          "16": 0.9205012930744597,
+          "64": 0.9149889877106617,
+          "512": 0.9068740436193089
+        },
+        "delta_vs_old": 0.004115324934471148,
+        "circuit_bootstrap_95": [
+          0.0007182953591107643,
+          0.007831022347888746
+        ]
+      },
+      "structural": {
+        "score": 0.7278658252315655,
+        "tenfold_misses": 253,
+        "threshold_scores": {
+          "16": 0.6723298954725632,
+          "64": 0.7992532038508083,
+          "512": 0.7088079033087851
+        },
+        "delta_vs_old": -0.007336340717554171,
+        "circuit_bootstrap_95": [
+          -0.009899916167884883,
+          -0.004738478002467125
+        ]
+      }
+    }
+  },
+  "rotation_tolerance_rad": 0.3,
+  "features": [
+    "chi_walk_cost_overhead",
+    "chi_walk_entangling_frac",
+    "chi_walk_max_logchi",
+    "chi_walk_sat_frac",
+    "chi_walk_sat_start",
+    "chi_walk_links_at_cap",
+    "chi_walk_extrapolated",
+    "chi_walk_available",
+    "chi_walk_rot_near_zero",
+    "chi_walk_rot_near_pi",
+    "chi_walk_rot_near_frac",
+    "chi_walk_rot_mixing_mean"
+  ]
+}

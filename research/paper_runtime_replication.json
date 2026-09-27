@@ -1,0 +1,472 @@
+{
+  "source": "Xing et al., arXiv:2606.11620v1",
+  "scope": "runtime-only adaptation on Quantum Rings challenge; not exact paper dataset reproduction",
+  "families": [
+    "ghz",
+    "graphstate",
+    "qaoa",
+    "qft",
+    "qnn",
+    "randomcircuit",
+    "vqe_su2",
+    "wstate"
+  ],
+  "family_source": "frozen eight-family MQT geometry classifier (96.9% size-grouped accuracy on its own generated references)",
+  "feature_count": 33,
+  "rows": 1497,
+  "circuits": 532,
+  "splits": {
+    "matched": {
+      "mlp_basic": {
+        "score": 0.9094746737925088,
+        "timeout_score": 0.8221466991070849,
+        "median_factor_error": 1.2159769878320794,
+        "p95_factor_error": 4.939771212990088,
+        "tenfold_misses": 36,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.9195044141765585,
+          "64": 0.9146230135601704,
+          "512": 0.8909357267553252
+        },
+        "r2_log10": 0.9347873866602917,
+        "r2_seconds": 0.060628998619538965,
+        "median_relative_error": 0.18962606171848972,
+        "training": [
+          {
+            "fold": 0,
+            "epochs": 103,
+            "best_epoch": 53,
+            "validation_log_mse": 0.13018904626369476
+          },
+          {
+            "fold": 1,
+            "epochs": 147,
+            "best_epoch": 97,
+            "validation_log_mse": 0.12640617787837982
+          },
+          {
+            "fold": 2,
+            "epochs": 178,
+            "best_epoch": 128,
+            "validation_log_mse": 0.09743928164243698
+          },
+          {
+            "fold": 3,
+            "epochs": 193,
+            "best_epoch": 143,
+            "validation_log_mse": 0.0846003070473671
+          },
+          {
+            "fold": 4,
+            "epochs": 200,
+            "best_epoch": 165,
+            "validation_log_mse": 0.11012974381446838
+          }
+        ]
+      },
+      "mlp_graph": {
+        "score": 0.9002819353467965,
+        "timeout_score": 0.8084545679355348,
+        "median_factor_error": 1.2459885749995658,
+        "p95_factor_error": 5.881318133407827,
+        "tenfold_misses": 47,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.9122170928715934,
+          "64": 0.8975303819219677,
+          "512": 0.8890378422708591
+        },
+        "r2_log10": 0.9197380919406235,
+        "r2_seconds": -10319.532041321558,
+        "median_relative_error": 0.22454295626538068,
+        "training": [
+          {
+            "fold": 0,
+            "epochs": 89,
+            "best_epoch": 39,
+            "validation_log_mse": 0.10203109681606293
+          },
+          {
+            "fold": 1,
+            "epochs": 147,
+            "best_epoch": 97,
+            "validation_log_mse": 0.1389557421207428
+          },
+          {
+            "fold": 2,
+            "epochs": 111,
+            "best_epoch": 61,
+            "validation_log_mse": 0.11479829996824265
+          },
+          {
+            "fold": 3,
+            "epochs": 191,
+            "best_epoch": 141,
+            "validation_log_mse": 0.10751970112323761
+          },
+          {
+            "fold": 4,
+            "epochs": 169,
+            "best_epoch": 119,
+            "validation_log_mse": 0.11424604803323746
+          }
+        ]
+      },
+      "family_concat": {
+        "score": 0.9010191292230715,
+        "timeout_score": 0.8218468077944934,
+        "median_factor_error": 1.2475634161130025,
+        "p95_factor_error": 5.849013122724656,
+        "tenfold_misses": 44,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.9094026623580969,
+          "64": 0.9023299326270147,
+          "512": 0.8891690937473854
+        },
+        "r2_log10": 0.9288133834218253,
+        "r2_seconds": 0.10795653164382368,
+        "median_relative_error": 0.21468041190424836,
+        "training": [
+          {
+            "fold": 0,
+            "epochs": 93,
+            "best_epoch": 43,
+            "validation_log_mse": 0.10690245777368546
+          },
+          {
+            "fold": 1,
+            "epochs": 98,
+            "best_epoch": 48,
+            "validation_log_mse": 0.14655321836471558
+          },
+          {
+            "fold": 2,
+            "epochs": 174,
+            "best_epoch": 124,
+            "validation_log_mse": 0.08312399685382843
+          },
+          {
+            "fold": 3,
+            "epochs": 153,
+            "best_epoch": 103,
+            "validation_log_mse": 0.11552716046571732
+          },
+          {
+            "fold": 4,
+            "epochs": 193,
+            "best_epoch": 143,
+            "validation_log_mse": 0.1093607097864151
+          }
+        ]
+      },
+      "family_film_residual": {
+        "score": 0.9009236447757113,
+        "timeout_score": 0.7934692897616313,
+        "median_factor_error": 1.247133965247793,
+        "p95_factor_error": 5.658334470098652,
+        "tenfold_misses": 39,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.9092107982224931,
+          "64": 0.9048185782774131,
+          "512": 0.8860430002019416
+        },
+        "r2_log10": 0.9291749552628358,
+        "r2_seconds": -15.457688773646854,
+        "median_relative_error": 0.21328125461649539,
+        "training": [
+          {
+            "fold": 0,
+            "epochs": 103,
+            "best_epoch": 53,
+            "validation_log_mse": 0.08961642533540726
+          },
+          {
+            "fold": 1,
+            "epochs": 152,
+            "best_epoch": 102,
+            "validation_log_mse": 0.12575559318065643
+          },
+          {
+            "fold": 2,
+            "epochs": 104,
+            "best_epoch": 54,
+            "validation_log_mse": 0.10006935149431229
+          },
+          {
+            "fold": 3,
+            "epochs": 200,
+            "best_epoch": 165,
+            "validation_log_mse": 0.08912113308906555
+          },
+          {
+            "fold": 4,
+            "epochs": 193,
+            "best_epoch": 143,
+            "validation_log_mse": 0.11003405600786209
+          }
+        ]
+      },
+      "current_v7": {
+        "score": 0.9261526527252998,
+        "timeout_score": 0.9639152754960102,
+        "median_factor_error": 1.0649389663713609,
+        "p95_factor_error": 4.887911018024689,
+        "tenfold_misses": 28,
+        "predicted_timeouts": 43,
+        "threshold_scores": {
+          "16": 0.9300152213126028,
+          "64": 0.9240860185007006,
+          "512": 0.9239467438760862
+        },
+        "r2_log10": 0.9516723973175418,
+        "r2_seconds": 0.7122421410540705,
+        "median_relative_error": 0.06361334465615487
+      },
+      "family_vs_graph": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.0006417094289148977,
+        "delta_95": [
+          -0.0040633838597488375,
+          0.005104813286577672
+        ]
+      },
+      "graph_vs_basic": {
+        "unit": "circuit",
+        "delta_merged_minus_current": -0.009192738445712468,
+        "delta_95": [
+          -0.015931454068231123,
+          -0.002750034912613475
+        ]
+      }
+    },
+    "structural": {
+      "mlp_basic": {
+        "score": 0.6828417268959315,
+        "timeout_score": 0.645988673459593,
+        "median_factor_error": 2.055354498445555,
+        "p95_factor_error": 240.23754831127548,
+        "tenfold_misses": 353,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.7994597334110107,
+          "64": 0.8214847148818977,
+          "512": 0.37129790368079485
+        },
+        "r2_log10": 0.3465564546567853,
+        "r2_seconds": -5.123084783604693,
+        "median_relative_error": 0.6553499941842409,
+        "training": [
+          {
+            "fold": 0,
+            "epochs": 200,
+            "best_epoch": 175,
+            "validation_log_mse": 0.18983706831932068
+          },
+          {
+            "fold": 1,
+            "epochs": 197,
+            "best_epoch": 147,
+            "validation_log_mse": 0.07934519648551941
+          },
+          {
+            "fold": 2,
+            "epochs": 185,
+            "best_epoch": 135,
+            "validation_log_mse": 0.07841747999191284
+          },
+          {
+            "fold": 3,
+            "epochs": 200,
+            "best_epoch": 160,
+            "validation_log_mse": 0.06974022835493088
+          },
+          {
+            "fold": 4,
+            "epochs": 135,
+            "best_epoch": 85,
+            "validation_log_mse": 0.06279556453227997
+          }
+        ]
+      },
+      "mlp_graph": {
+        "score": 0.7462106279214756,
+        "timeout_score": 0.6457121787263549,
+        "median_factor_error": 1.9824186076229648,
+        "p95_factor_error": 50.49679864963638,
+        "tenfold_misses": 218,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.6991393828460187,
+          "64": 0.8109714623025143,
+          "512": 0.7248742144920333
+        },
+        "r2_log10": 0.6150551293971627,
+        "r2_seconds": -45.514546312028465,
+        "median_relative_error": 0.6378077965630555,
+        "training": [
+          {
+            "fold": 0,
+            "epochs": 130,
+            "best_epoch": 80,
+            "validation_log_mse": 0.19558551907539368
+          },
+          {
+            "fold": 1,
+            "epochs": 198,
+            "best_epoch": 148,
+            "validation_log_mse": 0.08796193450689316
+          },
+          {
+            "fold": 2,
+            "epochs": 184,
+            "best_epoch": 134,
+            "validation_log_mse": 0.0902872085571289
+          },
+          {
+            "fold": 3,
+            "epochs": 136,
+            "best_epoch": 86,
+            "validation_log_mse": 0.08039548248052597
+          },
+          {
+            "fold": 4,
+            "epochs": 138,
+            "best_epoch": 88,
+            "validation_log_mse": 0.07393701374530792
+          }
+        ]
+      },
+      "family_concat": {
+        "score": 0.7336414914434651,
+        "timeout_score": 0.6030200644817097,
+        "median_factor_error": 2.5762832478401996,
+        "p95_factor_error": 52.13949239885468,
+        "tenfold_misses": 196,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.7652990729667251,
+          "64": 0.8174449138225356,
+          "512": 0.5928193139002889
+        },
+        "r2_log10": 0.6087571540646699,
+        "r2_seconds": -17.112746471141744,
+        "median_relative_error": 0.7722615252270624,
+        "training": [
+          {
+            "fold": 0,
+            "epochs": 200,
+            "best_epoch": 152,
+            "validation_log_mse": 0.2958267331123352
+          },
+          {
+            "fold": 1,
+            "epochs": 173,
+            "best_epoch": 123,
+            "validation_log_mse": 0.0944206640124321
+          },
+          {
+            "fold": 2,
+            "epochs": 200,
+            "best_epoch": 173,
+            "validation_log_mse": 0.09361038357019424
+          },
+          {
+            "fold": 3,
+            "epochs": 121,
+            "best_epoch": 71,
+            "validation_log_mse": 0.05460692569613457
+          },
+          {
+            "fold": 4,
+            "epochs": 125,
+            "best_epoch": 75,
+            "validation_log_mse": 0.09154248982667923
+          }
+        ]
+      },
+      "family_film_residual": {
+        "score": 0.7483930620099911,
+        "timeout_score": 0.6492068676851876,
+        "median_factor_error": 2.2676279055637183,
+        "p95_factor_error": 46.52438159228887,
+        "tenfold_misses": 217,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.7397751114693815,
+          "64": 0.8175233006272657,
+          "512": 0.6747050694133214
+        },
+        "r2_log10": 0.6268153443186077,
+        "r2_seconds": -8.713639429264648,
+        "median_relative_error": 0.6799902281547618,
+        "training": [
+          {
+            "fold": 0,
+            "epochs": 195,
+            "best_epoch": 145,
+            "validation_log_mse": 0.16608557105064392
+          },
+          {
+            "fold": 1,
+            "epochs": 188,
+            "best_epoch": 138,
+            "validation_log_mse": 0.07920653373003006
+          },
+          {
+            "fold": 2,
+            "epochs": 200,
+            "best_epoch": 150,
+            "validation_log_mse": 0.08536297082901001
+          },
+          {
+            "fold": 3,
+            "epochs": 200,
+            "best_epoch": 170,
+            "validation_log_mse": 0.08477553725242615
+          },
+          {
+            "fold": 4,
+            "epochs": 125,
+            "best_epoch": 75,
+            "validation_log_mse": 0.07576083391904831
+          }
+        ]
+      },
+      "current_v7": {
+        "score": 0.7553686958374755,
+        "timeout_score": 0.7974694962429586,
+        "median_factor_error": 1.889357260937392,
+        "p95_factor_error": 56.128269399894606,
+        "tenfold_misses": 221,
+        "predicted_timeouts": 73,
+        "threshold_scores": {
+          "16": 0.6986958184615557,
+          "64": 0.801611538705108,
+          "512": 0.7683371189274623
+        },
+        "r2_log10": 0.6442632784776998,
+        "r2_seconds": -0.19886500869521906,
+        "median_relative_error": 0.6872526846779912
+      },
+      "family_vs_graph": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.002182434088515399,
+        "delta_95": [
+          -0.008521222388880955,
+          0.018660997013783487
+        ]
+      },
+      "graph_vs_basic": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.06336890102554432,
+        "delta_95": [
+          -0.016333037246711098,
+          0.11511158061758991
+        ]
+      }
+    }
+  }
+}

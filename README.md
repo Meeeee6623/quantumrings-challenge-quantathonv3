@@ -6,6 +6,7 @@ Predict how long a quantum-circuit simulation will take, straight from the circu
 ## Contents
 
 - [Overview](#overview)
+- [Included merged predictor](#included-merged-predictor)
 - [Timeline](#timeline)
 - [The task](#the-task)
 - [Runtime & timeouts](#runtime--timeouts)
@@ -35,6 +36,63 @@ You will build two things:
 2. A **model** — maps `(features, simulator setting)` → predicted runtime.
 
 Designing the feature set is the core of the challenge. No parser or feature list is provided.
+
+## Selected holdout predictor
+
+This branch contains a complete fitted submission, not only the challenge
+starter.  It combines two independent source-QASM feature representations:
+
+- a bounded QASM2/3 geometry parser with temporal cut/χ features and
+  angle-aware effective-entanglement walk;
+- a second structural extractor covering graph, DAG, SupermarQ-style,
+  parameter-angle, gate-mix, and source-shape features;
+- a global log-runtime ExtraTrees model blended with one specialist for each
+  guaranteed threshold (16, 64, 512); and
+- per-threshold timeout classifiers that can emit the 14,400-second cap;
+- narrow lower bounds for reset-heavy search circuits and very large effective
+  operation counts; and
+- a support-aware structural-count analogue: a guarded blend for two matching
+  training circuits, or their median runtime when three or more match, followed
+  by a small near-basis rotation correction at threshold 512.
+
+The production v9 model treats simulator settings as three categories and has
+**120 fixed inputs**: 79 primary-parser fields or log transforms, 30 secondary
+fields, eight χ-walk fields, and three setting indicators. The exact training
+schema is frozen in
+[`quantathon-harness/production_features.json`](quantathon-harness/production_features.json).
+The production extractor returns only fields needed for these inputs and the
+four narrow prediction rules; it skips unused secondary graph calculations.
+The full feature mode remains available for inspection and research.
+
+The fixed circuit-grouped scores are **0.92774** distribution-matched and
+**0.76638** under structural-cluster stress. Two fresh circuit-grouped
+assignments also favored 120 inputs over the previous 241-input model.
+Feature selection reused released labels, so these are tuning checks rather
+than hidden-holdout accuracy. The earlier [v8 feature audit](research/feature_audit/FINAL_FEATURE_DECISIONS.md)
+and [research history](research/RESEARCH_PROCESS_END_TO_END.md) remain as
+historical records, not the production schema. See the
+[holdout guide](research/HOLDOUT_READINESS.md) for validation and inspection.
+The [presentation agent handoff](research/PRESENTATION_AGENT_HANDOFF.md) traces every
+stage of the 87.66% → 92.77% chart and gives fresh-clone commands for its results
+and all nine presentation figures.
+The optional [JEPA embedding experiment](jepa/README.md) did not meet its
+acceptance gate and is inactive in the production model.
+
+Run a holdout directory directly:
+
+```bash
+uv sync --locked
+uv run --locked python quantathon-harness/run.py \
+  --team "Your Team" --circuits path/to/holdout --out submission.csv
+```
+
+Refit the frozen production schema with:
+
+```bash
+uv run --locked python research/extract_extended_features.py
+uv run --locked python research/train_production_model.py
+uv run --locked python research/write_final_feature_catalog.py
+```
 
 ## Timeline
 
@@ -150,7 +208,8 @@ scored on a **log scale**:
 score = max(0, 1 − |log10(pred / actual)| / 2)
 ```
 
-An exact prediction scores 100%; off by 10× scores 0%. Log scale because runtimes
+An exact prediction scores 100%; off by 10× scores 50%, and off by 100× scores 0%.
+Log scale because runtimes
 span seconds to hours — being 2× off costs the same whether the run is 1 second or
 1 hour. Your automated score is the average over **every** hold-out run; a run
 missing from your submission scores 0.

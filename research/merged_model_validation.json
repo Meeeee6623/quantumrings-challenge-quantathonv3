@@ -1,0 +1,84 @@
+{
+  "artifact_version": "merged_threshold_experts_v1",
+  "rows": 1497,
+  "circuits": 532,
+  "features": 243,
+  "specialist_weight": 0.5,
+  "timeout_probability_cutoff": 0.3,
+  "splits": {
+    "matched": {
+      "current_global": {
+        "score": 0.9152014883088754,
+        "timeout_score": 0.7314757177569646,
+        "median_factor_error": 1.108992772522467,
+        "p95_factor_error": 5.6655283778204435,
+        "tenfold_misses": 46,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.9213480512848038,
+          "64": 0.915527864927929,
+          "512": 0.9072866581679733
+        }
+      },
+      "merged": {
+        "score": 0.9196654205250318,
+        "timeout_score": 0.9179939201275101,
+        "median_factor_error": 1.0810855136820585,
+        "p95_factor_error": 5.393634447430683,
+        "tenfold_misses": 38,
+        "predicted_timeouts": 44,
+        "threshold_scores": {
+          "16": 0.9275030635446226,
+          "64": 0.9192099331714086,
+          "512": 0.9106350348031872
+        }
+      },
+      "paired_bootstrap": {
+        "unit": "circuit",
+        "delta_merged_minus_current": 0.004463932216156311,
+        "delta_95": [
+          0.0015281924194655864,
+          0.007499074462003122
+        ]
+      }
+    },
+    "structural": {
+      "current_global": {
+        "score": 0.7285436922887389,
+        "timeout_score": 0.38770500572681144,
+        "median_factor_error": 2.112579200622724,
+        "p95_factor_error": 62.4807294524096,
+        "tenfold_misses": 254,
+        "predicted_timeouts": 0,
+        "threshold_scores": {
+          "16": 0.6688491624198292,
+          "64": 0.7960885483722693,
+          "512": 0.7192533846243458
+        }
+      },
+      "merged": {
+        "score": 0.7571151920076356,
+        "timeout_score": 0.8595273804543113,
+        "median_factor_error": 1.951317414362719,
+        "p95_factor_error": 58.838440641441686,
+        "tenfold_misses": 218,
+        "predicted_timeouts": 69,
+        "threshold_scores": {
+          "16": 0.6920377733813127,
+          "64": 0.8158406408912289,
+          "512": 0.7651535800556798
+        }
+      },
+      "paired_bootstrap": {
+        "unit": "structural_cluster",
+        "delta_merged_minus_current": 0.028571499718896505,
+        "delta_95": [
+          -0.008005954272823922,
+          0.0661257118620723
+        ]
+      }
+    }
+  },
+  "artifact": "quantathon-harness/artifacts/runtime_model.joblib",
+  "oof_predictions": "research/merged_model_oof.csv"
+}
