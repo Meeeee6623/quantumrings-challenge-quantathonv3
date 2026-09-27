@@ -40,7 +40,7 @@ The baseline knows how large the source circuit is: qubit count, active qubits, 
 
 **Speaker notes**
 
-The χ features describe how much rank a circuit *could* develop across qubit cuts, subject to geometric limits and the requested setting. Diversity summaries measure how evenly gate types, angles, qubit pairs, and time windows are used. Neither quantity measures actual entanglement or proves that a circuit is random. Geometry then adds connected components, pair reuse, span, graph ordering, cut pressure through time, and qubit liveness. Two circuits can have the same two-qubit gate count but connect different register regions or accumulate pressure at different times. The final static pack uses continuous QFT-like, QAOA-like, arithmetic-like, and other pattern scores. These fingerprints let the regressor use partial resemblance without forcing a single algorithm name. The gains are modest because all three packs summarize the circuit; they do not yet follow how potential simulation cost changes gate by gate.
+The χ features describe how much rank a circuit *could* develop across qubit cuts, subject to geometric limits and the requested setting. Diversity summaries measure how evenly gate types, angles, qubit pairs, and time windows are used. Neither quantity measures actual entanglement or proves that a circuit is random. Geometry then adds connected components, pair reuse, span, graph ordering, cut pressure through time, and qubit liveness. Two circuits can have the same two-qubit gate count but connect different register regions or accumulate pressure at different times. The final static pack tests nine continuous pattern scores, including QFT-like, QAOA-like, and arithmetic-like fingerprints. These are hand-built gate-and-geometry summaries, not trained family probabilities; they need not sum to one, and a circuit can match several. The final fitted schema retains only a subset. The gains are modest because all three packs summarize the circuit; they do not yet follow how potential simulation cost changes gate by gate.
 
 **Suggested visual:** [static-feature ablations](presentation_figures/02_static_feature_ablations.png). **Evidence:** [sweep results](presentation_figures/model_sweep.json), [geometry study](GEOMETRY_FAMILY_EVALUATION.md), [χ/diversity study](CHI_RANDOMNESS_EVALUATION.md).
 
@@ -76,13 +76,13 @@ The original classical-state tracker treated a numeric X/Y-like rotation as mixi
 
 **On-slide copy**
 
-- Soft circuit fingerprints added **+0.28 points** in the staged sweep
-- External family probabilities changed **91.55% to 91.50%**
-- Algorithm names remain hypotheses unless source labels verify them
+- Hand-built pattern scores added **+0.28 points** in the staged sweep
+- A trained eight-family classifier changed **91.55% to 91.50%**
+- Pattern strength is not an algorithm probability or verified source label
 
 **Speaker notes**
 
-We tested whether geometry could identify the underlying algorithm and thereby predict runtime. Continuous fingerprints helped the runtime regressor: a circuit can be partly QFT-like or QAOA-like while also sharing other structural traits. We also trained an external classifier on generated MQT reference families. It reached 96.9% family accuracy on that reference task, but 443 of the 532 challenge circuits lay beyond the reference distance range. Adding its family probabilities to the staged runtime model slightly lowered the matched score, and the earlier paired test also lowered both matched and structural-stress scores. Ordered QAOA and Shor-like motifs worked on controlled generator examples but did not transfer reliably enough to enter the final model. The challenge files do not provide verified algorithm identities, so the presentation should call these QASM-pattern matches, not source-algorithm labels.
+We tested whether geometry could identify the underlying algorithm and thereby predict runtime. Continuous fingerprints helped the runtime regressor: a circuit can be partly QFT-like or QAOA-like while also sharing other structural traits. The final 120-input schema keeps Grover-like, dyadic-phase, QFT-like, random-grid-like, and variational-like fingerprint values and their log transforms; the computed QAOA, arithmetic, GHZ, and graph-state scores were not selected as fitted inputs. We also trained an external classifier on generated MQT reference families. It reached 96.9% family accuracy on that reference task, but 443 of the 532 challenge circuits lay beyond the reference distance range. Adding its eight family probabilities to the staged runtime model slightly lowered the matched score, and the earlier paired test also lowered both matched and structural-stress scores. Ordered QAOA and Shor-like motifs worked on controlled generator examples but did not transfer reliably enough to enter the final model. The challenge files do not provide verified algorithm identities, so the presentation should call these QASM-pattern matches, not source-algorithm labels.
 
 **Suggested visual:** [algorithm-signal comparison](presentation_figures/05_algorithm_signals.png). **Evidence:** [external classifier probe](ALGORITHM_GEOMETRY_PROBE.md), [ordered motif probe](SEQUENCE_MOTIF_PROBE.md), [sweep results](presentation_figures/model_sweep.json).
 
